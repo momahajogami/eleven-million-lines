@@ -30,9 +30,14 @@ Eleven codebases. Orientation, not mastery. Learning to stand inside large, old,
 ### Visualizations
 
 - A classroom in Ohio where students open a 1970s C compiler and feel the ground shift under them
-- The course spreading to other universities because it connects people  
+- The course spreading to other universities because it connects people
 - Students who go on to say: this is where I learned to read code
 - "Eleven Million Lines You Should Know" shares space with our heritage of great writing
+- First: getting grounded and secure personally — money, stability, foundation. Not complicated, just necessary.
+- Building family and career while beginning to master code at this deep level — not rushing, not catching up, charging
+- Almost fifty at the start. That's not late. That's the right amount of life to bring to this
+- Building voltage and capacity until the connections come naturally — to students, collaborators, a community
+- That's the life. The course is not separate from it. The course is the expression of it.
 
 ### Questions
 
@@ -57,6 +62,20 @@ Eleven codebases. Orientation, not mastery. Learning to stand inside large, old,
 - Impact/innovation axis: early Python, Quake, networking (TBD), TeX
 - Mathematics: TBD — candidates include LAPACK, early R, Macsyma
 - First venue: Ohio
+- Two tracks confirmed (see below)
+
+## Two Tracks
+
+The course has a point of view: the classical experience is worth having. We don't pretend all tools are equal. But we don't lock the door either.
+
+**Track A — Classical**
+Unix environment, vim or ed, command line navigation, compile it yourself. The tools are part of the curriculum — reading Carmack's code in a terminal with vim is epistemically different from reading it in VS Code. Prerequisite: comfort at the terminal, or willingness to get there. The first two weeks may serve as initiation for those who need it.
+
+**Track B — Accompanied**
+Any environment the student brings. More scaffolding, more editorial hand-holding. Honest about the tradeoff: something is lost, something is gained. The Track B student still learns that a tradition exists, what it looks like, and that they are now in relation to it — even if they don't inhabit it.
+
+**What both tracks share**
+The course has a right way. Saying so out loud is grounding and comforting regardless of which track you choose. Classical doesn't mean superior in a snobbish sense — it means there is a tradition, here is what it looks like, you are now in relation to it. Everyone is invited. No one is excluded.
 
 ## Project Structure
 
