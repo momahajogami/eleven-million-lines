@@ -227,6 +227,105 @@ Almost everything named so far is white men from America or Europe. That's partl
 
 ---
 
+## The Notebook Tradition
+
+Mathematicians keep notebooks. Ramanujan's were found after his death — still being worked through. Darwin's. Leonardo's. The notebook is where thinking happens before it becomes argument.
+
+Dijkstra wrote everything by hand — his EWDs, thousands of them, scanned and online, free. Reading a Dijkstra EWD is reading a mind being precise in public. No wasted words. No softening. Here is what I think and here is why and I will not apologize for the difficulty. That's a kind of writing almost nobody does anymore. The editorial content in each repo could be written in that spirit — short, precise, opinionated, signed.
+
+Dijkstra insisted on handwriting because it slowed him down productively — forced him to think before committing. Knuth typeset his own books because the relationship between thought and its physical presentation mattered to him. These are positions about cognition, not eccentric habits. Connects directly to Ralph's practice: Spencerian, shorthand, the hand and the mind in relationship.
+
+---
+
+## Lockhart's Lament
+
+Paul Lockhart's *A Mathematician's Lament* argues that mathematics education has destroyed the subject by turning it into procedures divorced from discovery. Students learn to execute algorithms without ever asking why, without ever feeling the pleasure of a problem.
+
+The same thing has happened to coding education. Bootcamps, LeetCode, frameworks first. The act of programming — the thinking, the failing, the reading of what others have thought — stripped out.
+
+This course is the answer to Lockhart's lament applied to code. The essay belongs in the syllabus. Maybe as the first reading. It is freely available.
+
+---
+
+## The Small Perfect Things
+
+A unit on haiku. On the discipline of doing one thing and stopping.
+
+- `diff` — compares two files. Does it perfectly.
+- `cat` — concatenate files. One job.
+- The Unix pipe — not a program, a philosophy made executable.
+
+Most software today cannot stop. It grows, phones home, wants attention. These old tools are a rebuke to that. They still work and will work in fifty years. Held next to something like C++ — which nobody fully understands, which has accumulated decades of unwanted features — Forth asks the same question from a different angle: what are you actually trying to say? What is the minimum notation for this thought?
+
+Forth is Walden written in concatenative stack-based code. Charles Moore designed it to be implementable by one person, on any hardware, in a weekend. That was the constraint and the philosophy.
+
+---
+
+## The Oral Tradition
+
+Dijkstra lectured without notes. Ken Thompson in interviews is laconic, precise, oracular. Ritchie was gentler. Carmack in talks goes deep fast and doesn't look back. These people have voices — not just writing voices, speaking voices. The course should include recordings. Let students hear what it sounds like when someone thinks this way.
+
+---
+
+## Japan and Wabi-Sabi
+
+Ralph is learning Japanese. Ruby comes from Japanese craft ethics — Matz said programmer happiness is the goal, a very specific cultural transmission.
+
+Knuth went to Japan and came back changed. His conversations with Japanese mathematicians shaped how he thought about beauty in proof. *Wabi-sabi* — the beauty of the incomplete and impermanent — as a lens for reading code. Useful. Honest about its limits. Not pretending to be more than it is. Nobody has done that unit. Ralph could.
+
+---
+
+## The Course as a Room
+
+Every time the course has been described, it's imagined as a room. A classroom in Ohio. Students opening a file. The ground shifting. That's not incidental — the course is a physical gathering. People in a place, together, with the same text open. What lectures were before they became content delivery. What Bell Labs was — a building where people ran into each other in the hallway and argued.
+
+The long game: create the conditions where something like Bell Labs could happen again. Small. Intentional. Full of people who read.
+
+---
+
+## Document Tiers — What Goes in the Repo
+
+### Tier 1 — Include Freely
+Public domain and permissively licensed. Stuff the repos with these:
+- Dijkstra's EWDs — scanned, free, online
+- The original Unix paper (Ritchie & Thompson, 1974)
+- The GNU Manifesto
+- The GPL itself — read as a legal poem
+- Carmack's .plan files
+- RFC documents — RFC 793 (TCP), RFC 2616 (HTTP), public domain, beautifully written; the networking unit could start here before any codebase
+- Early ACM papers out of copyright
+- McCarthy's 1960 Lisp paper
+- *Attention Is All You Need* — arXiv, free
+- Lockhart's *A Mathematician's Lament* — free PDF, widely shared with author's blessing
+- Stallman's essays
+- Bell System Technical Journal issues — many now public domain
+- Project Gutenberg texts for literary pairings
+- Knuth's early papers (some free)
+
+### Tier 2 — Link and Excerpt
+Copyrighted but excerptable under fair use for educational purposes. A key passage, a defining paragraph — enough to taste. Then citation and link.
+- *Conceptual Mathematics* (Lawvere) — one defining page
+- *The Art of Computer Programming* (Knuth) — a famous passage
+- *The Idea Factory* (Gertner) — the Bell Labs atmosphere paragraph
+- *Cryptonomicon* (Stephenson) — the relevant scene
+- *A Mathematician's Lament* (Lockhart) — free but worth noting
+- *Extra Lives* (Bissell) — for the Quake unit
+- Stevens' *Unix Network Programming* — a key chapter opening
+
+### Tier 3 — Reading List Only
+Books students should own or find. Each entry gets a one-paragraph argument for why — not a dry bibliography but a case made. That annotation is itself course content.
+- *The Art of Computer Programming* — Knuth
+- *Conceptual Mathematics* — Lawvere & Schanuel
+- *The Idea Factory* — Gertner
+- *Categories for the Working Mathematician* — MacLane
+- *Types and Programming Languages* — Pierce
+- *The Unix Programming Environment* — Kernighan & Pike
+- *Hackers* — Levy (the social history of the culture)
+- *Cryptonomicon* — Stephenson (fiction that earns its place)
+- *Civil Disobedience* — Thoreau (for the Swartz unit)
+
+---
+
 ## Open Questions
 
 - How many repos per slot? At least a pair for Unix — why not elsewhere too?
