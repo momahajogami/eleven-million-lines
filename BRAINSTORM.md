@@ -19,11 +19,11 @@ It's not a museum. It's curated with opinions. Knuth is a windbag AND TeX is a p
 
 ## Codebases and Characters
 
-### C Compilers (01 — confirmed)
-DMR's original, PCC, tcc, early GCC. The tool that carved the world.
-
-### Early Unix (02 — confirmed direction)
+### Early Unix (01 — confirmed)
 xv6 as the readable teaching version. At least a pair of repos — more than one Unix to explore. Lions' Commentary on Unix 6th Edition as paired text — literally written to teach people to read Unix source. Plan 9 also: Bell Labs trying again after Unix, Rob Pike and Ken Thompson, eerie elegance, different decisions.
+
+### C Compilers (02 — confirmed)
+DMR's original, PCC, tcc, early GCC. The tool that carved the world.
 
 ### Networking (candidate)
 Ralph's admitted weakness — include it *because* of that. Early NCSA httpd, BSD sockets source. Stevens' *Unix Network Programming* as paired text. Where most people's understanding goes dark — that's exactly where the course should go.
@@ -187,7 +187,7 @@ Neal Stephenson writing about men who think in systems. The mood of finding the 
 
 Agda: the code *is* the argument. Reading Agda is reading mathematics being made rigorous in real time. Pair with Lawvere's *Conceptual Mathematics* — the most humane introduction to category theory ever written. The unit: here is an idea precise enough to be executed, here is the most beautiful way to explain it.
 
-Sage and GAP: the working mathematician's tools. Not elegant in the literary sense — workbenches, accumulated, collaborative. This is what mathematics looks like when it's being done rather than displayed.
+Sage and GAP: the working mathematician's tools. Not elegant in the literary sense — workbenches, accumulated, collaborative. This is what mathematics looks like when it's being done rather than displayed. Sage in particular is a massive codebase wrapping decades of mathematical software — PARI, FLINT, GAP itself — all unified under Python. Reading it is reading the sociology of mathematical computation: who built what, when, for whom, and how it got glued together. GAP is older and stranger, a language designed by group theorists for group theorists, with its own syntax and its own culture. Neither is pretty. Both are alive. A unit on Sage and GAP is a unit on what it looks like when mathematicians are the users and the authors — not engineers solving a business problem, but people trying to think. The paired text writes itself: a paper that used Sage to prove something, the code that produced the result sitting right there in the repo. Mathematics made reproducible. That's not a small thing.
 
 The category theory thread connects: Haskell, Agda, Lawvere, MacLane — and underneath it all the Curry-Howard correspondence. Types as propositions. Programs as proofs. A unit that could change how a student sees both mathematics and software forever.
 

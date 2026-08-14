@@ -81,8 +81,8 @@ The course has a right way. Saying so out loud is grounding and comforting regar
 
 ```
 university-coding/
-├── 01/    # Classic C compilers
-├── 02/    # TBD
+├── 01/    # Early Unix
+├── 02/    # Classic C compilers
 ├── 03/    # TBD
 ├── 04/    # TBD
 ├── 05/    # TBD
@@ -105,8 +105,8 @@ university-coding/
 ## Current State (2026-08-04)
 
 - Directory structure created, CLAUDE.md and BRAINSTORM.md initialized and committed
-- 01 confirmed: Classic C compilers
-- 02 confirmed direction: Early Unix (at least a pair of repos; Lions' Commentary as paired text)
+- 01 confirmed: Early Unix (xv6, Plan 9, Lions' Commentary as paired text)
+- 02 confirmed: Classic C compilers (DMR's original, PCC, tcc, early GCC)
 - 03–11 open but richly seeded in BRAINSTORM.md
 - Two tracks confirmed: Classical (Unix/vim/terminal) and Accompanied
 - Reading: *Claude Code: The Complete Guide* by Dave Ramsey
@@ -115,7 +115,7 @@ university-coding/
 ## Intentions for Next Session
 
 - **Assign slots 03–11**: use BRAINSTORM.md as the menu; work through candidates and make decisions
-- **Start 01 in earnest**: identify the specific C compiler repos to include; begin collecting them
+- **Start 01 in earnest**: clone xv6, Plan 9 (or plan9port), and orient around Lions' Commentary
 - **RFC exploration**: pull RFC 793 and RFC 2616 as the first Tier 1 documents; feel how they read
 - **Lockhart first**: consider reading *A Mathematician's Lament* as a warm-up — it's short, free, and sets the tone
 - **Remind Ralph**: the personal foundation comes first — grounded and secure, then the course grows from there
