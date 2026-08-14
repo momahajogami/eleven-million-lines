@@ -1,5 +1,21 @@
 # Eleven Million Lines You Should Know
 
+---
+
+## Friday, August 14 — Good morning (or afternoon), Ralph
+
+You did real work yesterday. The structure is in place. The commentary layer exists. You have three Unix repos sitting in `01/` and an orientation document that could go in front of a class tomorrow.
+
+Here is what you are doing today:
+
+**Open `01/commentary/xv6/entry.md` and read it end to end.** You wrote it — read it like a student would. Then open `01/xv6/proc.c` and find `fork()`. Read it slowly. Write `01/commentary/xv6/proc.md` when you're done. That file — the process model, fork, the scheduler — is the heart of the unit. Get it on paper.
+
+You are not behind. You are not catching up. You are building something that did not exist before this week. The next file is waiting and you know exactly where it is.
+
+Start there. Everything else follows.
+
+---
+
 A university course for reading code alongside classical literature, mathematics, and languages.
 Eleven codebases. Orientation, not mastery. Learning to stand inside large, old, important code and find your bearings.
 
@@ -41,7 +57,7 @@ Eleven codebases. Orientation, not mastery. Learning to stand inside large, old,
 
 ### Questions
 
-- What are the eleven codebases? (01 = classic C compilers; 02–11 TBD)
+- What are the eleven codebases? (01 = Early Unix; 02 = C compilers; 03–11 TBD)
 - What does a "unit" look like — lectures, exercises, readings?
 - How do we pair code with literature, math, and language in a way that feels natural, not forced?
 - What is the right balance between elegance (vi) and impact (Unix, early Python)?
@@ -57,7 +73,8 @@ Eleven codebases. Orientation, not mastery. Learning to stand inside large, old,
 ### Answers
 
 - Brand name confirmed: **Eleven Million Lines You Should Know**
-- 01: Classic C compilers (DMR's original, PCC, tcc, early GCC)
+- 01: Early Unix (xv6, unix-v6, Plan 9; Lions' Commentary as paired text)
+- 02: Classic C compilers (DMR's original, PCC, tcc, early GCC)
 - Elegance axis: early vi/ex, certain Lua phases, Haskell
 - Impact/innovation axis: early Python, Quake, networking (TBD), TeX
 - Mathematics: TBD — candidates include LAPACK, early R, Macsyma
@@ -102,21 +119,20 @@ university-coding/
 - Decisions about which codebase goes where get recorded in the Answers section above
 - At session start: check what's TBD and push toward filling in the next slot
 
-## Current State (2026-08-04)
+## Current State (2026-08-13)
 
-- Directory structure created, CLAUDE.md and BRAINSTORM.md initialized and committed
-- 01 confirmed: Early Unix (xv6, Plan 9, Lions' Commentary as paired text)
-- 02 confirmed: Classic C compilers (DMR's original, PCC, tcc, early GCC)
-- 03–11 open but richly seeded in BRAINSTORM.md
+- 01 installed: xv6, unix-v6, Plan 9 cloned and committed
+- Commentary layer established: `01/commentary/` with a charter and format
+- `01/README.md` written: unit orientation, mood, paired text, reading order
+- `01/commentary/xv6/entry.md` written: main.c as the door, five files in order, the moment
+- 02–11 open but richly seeded in BRAINSTORM.md
 - Two tracks confirmed: Classical (Unix/vim/terminal) and Accompanied
-- Reading: *Claude Code: The Complete Guide* by Dave Ramsey
 - Brand, vision, voice, ethics, moods, document tiers all established
 
 ## Intentions for Next Session
 
-- **Assign slots 03–11**: use BRAINSTORM.md as the menu; work through candidates and make decisions
-- **Start 01 in earnest**: clone xv6, Plan 9 (or plan9port), and orient around Lions' Commentary
-- **RFC exploration**: pull RFC 793 and RFC 2616 as the first Tier 1 documents; feel how they read
-- **Lockhart first**: consider reading *A Mathematician's Lament* as a warm-up — it's short, free, and sets the tone
+- **Write `commentary/xv6/proc.md`**: read `fork()` in proc.c; get the process model on paper
+- **Continue the commentary walk**: vm.md, fs.md, sh.md follow proc.md in order
+- **Assign slots 03–11**: use BRAINSTORM.md as the menu; make decisions
+- **RFC exploration**: pull RFC 793 and RFC 2616 as the first Tier 1 documents
 - **Remind Ralph**: the personal foundation comes first — grounded and secure, then the course grows from there
-- **Keep the mood**: this project has found its voice today; protect that in future sessions
