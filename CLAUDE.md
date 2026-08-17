@@ -57,7 +57,7 @@ Eleven codebases. Orientation, not mastery. Learning to stand inside large, old,
 
 ### Questions
 
-- What are the eleven codebases? (01 = Early Unix; 02 = C compilers; 03 = Blender; 04–11 TBD)
+- What are the eleven codebases? (01 = Early Unix; 02 = C compilers; 03 = TBD; 04 = Blender; 05–11 TBD)
 - What does a "unit" look like — lectures, exercises, readings?
 - How do we pair code with literature, math, and language in a way that feels natural, not forced?
 - What is the right balance between elegance (vi) and impact (Unix, early Python)?
@@ -75,7 +75,8 @@ Eleven codebases. Orientation, not mastery. Learning to stand inside large, old,
 - Brand name confirmed: **Eleven Million Lines You Should Know**
 - 01: Early Unix (xv6, unix-v6, Plan 9; Lions' Commentary as paired text)
 - 02: Classic C compilers (DMR's original, PCC, tcc, early GCC)
-- 03: Blender (creative tools; math/art/engineering intersection; pairs with CG history and Manovich)
+- 03: TBD
+- 04: Blender — the heroic story; art, architecture, politics, open source culture; coding in the background, everything in the foreground; pairs with CG history, Manovich, the community buyout narrative
 - Elegance axis: early vi/ex, certain Lua phases, Haskell
 - Impact/innovation axis: early Python, Quake, networking (TBD), TeX
 - Mathematics: TBD — candidates include LAPACK, early R, Macsyma
@@ -101,8 +102,8 @@ The course has a right way. Saying so out loud is grounding and comforting regar
 university-coding/
 ├── 01/    # Early Unix
 ├── 02/    # Classic C compilers
-├── 03/    # Blender
-├── 04/    # TBD
+├── 03/    # TBD
+├── 04/    # Blender — the heroic story
 ├── 05/    # TBD
 ├── 06/    # TBD
 ├── 07/    # TBD
