@@ -121,6 +121,14 @@ university-coding/
 - Decisions about which codebase goes where get recorded in the Answers section above
 - At session start: check what's TBD and push toward filling in the next slot
 
+## Thursday, 2026-08-20 — System maintenance reminder
+
+Run `sudo pacman -Syu` to complete a blocked system upgrade. On Monday (2026-08-17) ffmpeg v9 landed in the Arch repos with a soname bump that broke mpv, vlc, chromaprint, mixxx, and freerdp2. The rebuilds of those packages against ffmpeg v9 should be published by now. The upgrade was intentionally deferred — this is the Arch way: wait for the wave to clear, then upgrade cleanly.
+
+If it still fails, the blocking packages haven't been rebuilt yet. Wait another day and try again.
+
+---
+
 ## Current State (2026-08-13)
 
 - 01 installed: xv6, unix-v6, Plan 9 cloned and committed
