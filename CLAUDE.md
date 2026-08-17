@@ -75,8 +75,9 @@ Eleven codebases. Orientation, not mastery. Learning to stand inside large, old,
 - Brand name confirmed: **Eleven Million Lines You Should Know**
 - 01: Early Unix (xv6, unix-v6, Plan 9; Lions' Commentary as paired text)
 - 02: Classic C compilers (DMR's original, PCC, tcc, early GCC)
-- 03: TBD
+- 03: Richard Stallman — the prophet, the printer, the four freedoms; GNU Manifesto, GPL v1/v2/v3, Emacs, GCC (revisited from 02), GDB; the legal and moral infrastructure of free software
 - 04: Blender — the heroic story; art, architecture, politics, open source culture; coding in the background, everything in the foreground; pairs with CG history, Manovich, the community buyout narrative
+- 05: Public Enterprise — LaTeX/TeX, Glimpse/GIMP, Minecraft, SageMath, SourceForge, Pure Data; theme: code on display as art; making in public changes what gets made
 - Elegance axis: early vi/ex, certain Lua phases, Haskell
 - Impact/innovation axis: early Python, Quake, networking (TBD), TeX
 - Mathematics: TBD — candidates include LAPACK, early R, Macsyma
@@ -102,9 +103,9 @@ The course has a right way. Saying so out loud is grounding and comforting regar
 university-coding/
 ├── 01/    # Early Unix
 ├── 02/    # Classic C compilers
-├── 03/    # TBD
+├── 03/    # Richard Stallman — GNU, GPL, Emacs, GDB
 ├── 04/    # Blender — the heroic story
-├── 05/    # TBD
+├── 05/    # Public Enterprise — LaTeX, GIMP, Minecraft, Sage, SourceForge, Pd
 ├── 06/    # TBD
 ├── 07/    # TBD
 ├── 08/    # TBD
