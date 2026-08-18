@@ -88,7 +88,9 @@ For the forty years since its release, Emacs has accumulated layers: org-mode (a
 
 The religious war between Emacs and vi users is the longest-running debate in computing. Both sides have a point. The vi tradition (Unit 01's ally) values minimalism, orthogonality, and doing one thing well. The Emacs tradition values extensibility, integration, and the editor as a world. The debate is not really about editors. It is about what a tool should be.
 
-**What to look at:** GNU Emacs source is available at savannah.gnu.org/projects/emacs/. The Lisp code in `lisp/` — over a million lines of it — is the living body of Emacs. Find `simple.el`. It is the simplest major foundation, and it is about 8,000 lines. Read it and feel the depth.
+**What to look at:** The Lisp code in `emacs/lisp/` — over a million lines of it — is the living body of Emacs. Find `simple.el`. It is the simplest major foundation, and it is about 8,000 lines. Read it and feel the depth. Then read `scratch/doctor.el`. Then run `M-x doctor`.
+
+**The surprise:** Stallman built a psychoanalyst into his text editor. `doctor.el` is his implementation of ELIZA — the 1966 Weizenbaum program that simulated a Rogerian therapist by reflecting user input back as questions. It has been in Emacs since the beginning. It is 1,654 lines of idiomatic Emacs Lisp from the 1980s, and it is playful, weird, and revealing. The person who wrote the GPL also wrote a program that asks you how you feel. Read `scratch/doctor-annotation.md` for context.
 
 ---
 
@@ -163,12 +165,36 @@ Read the work. Form your own view of the person.
 
 The primary source material for this unit is not a single repository but a constellation:
 
-- **GNU Emacs:** savannah.gnu.org/projects/emacs/ — cloning is large; browse via web or Savannah
-- **GCC:** already in `02/gcc/` — return to it with new eyes
-- **GDB:** sourceware.org/gdb/ — large; the `gdb/` subdirectory is the core
-- **The licenses themselves:** read in `scratch/` as documents, marked up, annotated
+- **GNU Emacs** — in `emacs/` (blobless sparse checkout; `src/` and key Lisp files present)
+- **GDB** — in `gdb/` (blobless sparse checkout; `gdb/` core present)
+- **GNU Bison** — in `bison/` (blobless sparse checkout; `src/` present). Stallman wrote the first Bison as a replacement for yacc. Small repo, clean C, worth reading alongside GCC to see the compiler toolchain he assembled from scratch.
+- **GCC** — already in `02/gcc/`; return to it with new eyes now that you know the political context
+- **GNU Make** — not cloned, but worth knowing: Stallman wrote the first version in 1987. The source is at savannah.gnu.org/projects/make/. Like GDB and Bison, it filled a hole: a free operating system needs a free build system.
 
-The `scratch/` directory here is for engagement, not modification: print the GPL, annotate it. Compile and debug with GDB. Read a file of Emacs Lisp. Let the tools make the argument.
+The `scratch/` directory is where engagement happens.
+
+---
+
+## What is in scratch/
+
+**Primary FSF texts** — read these as documents, not just licenses:
+- `gnu-manifesto.txt` — read first, before anything else
+- `gpl-1.0.txt`, `gpl-2.0.txt`, `gpl-3.0.txt` — read them in order; notice what each version adds
+- `lgpl-2.1.txt` — the strategic concession; read alongside the GPL to understand the difference between principle and strategy
+- `free-software-definition.txt` — the four freedoms, formal
+- `why-open-source-misses-the-point.txt` — the argument in concentrated form
+- `free-software-even-more-important.txt` — the 2013 update; the landscape has changed, the argument has not
+- `the-right-to-read.txt` — a 1997 short story; two pages; read it last; it will stay with you
+- `gnu-coding-standards.txt` — Stallman's vision of how GNU code should be written; a technical document with a philosophical undercurrent
+
+**The surprise:**
+- `doctor.el` — Stallman's ELIZA implementation, built into Emacs since the 1980s. `M-x doctor`. Read `doctor-annotation.md` first.
+- `doctor-annotation.md` — context for doctor.el: what ELIZA was, why Weizenbaum was disturbed by it, why it belongs in this unit
+
+**Hands-on exercises:**
+- `BUILD-emacs.md` — step-by-step: compile Emacs from `../emacs/` source; runs in 10–20 minutes on modern hardware
+- `lisp-exercise.md` — modify a running Emacs without recompiling C; Freedom 1 in ten minutes
+- `gdb-exercise.c` — a small C program with a deliberate bug; compile with `-g`, find the bug using GDB
 
 ---
 
