@@ -1,0 +1,377 @@
+Free Software Is Even More Important Now
+- GNU Project - Free Software Foundation
+Skip to main text
+<form id="fssbox" action="https://my.fsf.org/civicrm/profile/create?reset=1&gid=31"
+      method="post">
+   Free Software Supporter:
+  <input type="text" id="frmEmail" name="email-Primary" size="18" maxlength="80"
+         value="email address" onfocus="this.value=''"/>
+<a
+href="https://www.fsf.org/associate/support_freedom?referrer=4052">JOIN THE FSF
+ <img src="/graphics/heckert_gnu.transp.small.png" height="48" width="49"
+      alt=" [A GNU head] " />GNU <span
+ class="hide">Operating System
+ Supported by the
+ Free Software Foundation
+  <img id="search-icon" height="30" width="30"
+       src="/graphics/icons/search.png"
+       alt=" [Search www.gnu.org] " />
+  <img id="language-icon" height="30" width="37"
+       src="/graphics/icons/translations.png"
+       alt=" [Other languages] " />
+   Site navigation
+ Skip
+   ABOUT GNU
+     = 
+    PHILOSOPHY
+     = 
+  LICENSES
+  EDUCATION
+  SOFTWARE
+  DISTROS
+  DOCS
+  MALWARE
+  HELP GNU
+  AUDIO & VIDEO
+  GNU ART
+  FUN
+  GNU'S WHO?
+  SOFTWARE DIRECTORY
+  HARDWARE
+  SITEMAP
+<img src="/graphics/icons/home.png" height="26" width="26"
+   alt="GNU Home" title="GNU Home" /><span
+ class="gnun-split"> /
+Philosophy<span
+ class="gnun-split"> /
+Essays & articles<span
+ class="gnun-split"> /
+About free software<span
+ class="gnun-split"> /
+ Principles<span
+ class="gnun-split"> /
+Free Software Is Even More Important Now
+by Richard
+Stallman
+Since 1983, the Free Software Movement has campaigned for computer
+users' freedom&mdash;for users to control the software they
+use, rather than vice versa.  When a program respects users' freedom
+and community, we call it &ldquo;free software.&rdquo;
+We also sometimes call it &ldquo;libre software&rdquo; to emphasize
+that we're talking about liberty, not price.  Some proprietary
+(nonfree) programs, such as Photoshop, are very expensive; others,
+such as the Uber app, are available gratis&mdash;but that's a minor
+detail.  Either way, they give the program's developer power
+over the users, power that no one should have.
+Watch a <a
+href="https://www.fsf.org/blogs/rms/20140407-geneva-tedx-talk-free-software-free-society/">
+14-min video presentation of these ideas.
+Those two nonfree programs have something else in common: they are
+both malware.  That is, both have functionalities designed to
+mistreat the user.  Proprietary software nowadays is often malware
+because the developers' power
+corrupts them.  That directory lists around 650 different
+malicious functionalities (as of March 2025), but it is surely just 
+the tip of the iceberg.
+With free software, the users control the program, both individually
+and collectively.  So they control what their computers do (assuming
+those computers are loyal
+and do what the users' programs tell them to do).
+With proprietary software, the program controls the users, and some
+other entity (the developer or &ldquo;owner&rdquo;) controls the
+program.  So the proprietary program gives its developer power over
+its users.  That is unjust in itself; moreover, it tempts the developer 
+to mistreat the users in other ways.
+Even when proprietary software isn't downright malicious, its
+developers have an incentive to make it 
+addictive,
+controlling and manipulative.  You can say, as does the author of
+that article, that the developers have an ethical obligation not to do
+that, but generally they follow their interests.  If you want this not
+to happen, make sure the program is controlled by its users.
+Freedom means having control over your own life.  If you use a
+program to carry out activities in your life, your freedom depends on
+your having control over the program.  You deserve to have control
+over the programs you use, and all the more so when you use them for
+something important in your life.
+Users' control over the program requires four
+essential freedoms.
+(0) The freedom to run the program as you wish, for whatever 
+purpose.
+(1) The freedom to study the program's &ldquo;source code,&rdquo;
+and change it, so the program does your computing as you wish.
+Programs are written by programmers in a programming
+language&mdash;like English combined with algebra&mdash;and that form
+of the program is the &ldquo;source code.&rdquo;  Anyone who knows
+programming, and has the program in source code form, can read the
+source code, understand its functioning, and change it too.  When all
+you get is the executable form, a series of numbers that are efficient
+for the computer to run but extremely hard for a human being to
+understand, understanding and changing the program in that form are
+forbiddingly hard.
+(2) The freedom to make and distribute exact copies when you wish.
+(It is not an obligation; doing this is your choice.  If the program
+is free, that doesn't mean someone has an obligation to offer you a
+copy, or that you have an obligation to offer him a copy.
+Distributing a program to users without freedom mistreats them;
+however, choosing not to distribute the program&mdash;using it
+privately&mdash;does not mistreat anyone.) 
+(3) The freedom to make and distribute copies of your modified
+versions, when you wish.
+The first two freedoms mean each user can exercise individual
+control over the program.  With the other two freedoms, any group of
+users can together exercise collective control over the
+program.  With all four freedoms, the users fully control the program.
+If any of them is missing or inadequate, the program is proprietary
+(nonfree), and unjust.
+Other kinds of works are also used for practical activities, 
+including recipes for cooking, educational works such as textbooks, 
+reference works such as dictionaries and encyclopedias, fonts for 
+displaying paragraphs of text, circuit diagrams for hardware for people 
+to build, and patterns for making useful (not merely decorative) 
+objects with a 3D printer.  Since these are not software, the free 
+software movement strictly speaking doesn't cover them; but the same 
+reasoning applies and leads to the same conclusion: these works should 
+carry the four freedoms.
+A free program allows you to tinker with it to make it do what you
+want (or cease to do something you dislike).  Tinkering with software
+may sound ridiculous if you are accustomed to proprietary software as
+a sealed box, but in the Free World it's a common thing to do, and a
+good way to learn programming.  Even the traditional American pastime
+of tinkering with cars is obstructed because cars now contain nonfree
+software.
+The Injustice of Proprietariness
+If the users don't control the program, the program controls the
+users.  With proprietary software, there is always some entity, the
+developer or &ldquo;owner&rdquo; of the program, that controls the
+program&mdash;and through it, exercises power over its users.  A
+nonfree program is a yoke, an instrument of unjust power.
+In outrageous cases (though this outrage has become quite usual) <a
+href="/malware">proprietary programs are designed
+to spy on the users, restrict them, censor them, and abuse them.
+For instance, the operating system of Apple <a
+href="/philosophy/why-call-it-the-swindle.html">iThings does all 
+of these, and so does Windows on mobile devices with ARM chips.  
+Windows, mobile phone firmware, and Google Chrome for Windows include 
+a universal back door that allows some company to change the program 
+remotely without asking permission. The Amazon Kindle has a back door 
+that can erase books.
+The use of nonfree software in the &ldquo;internet of things&rdquo;
+would turn it into the <a 
+href="https://archive.ieet.org/articles/rinesi20150806.html">
+&ldquo;internet of telemarketers&rdquo; as well as the 
+&ldquo;internet of snoopers.&rdquo;
+With the goal of ending the injustice of nonfree software, the free
+software movement develops free programs so users can free themselves.
+We began in 1984 by developing the free operating system <a
+href="/gnu/thegnuproject.html">GNU. Today, millions of computers
+run GNU, mainly in the GNU/Linux
+combination.
+Distributing a program to users without freedom mistreats those 
+users; however, choosing not to distribute the program does not 
+mistreat anyone.  If you write a program and use it privately, that 
+does no wrong to others.  (You do miss an opportunity to do good, but 
+that's not the same as doing wrong.)  Thus, when we say all software 
+must be free, we mean that every copy must come with the four freedoms,
+but we don't mean that someone has an obligation to offer you a copy.
+Nonfree Software and SaaSS
+Nonfree software was the first way for companies to take control of
+people's computing.  Nowadays, there is another way, called Service as
+a Software Substitute, or SaaSS.  That means letting someone else's
+server do your own computing tasks.
+SaaSS doesn't mean the programs on the server are nonfree (though 
+they often are).  Rather, using SaaSS causes the same injustices as 
+using a nonfree program: they are two paths to the same bad place.  
+Take the example of a SaaSS translation service: The user sends text 
+to the server, and the server translates it (from English to Spanish, 
+say) and sends the translation back to the user.  Now the job of
+translating is under the control of the server operator rather than
+the user.
+If you use SaaSS, the server operator controls your computing.  It
+requires entrusting all the pertinent data to the server operator,
+which will be forced to show it to the state as well&mdash;<a
+href="/philosophy/who-does-that-server-really-serve.html">who
+does that server really serve, after all?
+Primary And Secondary Injustices
+When you use proprietary programs or SaaSS, first of all you do 
+wrong to yourself, because it gives some entity unjust power over you.  
+For your own sake, you should escape.  It also wrongs others if you 
+make a promise not to share.  It is evil to keep such a promise, and a 
+lesser evil to break it; to be truly upright, you should not make the 
+promise at all.
+There are cases where using nonfree software puts pressure directly
+on others to do likewise.  Skype is a clear example: when one person
+uses the nonfree Skype client software, it requires another person to
+use that software too&mdash;thus both surrender their freedom.
+(Google Hangouts have the same problem.)  It is wrong even to suggest
+using such programs.  We should refuse to use them even briefly, even
+on someone else's computer.
+Another harm of using nonfree programs and SaaSS is that it rewards
+the perpetrator, encouraging further development of that program or
+&ldquo;service,&rdquo; leading in turn to even more people falling
+under the company's thumb.
+All the forms of indirect harm are magnified when the user is a
+public entity or a school.
+Free Software and the State
+Public agencies exist for the people, not for themselves.  When they
+do computing, they do it for the people.  They have a duty to maintain
+full control over that computing so that they can assure it is done
+properly for the people.  (This constitutes the computational
+sovereignty of the state.)  They must never allow control over the
+state's computing to fall into private hands.
+To maintain control of the people's computing, public agencies must
+not do it with proprietary software (software under the control of an
+entity other than the state).  And they must not entrust it to a
+service programmed and run by an entity other than the state, since
+this would be SaaSS.
+Proprietary software has no security at all in one crucial
+case&mdash;against its developer.  And the developer may help others attack.
+Microsoft shows Windows bugs to the NSA (the US government digital
+spying agency) before fixing them.  We do not know whether Apple does
+likewise, but it is under the same government pressure as Microsoft.
+If the government of any other country uses such software, it
+endangers national security.  Do you want the NSA to break into your
+government's computers?  See
+our suggested
+policies for governments to promote free software.
+Free Software and Education
+Schools (and this includes all educational activities) influence the
+future of society through what they teach.  They should teach
+exclusively free software, so as to use their influence for the good.
+To teach a proprietary program is to implant dependence, which goes
+against the mission of education.  By training in use of free
+software, schools will direct society's future towards freedom, and
+help talented programmers master the craft.
+They will also teach students the habit of cooperating, helping
+other people.  Each class should have this rule: &ldquo;Students, this
+class is a place where we share our knowledge.  If you bring software
+to class, you may not keep it for yourself.  Rather, you must share
+copies with the rest of the class&mdash;including the program's source
+code, in case someone else wants to learn.  Therefore, bringing
+proprietary software to class is not permitted except to reverse
+engineer it.&rdquo;
+Proprietary developers would have us punish students who are good
+enough at heart to share software and thwart those curious enough to
+want to change it.  This means a bad education.  See more discussion 
+about the use of free software in 
+schools.
+Free Software: More Than &ldquo;Advantages&rdquo;
+I'm often asked to describe the &ldquo;advantages&rdquo; of free
+software.  But the word &ldquo;advantages&rdquo; is too weak when it
+comes to freedom.  Life without freedom is oppression, and that
+applies to computing as well as every other activity in our lives.  We
+must refuse to give the developers of the programs or computing services
+control over the computing we do.  This is the right thing to do, for
+selfish reasons; but not solely for selfish reasons.
+Freedom includes the freedom to cooperate with others.  Denying
+people that freedom means keeping them divided, which is the start of
+a scheme to oppress them.  In the free software community, we are very
+much aware of the importance of the freedom to cooperate because our
+work consists of organized cooperation.  If your friend comes to visit
+and sees you use a program, she might ask for a copy.  A program which
+stops you from redistributing it, or says you're &ldquo;not supposed
+to,&rdquo; is antisocial.
+In computing, cooperation includes redistributing exact copies of a
+program to other users.  It also includes distributing your changed
+versions to them.  Free software encourages these forms of
+cooperation, while proprietary software forbids them.  It forbids
+redistribution of copies, and by denying users the source code, it
+blocks them from making changes.  SaaSS has the same effects: if your
+computing is done over the web in someone else's server, by someone
+else's copy of a program, you can't see it or touch the software that
+does your computing, so you can't redistribute it or change it.
+Conclusion
+We deserve to have control of our own computing. How can we win
+this control?
+  By rejecting nonfree software on the computers we own or 
+regularly use, and rejecting SaaSS.  
+  By <a
+href="/licenses/license-recommendations.html"> developing free
+software (for those of us who are programmers.) 
+  By refusing to develop or promote nonfree software or SaaSS.  
+  By <a
+href="/help/help.html">spreading these ideas to others.
+  By <a
+href="/philosophy/saying-no-even-once.html">saying no and stating our
+reasons when we are invited to run a nonfree program.
+We and thousands of users have done this since 1984, which is how
+we now have the free GNU/Linux operating system that
+anyone&mdash;programmer or not&mdash;can use.  Join our cause, as a
+programmer or an activist.  Let's make all computer users free.
+Suggested ways you can help the free software 
+movement
+A substantially edited version of this article was published in <a
+href="https://www.wired.com/2013/09/why-free-software-is-more-important-now-than-ever-before/">
+Wired.
+   BACK TO TOP
+   Set language
+  Available for this page:
+[en] English  
+[ar] العربية  
+[de] Deutsch  
+[el] ελληνικά  
+[es] español  
+[fa] فارسی  
+[fr] français  
+[it] italiano  
+[ja] 日本語  
+[lt] lietuvių  
+[nl] Nederlands  
+[pl] polski  
+[pt-br] português  
+[ru] русский  
+[sq] Shqip  
+[tr] Türkçe  
+[uk] українська  
+[zh-cn] 简体中文  
+  BACK TO TOP 
+<img id="fsfbanner"
+src="/graphics/fsf-logo-notext-small.png" alt=" [FSF logo] "
+width="75" height="25" />
+&ldquo;The Free Software Foundation (FSF) is a nonprofit with a worldwide
+mission to promote computer user freedom. We defend the rights of all
+software users.&rdquo;
+ JOIN
+ DONATE
+ SHOP
+Please send general FSF & GNU inquiries to
+<gnu@gnu.org>.
+There are also other ways to contact
+the FSF.  Broken links and other corrections or suggestions can be sent
+to <webmasters@gnu.org>.
+<!-- TRANSLATORS: Ignore the original text in this paragraph,
+        replace it with the translation of these two:
+        We work hard and do our best to provide accurate, good quality
+        translations.  However, we are not exempt from imperfection.
+        Please send your comments and general suggestions in this regard
+        to 
+        <web-translators@gnu.org>.
+        For information on coordinating and contributing translations of
+        our web pages, see <a
+        href="/server/standards/README.translations.html">Translations
+        README. -->
+Please see the <a
+href="/server/standards/README.translations.html">Translations
+README for information on coordinating and contributing translations
+of this article.
+<!-- Regarding copyright, in general, standalone pages (as opposed to
+     files generated as part of manuals) on the GNU web server should
+     be under CC BY-ND 4.0.  Please do NOT change or remove this
+     without talking with the webmasters or licensing team first.
+     Please make sure the copyright date is consistent with the
+     document.  For web pages, it is ok to list just the latest year the
+     document was modified, or published.
+     If you wish to list earlier years, that is ok too.
+     Either "2001, 2002, 2003" or "2001-2003" are ok for specifying
+     years, as long as each year in the range is in fact a copyrightable
+     year, i.e., a year in which the document was published (including
+     being publicly visible on the web or in a revision control system).
+     There is more detail about copyright years in the GNU Maintainers
+     Information document, www.gnu.org/prep/maintain. -->
+Copyright &copy; 2013-2015, 2017, 2021, 2023, 2024, 2025 Richard Stallman
+This page is licensed under a <a rel="license"
+href="http://creativecommons.org/licenses/by-nd/4.0/">Creative
+Commons Attribution-NoDerivatives 4.0 International License.
+Copyright Infringement Notification
+Updated:
+$Date: 2025/03/30 09:27:02 $
