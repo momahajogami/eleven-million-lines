@@ -73,14 +73,17 @@ Eleven codebases. Orientation, not mastery. Learning to stand inside large, old,
 ### Answers
 
 - Brand name confirmed: **Eleven Million Lines You Should Know**
+- **01 + 02 = "Classical Coding"** — Unix, vi/vim, and C. You just need to be able to edit a file and execute.
 - 01: Early Unix (xv6, unix-v6, Plan 9; Lions' Commentary as paired text)
-- 02: Classic C compilers (DMR's original, PCC, tcc, early GCC)
-- 03: Richard Stallman — the prophet, the printer, the four freedoms; GNU Manifesto, GPL v1/v2/v3, Emacs, GCC (revisited from 02), GDB; the legal and moral infrastructure of free software
-- 04: Blender — the heroic story; art, architecture, politics, open source culture; coding in the background, everything in the foreground; pairs with CG history, Manovich, the community buyout narrative
-- 05: Public Enterprise — LaTeX/TeX, Glimpse/GIMP, Minecraft, SageMath, SourceForge, Pure Data; theme: code on display as art; making in public changes what gets made
+- 02: Classic C compilers (DMR's original, PCC, tcc, early GCC); also vi/vim (Bill Joy → Bram Moolenaar), git (Linus), and LINUS.md character study — Linus wrote Linux AND git
+- 03: Richard Stallman — the prophet, the printer, the four freedoms; GNU Manifesto, GPL v1/v2/v3, Emacs, GCC (revisited from 02), GDB, Bison; the legal and moral infrastructure of free software
+- 04: Blender — the heroic story; art, architecture, politics, open source culture; coding in the background, everything in the foreground; pairs with CG history, the community buyout narrative
+- 05: **Culture and Spectacle** — thesis: coding is writing augmented with electricity. Projects: TeX/LaTeX (Knuth), BitTorrent (Cohen), Linux (as frame/preamble), SageMath (Stein), SourceForge (rise and betrayal). Style is emphasized. Skateboarding culture as running parallel/comparison — DIY ethics, spot ownership, trick priority, making in public. Character-driven.
+- 06: **Languages and Theory** — the code is the art; this is a unit about writing. BASIC (access/democracy), Assembly (with punch cards and the Jacquard loom / textile history), LISP (Church lambda calculus made executable), ML/Haskell (type theory), Prolog (logic as computation). Papers from Church (1936), Turing (1936, 1950), McCarthy (1960), and Lovelace (1843, Note G = first program). The line from the loom to the language.
+- 07–11: TBD
 - Elegance axis: early vi/ex, certain Lua phases, Haskell
 - Impact/innovation axis: early Python, Quake, networking (TBD), TeX
-- Mathematics: TBD — candidates include LAPACK, early R, Macsyma
+- Mathematics: SageMath in 05; deeper math (LAPACK, early R, Macsyma) possibly 07+
 - First venue: Ohio
 - Two tracks confirmed (see below)
 
@@ -101,17 +104,18 @@ The course has a right way. Saying so out loud is grounding and comforting regar
 
 ```
 university-coding/
-├── 01/    # Early Unix
-├── 02/    # Classic C compilers
-├── 03/    # Richard Stallman — GNU, GPL, Emacs, GDB
+├── 01/    # Early Unix                        [Classical Coding, pt. 1]
+├── 02/    # C compilers, vi/vim, git, Linus   [Classical Coding, pt. 2]
+├── 03/    # Richard Stallman — GNU, GPL, Emacs, GDB, Bison
 ├── 04/    # Blender — the heroic story
-├── 05/    # Public Enterprise — LaTeX, GIMP, Minecraft, Sage, SourceForge, Pd
-├── 06/    # TBD
+├── 05/    # Culture and Spectacle — TeX, BitTorrent, Linux, SageMath, SourceForge
+├── 06/    # Languages and Theory — BASIC, Assembly, LISP, ML, Church, Turing, Lovelace
 ├── 07/    # TBD
 ├── 08/    # TBD
 ├── 09/    # TBD
 ├── 10/    # TBD
 ├── 11/    # TBD
+├── meta/  # Course administration (sizes, etc.)
 └── CLAUDE.md
 ```
 
