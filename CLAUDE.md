@@ -134,20 +134,40 @@ If it still fails, the blocking packages haven't been rebuilt yet. Wait another 
 
 ---
 
-## Current State (2026-08-13)
+## Current State (2026-08-18)
 
-- 01 installed: xv6, unix-v6, Plan 9 cloned and committed
-- Commentary layer established: `01/commentary/` with a charter and format
-- `01/README.md` written: unit orientation, mood, paired text, reading order
-- `01/commentary/xv6/entry.md` written: main.c as the door, five files in order, the moment
-- 02–11 open but richly seeded in BRAINSTORM.md
-- Two tracks confirmed: Classical (Unix/vim/terminal) and Accompanied
-- Brand, vision, voice, ethics, moods, document tiers all established
+Units 01–07 are seeded. Units 08–11 are open. README.md written. Repo committed but not yet pushed to GitHub.
+
+- 01: xv6, unix-v6, Plan 9; commentary layer with entry.md
+- 02: tcc, gcc, vim, git; LINUS.md; Classical Coding framing
+- 03: Emacs, GDB, Bison; 10 FSF texts; doctor.el; BUILD-emacs.md; lisp-exercise.md; gdb-exercise.c
+- 04: Blender (full clone); dna.md, nodes.md commentary; hello-blender.py; python-exercise.md
+- 05: CULTURE_AND_SPECTACLE.md; GIMP, LaTeX2e, libtorrent, Pure Data; BitTorrent spec
+- 06: LANGUAGES.md; GHC, NASM; Lovelace notes, Turing PDFs, hello-world.asm, hello-basic.bas
+- 07: GROTHENDIECK.md; Mathlib, Agda, NumPy, GSL; Lawvere + Grothendieck PDFs; simplicial_homology.py
+- meta/: SIZES.md, CYCLE-DOWN.md, sessions/2026-08-18.md (first session log)
+
+## DO THESE FIRST NEXT SESSION
+
+**Step 1 — Push to GitHub:**
+- Go to github.com/new
+- Name: `eleven-million-lines`, public, no README initialization
+- Then run:
+```bash
+cd ~/Documents/university-coding
+git remote add origin https://github.com/YOUR_USERNAME/eleven-million-lines.git
+git push -u origin main
+```
+
+**Step 2 — Recap Ralph** on where things stand before anything else. Read this section and the session log at `meta/sessions/2026-08-18.md`, then give a 3–4 sentence orienting summary: what exists, what's next, and what the open questions are.
 
 ## Intentions for Next Session
 
-- **Write `commentary/xv6/proc.md`**: read `fork()` in proc.c; get the process model on paper
-- **Continue the commentary walk**: vm.md, fs.md, sh.md follow proc.md in order
-- **Assign slots 03–11**: use BRAINSTORM.md as the menu; make decisions
-- **RFC exploration**: pull RFC 793 and RFC 2616 as the first Tier 1 documents
-- **Remind Ralph**: the personal foundation comes first — grounded and secure, then the course grows from there
+- Push to GitHub (see above — do this first)
+- Write `07/hatcher/HATCHER.md` and download Hatcher's Algebraic Topology PDF
+- Write `07/LIBRARIES.md` — math libraries in C and Python as cultural expression (BLAS/LAPACK/GSL lineage; NumPy/SciPy lineage)
+- Write `meta/pogrades/POGRADES.md` — the partially-ordered grading system (DAG of competencies, teacher-certified, try as many times as you want, design your own lattice)
+- Write `07/scratch/simplicial-sets-intro.md` (referenced in GROTHENDIECK.md, not yet written)
+- Fetch McCarthy 1960 paper for `06/scratch/`
+- Decide: does Minecraft/modding ecosystem have a home? Does Pure Data belong in 06 instead of 05?
+- Continue `01/commentary/xv6/`: proc.md (fork, scheduler) is still unwritten — this matters
