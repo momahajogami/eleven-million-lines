@@ -142,9 +142,9 @@ If it still fails, the blocking packages haven't been rebuilt yet. Wait another 
 
 ---
 
-## Current State (2026-08-18)
+## Current State (2026-08-19)
 
-Units 01–07 are seeded. Units 08–11 are open. README.md written. Repo committed but not yet pushed to GitHub.
+Units 01–07 are seeded. Units 08–11 are open. Publishing plan written. Website starter written. Repo committed but not yet pushed to GitHub. **Website deadline: September 2, 2026.**
 
 - 01: xv6, unix-v6, Plan 9; commentary layer with entry.md
 - 02: tcc, gcc, vim, git; LINUS.md; Classical Coding framing
@@ -153,7 +153,8 @@ Units 01–07 are seeded. Units 08–11 are open. README.md written. Repo commit
 - 05: CULTURE_AND_SPECTACLE.md; GIMP, LaTeX2e, libtorrent, Pure Data; BitTorrent spec
 - 06: LANGUAGES.md; GHC, NASM; Lovelace notes, Turing PDFs, hello-world.asm, hello-basic.bas
 - 07: GROTHENDIECK.md; Mathlib, Agda, NumPy, GSL; Lawvere + Grothendieck PDFs; simplicial_homology.py
-- meta/: SIZES.md, CYCLE-DOWN.md, sessions/2026-08-18.md (first session log)
+- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, sessions/2026-08-18.md, sessions/2026-08-19.md
+- website/: index.html (picture-book design, legible to age 0–5 and university alike)
 
 ## DO THESE FIRST NEXT SESSION
 
@@ -166,15 +167,20 @@ cd ~/Documents/university-coding
 git remote add origin https://github.com/YOUR_USERNAME/eleven-million-lines.git
 git push -u origin main
 ```
+- Then replace `YOUR_USERNAME` in `website/index.html`
 
-**Step 2 — Recap Ralph** on where things stand before anything else. Read this section and the session log at `meta/sessions/2026-08-18.md`, then give a 3–4 sentence orienting summary: what exists, what's next, and what the open questions are.
+**Step 2 — Pick a domain and get the site live.** Deadline is September 2. Options: GitHub Pages (rename `website/` → `docs/`) or Netlify (point at `website/` directly, no rename needed).
+
+**Step 3 — Recap Ralph** on where things stand. Read this section and `meta/sessions/2026-08-19.md`.
 
 ## Intentions for Next Session
 
-- Push to GitHub (see above — do this first)
+- Push to GitHub (do this first — see above)
+- Get website live at a real domain before September 2
+- Write `meta/ANNOUNCE.md` — core announcement text (needed before posting anywhere)
 - Write `07/hatcher/HATCHER.md` and download Hatcher's Algebraic Topology PDF
-- Write `07/LIBRARIES.md` — math libraries in C and Python as cultural expression (BLAS/LAPACK/GSL lineage; NumPy/SciPy lineage)
-- Write `meta/pogrades/POGRADES.md` — the partially-ordered grading system (DAG of competencies, teacher-certified, try as many times as you want, design your own lattice)
+- Write `07/LIBRARIES.md` — math libraries in C and Python as cultural expression
+- Write `meta/pogrades/POGRADES.md` — the partially-ordered grading system
 - Write `07/scratch/simplicial-sets-intro.md` (referenced in GROTHENDIECK.md, not yet written)
 - Fetch McCarthy 1960 paper for `06/scratch/`
 - Decide: does Minecraft/modding ecosystem have a home? Does Pure Data belong in 06 instead of 05?
