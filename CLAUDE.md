@@ -80,7 +80,11 @@ Eleven codebases. Orientation, not mastery. Learning to stand inside large, old,
 - 04: Blender — the heroic story; art, architecture, politics, open source culture; coding in the background, everything in the foreground; pairs with CG history, the community buyout narrative
 - 05: **Culture and Spectacle** — thesis: coding is writing augmented with electricity. Projects: TeX/LaTeX (Knuth), BitTorrent (Cohen), Linux (as frame/preamble), SageMath (Stein), SourceForge (rise and betrayal). Style is emphasized. Skateboarding culture as running parallel/comparison — DIY ethics, spot ownership, trick priority, making in public. Character-driven.
 - 06: **Languages and Theory** — the code is the art; this is a unit about writing. BASIC (access/democracy), Assembly (with punch cards and the Jacquard loom / textile history), LISP (Church lambda calculus made executable), ML/Haskell (type theory), Prolog (logic as computation). Papers from Church (1936), Turing (1936, 1950), McCarthy (1960), and Lovelace (1843, Note G = first program). The line from the loom to the language.
-- 07–11: TBD
+- 07–11: TBD (except below)
+- 08: **Simplicial Homology by Hand** — build the chain complex, boundary maps, and homology groups from scratch, across a garden of languages (Python + Blender first, then imperative/recursive/functional). Markdown as the thinking layer: the math lives in .md files, the code implements it. Sandbox unit — artistic, creative, inclusive. The talented beginner builds comprehensible structures from first principles. See `08/SIMPLICIAL-HOMOLOGY.md`, `08/languages.md`.
+- 09: Quake / Carmack (strong candidate) — BSP trees as applied topology, fast inverse square root, .plan files as public mathematical thinking. Natural counterweight to Unit 07's abstraction. See `07/quake.md`.
+- 10: TBD
+- 11: **LLMs** — *Attention Is All You Need* (Vaswani et al., 2017) + Karpathy's nanoGPT as the readable implementation. Stack Overflow as the knowledge commons being displaced (arc: Usenet → mailing lists → SourceForge → Stack Overflow → LLMs). Characters: Hinton, Karpathy, Spolsky. The question: what does it mean to read code that produces language? Unit 11 = the horizon. We start with Unix 1972 and end here. Also add Stack Overflow as a brief note in Unit 05 alongside SourceForge — same genre of story (community infrastructure, idealism, complicated ending).
 - Elegance axis: early vi/ex, certain Lua phases, Haskell
 - Impact/innovation axis: early Python, Quake, networking (TBD), TeX
 - Mathematics: SageMath in 05; deeper math (LAPACK, early R, Macsyma) possibly 07+
@@ -142,23 +146,26 @@ If it still fails, the blocking packages haven't been rebuilt yet. Wait another 
 
 ---
 
-## Current State (2026-08-19)
+## Current State (2026-08-26)
 
-Units 01–07 are seeded. Units 08–11 are open. Publishing plan written. Website starter written. Repo committed but not yet pushed to GitHub. **Website deadline: September 2, 2026.**
+Units 01–09 are seeded (08–09 newly this session). Units 10–11 are open (11 = LLMs confirmed). Publishing plan written. Website starter written. Repo committed but not yet pushed to GitHub. **Website deadline: September 2, 2026.**
 
 - 01: xv6, unix-v6, Plan 9; commentary layer with entry.md
 - 02: tcc, gcc, vim, git; LINUS.md; Classical Coding framing
 - 03: Emacs, GDB, Bison; 10 FSF texts; doctor.el; BUILD-emacs.md; lisp-exercise.md; gdb-exercise.c
 - 04: Blender (full clone); dna.md, nodes.md commentary; hello-blender.py; python-exercise.md
-- 05: CULTURE_AND_SPECTACLE.md; GIMP, LaTeX2e, libtorrent, Pure Data; BitTorrent spec
+- 05: CULTURE_AND_SPECTACLE.md; GIMP, LaTeX2e, libtorrent, Pure Data; BitTorrent spec; Stack Overflow noted as brief addition alongside SourceForge
 - 06: LANGUAGES.md; GHC, NASM; Lovelace notes, Turing PDFs, hello-world.asm, hello-basic.bas
-- 07: GROTHENDIECK.md; Mathlib, Agda, NumPy, GSL; Lawvere + Grothendieck PDFs; simplicial_homology.py
+- 07: GROTHENDIECK.md; Mathlib, Agda, NumPy, GSL; Lawvere + Grothendieck PDFs; simplicial_homology.py; quake.md (bridge to Unit 09)
+- 08: SIMPLICIAL-HOMOLOGY.md; languages.md (garden of languages — simplices in all of them)
+- 09: UNIT-09.md (Quake + the grammar of games + writing/access thesis); other-games/GAMES.md (Pong, Adventure, Zork, Mario, Zelda, Doom, Minecraft)
+- 11: LLMs confirmed — Attention Is All You Need + nanoGPT + Stack Overflow displacement arc
 - meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, sessions/2026-08-18.md, sessions/2026-08-19.md
 - website/: index.html (picture-book design, legible to age 0–5 and university alike)
 
 ## DO THESE FIRST NEXT SESSION
 
-**Step 1 — Push to GitHub:**
+**Step 1 — Push to GitHub (overdue, deadline September 2):**
 - Go to github.com/new
 - Name: `eleven-million-lines`, public, no README initialization
 - Then run:
@@ -169,19 +176,20 @@ git push -u origin main
 ```
 - Then replace `YOUR_USERNAME` in `website/index.html`
 
-**Step 2 — Pick a domain and get the site live.** Deadline is September 2. Options: GitHub Pages (rename `website/` → `docs/`) or Netlify (point at `website/` directly, no rename needed).
+**Step 2 — Get the site live.** Options: GitHub Pages (rename `website/` → `docs/`) or Netlify (point at `website/` directly).
 
-**Step 3 — Recap Ralph** on where things stand. Read this section and `meta/sessions/2026-08-19.md`.
+**Step 3 — Recap Ralph** on where things stand. Read this section and `meta/sessions/2026-08-26.md`.
 
 ## Intentions for Next Session
 
-- Push to GitHub (do this first — see above)
-- Get website live at a real domain before September 2
-- Write `meta/ANNOUNCE.md` — core announcement text (needed before posting anywhere)
+- Push to GitHub and get site live — deadline September 2 is close
+- Write `meta/ANNOUNCE.md` — core announcement text
+- Unit 07: make it character-driven and personal — Sesame Street-style characters (Grothendieck, Noether, Euler, Poincaré, Lawvere); write `07/short_fiction.md` to entice and reward browsing
+- Unit 09: seed the Quake source (GPL, available at github.com/id-Software/Quake); read Abrash; add Doom and Wolf3D for comparison
 - Write `07/hatcher/HATCHER.md` and download Hatcher's Algebraic Topology PDF
 - Write `07/LIBRARIES.md` — math libraries in C and Python as cultural expression
 - Write `meta/pogrades/POGRADES.md` — the partially-ordered grading system
-- Write `07/scratch/simplicial-sets-intro.md` (referenced in GROTHENDIECK.md, not yet written)
+- Write `07/scratch/simplicial-sets-intro.md`
 - Fetch McCarthy 1960 paper for `06/scratch/`
-- Decide: does Minecraft/modding ecosystem have a home? Does Pure Data belong in 06 instead of 05?
-- Continue `01/commentary/xv6/`: proc.md (fork, scheduler) is still unwritten — this matters
+- Continue `01/commentary/xv6/`: proc.md (fork, scheduler) still unwritten — this matters
+- Decide: does Minecraft/modding ecosystem belong in 09 now? (Yes, probably.) Does Pure Data belong in 06 instead of 05?
