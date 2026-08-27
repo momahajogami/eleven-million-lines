@@ -146,9 +146,9 @@ If it still fails, the blocking packages haven't been rebuilt yet. Wait another 
 
 ---
 
-## Current State (2026-08-26)
+## Current State (2026-08-26b)
 
-Units 01–09 are seeded (08–09 newly this session). Units 10–11 are open (11 = LLMs confirmed). Publishing plan written. Website starter written. Repo committed but not yet pushed to GitHub. **Website deadline: September 2, 2026.**
+Units 01–09 are seeded. Units 10–11 are open (11 = LLMs confirmed). Publishing plan written. Website starter written. Repo committed but not yet pushed to GitHub. **Website deadline: September 2, 2026.**
 
 - 01: xv6, unix-v6, Plan 9; commentary layer with entry.md
 - 02: tcc, gcc, vim, git; LINUS.md; Classical Coding framing
@@ -157,10 +157,10 @@ Units 01–09 are seeded (08–09 newly this session). Units 10–11 are open (1
 - 05: CULTURE_AND_SPECTACLE.md; GIMP, LaTeX2e, libtorrent, Pure Data; BitTorrent spec; Stack Overflow noted as brief addition alongside SourceForge
 - 06: LANGUAGES.md; GHC, NASM; Lovelace notes, Turing PDFs, hello-world.asm, hello-basic.bas
 - 07: GROTHENDIECK.md; Mathlib, Agda, NumPy, GSL; Lawvere + Grothendieck PDFs; simplicial_homology.py; quake.md (bridge to Unit 09)
-- 08: SIMPLICIAL-HOMOLOGY.md; languages.md (garden of languages — simplices in all of them)
-- 09: UNIT-09.md (Quake + the grammar of games + writing/access thesis); other-games/GAMES.md (Pong, Adventure, Zork, Mario, Zelda, Doom, Minecraft)
+- 08: SIMPLICIAL-HOMOLOGY.md; languages.md; MATHEMATICS.md; EXERCISES.md; python/ (full implementation, 47 tests); haskell/ (cabal project)
+- 09: UNIT-09.md (algorithm arc: Wolf3D→Doom→Quake); wolf3d/, doom/, quake/ (placeholder READMEs); other-games/ (GAMES.md + tetris/tetris.py); grassmannian/GRASSMANNIAN.md
 - 11: LLMs confirmed — Attention Is All You Need + nanoGPT + Stack Overflow displacement arc
-- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, sessions/2026-08-18.md, sessions/2026-08-19.md
+- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, sessions/ (2026-08-18, 2026-08-19, 2026-08-26, 2026-08-26b)
 - website/: index.html (picture-book design, legible to age 0–5 and university alike)
 
 ## DO THESE FIRST NEXT SESSION
@@ -178,18 +178,17 @@ git push -u origin main
 
 **Step 2 — Get the site live.** Options: GitHub Pages (rename `website/` → `docs/`) or Netlify (point at `website/` directly).
 
-**Step 3 — Recap Ralph** on where things stand. Read this section and `meta/sessions/2026-08-26.md`.
+**Step 3 — Recap Ralph** on where things stand. Read this section and `meta/sessions/2026-08-26b.md`.
 
 ## Intentions for Next Session
 
 - Push to GitHub and get site live — deadline September 2 is close
 - Write `meta/ANNOUNCE.md` — core announcement text
-- Unit 07: make it character-driven and personal — Sesame Street-style characters (Grothendieck, Noether, Euler, Poincaré, Lawvere); write `07/short_fiction.md` to entice and reward browsing
-- Unit 09: seed the Quake source (GPL, available at github.com/id-Software/Quake); read Abrash; add Doom and Wolf3D for comparison
+- Unit 07: make it character-driven and personal — Sesame Street-style characters (Grothendieck, Noether, Euler, Poincaré, Lawvere); write `07/short_fiction.md`
+- Unit 09: seed the actual Quake source (`git clone https://github.com/id-Software/Quake`)
 - Write `07/hatcher/HATCHER.md` and download Hatcher's Algebraic Topology PDF
 - Write `07/LIBRARIES.md` — math libraries in C and Python as cultural expression
 - Write `meta/pogrades/POGRADES.md` — the partially-ordered grading system
-- Write `07/scratch/simplicial-sets-intro.md`
 - Fetch McCarthy 1960 paper for `06/scratch/`
 - Continue `01/commentary/xv6/`: proc.md (fork, scheduler) still unwritten — this matters
-- Decide: does Minecraft/modding ecosystem belong in 09 now? (Yes, probably.) Does Pure Data belong in 06 instead of 05?
+- Decide: does Descent belong in `09/` alongside the id Software arc?
