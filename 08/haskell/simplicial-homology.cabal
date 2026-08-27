@@ -1,0 +1,16 @@
+cabal-version: 2.4
+name:          simplicial-homology
+version:       0.1.0
+synopsis:      Simplicial homology over ℤ — a readable implementation
+description:
+    Computes simplicial homology groups H_n(K; ℤ) for any simplicial complex K.
+    Includes standard examples: circle, sphere, torus, Klein bottle, RP^2.
+    Written for Unit 08 of "Eleven Million Lines You Should Know."
+build-type:    Simple
+
+executable simplicial-homology
+    main-is:          Main.hs
+    other-modules:    Simplicial, Boundary, Smith, Homology, Examples
+    build-depends:    base ^>=4.14, containers
+    default-language: Haskell2010
+    ghc-options:      -Wall -Wno-unused-imports
