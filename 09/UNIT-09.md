@@ -14,6 +14,24 @@ This course exists because there is no necessary trade-off. Reading can be as en
 
 ---
 
+## The Algorithm Arc: Wolf3D → Doom → Quake
+
+Three games. One decade. One question asked three times with increasing ambition: *how do you decide what not to draw?*
+
+**Wolfenstein 3D (1992)** — raycasting through a square grid. Every wall the same height, every corridor at 90 degrees. Fast enough, but the geometry is a prison. The constraint feels like physics until you see Doom.
+
+**Doom (1993)** — BSP trees. Arbitrary wall angles, variable heights, the WAD data format. Carmack subdivides space into a binary tree and traverses it front-to-back, never touching a surface the player can't see. The world is no longer a grid. But it is still flat — rooms cannot stack.
+
+**Quake (1996)** — true 3D, plus PVS (Potentially Visible Set). Precompute which regions of the map can possibly see each other, discard everything else before the frame begins. And then: `Q_rsqrt`, the fast inverse square root — the trick that makes the physics and lighting fast enough to ship.
+
+This arc is one of the cleanest algorithm-evolution stories in software history. Each game throws out the foundational assumption of the one before it. Read them in sequence and you watch a mind refuse to accept its own prior solution.
+
+**Directories:** `09/wolf3d/`, `09/doom/`, `09/quake/`
+
+The CLRS connection: BSP trees, spatial decomposition, and the algorithmic analysis of rendering all live in this arc. Quicksort (Hoare, 1959) and FFT (Cooley-Tukey, 1965) belong here too — they share the same shape as `Q_rsqrt`: someone saw something nobody else saw, wrote it down, and changed what was possible.
+
+---
+
 ## Quake as the General Theme
 
 Quake is the drama. The story has everything: two Johns, one engine, one game, and the implosion of one of the most creative partnerships in software history. Carmack building what the machine could do. Romero building what it felt like to be inside. The Christmas deadline. The source drop as an act of faith. The .plan files as public thinking.
