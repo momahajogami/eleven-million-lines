@@ -1,0 +1,25 @@
+# Personal — not for public repo
+meta/personal/
+applications/
+log/
+open-letter
+
+# External codebases — clone separately (see unit README files)
+02/gcc/
+02/tcc/
+09/other-games/stockfish/
+09/other-games/lichess/
+
+# Editor and OS debris
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Node (in case website tooling is added)
+node_modules/

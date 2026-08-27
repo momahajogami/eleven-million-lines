@@ -78,7 +78,7 @@ Eleven codebases. Orientation, not mastery. Learning to stand inside large, old,
 - 02: Classic C compilers (DMR's original, PCC, tcc, early GCC); also vi/vim (Bill Joy → Bram Moolenaar), git (Linus), and LINUS.md character study — Linus wrote Linux AND git
 - 03: Richard Stallman — the prophet, the printer, the four freedoms; GNU Manifesto, GPL v1/v2/v3, Emacs, GCC (revisited from 02), GDB, Bison; the legal and moral infrastructure of free software
 - 04: Blender — the heroic story; art, architecture, politics, open source culture; coding in the background, everything in the foreground; pairs with CG history, the community buyout narrative
-- 05: **Culture and Spectacle** — thesis: coding is writing augmented with electricity. Projects: TeX/LaTeX (Knuth), BitTorrent (Cohen), Linux (as frame/preamble), SageMath (Stein), SourceForge (rise and betrayal). Style is emphasized. Skateboarding culture as running parallel/comparison — DIY ethics, spot ownership, trick priority, making in public. Character-driven.
+- 05: **Culture, Spectacle and Eigenrank** — thesis: coding is writing augmented with electricity. Projects: TeX/LaTeX (Knuth), BitTorrent (Cohen), Linux (as frame/preamble), SageMath (Stein), SourceForge (rise and betrayal), Eigenrank (Brin/Page — PageRank as eigenvector, the early web, Geocities, Yahoo, the map that changed the garden). Style is emphasized. Skateboarding culture as running parallel/comparison — DIY ethics, spot ownership, trick priority, making in public. Character-driven.
 - 06: **Languages and Theory** — the code is the art; this is a unit about writing. BASIC (access/democracy), Assembly (with punch cards and the Jacquard loom / textile history), LISP (Church lambda calculus made executable), ML/Haskell (type theory), Prolog (logic as computation). Papers from Church (1936), Turing (1936, 1950), McCarthy (1960), and Lovelace (1843, Note G = first program). The line from the loom to the language.
 - 07–11: TBD (except below)
 - 08: **Simplicial Homology by Hand** — build the chain complex, boundary maps, and homology groups from scratch, across a garden of languages (Python + Blender first, then imperative/recursive/functional). Markdown as the thinking layer: the math lives in .md files, the code implements it. Sandbox unit — artistic, creative, inclusive. The talented beginner builds comprehensible structures from first principles. See `08/SIMPLICIAL-HOMOLOGY.md`, `08/languages.md`.
@@ -112,7 +112,7 @@ university-coding/
 ├── 02/    # C compilers, vi/vim, git, Linus   [Classical Coding, pt. 2]
 ├── 03/    # Richard Stallman — GNU, GPL, Emacs, GDB, Bison
 ├── 04/    # Blender — the heroic story
-├── 05/    # Culture and Spectacle — TeX, BitTorrent, Linux, SageMath, SourceForge
+├── 05/    # Culture, Spectacle and Eigenrank — TeX, BitTorrent, SageMath, SourceForge, Eigenrank
 ├── 06/    # Languages and Theory — BASIC, Assembly, LISP, ML, Church, Turing, Lovelace
 ├── 07/    # TBD
 ├── 08/    # TBD

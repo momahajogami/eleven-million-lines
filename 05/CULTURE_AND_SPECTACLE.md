@@ -1,4 +1,4 @@
-# Unit 05: Culture and Spectacle
+# Unit 05: Culture, Spectacle and Eigenrank
 
 *No one knows what coding is. That is not a failure of definition. It is the most interesting fact about it.*
 
@@ -18,7 +18,7 @@ Not metaphorically. Not as a comparison. Writing is the technology of making tho
 
 This matters because it means code has a culture in the same way writing has a culture. It has styles, schools, debates, traditions, venerated texts, bad habits, living masters, and dead ones whose influence persists. The history of code is, among other things, a history of writing — and like the history of writing, it is storied and character-driven and full of people who cared desperately about things that looked, from the outside, like they did not matter.
 
-This unit is about five of those stories.
+This unit is about six of those stories.
 
 ---
 
@@ -148,7 +148,27 @@ The skateboarding parallel is direct: the spot gets skated out. The property own
 
 ---
 
-## What these five have in common
+### Eigenrank — *The network as ballot*
+
+Before there was a useful search engine, there were routes.
+
+You followed links. Someone's home page linked to something they found interesting; that page linked to something else. The web was a set of paths, and you walked them. If someone linked to you, you were reachable. If no one did, you did not exist — not because you weren't there, but because there was no path to you.
+
+Yahoo tried to organize this with a hand-curated directory: two graduate students at Stanford adding sites to a list by category. The web outgrew them in months. AltaVista tried full-text indexing: search by words. The result was a flood of pages that hid popular words in invisible text to game the rankings. Search became noise.
+
+In 1996, Larry Page and Sergey Brin — also Stanford graduate students — started thinking about the web as a graph problem. Their insight: *a link is a vote, and not all votes are equal.* A link from a page that many people have linked to carries more trust than a link from a page no one has linked to. Trust propagates. The ranking of a page is determined not by the words on the page but by the collective judgment of the pages that point to it.
+
+The mathematics requires solving an eigenvector equation. The ranking vector **r** is the dominant eigenvector of the web's link matrix — the steady-state distribution of a random surfer who clicks links with probability α and jumps randomly with probability (1 − α). The Perron-Frobenius theorem guarantees a unique positive solution. Power iteration finds it.
+
+We call the algorithm **Eigenrank** because that is what it is. The name PageRank belongs to Larry Page and to a moment when Google's ranking was a relatively direct implementation of this eigenvector computation. That moment has passed. Google's current search layers machine learning over the original algorithm until the eigenvector is one signal among hundreds. Calling it Eigenrank names the mathematical discovery, which is ours to study; not the product, which has moved on.
+
+Read `05/EIGENRANK.md` for the full account — the early internet, the Yahoo directory, the Geocities rooms with MIDI music and hit counters and hand-curated Cool Sites lists, and then the mathematics that made it possible to map all of it at once.
+
+**The skateboarding read:** Brin and Page found a new spot — not a page on the web, but a way of *reading* the web's structure. They made the map public. The map changed the terrain it described: once pages were ranked by links, pages were built to attract links. The algorithm shaped the network it measured. The spot was transformed by the people who discovered it.
+
+---
+
+## What these six have in common
 
 **They were public from the beginning.** Not released publicly after completion — developed publicly, with the community watching and sometimes participating. Linus posted his newsgroup message before Linux was finished. Cohen published the BitTorrent spec before the client. Knuth released TeX in stages and publicly numbered every bug fix. The publicness is not marketing. It is method.
 
