@@ -84,7 +84,7 @@ You will know how to stand inside a large, unfamiliar codebase and find your bea
 
 The final unit ends at the horizon: code that produces language, trained on the writing of everyone who has ever typed anything into a box and pressed send. We begin with Unix in 1972, when two people were trying to make a comfortable place to work. We end here.
 
-The space between is eleven codebases, fifty years, and the whole story of how humans learned to write to machines.
+The space between is eleven codebases, fifty years, and the whole story of how humans learned to write with electricity.
 
 ---
 

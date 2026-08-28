@@ -191,4 +191,5 @@ git push -u origin main
 - Write `meta/pogrades/POGRADES.md` — the partially-ordered grading system
 - Fetch McCarthy 1960 paper for `06/scratch/`
 - Continue `01/commentary/xv6/`: proc.md (fork, scheduler) still unwritten — this matters
+- **Ralph read `main.c` and `initcode.S` on 2026-08-27** — lesson is in `01/commentary/xv6/SESSIONS.md`. Next: read `fork()` in `proc.c` (~line 156). Pick up there.
 - Decide: does Descent belong in `09/` alongside the id Software arc?
