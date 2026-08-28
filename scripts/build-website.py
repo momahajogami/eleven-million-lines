@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Build website/index.html from markdown source files.
+Build docs/index.html from markdown source files.
 
 Usage: python3 scripts/build-website.py
 
@@ -8,7 +8,7 @@ Sections in index.html are marked with HTML comment pairs:
   <!-- BEGIN:sectionname -->
   <!-- END:sectionname -->
 
-Each section is sourced from website/<sectionname>.md
+Each section is sourced from docs/<sectionname>.md
 """
 
 import re
@@ -16,8 +16,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
-HTML_FILE = ROOT / "website" / "index.html"
-CONTENT_DIR = ROOT / "website"
+HTML_FILE = ROOT / "docs" / "index.html"
+CONTENT_DIR = ROOT / "docs"
 
 
 def md_to_html(text: str) -> str:
