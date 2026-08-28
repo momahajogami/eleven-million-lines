@@ -267,14 +267,6 @@ Dijkstra lectured without notes. Ken Thompson in interviews is laconic, precise,
 
 ---
 
-## Japan and Wabi-Sabi
-
-Ralph is learning Japanese. Ruby comes from Japanese craft ethics — Matz said programmer happiness is the goal, a very specific cultural transmission.
-
-Knuth went to Japan and came back changed. His conversations with Japanese mathematicians shaped how he thought about beauty in proof. *Wabi-sabi* — the beauty of the incomplete and impermanent — as a lens for reading code. Useful. Honest about its limits. Not pretending to be more than it is. Nobody has done that unit. Ralph could.
-
----
-
 ## The Course as a Room
 
 Every time the course has been described, it's imagined as a room. A classroom in Ohio. Students opening a file. The ground shifting. That's not incidental — the course is a physical gathering. People in a place, together, with the same text open. What lectures were before they became content delivery. What Bell Labs was — a building where people ran into each other in the hallway and argued.
