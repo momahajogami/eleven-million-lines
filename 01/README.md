@@ -49,7 +49,7 @@ Start with `commentary/xv6/entry.md`. Get your bearings. Then open the source.
 ## Further reading
 
 - **Lions' Commentary on UNIX 6th Edition** (John Lions) — the original; xv6 was built to be read alongside it
-- **The xv6 book** — MIT's free PDF companion; walks through every subsystem (`pdos.csail.mit.edu`)
+- **The xv6 book** — MIT's free PDF companion; walks through every subsystem (`pdos.csail.mit.edu`). Also available as a source booklet PDF for Track B students who prefer not to use vim.
 - **The C Programming Language** (Kernighan & Ritchie) — written by the people who wrote Unix
 - **Operating Systems: Three Easy Pieces** (Arpaci-Dusseau) — free online; excellent on processes, memory, filesystems
 - **Unix Internals** (Uresh Vahalia) — for when xv6 feels too simple and you want the real Unix internals
