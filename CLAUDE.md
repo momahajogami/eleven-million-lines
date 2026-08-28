@@ -146,9 +146,11 @@ If it still fails, the blocking packages haven't been rebuilt yet. Wait another 
 
 ---
 
-## Current State (2026-08-26b)
+## Current State (2026-08-28)
 
-Units 01–09 are seeded. Unit 10 = Browsers and Social Media. Unit 11 = LLMs (confirmed). Publishing plan written. Website starter written. Repo committed but not yet pushed to GitHub. **Website deadline: September 2, 2026.**
+Units 01–09 are seeded. Unit 10 = Browsers and Social Media. Unit 11 = LLMs (confirmed). Repo pushed to GitHub. GitHub Pages enabled but not yet confirmed live. **Website deadline: September 2, 2026.**
+
+Course framing corrected this session: **preschool-first** — designed for young children and the families who care for them. University context is real but secondary; full rewrite of CLAUDE.md framing deferred to next session.
 
 - 01: xv6, unix-v6, Plan 9; commentary layer with entry.md
 - 02: tcc, gcc, vim, git; LINUS.md; Classical Coding framing
@@ -159,30 +161,23 @@ Units 01–09 are seeded. Unit 10 = Browsers and Social Media. Unit 11 = LLMs (c
 - 07: GROTHENDIECK.md; Mathlib, Agda, NumPy, GSL; Lawvere + Grothendieck PDFs; simplicial_homology.py; quake.md (bridge to Unit 09)
 - 08: SIMPLICIAL-HOMOLOGY.md; languages.md; MATHEMATICS.md; EXERCISES.md; python/ (full implementation, 47 tests); haskell/ (cabal project)
 - 09: UNIT-09.md (algorithm arc: Wolf3D→Doom→Quake); wolf3d/, doom/, quake/ (placeholder READMEs); other-games/ (GAMES.md + tetris/tetris.py); grassmannian/GRASSMANNIAN.md
+- 10: Browsers and Social Media — Mosaic, Firefox, WebKit/Blink; social graph as data structure; Andreessen, Zawinski, Zuckerberg
 - 11: LLMs confirmed — Attention Is All You Need + nanoGPT + Stack Overflow displacement arc
-- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, sessions/ (2026-08-18, 2026-08-19, 2026-08-26, 2026-08-26b)
-- website/: index.html (picture-book design, legible to age 0–5 and university alike)
+- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, sessions/ (2026-08-18, 2026-08-19, 2026-08-26, 2026-08-26b, 2026-08-28)
+- docs/: index.html (picture-book design); grownup.md (markdown source for grown-ups section); scripts/build-website.py (md → HTML sync)
 
 ## DO THESE FIRST NEXT SESSION
 
-**Step 1 — Push to GitHub (overdue, deadline September 2):**
-- Go to github.com/new
-- Name: `eleven-million-lines`, public, no README initialization
-- Then run:
-```bash
-cd ~/Documents/university-coding
-git remote add origin https://github.com/YOUR_USERNAME/eleven-million-lines.git
-git push -u origin main
-```
-- Then replace `YOUR_USERNAME` in `website/index.html`
+**Step 1 — Confirm GitHub Pages is live** at `https://momahajogami.github.io/eleven-million-lines`. Check the Actions tab in the repo to see if the deployment ran. If not, go to Settings → Pages and re-save with Branch: main, Folder: /docs.
 
-**Step 2 — Get the site live.** Options: GitHub Pages (rename `website/` → `docs/`) or Netlify (point at `website/` directly).
+**Step 2 — Reframe CLAUDE.md throughout** — Goals, Tracks, and Visualizations still say "university." Rewrite them to lead with preschool/families. University stays as a real secondary context.
 
-**Step 3 — Recap Ralph** on where things stand. Read this section and `meta/sessions/2026-08-26b.md`.
+**Step 3 — Recap Ralph** on where things stand. Read this section and `meta/sessions/2026-08-28.md`.
 
 ## Intentions for Next Session
 
-- Push to GitHub and get site live — deadline September 2 is close
+- Confirm GitHub Pages live — deadline September 2 is close
+- Full preschool reframe of CLAUDE.md (Goals, Two Tracks, Visualizations)
 - Write `meta/ANNOUNCE.md` — core announcement text
 - Unit 07: make it character-driven and personal — Sesame Street-style characters (Grothendieck, Noether, Euler, Poincaré, Lawvere); write `07/short_fiction.md`
 - Unit 09: seed the actual Quake source (`git clone https://github.com/id-Software/Quake`)
