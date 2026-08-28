@@ -16,7 +16,7 @@ Start there. Everything else follows.
 
 ---
 
-A university course for reading code alongside classical literature, mathematics, and languages.
+A preschool course for young children and the grown-ups and families who care for them — reading code alongside classical literature, mathematics, and languages.
 Eleven codebases. Orientation, not mastery. Learning to stand inside large, old, important code and find your bearings.
 
 ## Vision
@@ -61,7 +61,7 @@ Eleven codebases. Orientation, not mastery. Learning to stand inside large, old,
 - What does a "unit" look like — lectures, exercises, readings?
 - How do we pair code with literature, math, and language in a way that feels natural, not forced?
 - What is the right balance between elegance (vi) and impact (Unix, early Python)?
-- Who is the audience — undergraduates, graduate students, working programmers?
+- Who is the audience — young children and their families; also accessible to older students and adults who come alongside them
 
 ### Neutral Observations
 
@@ -83,7 +83,7 @@ Eleven codebases. Orientation, not mastery. Learning to stand inside large, old,
 - 07–11: TBD (except below)
 - 08: **Simplicial Homology by Hand** — build the chain complex, boundary maps, and homology groups from scratch, across a garden of languages (Python + Blender first, then imperative/recursive/functional). Markdown as the thinking layer: the math lives in .md files, the code implements it. Sandbox unit — artistic, creative, inclusive. The talented beginner builds comprehensible structures from first principles. See `08/SIMPLICIAL-HOMOLOGY.md`, `08/languages.md`.
 - 09: Quake / Carmack (strong candidate) — BSP trees as applied topology, fast inverse square root, .plan files as public mathematical thinking. Natural counterweight to Unit 07's abstraction. See `07/quake.md`.
-- 10: TBD
+- 10: **Browsers and Social Media** — the web as platform, as social infrastructure, and as contested territory. Codebases: Mosaic/NCSA, early Netscape, Firefox/Mozilla, WebKit/Blink lineage. Social layer: early Friendster/MySpace architectures, the Facebook growth story, Twitter's early stack. Characters: Andreessen, Zawinski, Zuckerberg. Themes: the browser as operating system, the social graph as data structure, the attention economy as engineering choice.
 - 11: **LLMs** — *Attention Is All You Need* (Vaswani et al., 2017) + Karpathy's nanoGPT as the readable implementation. Stack Overflow as the knowledge commons being displaced (arc: Usenet → mailing lists → SourceForge → Stack Overflow → LLMs). Characters: Hinton, Karpathy, Spolsky. The question: what does it mean to read code that produces language? Unit 11 = the horizon. We start with Unix 1972 and end here. Also add Stack Overflow as a brief note in Unit 05 alongside SourceForge — same genre of story (community infrastructure, idealism, complicated ending).
 - Elegance axis: early vi/ex, certain Lua phases, Haskell
 - Impact/innovation axis: early Python, Quake, networking (TBD), TeX
@@ -117,7 +117,7 @@ university-coding/
 ├── 07/    # TBD
 ├── 08/    # TBD
 ├── 09/    # TBD
-├── 10/    # TBD
+├── 10/    # Browsers and Social Media — Mosaic, Firefox, WebKit; the social graph as data structure
 ├── 11/    # TBD
 ├── meta/  # Course administration (sizes, etc.)
 └── CLAUDE.md
@@ -148,7 +148,7 @@ If it still fails, the blocking packages haven't been rebuilt yet. Wait another 
 
 ## Current State (2026-08-26b)
 
-Units 01–09 are seeded. Units 10–11 are open (11 = LLMs confirmed). Publishing plan written. Website starter written. Repo committed but not yet pushed to GitHub. **Website deadline: September 2, 2026.**
+Units 01–09 are seeded. Unit 10 = Browsers and Social Media. Unit 11 = LLMs (confirmed). Publishing plan written. Website starter written. Repo committed but not yet pushed to GitHub. **Website deadline: September 2, 2026.**
 
 - 01: xv6, unix-v6, Plan 9; commentary layer with entry.md
 - 02: tcc, gcc, vim, git; LINUS.md; Classical Coding framing
@@ -191,5 +191,5 @@ git push -u origin main
 - Write `meta/pogrades/POGRADES.md` — the partially-ordered grading system
 - Fetch McCarthy 1960 paper for `06/scratch/`
 - Continue `01/commentary/xv6/`: proc.md (fork, scheduler) still unwritten — this matters
-- **Ralph read `main.c` and `initcode.S` on 2026-08-27** — lesson is in `01/commentary/xv6/SESSIONS.md`. Next: read `fork()` in `proc.c` (~line 156). Pick up there.
+- **Ralph read `main.c` and `initcode.S` on 2026-08-27** — lesson is in `meta/sessions/2026-08-27.md`. Next: read `fork()` in `proc.c` (~line 156). Pick up there.
 - Decide: does Descent belong in `09/` alongside the id Software arc?
