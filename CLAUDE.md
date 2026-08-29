@@ -146,11 +146,13 @@ If it still fails, the blocking packages haven't been rebuilt yet. Wait another 
 
 ---
 
-## Current State (2026-08-28)
+## Current State (2026-08-28b)
 
-Units 01–09 are seeded. Unit 10 = Browsers and Social Media. Unit 11 = LLMs (confirmed). Repo pushed to GitHub. GitHub Pages enabled but not yet confirmed live. **Website deadline: September 2, 2026.**
+Units 01–09 are seeded. Unit 10 = Browsers and Social Media. Unit 11 = LLMs (confirmed). **Website is live at `https://momahajogami.github.io/eleven-million-lines/`.**
 
-Course framing corrected this session: **preschool-first** — designed for young children and the families who care for them. University context is real but secondary; full rewrite of CLAUDE.md framing deferred to next session.
+GitHub Pages is running via a GitHub Actions workflow (`.github/workflows/pages.yml`) — the "deploy from branch" method was silently broken and replaced. Every push to `main` now deploys automatically.
+
+Course framing corrected: **preschool-first** — designed for young children and the families who care for them. University context is real but secondary; full rewrite of CLAUDE.md framing deferred to next session.
 
 - 01: xv6, unix-v6, Plan 9; commentary layer with entry.md
 - 02: tcc, gcc, vim, git; LINUS.md; Classical Coding framing
@@ -163,20 +165,17 @@ Course framing corrected this session: **preschool-first** — designed for youn
 - 09: UNIT-09.md (algorithm arc: Wolf3D→Doom→Quake); wolf3d/, doom/, quake/ (placeholder READMEs); other-games/ (GAMES.md + tetris/tetris.py); grassmannian/GRASSMANNIAN.md
 - 10: Browsers and Social Media — Mosaic, Firefox, WebKit/Blink; social graph as data structure; Andreessen, Zawinski, Zuckerberg
 - 11: LLMs confirmed — Attention Is All You Need + nanoGPT + Stack Overflow displacement arc
-- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, sessions/ (2026-08-18, 2026-08-19, 2026-08-26, 2026-08-26b, 2026-08-28)
-- docs/: index.html (picture-book design); grownup.md (markdown source for grown-ups section); scripts/build-website.py (md → HTML sync)
+- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, sessions/ (2026-08-18, 2026-08-19, 2026-08-26, 2026-08-26b, 2026-08-27, 2026-08-28, 2026-08-28b)
+- docs/: index.html (syllabus, 11 units); index-picture-book.html (backup of old design); 01/–11/index.html (unit pages); .nojekyll; .github/workflows/pages.yml
 
 ## DO THESE FIRST NEXT SESSION
 
-**Step 1 — Confirm GitHub Pages is live** at `https://momahajogami.github.io/eleven-million-lines`. Check the Actions tab in the repo to see if the deployment ran. If not, go to Settings → Pages and re-save with Branch: main, Folder: /docs.
+**Step 1 — Full preschool reframe of CLAUDE.md** — Goals, Two Tracks, and Visualizations still say "university." Rewrite them to lead with preschool/families. University stays as a real secondary context.
 
-**Step 2 — Reframe CLAUDE.md throughout** — Goals, Tracks, and Visualizations still say "university." Rewrite them to lead with preschool/families. University stays as a real secondary context.
-
-**Step 3 — Recap Ralph** on where things stand. Read this section and `meta/sessions/2026-08-28.md`.
+**Step 2 — Recap Ralph** on where things stand. Read this section and `meta/sessions/2026-08-28b.md`.
 
 ## Intentions for Next Session
 
-- Confirm GitHub Pages live — deadline September 2 is close
 - Full preschool reframe of CLAUDE.md (Goals, Two Tracks, Visualizations)
 - Write `meta/ANNOUNCE.md` — core announcement text
 - Unit 07: make it character-driven and personal — Sesame Street-style characters (Grothendieck, Noether, Euler, Poincaré, Lawvere); write `07/short_fiction.md`
