@@ -12,10 +12,12 @@ The website is live. The repo is public. Units 01–09 are seeded with commentar
 The course has three simultaneous audiences, which is unusual and right:
 
 1. **The center** — infants, toddlers, and preschoolers. The youngest learners. Families and caregivers alongside them.
-2. **Emerson after school** — older children. Elementary age. The after-school program as a laboratory for what the course can be in practice.
+2. **Horace Mann** — working with Kelly, 2026-27. The school program as a laboratory for what the course can be in practice.
 3. **The course itself** — the full eleven-unit arc, for university students, adults, and families who want the whole thing.
 
-These three are not separate programs. They are the same idea at different scales. What works at the center informs what works at Emerson. What works at Emerson informs what works in the course. The three run in parallel and teach each other.
+These three are not separate programs. They are the same idea at different scales. What works at the center informs what works at Horace Mann. What works there informs what works in the course. The three run in parallel and teach each other.
+
+**Note:** Return to Emerson in fall 2027 to work with Ina. See the fall 2027 section at the end of this document.
 
 ---
 
@@ -30,7 +32,7 @@ These three are not separate programs. They are the same idea at different scale
 - Finish Unit 10 (Browsers and Social Media): codebase choices, BROWSERS.md, SOCIAL-MEDIA essays *(in progress this session)*
 - Begin Unit 11 (LLMs): seed nanoGPT, download *Attention Is All You Need*, write UNIT-11.md
 
-**Emerson after school:**
+\*\*Horace Mann (Kelly):\*\*
 - First session: what is a computer? What is code?
 - Read something. Show how writing becomes behavior.
 - No screens required yet. Paper, pencil, physical sorting games.
@@ -52,7 +54,7 @@ These three are not separate programs. They are the same idea at different scale
 - Unit 11: first draft complete — *Attention Is All You Need* reading guide, nanoGPT orientation, Stack Overflow arc
 - Begin meta/pogrades/POGRADES.md — the partially-ordered grading system. Grading for a preschool-first course requires rethinking from scratch.
 
-**Emerson after school:**
+\*\*Horace Mann (Kelly):\*\*
 - Second and third sessions: choose a first codebase together. Unit 09 (games) is the natural entry point — everyone has played a game.
 - Look at Tetris source (09/other-games/tetris/tetris.py). It's 120 lines. Read it together.
 - What does `rotate()` do? Can you trace through it with a pencil?
@@ -74,7 +76,7 @@ These three are not separate programs. They are the same idea at different scale
 - Unit 03 (Stallman/GNU): begin writing the lecture arc — the story of the printer, the four freedoms, as a narrative for children and families
 - All eleven units should have first-draft UNIT-N.md files by end of November
 
-**Emerson after school:**
+\*\*Horace Mann (Kelly):\*\*
 - Go deeper on Tetris or pivot to a simpler codebase depending on the group.
 - If the group is ready: look at initcode.S from xv6 — ten lines of assembly that start an operating system. Read it like a poem. You don't have to understand every word.
 - Introduce the idea: old code, still running. The code that runs your computer was written by people, a long time ago, and it's still there.
@@ -94,7 +96,7 @@ These three are not separate programs. They are the same idea at different scale
 - Read back through everything written. Find what's unclear. Note it but don't rewrite yet — let it rest.
 - One thing: write the first draft of the course introduction. Not the website landing page — the actual document you'd give someone sitting down to take the course.
 
-**Emerson after school:**
+\*\*Horace Mann (Kelly):\*\*
 - Holiday break. Before break: one session where the children tell *someone else* what they learned. A parent, a sibling, another teacher. Explaining is the test.
 - Assign: over break, find one piece of code anywhere — a website, an app, anything — and bring back one question about it.
 
@@ -111,7 +113,7 @@ These three are not separate programs. They are the same idea at different scale
 - Unit 06: write the Lovelace lecture — Note G as the first program. Who was she? What did she see that Babbage didn't?
 - Begin drafting `meta/ANNOUNCE.md` v2 — a longer-form announcement for academic audiences (SIGCSE, education journals)
 
-**Emerson after school:**
+\*\*Horace Mann (Kelly):\*\*
 - New semester energy. Introduce a second codebase: vim (02/vim). Not to use vim — to read what vim does.
 - The question: what is an editor? How does an editor know where your cursor is?
 - Pull up `src/normal.c` in vim's source. Find one function. Read its name. What does the name tell you?
@@ -130,7 +132,7 @@ These three are not separate programs. They are the same idea at different scale
 - Unit 05 (Culture and Spectacle): write the PageRank essay — Brin and Page as characters, the eigenvector as a way of seeing
 - First session on Unit 10 with real students if the Emerson program is ready for it — browsers as a thing they use every day, now readable
 
-**Emerson after school:**
+\*\*Horace Mann (Kelly):\*\*
 - The browser session. They use browsers every day. What is a browser?
 - Show them BROWSERS.md. Not all of it — pick three paragraphs and read them together.
 - Look at the Mosaic source (if cloned). Find the `<IMG>` tag implementation. This is the line that changed the web.
@@ -149,7 +151,7 @@ These three are not separate programs. They are the same idea at different scale
 - The Euler characteristic (-1 + 1 - 1 + 1 = 0 for the torus) as a picture-book moment. Count the vertices. Count the edges. Count the faces. Subtract, add, subtract. You get the same number every time.
 - Write `07/hatcher/HATCHER.md` and download Hatcher PDF. Hatcher made the book free. Use it.
 
-**Emerson after school:**
+\*\*Horace Mann (Kelly):\*\*
 - The mathematics session. Use Unit 08 directly — run `python examples.py` and look at what the homology groups say about the torus.
 - Not the algebra. The pictures. Draw a torus on the board. Count holes. That's it.
 - If one student asks why, follow the question wherever it goes.
@@ -167,7 +169,7 @@ These three are not separate programs. They are the same idea at different scale
 - Decide: does Descent belong in 09? Make the call.
 - Begin planning the first real teaching of the course — not an announcement, an actual class session, even informally.
 
-**Emerson after school:**
+\*\*Horace Mann (Kelly):\*\*
 - Community session: the children share something they've read with their families.
 - Not a presentation — a conversation. You read this. Tell me about it.
 - The question: what do you want to read next?
@@ -186,7 +188,7 @@ These three are not separate programs. They are the same idea at different scale
 - The website is updated with all 11 unit pages having real content.
 - Write the end-of-year reflection: what worked, what didn't, what changed.
 
-**Emerson after school:**
+\*\*Horace Mann (Kelly):\*\*
 - Last session: what did you learn? Not about code — about reading. Did it change how you read anything else?
 - Document the year. What did they respond to? What was hard? What was surprising?
 
@@ -203,15 +205,39 @@ Put it down. Let it be done for a month. Come back to it in July with fresh eyes
 
 ---
 
-## Dreams for Emerson After School
+## Dreams for Horace Mann (2026-27, with Kelly)
 
-The after-school program at Emerson is the laboratory. It is where the course gets tested against actual children who did not choose to be there, who have had a full day of school, who would rather be outside. If it works there — if it holds attention, if it produces questions, if they come back the next week — it works anywhere.
+The Horace Mann program is the laboratory for 2026-27. It is where the course gets tested against actual children who did not choose to be there, who have had a full day of school, who would rather be outside. If it works there — if it holds attention, if it produces questions, if they come back the next week — it works anywhere.
 
-The dream is simple: by the end of the year, there is at least one child at Emerson who looks at a website and thinks *I could read that*. Not who can read it — who thinks they could. The belief is the first thing. The skill follows.
+The dream is simple: by the end of the year, there is at least one child at Horace Mann who looks at a website and thinks *I could read that*. Not who can read it — who thinks they could. The belief is the first thing. The skill follows.
 
 A secondary dream: one of the parents gets curious. Asks to see the session notes. Reads a session log and recognizes something they learned once and forgot. The course works backwards through generations — children bring it home to adults.
 
 The program does not need to be formal. It does not need a curriculum packet or a grading rubric. It needs one session per week, one codebase at a time, one question that is genuinely interesting, and someone willing to sit with the not-knowing long enough to find out.
+
+---
+
+## Fall 2027 — Return to Emerson (with Ina)
+
+The 2026-27 year at Horace Mann is preparation. Fall 2027 is the return to Emerson, working with Ina.
+
+By then there will be a full year of documented sessions, a tested reading list, a clearer sense of what lands with children and what doesn't. The work with Kelly will have produced evidence: what a unit looks like in practice, how long a codebase holds attention, which questions open things up and which close them down.
+
+The Emerson program picks that up. Different school, different collaborator, same course — but a year wiser.
+
+**What to bring from Horace Mann:**
+- The session logs. What worked, what didn't, what surprised.
+- The first codebase that genuinely held a room. Use it again. Let it be the foundation.
+- The picture-book draft from the center, if complete. Read it on the first day.
+- The questions that came up and weren't answered. Those are the curriculum.
+
+**What to plan for fall 2027:**
+- First session in September 2027: orient Ina to the course — the eleven units, the two tracks, the reading-not-programming argument.
+- Choose a starting codebase together. Ina knows the students; defer to her on what will land.
+- Establish the rhythm: one session per week, one file at a time, one question per session.
+- By December 2027: one student has followed a piece of code from a file they opened to something they understand. That is the year's goal.
+
+The return to Emerson is not starting over. It is the course finding another home.
 
 ---
 

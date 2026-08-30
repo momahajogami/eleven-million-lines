@@ -165,8 +165,9 @@ Course framing corrected: **preschool-first** — designed for young children an
 - 09: UNIT-09.md (algorithm arc: Wolf3D→Doom→Quake); wolf3d/, doom/, quake/ (placeholder READMEs); other-games/ (GAMES.md + tetris/tetris.py); grassmannian/GRASSMANNIAN.md
 - 10: Browsers and Social Media — substantially built out. UNIT-10.md, BROWSERS.md, SOCIAL-MEDIA-1/2/3.md, ONTOLOGY.md, THE-RIGHT-TO-READ.md, PACKAGE-MANAGERS.md, VERSION-CONTROL-ECOSYSTEM.md, MICROSOFT-THREAD.md. Codebases: Mosaic (full clone + RFC 2616 + RFC 1866), Lynx (2.9.3 tarball), Mastodon (sparse checkout: models, services, workers). Firefox and WebKit oriented via README only (too large). PageRank implementation and toy social graph still to write.
 - 11: LLMs confirmed — Attention Is All You Need + nanoGPT + Stack Overflow displacement arc
-- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, sessions/ (2026-08-18, 2026-08-19, 2026-08-26, 2026-08-26b, 2026-08-27, 2026-08-28, 2026-08-28b)
-- docs/: index.html (syllabus, 11 units); index-picture-book.html (backup of old design); 01/–11/index.html (unit pages); .nojekyll; .github/workflows/pages.yml
+- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, ACADEMIC-YEAR-2026-27.md, sessions/ (2026-08-18 through 2026-08-29)
+- docs/: index.html (syllabus, 11 units); 01/–11/index.html all now driven by WEBSITE.md pipeline; .nojekyll; .github/workflows/pages.yml
+- scripts/build-website.py: WEBSITE.md → HTML pipeline for all unit pages. Run `python3 scripts/build-website.py` after editing any NN/WEBSITE.md. All 11 units now have WEBSITE.md source files.
 
 ## DO THESE FIRST NEXT SESSION
 
@@ -178,7 +179,8 @@ Course framing corrected: **preschool-first** — designed for young children an
 
 - Full preschool reframe of CLAUDE.md (Goals, Two Tracks, Visualizations)
 - Write `meta/ANNOUNCE.md` — core announcement text
-- Unit 10: write PageRank implementation (~20 lines Python) and toy social graph exercise; add to `10/exercises/`
+- Unit 10: write PageRank implementation (~20 lines Python) → `10/exercises/pagerank.py`
+- Unit 10: write toy social graph exercise → `10/exercises/social_graph.py`
 - Unit 10: weave Microsoft thread into Unit 02 and Unit 03 unit documents (two paragraphs each — see `10/MICROSOFT-THREAD.md` for exact placement)
 - Unit 07: make it character-driven — Sesame Street-style characters (Grothendieck, Noether, Euler, Poincaré, Lawvere); write `07/short_fiction.md`
 - Unit 09: seed the actual Quake source (`git clone https://github.com/id-Software/Quake`)
@@ -189,4 +191,3 @@ Course framing corrected: **preschool-first** — designed for young children an
 - Continue `01/commentary/xv6/`: proc.md (fork, scheduler) still unwritten — this matters
 - Read `fork()` in `proc.c` (~line 156) — lesson from 2026-08-27 session is in `meta/sessions/2026-08-27.md`
 - Decide: does Descent belong in `09/` alongside the id Software arc?
-- `meta/ACADEMIC-YEAR-2026-27.md` written this session — calendar of goals for the year, Emerson after school program, center (infants/toddlers/preschoolers)
