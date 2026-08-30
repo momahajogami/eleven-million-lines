@@ -146,7 +146,7 @@ If it still fails, the blocking packages haven't been rebuilt yet. Wait another 
 
 ---
 
-## Current State (2026-08-28b)
+## Current State (2026-08-30)
 
 Units 01–09 are seeded. Unit 10 = Browsers and Social Media. Unit 11 = LLMs (confirmed). **Website is live at `https://momahajogami.github.io/eleven-million-lines/`.**
 
@@ -160,7 +160,7 @@ Course framing corrected: **preschool-first** — designed for young children an
 - 04: Blender (full clone); dna.md, nodes.md commentary; hello-blender.py; python-exercise.md
 - 05: CULTURE_AND_SPECTACLE.md; GIMP, LaTeX2e, libtorrent, Pure Data; BitTorrent spec; Stack Overflow noted as brief addition alongside SourceForge
 - 06: LANGUAGES.md; GHC, NASM; Lovelace notes, Turing PDFs, hello-world.asm, hello-basic.bas
-- 07: GROTHENDIECK.md; Mathlib, Agda, NumPy, GSL; Lawvere + Grothendieck PDFs; simplicial_homology.py; quake.md (bridge to Unit 09)
+- 07: **Logically Speaking** (renamed from "The Spiritual"). GROTHENDIECK.md; Mathlib, Agda, NumPy, GSL; Lawvere + Grothendieck PDFs; simplicial_homology.py; quake.md (bridge to Unit 09)
 - 08: SIMPLICIAL-HOMOLOGY.md; languages.md; MATHEMATICS.md; EXERCISES.md; python/ (full implementation, 47 tests); haskell/ (cabal project)
 - 09: UNIT-09.md (algorithm arc: Wolf3D→Doom→Quake); wolf3d/, doom/, quake/ (placeholder READMEs); other-games/ (GAMES.md + tetris/tetris.py); grassmannian/GRASSMANNIAN.md
 - 10: Browsers and Social Media — substantially built out. UNIT-10.md, BROWSERS.md, SOCIAL-MEDIA-1/2/3.md, ONTOLOGY.md, THE-RIGHT-TO-READ.md, PACKAGE-MANAGERS.md, VERSION-CONTROL-ECOSYSTEM.md, MICROSOFT-THREAD.md. Codebases: Mosaic (full clone + RFC 2616 + RFC 1866), Lynx (2.9.3 tarball), Mastodon (sparse checkout: models, services, workers). Firefox and WebKit oriented via README only (too large). PageRank implementation and toy social graph still to write.
@@ -168,12 +168,14 @@ Course framing corrected: **preschool-first** — designed for young children an
 - meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, ACADEMIC-YEAR-2026-27.md, sessions/ (2026-08-18 through 2026-08-29)
 - docs/: index.html (syllabus, 11 units); 01/–11/index.html all now driven by WEBSITE.md pipeline; .nojekyll; .github/workflows/pages.yml
 - scripts/build-website.py: WEBSITE.md → HTML pipeline for all unit pages. Run `python3 scripts/build-website.py` after editing any NN/WEBSITE.md. All 11 units now have WEBSITE.md source files.
+- scripts/chipsquirt.py: per-letter color tinting. Modes: sine, walk, random, unit-squared, fourth-power-interval, orbit. Orbit = course signature. Fourth-power = h1 mode (near-black, rare flash). Used server-side on essay pages; ported to JS for index pages and reader.html.
+- meta/BRAND.md: visual identity, all color families, oscillation modes, unit assignments, markdown syntax token categories (future work).
 
 ## DO THESE FIRST NEXT SESSION
 
 **Step 1 — Full preschool reframe of CLAUDE.md** — Goals, Two Tracks, and Visualizations still say "university." Rewrite them to lead with preschool/families. University stays as a real secondary context.
 
-**Step 2 — Recap** on where things stand. Read this section and `meta/sessions/2026-08-29.md`.
+**Step 2 — Recap** on where things stand. Read this section and `meta/sessions/2026-08-30.md`.
 
 ## Intentions for Next Session
 
@@ -191,3 +193,4 @@ Course framing corrected: **preschool-first** — designed for young children an
 - Continue `01/commentary/xv6/`: proc.md (fork, scheduler) still unwritten — this matters
 - Read `fork()` in `proc.c` (~line 156) — lesson from 2026-08-27 session is in `meta/sessions/2026-08-27.md`
 - Decide: does Descent belong in `09/` alongside the id Software arc?
+- Markdown syntax tinting (six core categories documented in BRAND.md, ready to implement)
