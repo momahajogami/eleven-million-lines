@@ -95,5 +95,21 @@
   </div>
   <div class="footer">Eleven Million Lines You Should Know</div>
 
+
+  <script>
+  /* chipsquirt-js */
+  (function(){
+    var FAMILIES={teal:{hc:172,hd:12,sat:70,lc:28,lr:8},slate:{hc:215,hd:8,sat:40,lc:28,lr:8},forest:{hc:140,hd:10,sat:60,lc:25,lr:8},amber:{hc:36,hd:8,sat:75,lc:28,lr:8},violet:{hc:268,hd:14,sat:60,lc:26,lr:8},magenta:{hc:312,hd:10,sat:65,lc:26,lr:8}};
+    var UNIT_FAMILIES={'01':'teal','02':'slate','03':'forest','04':'amber','05':'violet','06':'magenta','07':'teal','08':'slate','09':'amber','10':'forest','11':'violet'};
+    function hsvToRgb(h,s,v){h=((h%360)+360)%360;var c=v*s,x=c*(1-Math.abs((h/60)%2-1)),m=v-c,r,g,b;if(h<60){r=c;g=x;b=0;}else if(h<120){r=x;g=c;b=0;}else if(h<180){r=0;g=c;b=x;}else if(h<240){r=0;g=x;b=c;}else if(h<300){r=x;g=0;b=c;}else{r=c;g=0;b=x;}return[Math.round((r+m)*255),Math.round((g+m)*255),Math.round((b+m)*255)];}
+    function hslToRgb01(h,s,l){s/=100;l/=100;h=((h%360)+360)%360;var c=(1-Math.abs(2*l-1))*s,x=c*(1-Math.abs((h/60)%2-1)),m=l-c/2,r,g,b;if(h<60){r=c;g=x;b=0;}else if(h<120){r=x;g=c;b=0;}else if(h<180){r=0;g=c;b=x;}else if(h<240){r=0;g=x;b=c;}else if(h<300){r=x;g=0;b=c;}else{r=c;g=0;b=x;}return[r+m,g+m,b+m];}
+    function letterColor(i,fam,mode,phase){var hc=fam.hc,hd=fam.hd,sat=fam.sat,lc=fam.lc,lr=fam.lr,freq=0.45,PHI=1.6180339887,PHI2=2.6180339887;
+      if(mode==='orbit'){var h_hsv=((hc+hd*Math.sin(i*freq+phase))%360+360)%360,s_hsv=Math.max(0,Math.min(1,sat/100+0.18*Math.sin(i*freq*PHI+phase+1.1))),v_hsv=Math.max(0.08,Math.min(0.60,0.30+0.18*Math.sin(i*freq*PHI2+phase+2.3))),rgb=hsvToRgb(h_hsv,s_hsv,v_hsv);return'rgb('+rgb+')';}
+      if(mode==='fourth-power-interval'){var a=hslToRgb01(hc,sat,Math.max(lc-lr,6)),bh=hc+(Math.random()*2-1)*hd,bs=Math.min(sat+Math.random()*15,100),bl=Math.min(lc+Math.random()*(lr*3+8)+8,60),b=hslToRgb01(bh,bs,bl),t=Math.random(),t4=t*t*t*t;return'rgb('+[Math.round((a[0]+t4*(b[0]-a[0]))*255),Math.round((a[1]+t4*(b[1]-a[1]))*255),Math.round((a[2]+t4*(b[2]-a[2]))*255)]+')'; }
+      return'hsl('+hc+','+sat+'%,'+lc+'%)';}
+    function colorizeEl(el,fam,mode){var phase=Math.random()*Math.PI*2,counter={i:0},walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),nodes=[],n;while((n=walker.nextNode()))nodes.push(n);nodes.forEach(function(node){var text=node.nodeValue,frag=document.createDocumentFragment();for(var ci=0;ci<text.length;ci++){var ch=text[ci];if(/\s/.test(ch)){frag.appendChild(document.createTextNode(ch));}else{var sp=document.createElement('span');sp.style.color=letterColor(counter.i++,fam,mode,phase);sp.textContent=ch;frag.appendChild(sp);}}node.parentNode.replaceChild(frag,node);});}
+    document.addEventListener('DOMContentLoaded',function(){var unit=(window.location.pathname.match(/\/([0-9]{2})\//)||[])[1]||null,famName=UNIT_FAMILIES[unit]||'teal',fam=FAMILIES[famName];document.querySelectorAll('h1').forEach(function(el){colorizeEl(el,fam,'fourth-power-interval');});document.querySelectorAll('h2,h3').forEach(function(el){colorizeEl(el,fam,'orbit');});});
+  })();
+  </script>
 </body>
 </html>
