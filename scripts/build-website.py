@@ -566,16 +566,17 @@ _CHIPSQUIRT_JS = """
       if(mode==='fourth-power-interval'){var a=hslToRgb01(hc,sat,Math.max(lc-lr,6)),bh=hc+(Math.random()*2-1)*hd,bs=Math.min(sat+Math.random()*15,100),bl=Math.min(lc+Math.random()*(lr*3+8)+8,60),b=hslToRgb01(bh,bs,bl),t=Math.random(),t4=t*t*t*t;return'rgb('+[Math.round((a[0]+t4*(b[0]-a[0]))*255),Math.round((a[1]+t4*(b[1]-a[1]))*255),Math.round((a[2]+t4*(b[2]-a[2]))*255)]+')'; }
       return'hsl('+hc+','+sat+'%,'+lc+'%)';}
     function colorizeEl(el,fam,mode){var phase=Math.random()*Math.PI*2,counter={i:0},walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),nodes=[],n;while((n=walker.nextNode()))nodes.push(n);nodes.forEach(function(node){var text=node.nodeValue,frag=document.createDocumentFragment();for(var ci=0;ci<text.length;ci++){var ch=text[ci];if(/ |\\t|\\n|\\r/.test(ch)){frag.appendChild(document.createTextNode(ch));}else{var sp=document.createElement('span');sp.style.color=letterColor(counter.i++,fam,mode,phase);sp.textContent=ch;frag.appendChild(sp);}}node.parentNode.replaceChild(frag,node);});}
-    document.addEventListener('DOMContentLoaded',function(){var unit=(window.location.pathname.match(/\\/([0-9]{2})\\//)||[])[1]||null,famName=UNIT_FAMILIES[unit]||'teal',fam=FAMILIES[famName];document.querySelectorAll('h1').forEach(function(el){colorizeEl(el,fam,'fourth-power-interval');});document.querySelectorAll('h2,h3').forEach(function(el){colorizeEl(el,fam,'orbit');});});
+    var FAMILY_CYCLE=['teal','slate','forest','amber','violet','magenta'];
+    document.addEventListener('DOMContentLoaded',function(){var unit=(window.location.pathname.match(/\\/([0-9]{2})\\//)||[])[1]||null,famName=UNIT_FAMILIES[unit]||'teal',fam=FAMILIES[famName];document.querySelectorAll('h1').forEach(function(el){colorizeEl(el,fam,'fourth-power-interval');});document.querySelectorAll('h2,h3').forEach(function(el){colorizeEl(el,fam,'orbit');});document.querySelectorAll('.unit-title').forEach(function(el,idx){colorizeEl(el,FAMILIES[FAMILY_CYCLE[idx%6]],'orbit');});});
   })();
   </script>
 """
 
 
 def _ensure_chipsquirt_js(html: str) -> str:
-    """Inject the client-side chipsquirt script before </body> if not already present."""
-    if 'chipsquirt-js' in html:
-        return html
+    """Inject (or replace) the client-side chipsquirt script block."""
+    # Remove any existing block so we always have the current version.
+    html = re.sub(r'\s*<script>\s*/\* chipsquirt-js \*/.*?</script>', '', html, flags=re.DOTALL)
     return html.replace('</body>', _CHIPSQUIRT_JS + '</body>', 1)
 
 
