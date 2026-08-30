@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz — xv6 Book Chapter 1: Operating System Organization — Unit 01 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 01: Early Unix</a>
+  </div>
+
+  <div class="essay">
+    <h1>Quiz — xv6 Book Chapter 1: Operating System Organization</h1>
+<hr>
+<h2>The three requirements</h2>
+<ol>
+  <li>What are the three requirements an operating system must fulfill? Briefly define each one.</li>
+</ol>
+<ol>
+  <li>Why is "complete isolation" too strong a requirement? What would be lost?</li>
+</ol>
+<hr>
+<h2>Kernel organization</h2>
+<ol>
+  <li>What is a monolithic kernel? What is the main advantage of this design?</li>
+</ol>
+<ol>
+  <li>What is the main danger of a monolithic kernel — what happens when it makes a mistake?</li>
+</ol>
+<ol>
+  <li>What is a microkernel? How does it reduce this risk?</li>
+</ol>
+<ol>
+  <li>Which design does xv6 use?</li>
+</ol>
+<hr>
+<h2>User mode, kernel mode, and system calls</h2>
+<ol>
+  <li>What is the difference between kernel mode and user mode on x86?</li>
+</ol>
+<ol>
+  <li>What are "privileged instructions"? Give one example.</li>
+</ol>
+<ol>
+  <li>When a user program makes a system call, what happens at the hardware level?</li>
+</ol>
+<ol>
+  <li>Why is it important that the <em>kernel</em> sets the entry point for transitions to kernel mode — not the application?</li>
+</ol>
+<hr>
+<h2>Process overview</h2>
+<ol>
+  <li>A process has two stacks. What are they, and when is each one in use?</li>
+</ol>
+<ol>
+  <li>What does <code>p->state</code> record? What does <code>p->pgdir</code> hold?</li>
+</ol>
+<ol>
+  <li>Why does xv6 map the kernel into the address space of every user process?</li>
+</ol>
+<hr>
+<h2>The boot sequence and first process</h2>
+<ol>
+  <li>What does the boot loader do? Where does it load the xv6 kernel in physical memory, and why not at <code>0x0</code>?</li>
+</ol>
+<ol>
+  <li>What does <code>allocproc()</code> do? Why is it used for both <code>userinit()</code> and ordinary <code>fork()</code>?</li>
+</ol>
+<ol>
+  <li>After <code>userinit()</code> sets <code>p->state = RUNNABLE</code>, what happens next in the sequence that gets the first process actually running?</li>
+</ol>
+<ol>
+  <li><code>userinit()</code> sets <code>p->tf->eip = 0</code>. What is at virtual address 0 in the first process's address space?</li>
+</ol>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

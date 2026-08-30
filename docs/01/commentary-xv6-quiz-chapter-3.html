@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz — xv6 Book Chapter 3: Traps, Interrupts, and Drivers — Unit 01 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 01: Early Unix</a>
+  </div>
+
+  <div class="essay">
+    <h1>Quiz — xv6 Book Chapter 3: Traps, Interrupts, and Drivers</h1>
+<hr>
+<h2>The three cases</h2>
+<ol>
+  <li>What are the three events that cause control to transfer from a user program to the kernel? Give a concrete example of each.</li>
+</ol>
+<ol>
+  <li>What is the difference between a trap and an interrupt? Why are interrupts harder to reason about?</li>
+</ol>
+<ol>
+  <li>What three things must the operating system do in all three cases (system call, exception, interrupt)?</li>
+</ol>
+<hr>
+<h2>X86 protection</h2>
+<ol>
+  <li>How many protection levels does x86 support? Which two does xv6 use, and what are they called?</li>
+</ol>
+<ol>
+  <li>What is the IDT? How many entries does it have?</li>
+</ol>
+<ol>
+  <li>When a user program invokes <code>int n</code>, what does the hardware do — step by step?</li>
+</ol>
+<ol>
+  <li>Why can't the kernel use the user stack when handling a trap?</li>
+</ol>
+<hr>
+<h2>Assembly trap handlers</h2>
+<ol>
+  <li>What is <code>tvinit()</code>'s job? Why does xv6 need 256 different entry points rather than one?</li>
+</ol>
+<ol>
+  <li>What is <code>alltraps</code>? What does it build on the kernel stack?</li>
+</ol>
+<ol>
+  <li>What is a trap frame? What information does it contain, and why is all of it needed?</li>
+</ol>
+<ol>
+  <li>Why does <code>tvinit</code> set the system call gate as a "trap gate" rather than an "interrupt gate"?</li>
+</ol>
+<hr>
+<h2>The C trap handler</h2>
+<ol>
+  <li>What does the C function <code>trap()</code> do with the trap frame it receives?</li>
+</ol>
+<ol>
+  <li>If the trap is not a system call and not a hardware interrupt, what does <code>trap()</code> conclude, and what does it do?</li>
+</ol>
+<ol>
+  <li>If a trap occurs while the kernel itself is executing (not a user program), what does xv6 do?</li>
+</ol>
+<hr>
+<h2>System calls</h2>
+<ol>
+  <li>How does <code>syscall()</code> know which system call to invoke? Where is the system call number stored?</li>
+</ol>
+<ol>
+  <li>What does <code>syscall()</code> do with the return value of the system call function?</li>
+</ol>
+<ol>
+  <li>What do <code>argint</code>, <code>argptr</code>, and <code>argstr</code> do, and why can't the kernel simply trust the pointer values a user program passes?</li>
+</ol>
+<hr>
+<h2>Interrupts and drivers</h2>
+<ol>
+  <li>What is a driver?</li>
+</ol>
+<ol>
+  <li>What is the difference between polling (busy waiting) and using interrupts? When is each preferable?</li>
+</ol>
+<ol>
+  <li>What do the flags <code>B_VALID</code> and <code>B_DIRTY</code> mean in the disk driver?</li>
+</ol>
+<ol>
+  <li>When <code>iderw</code> sends a disk request, why does it sleep rather than poll for the result?</li>
+</ol>
+<ol>
+  <li>When the disk finishes an operation, it raises an interrupt. Trace the path: what code runs, in what order, from the interrupt to the process being woken up?</li>
+</ol>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blender's DNA — The Data Model — Unit 04 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 04: Blender</a>
+  </div>
+
+  <div class="essay">
+    <h1>Blender's DNA — The Data Model</h1>
+<p>Blender stores every scene, every object, every material, every animation curve in a unified binary format called <code>.blend</code>. The specification for that format lives entirely in <code>source/blender/makesdna/</code>. The files there are C header files — structs, enums, and a few macros — and they define, exhaustively, every data type that Blender can save.</p>
+<p>This system is called <strong>DNA</strong>. The runtime layer that generates accessor code from those definitions is called <strong>RNA</strong>. You do not need to understand RNA to read DNA, but knowing the pair exists helps: DNA is the schema, RNA is the introspection layer built on top of it.</p>
+<hr>
+<h2>Where to start</h2>
+<p>Open <code>source/blender/makesdna/DNA_object_types.h</code>. It is 790 lines. It defines <code>Object</code> — the struct that represents anything in a Blender scene: a mesh, a camera, a light, an empty, a curve, an armature. Every object you have ever seen in a Blender viewport is one of these.</p>
+<p>The first thing to notice: <code>Object</code> has an <code>ID</code> at the top. Every datablock in Blender — every mesh, material, texture, armature, action — starts with an <code>ID</code>. The <code>ID</code> struct is defined in <code>DNA_ID.h</code> and it contains the name, the user count (how many other datablocks reference this one), and flags. Everything in Blender that can be named, linked, and referenced is an <code>ID</code>.</p>
+<p>This is the unifying principle of the data model. Meshes, materials, cameras, curves — they are all <code>ID</code> subtypes. When you link an asset from one <code>.blend</code> file into another, you are copying an <code>ID</code>. When you create a duplicate, you are incrementing a user count.</p>
+<hr>
+<h2>The mesh</h2>
+<p>Open <code>DNA_mesh_types.h</code> (597 lines). The <code>Mesh</code> struct is what you are working with when you model. For most of Blender's history, it stored four arrays:</p>
+<ul>
+  <li><code>MVert</code> — vertices (position, normal, weight)</li>
+  <li><code>MEdge</code> — edges (two vertex indices, flags)</li>
+  <li><code>MLoop</code> — loops (a vertex index plus an edge index; one loop per corner of a polygon)</li>
+  <li><code>MPoly</code> — polygons (an offset into the loop array plus a count)</li>
+</ul>
+<p>This is not the most intuitive representation if you have only worked with simple triangle meshes, but it is flexible: polygons can have any number of sides, and the loop structure handles UV coordinates, vertex colors, and other per-corner data cleanly.</p>
+<p>Recent versions of Blender migrated to a custom attribute system backed by arrays of arbitrary type — the <code>CustomData</code> fields you will see in the struct. The old MVert/MEdge/MLoop/MPoly structs are still present for compatibility. You are reading a struct that has been extended carefully, across decades, without breaking the format.</p>
+<hr>
+<h2>The dependency graph</h2>
+<p>Blender's dependency graph (<code>source/blender/depsgraph/</code>) is the system that decides, when you change one thing, what else needs to update.</p>
+<p>Move a bone: what changes? The mesh it deforms. The shape of the mesh in the viewport. The bounding box. The data the render engine reads. The dependency graph tracks all of these relationships and propagates updates efficiently.</p>
+<p>The public API is in <code>DEG_depsgraph.hh</code>. The implementation is in <code>depsgraph/intern/</code>. This is the system that makes Blender feel responsive with complex scenes: instead of recalculating everything when anything changes, the graph recalculates only what the change affects.</p>
+<p>For a creative tool used by artists, this is not a performance optimization. It is the difference between a tool you can think with and one you cannot.</p>
+<hr>
+<h2>The <code>.blend</code> file format</h2>
+<p>The <code>.blend</code> format is documented at https://wiki.blender.org/wiki/Development/Architecture/BlendFile, but you can derive most of it from the source. The format writes the DNA structs directly to disk — not serialized to JSON or XML, but as raw binary representations of the C structs, with a catalog of the struct definitions appended at the end so the loader can reconstruct them even if the struct layout has changed.</p>
+<p>This means a <code>.blend</code> file is self-describing. If you write a Blender file today and open it in a version of Blender from five years ago, the loader can read it — it has the struct definitions from both versions and can map fields between them. This is why your old project files still open.</p>
+<p>It is also why the DNA headers are the spec. The file format documentation is the headers.</p>
+<hr>
+<h2>What to do</h2>
+<ol>
+  <li>Open <code>DNA_object_types.h</code>. Find the <code>Object</code> struct. Count how many fields it has. Find the field that determines which scene collection it belongs to. Find the field that holds its material override.</li>
+</ol>
+<ol>
+  <li>Open <code>DNA_mesh_types.h</code>. Find <code>Mesh</code>. Trace how vertex positions are stored — through <code>CustomData</code> to the float array underneath.</li>
+</ol>
+<ol>
+  <li>Open a small <code>.blend</code> file in a hex editor. Find the <code>BLENDER</code> file header. After the file blocks, find the <code>DNA1</code> block — it contains the struct catalog. Compare what you see there to the headers.</li>
+</ol>
+<ol>
+  <li>The 2.8 redesign of Blender (2018–2019) restructured the viewport, the object model, and the dependency graph simultaneously. Read the <code>CHANGELOG</code> entries for 2.80 with <code>DNA_object_types.h</code> open. The struct changes tell you what the redesign actually did.</li>
+</ol>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

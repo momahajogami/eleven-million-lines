@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Lisp Exercise: Changing Emacs While It Runs — Unit 03 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 03: Richard Stallman</a>
+  </div>
+
+  <div class="essay">
+    <h1>The Lisp Exercise: Changing Emacs While It Runs</h1>
+<p>This is Freedom 1 in ten minutes. No C compilation required.</p>
+<p>The central architectural fact of Emacs: the C core is a Lisp interpreter. The editing experience — every command, every mode, every behavior — is implemented in Emacs Lisp and loaded at startup. When Emacs is running, you can load new Lisp, replacing functions in the running image. The editor changes. Nothing restarts.</p>
+<hr>
+<h2>Setup</h2>
+<p>You need a running Emacs. Either:</p>
+<ul>
+  <li>The system Emacs: <code>emacs -nw</code></li>
+  <li>Your compiled Emacs from <code>BUILD-emacs.md</code>: <code>src/emacs -nw</code></li>
+</ul>
+<p>It does not matter which. The Lisp layer is the same.</p>
+<hr>
+<h2>Exercise 1: Read a real function</h2>
+<p>In Emacs, type:</p>
+<pre><code>M-x find-function RET count-words RET</code></pre>
+<p>Emacs opens <code>simple.el</code> and jumps to the definition of <code>count-words</code>. Read it. It counts words in a region by moving point forward word by word. The entire implementation is in front of you. This is what Freedom 1 looks like in practice: the tool shows you how it works.</p>
+<p>Now look at the function just above it: <code>count-words--buffer-size</code>. Notice the naming convention — double dash means "private, not for external use." Emacs Lisp has no enforcement mechanism for this; it is a social convention, documented in the GNU Coding Standards.</p>
+<hr>
+<h2>Exercise 2: Add something</h2>
+<p>Copy <code>simple.el</code> to this scratch directory:</p>
+<pre><code>cp ~/Documents/university-coding/03/emacs/lisp/simple.el \
+   ~/Documents/university-coding/03/scratch/simple-modified.el</code></pre>
+<p>Open <code>simple-modified.el</code> and find <code>count-words</code>. Add one line that prints a message when the function runs. Find the <code>interactive</code> form — it looks like <code>(interactive (if ...))</code> — and add immediately after the opening of the function body:</p>
+<pre><code>(message "count-words called at %s" (current-time-string))</code></pre>
+<p>Save the file.</p>
+<hr>
+<h2>Exercise 3: Load it into the running Emacs</h2>
+<p>In your running Emacs:</p>
+<pre><code>M-x load-file RET</code></pre>
+<p>Navigate to <code>03/scratch/simple-modified.el</code> and press Enter.</p>
+<p>Now run <code>M-x count-words</code> on any buffer. Look at the minibuffer. Your message is there. You replaced a function in the running editor with your version.</p>
+<p>No recompile. No restart. The editor changed.</p>
+<hr>
+<h2>Exercise 4: Go further</h2>
+<p>The <code>lisp/play/</code> directory contains <code>doctor.el</code>, <code>hanoi.el</code>, <code>tetris.el</code>, <code>bubbles.el</code>, and others. Pick one. Read it. Find something small to change — a response string in <code>doctor.el</code>, the speed of a Hanoi move in <code>hanoi.el</code>. Load your modified version. See the change.</p>
+<hr>
+<h2>What you just did</h2>
+<p>The standard tool-use relationship: the tool is a fixed artifact. You operate it. You do not change it.</p>
+<p>The Emacs relationship: the tool is an environment. You enter it. You change it. The change persists for the life of the session — and if you add your modification to your <code>~/.emacs.d/init.el</code>, it persists forever. The tool becomes yours.</p>
+<p>This is the architecture Stallman designed. It is not an accident that Emacs works this way. It is a direct expression of the philosophy in the GNU Manifesto: that software should be something users can understand, modify, and share — not a fixed artifact handed down from a vendor.</p>
+<hr>
+<h2>Reading</h2>
+<ul>
+  <li><code>03/emacs/lisp/simple.el</code> — foundational Emacs Lisp; 8,000+ lines</li>
+  <li><code>03/scratch/doctor.el</code> + <code>03/scratch/doctor-annotation.md</code> — the surprise</li>
+  <li>The GNU Coding Standards (<code>03/scratch/gnu-coding-standards.txt</code>), section on Lisp conventions</li>
+</ul>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

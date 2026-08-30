@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Garden of Games — Unit 09 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 09: Quake and the Grammar of Games</a>
+  </div>
+
+  <div class="essay">
+    <h1>A Garden of Games</h1>
+<p><em>Games are a form of writing. This is not a metaphor.</em></p>
+<p>Each game here is a text — written by someone who had something to say about space, time, consequence, and the reader's role. Some of them knew this. Most didn't. That's part of the story.</p>
+<hr>
+<h2>Pong (Atari, 1972)</h2>
+<p>The same year as Unix. Dennis Ritchie was writing C at Bell Labs in New Jersey. Nolan Bushnell and Al Alcorn were building Pong in Sunnyvale, California. Two paddles. One ball. A score. The entirety of the game is approximately two hundred lines of hardware description — not software, hardware. The logic lives in transistors, not code.</p>
+<p>Pong is not a story. It is a reflex. But it is the first time a machine invited a person to <em>respond</em>, and the person responded, and the machine responded back, and this felt like something new.</p>
+<p>What it is: a two-way channel. Writing without words.</p>
+<hr>
+<h2>Space Invaders (Taito, 1978)</h2>
+<p>Tomohiro Nishikado built Space Invaders on custom hardware because the existing CPUs could not keep up. The TMS9900 could not move enough sprites fast enough. So he designed the chips himself.</p>
+<p>There is an accident in Space Invaders that became a feature: as the player shoots the aliens, there are fewer of them to draw. Fewer sprites means the CPU has spare cycles. The game speeds up. The accidental acceleration was playtested, felt right, and kept. The difficulty curve is a CPU utilization chart.</p>
+<p>What it is: a game shaped by its own hardware constraints. The machine's limits became the drama.</p>
+<hr>
+<h2>Hunt the Wumpus (Gregory Yob, 1973)</h2>
+<p>Written in BASIC. The Wumpus lives in a cave of twenty rooms arranged as a dodecahedron — twelve pentagonal faces, thirty edges, twenty vertices. The player navigates by edge connections without seeing the map. The cave is a graph. The game is topology.</p>
+<p>Yob wrote it in protest. The dominant games of the time were grid-based — "find the thing in the 10×10 grid." He wanted a different topology. So he chose one.</p>
+<p>Hunt the Wumpus is the first game with a narrative premise and a non-Euclidean space. Both of these things matter. The Wumpus is a character, even if it is never described. The cave is a world, even if it has no pictures.</p>
+<p>What it is: the first game that took topology seriously.</p>
+<hr>
+<h2>Colossal Cave Adventure (Crowther & Woods, 1976)</h2>
+<p>Will Crowther was a caver and a programmer at BBN — one of the firms that built ARPANET. He mapped Mammoth Cave in Kentucky with his daughters in mind. Then he translated the map into a FORTRAN program and added a dragon and some treasure.</p>
+<p>Don Woods found the source code on a ARPANET server in 1976, emailed Crowther for permission, and expanded it. The result is <em>Adventure</em>: the first text adventure, and the template for everything that followed.</p>
+<p>"You are standing at the end of a road before a small brick building. Around you is a forest. A small stream flows out of the building and down a gully."</p>
+<p>This is writing. The machine is the author; the player is the reader who also acts. The map is a narrative. Every room description is a sentence. The game is a novel you play with your body.</p>
+<p>What it is: the first proof that a computer could be a storytelling machine.</p>
+<hr>
+<h2>Zork (MIT, 1977 / Infocom, 1980)</h2>
+<p>A group at MIT — Blank, Daniels, Lebling, Moriarty — built Zork on a PDP-10, then commercialized it through Infocom. The parser understood natural language: not just GO NORTH and TAKE LAMP but PICK UP THE BRASS LANTERN and PUT IT IN THE TROPHY CASE. The machine was reading you.</p>
+<p>Infocom became the great literary game studio. <em>Hitchhiker's Guide to the Galaxy</em> (with Douglas Adams), <em>A Mind Forever Voyaging</em>, <em>Trinity</em> — games with genuine literary ambition, written by people who had read things.</p>
+<p>The Zork source code is online. Reading it is reading a natural language parser built in MDL (a Lisp dialect), in 1977, by people who wanted to make the computer a reader.</p>
+<p>What it is: the computer as interlocutor. Writing that writes back.</p>
+<hr>
+<h2>Pac-Man (Namco, 1980)</h2>
+<p>Toru Iwatani. The design brief was to make a game women would play — the arcade was a male space. Iwatani thought about eating, about a pizza with a slice missing. The maze is a graph. The ghosts have personalities — Blinky chases directly, Pinky targets ahead of Pac-Man, Inky is erratic, Clyde runs away when too close. Four distinct algorithms for four distinct characters.</p>
+<p>Pac-Man introduced the idea that non-player characters could have <em>behavior</em>, not just movement. The ghosts are the first NPCs. Their code is their personality.</p>
+<p>What it is: character as algorithm.</p>
+<hr>
+<h2>Donkey Kong (Nintendo, 1981)</h2>
+<p>Miyamoto's first game. He had been asked to turn an unsold Radar Scope cabinet into something new. He designed a three-level platformer with a narrative: the ape takes the girl, the carpenter climbs to save her. The carpenter was called Jumpman. He later became Mario.</p>
+<p>Miyamoto thought in spatial metaphors. "Donkey Kong" is a mistranslation — Miyamoto intended "stubborn ape" but his English was limited. The name stuck.</p>
+<p>What it is: the first platformer with a narrative arc, however simple.</p>
+<hr>
+<h2>Super Mario Bros (Nintendo, 1985)</h2>
+<p>The tutorial without a tutorial. World 1-1 teaches the controls without text. The first Goomba approaches from the right. Either you jump or you don't. If you don't, you die, and you learn what the Goomba is.</p>
+<p>This is writing. The level is the text. The player's body is the reader. The designer is the author who built a reading experience that works without words.</p>
+<p>Miyamoto designed levels by drawing on graph paper, room by room, then playing them. He revised them the way a writer revises paragraphs. The finished game is the manuscript.</p>
+<p>What it is: spatial prose. Reading with your thumbs.</p>
+<hr>
+<h2>The Legend of Zelda (Nintendo, 1986)</h2>
+<p>An open world before "open world" existed. Miyamoto wanted to give players a miniature garden to explore. The map is the narrative. The dungeon keys are the chapters. The overworld is the space between.</p>
+<p>Link's inventory is a writing system: each item a symbol, each combination a sentence. The boomerang plus the candle plus the bombs is a grammar for navigating space.</p>
+<p>The original Zelda source has not been released. But it has been reverse-engineered and documented. Reading the disassembly is reading the argument Miyamoto was making, recovered from the machine.</p>
+<p>What it is: the map as novel. Exploration as reading.</p>
+<hr>
+<h2>Tetris (Alexey Pajitnov, 1984)</h2>
+<p>Moscow. The Soviet Academy of Sciences. Pajitnov was a researcher; Tetris was a thought experiment that got out of hand.</p>
+<p>The game has no story. No characters. No level design in the Miyamoto sense. It is a pure puzzle — shapes falling, the player imposing order on entropy. And it is one of the most played games in human history.</p>
+<p>The Tetris legal battles — who owned the rights, in what country, under Soviet law — are a complete story about what it means to own a piece of writing, and what it means to not be able to own it.</p>
+<p>What it is: the puzzle without a narrative. Order against time.</p>
+<hr>
+<h2>Doom (id Software, 1993)</h2>
+<p>Released as shareware on December 10, 1993. The first episode free. The source code later released under the GPL.</p>
+<p>Doom is the direct predecessor of Quake and shares most of the same characters. Where Quake has BSP trees, Doom has a simpler sector-based engine. Where Quake is true 3D, Doom is 2.5D — the floors and ceilings exist, but you cannot aim up or down.</p>
+<p>The WAD file format — Where's All the Data — is one of the great data-driven designs in game history. The engine is separate from the content. The levels, textures, and enemies live in WAD files. This made Doom moddable from birth. The community built thousands of WADs. Some are still being made.</p>
+<p>What it is: the engine and the content separated. The first great modding platform.</p>
+<hr>
+<h2>Minecraft (Mojang / Markus Persson, 2011)</h2>
+<p>Notch built the first version in a weekend. The procedural generation means every world is unique. The creative mode means the player is the designer. The redstone system is a complete logic circuit simulator — players have built working computers inside Minecraft.</p>
+<p>Minecraft is the closest a game has come to collapsing the distinction between player and author. In creative mode, the player writes the world. The redstone computer is a program running inside a program.</p>
+<p>And yet: the player cannot see the code. The box is still closed. The final level is still on the other side of the screen.</p>
+<p>What it is: the sandbox that almost opened the door.</p>
+<hr>
+<h2>The Argument This Garden Makes</h2>
+<p>Pong (1972) → Adventure (1976) → Zork (1977) → Mario (1985) → Zelda (1986) → Doom (1993) → Quake (1996) → Minecraft (2011)</p>
+<p>This is a history of writing technologies wearing the costume of entertainment. Each game is a different argument about what reading and writing can be — what it feels like to be a reader, how much agency the reader has, what happens when the reader can respond.</p>
+<p>The games get richer, more open, more participatory. The player gets more authorship. And then, always, a wall: the wall of the closed system. You can place blocks but not write code. You can build levels but not design engines.</p>
+<p>Coding removes the wall.</p>
+<p>The person who learns to read source code — who can open Quake's renderer and understand what it is saying — is not just a more powerful player. They are a different kind of person. A person who can write to machines, not just receive from them. A person with the full access that games always promised and never quite delivered.</p>
+<p>The final level of any video game is coding. We are already there.</p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

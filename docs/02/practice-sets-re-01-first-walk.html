@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Exercise 01 — The First Walk — Unit 02 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 02: Classical Coding</a>
+  </div>
+
+  <div class="essay">
+    <h1>Reading Exercise 01 — The First Walk</h1>
+<p><em>You are not allowed to understand anything in this exercise. You are only allowed to look.</em></p>
+<p>This is a timed exercise. Each step has a time limit. When the time is up, stop, whether or not you feel done. The discipline of stopping is part of the exercise.</p>
+<hr>
+<h2>What this exercise trains</h2>
+<p>The instinct most students bring to an unfamiliar codebase is: <em>read until you understand.</em> That instinct fails at scale. It produces anxiety, not orientation.</p>
+<p>This exercise trains a different instinct: <em>look before you read. Map before you navigate. Know the shape before you know the content.</em> It is the difference between a tourist who opens the map before leaving the hotel and one who walks until lost.</p>
+<hr>
+<h2>Step 1 — The directory [5 minutes]</h2>
+<p>Open <code>practice/tcc/</code>. Look at the files. Do not open any of them.</p>
+<pre><code>ls -lh practice/tcc/*.c practice/tcc/*.h | sort -k5 -rh</code></pre>
+<p>This lists all source files sorted by size, largest first.</p>
+<p><strong>Write down, without opening any file:</strong></p>
+<ul>
+  <li>How many <code>.c</code> files are there? How many <code>.h</code> files?</li>
+  <li>What is the largest <code>.c</code> file? The smallest?</li>
+  <li>Group the files by what you guess they do, based only on their names. Aim for four or five groups.</li>
+</ul>
+<p>Time is up. Stop.</p>
+<hr>
+<h2>Step 2 — Sixty seconds each [12 minutes total]</h2>
+<p>For each file in this list, open it, look at it for exactly 60 seconds, then close it. No more. Do not read; look. Scan for structure, for patterns, for what's repeated, for what's surprising.</p>
+<pre><code>tcc.c       tccgen.c    tccpp.c
+tccelf.c    tccrun.c    libtcc.c
+tcc.h       x86_64-gen.c    i386-gen.c
+arm-gen.c   tccasm.c    tcctools.c</code></pre>
+<p><strong>After each file, write one sentence</strong> — just one — about what you saw. Not what you understood. What you saw.</p>
+<hr>
+<h2>Step 3 — Revise your map [5 minutes]</h2>
+<p>Return to your groups from Step 1. Revise them based on what you saw. Add, remove, rename.</p>
+<p><strong>Write down:</strong> what changed? Which file surprised you most, and why?</p>
+<hr>
+<h2>Step 4 — Size intuition [5 minutes]</h2>
+<p>Without looking at line counts, guess: which three files have the most lines of code? Write your guesses.</p>
+<p>Then check:</p>
+<pre><code>wc -l practice/tcc/*.c | sort -rn | head -10</code></pre>
+<p><strong>Write down:</strong> how close were you? What does the actual distribution tell you about where TCC's complexity lives?</p>
+<hr>
+<h2>Step 5 — The question you have [2 minutes]</h2>
+<p>After this walk, you have seen the whole directory but understood almost none of it.</p>
+<p><strong>Write down:</strong> the single question you most want answered about how TCC works. Not "how does everything work" — the one specific thing that made you curious.</p>
+<p>That question is your entry point for Reading Exercise 02.</p>
+<hr>
+<h2>Debrief</h2>
+<p>This exercise is complete when you have written your answers to each step. The writing is not decoration — it forces the looking to become more precise.</p>
+<p>A directory walk like this, done carefully, gives you more orientation in 30 minutes than three hours of undirected reading. It tells you where the mass is, what the structure is, and where to go next.</p>
+<p>You now know the shape of TCC. You don't yet know what it does. That comes next.</p>
+<hr>
+<p><em>Next: RE-02 — Finding main() — following the program's beginning.</em></p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 04: Blender — The Heroic Story — Unit 04 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 04: Blender</a>
+  </div>
+
+  <div class="essay">
+    <h1>Unit 04: Blender — The Heroic Story</h1>
+<p><em>This is not a unit about code. It is a unit about what code makes possible — and what it costs to keep that possibility open.</em></p>
+<hr>
+<h2>The premise</h2>
+<p>Every unit in this course is about reading code. This one is different in a way that clarifies what all the others are actually about.</p>
+<p>Blender's source code is here. It is large, dense, written in C and C++ across decades, and worth reading. But the code is not the story. The code is evidence of the story. The story is what was at stake: an artist's tool, a creative tradition, a community that organized around a piece of software and refused to let it die.</p>
+<p>In 2002, Blender's parent company went bankrupt. The software would have disappeared — closed, proprietary, dead — except that Ton Roosendaal organized a fundraising campaign to buy its freedom. The target was €100,000. The community raised it in seven weeks.</p>
+<p>That moment is the center of this unit. Everything else — the code, the open movies, the architecture, the politics — radiates from it.</p>
+<hr>
+<h2>What this unit is about</h2>
+<p><strong>Art and architecture.</strong> Blender is a tool for making things. Unlike Unix or a C compiler, its output is visible, physical in feeling, subject to aesthetic judgment. The students who use Blender — millions of them worldwide — are not primarily programmers. They are artists, architects, animators, designers, game developers. The community that saved Blender was that community. Understanding what they were saving, and why, requires understanding what the software lets you make.</p>
+<p>The first work of this unit is to learn Blender. Not deeply — not as a professional artist would. Enough to feel the tool. Enough to understand why someone would pay to keep it alive.</p>
+<p><strong>Politics and freedom.</strong> The Blender story is the GPL story, the GNU story, the Stallman story — but told from the other side. Not from the programmer's side, but from the artist's side. What does software freedom mean when you are a 3D artist in Amsterdam who just lost the tool you built your work around?</p>
+<p>It means something very concrete. It means: the thing you know how to use, the thing you spent years learning, the thing your livelihood depends on — can be taken from you. That is what proprietary software means in practice. Blender's community learned this the hard way. Their response is one of the clearest demonstrations in the history of computing of why software freedom is not an abstract political principle but a practical condition of creative life.</p>
+<p><strong>The shape of the narrative.</strong> This is also, quietly, a unit about what kinds of stories software makes possible. Blender has open movies — <em>Elephants Dream</em> (2006), <em>Big Buck Bunny</em> (2008), <em>Sintel</em> (2010), <em>Tears of Steel</em> (2012), and others — made by small teams using only open source tools, released under Creative Commons, available to everyone. They exist because Blender exists. They exist because the community paid to free it.</p>
+<p>That chain of causation — from a funding campaign to a piece of film — is the course's argument made visible. Software is culture. Culture depends on tools. Tools can be owned or freed. The choice has consequences that show up in what gets made and who gets to make it.</p>
+<hr>
+<h2>Structure</h2>
+<p>The unit has three layers, and they are not in the usual order.</p>
+<p><strong>Layer 1 — Use it.</strong> Before reading code, use the tool. Complete a beginner Blender tutorial. Make something simple — a model, an animation, a render. The goal is not skill. The goal is contact: to feel the interface, to understand what the controls do, to have the experience of making something that didn't exist before.</p>
+<p>This is unusual in this course. No other unit asks students to <em>use</em> the codebase as an end-user before reading it. Blender earns the exception because the tool is genuinely beautiful to use, and because you cannot understand what was at stake in 2002 without having used it.</p>
+<p><strong>Layer 2 — Know the story.</strong> Read the history. The founding at NeoGeo (1994). The Not a Number years. The bankruptcy (2002). The community campaign. The open movies. The Blender Foundation's ongoing work. The politics of proprietary creative tools and what Blender's existence says about the alternative.</p>
+<p>The paired texts for this layer are:</p>
+<ul>
+  <li>Ton Roosendaal's own account of the buyout campaign</li>
+  <li>Lev Manovich, <em>The Language of New Media</em> — on software as cultural form</li>
+  <li>The <em>Elephants Dream</em> production notes — what it actually took to make it</li>
+  <li>The Blender Foundation's annual reports — what sustaining this looks like in practice</li>
+</ul>
+<p><strong>Layer 3 — Read the code.</strong> With the tool in hand and the story in view, the source becomes legible in a different way. You are not reading an abstraction. You are reading the thing that made the film. You are reading the thing the community organized to save.</p>
+<p>The code is in C and C++, extensively modular, with decades of accumulation. The commentary documents in this directory will guide the walk — which files to enter, in what order, what to look for. But the walk is informed by the first two layers in a way that no other unit can achieve.</p>
+<hr>
+<h2>The argument this unit makes</h2>
+<p>Every unit in this course is making an implicit argument about why this code matters. For Unix, the argument is: this is where everything came from. For the C compilers, it is: this is how everything is made. For Blender, the argument is something else:</p>
+<p><em>This is what free software looks like when what's being freed is not a tool for programmers but a medium for artists. And the fact that it was freed — the fact that it is here, and open, and alive — is a political and cultural achievement as significant as any in the history of computing.</em></p>
+<p>That argument does not require the code to make it. The history makes it. The open movies make it. The community makes it.</p>
+<p>The code is how you know it's real.</p>
+<hr>
+<h2>A note on mood</h2>
+<p>The other units in this course have a quality of archaeology — you are excavating something that was built a long time ago and has the authority of age. This unit is different. Blender is alive. It is being actively developed. The community that saved it is still here. The open movies are still being made.</p>
+<p>The mood is not archaeology. It is something closer to inheritance — the feeling of receiving something that others fought to preserve, and recognizing what it means to be the recipient.</p>
+<p>That is a different thing than understanding. Understanding comes from reading. The feeling of inheritance comes from knowing the story well enough to know what it cost.</p>
+<p>Know the story first.</p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

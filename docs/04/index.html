@@ -36,6 +36,12 @@
     .repos a { color: #555; }
     .read-link { font-size: 0.8rem; color: #999; margin-left: 0.75rem; text-decoration: none; font-style: italic; }
     .read-link:hover { color: #333; }
+    .documents { border-top: 2px solid #e0d8cc; padding-top: 1.5rem; margin-bottom: 3rem; }
+    .documents ul { list-style: none; }
+    .documents li { padding: 0.4rem 0; border-bottom: 1px solid #f0e8dc; font-size: 0.9rem; }
+    .documents a { color: #444; text-decoration: none; font-weight: bold; }
+    .documents a:hover { text-decoration: underline; }
+    .doc-path { color: #aaa; font-size: 0.8rem; margin-left: 0.5rem; font-family: monospace; }
   </style>
 </head>
 <body>
@@ -67,6 +73,17 @@
   </div>
 
 
+
+  <div class="documents">
+    <h2>Documents</h2>
+    <ul>
+      <li><a href="blender.html">Unit 04: Blender</a> <span class="doc-path">BLENDER.md</span></li>
+      <li><a href="dna.html">Blender's DNA — The Data Model</a> <span class="doc-path">commentary/dna.md</span></li>
+      <li><a href="nodes.html">Blender's Node Systems</a> <span class="doc-path">commentary/nodes.md</span></li>
+      <li><a href="commentary-vision.html">Unit 04: Blender — The Heroic Story</a> <span class="doc-path">commentary/vision.md</span></li>
+      <li><a href="python-exercise.html">Blender's Python API — bpy</a> <span class="doc-path">scratch/python-exercise.md</span></li>
+    </ul>
+  </div>
   <div class="repos">
     <h2>Repositories</h2>
     <p class="coming-soon">Coming soon.</p>

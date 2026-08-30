@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problem Set 02 — Inside the Lineage — Unit 02 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 02: Classical Coding</a>
+  </div>
+
+  <div class="essay">
+    <h1>Problem Set 02 — Inside the Lineage</h1>
+<p><em>Corresponds to: 02-ontogeny — The C compiler family tree: DMR → PCC → GCC → TCC.</em></p>
+<p>This problem set goes inside the code. You will read specific functions, trace specific paths, and make one small modification. Line numbers given are for the original source; they may drift slightly in your practice copy.</p>
+<p>Allow yourself three to four hours across multiple sessions.</p>
+<hr>
+<h2>Problem 1 — The thin wrapper [reading, 10 min]</h2>
+<p>Open <code>practice/tcc/tcc.c</code>. It is 432 lines. This is not where most of TCC lives.</p>
+<p>Read lines 22–29. Find the <code>ONE_SOURCE</code> macro. What is it doing? Now find the <code>#include</code> statements in tcc.c. Which source files are pulled in when <code>ONE_SOURCE</code> is set to 1?</p>
+<p>Find <code>main()</code> at line 289. Read it. What are the first three calls main() makes before it gets to file compilation?</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>Which files are included via <code>ONE_SOURCE</code>?</li>
+  <li>What does <code>main()</code> do before it compiles anything?</li>
+  <li>Why might Bellard have chosen a single-compilation-unit approach?</li>
+</ul>
+<hr>
+<h2>Problem 2 — The real core [reading, 15 min]</h2>
+<p>Open <code>practice/tcc/tccgen.c</code>. Run:</p>
+<pre><code>wc -l tccgen.c</code></pre>
+<p>This file — not tcc.c — is the heart of TCC. It contains the parser, the type checker, and the code generator, deeply interleaved.</p>
+<p>Find the function declaration for <code>block()</code> near line 132. This function parses a single C statement. Read its signature and the comment above it if any.</p>
+<p>Now search for <code>TOK_IF</code> in tccgen.c:</p>
+<pre><code>grep -n "TOK_IF" tccgen.c</code></pre>
+<p>Find the case that handles an <code>if</code> statement (around line 7194). Read it without trying to understand every instruction. Get the shape of it.</p>
+<p><strong>Write down:</strong> how many lines does the <code>TOK_IF</code> case occupy? What is the first function it calls after recognizing <code>if</code>?</p>
+<hr>
+<h2>Problem 3 — Follow an if [reading, 20 min]</h2>
+<p>Stay in the <code>TOK_IF</code> case in <code>tccgen.c</code>. Read it end to end — it handles the full if/else construct in one place.</p>
+<p><strong>Write down:</strong></p>
+<ol>
+  <li>How does TCC represent a conditional branch? What function emits the actual branch instruction?</li>
+  <li>What is <code>gjmp</code> and what does it do? (Search for its definition in tccgen.c.)</li>
+  <li>When TCC sees an <code>else</code> clause, what does it do with the jump that would skip the else body?</li>
+</ol>
+<p>You don't need to understand the x86 instructions being emitted. Describe the control flow structure in terms of: <em>recognize</em>, <em>emit branch</em>, <em>compile body</em>, <em>patch address</em>.</p>
+<hr>
+<h2>Problem 4 — The architecture question [analysis, 20 min]</h2>
+<p>In PCC (the Portable C Compiler, 1977), the parser and the code generator are strictly separated: the front end builds a representation, the back end walks it. In TCC, they are interleaved: the function that recognizes <code>if</code> immediately emits branch instructions.</p>
+<p>Locate two functions in <code>tccgen.c</code> where this interleaving is most visible — where the same lines both parse a syntactic construct and emit machine code for it.</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>The two functions and their approximate line numbers</li>
+  <li>One advantage of interleaving: when would it be faster or simpler?</li>
+  <li>One disadvantage: what does it make harder?</li>
+  <li>What would you have to change in TCC to separate the front and back ends?</li>
+</ul>
+<hr>
+<h2>Problem 5 — Build and self-compile [hands-on, 30 min]</h2>
+<p>TCC can compile itself. Do this in two steps.</p>
+<p><strong>Step 1:</strong> Build TCC from source using the system compiler:</p>
+<pre><code>cd practice/tcc
+./configure &amp;&amp; make clean &amp;&amp; make
+./tcc --version    # note the output</code></pre>
+<p><strong>Step 2:</strong> Use TCC to compile TCC:</p>
+<pre><code>./tcc -o tcc2 tcc.c -DONE_SOURCE
+./tcc2 --version   # should match</code></pre>
+<p>Note: this simplified command works for most configurations. If it fails, check the Makefile for a <code>cross</code> target or read <code>Makefile</code> for the full self-compilation command.</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>Did both versions report the same version string?</li>
+  <li>How would you verify that <code>tcc</code> and <code>tcc2</code> are truly equivalent? (What inputs could you test?)</li>
+  <li>What is Thompson's "trusting trust" argument, applied to this situation? (One sentence.)</li>
+</ul>
+<hr>
+<h2>Problem 6 — Modification: banner [hands-on, 20 min]</h2>
+<p>Open <code>practice/tcc/tcc.c</code>. Find where TCC prints its version string — search for the <code>--version</code> output in the code:</p>
+<pre><code>grep -n "version\|TCC\|Tiny" tcc.c tcctools.c</code></pre>
+<p>Add a line to the version output that includes your name and the year. Something like:</p>
+<pre><code>Course edition — [Your Name], 2026</code></pre>
+<p>Rebuild:</p>
+<pre><code>make clean &amp;&amp; make
+./tcc --version</code></pre>
+<p>Your addition should appear. Now run <code>tcc -run scratch/hello.c</code> to verify the compiler still works after your modification.</p>
+<p><strong>Write down:</strong> exactly what you changed and where. What did you learn about how the version string is constructed?</p>
+<hr>
+<h2>Problem 7 — GCC entry point [reading, 15 min]</h2>
+<p>In <code>02/gcc/</code> (the original — do not modify), find the main compiler driver. GCC is large; use search:</p>
+<pre><code>grep -rn "^int main" 02/gcc/gcc/ | head -10</code></pre>
+<p>Find <code>gcc.c</code> or the equivalent driver file. Read <code>main()</code>. How does GCC's entry point compare to TCC's? Count the lines in GCC's main() function.</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>Where is GCC's main() relative to tcc's?</li>
+  <li>What does GCC's main() do that TCC's does not?</li>
+  <li>What does GCC call after parsing arguments that corresponds to TCC's compile loop?</li>
+</ul>
+<hr>
+<h2>Problem 8 — RTL [research, 20 min]</h2>
+<p>GCC uses Register Transfer Language (RTL) as its intermediate representation between the parsed source and the machine code. TCC uses no intermediate representation — it emits machine code directly.</p>
+<p>Find the GCC Internals Manual at <code>gnu.org/software/gcc/</code> and read the section titled "RTL Representation" (or search the PDF for "rtl").</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>What is an RTL expression? Give the general form.</li>
+  <li>Give one concrete example of an RTL expression and explain what C operation it represents.</li>
+  <li>How does having an IR enable optimization passes that TCC's architecture cannot support?</li>
+</ul>
+<hr>
+<p><em>Next: Problem Set 03 — history, geographies, and the long line. Open <code>ps-03-phylogeny.pdf</code>.</em></p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

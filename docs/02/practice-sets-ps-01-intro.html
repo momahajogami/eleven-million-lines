@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problem Set 01 — Starting Up — Unit 02 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 02: Classical Coding</a>
+  </div>
+
+  <div class="essay">
+    <h1>Problem Set 01 — Starting Up</h1>
+<p><em>Corresponds to: 01-intro — Module orientation, reading order, bibliography.</em></p>
+<p>Fall in Cleveland. You have two compilers on your machine and a working copy in <code>practice/tcc/</code>. This problem set gets you building, running, and looking — not yet understanding. The goal is orientation, not mastery.</p>
+<p>Allow yourself three hours, unhurried.</p>
+<hr>
+<h2>Problem 1 — Build TCC [hands-on, 15 min]</h2>
+<p>Navigate to <code>practice/tcc/</code>. Build it:</p>
+<pre><code>./configure &amp;&amp; make</code></pre>
+<p>Verify the build succeeded:</p>
+<pre><code>./tcc --version</code></pre>
+<p>Record the version number and the date of the build.</p>
+<p>If the build fails, read the error output carefully. The Makefile is readable — open it and find the <code>all:</code> target before you search the internet. Most build failures on Linux are a missing header or library. Report what went wrong before you fix it.</p>
+<p><strong>Write down:</strong> version number, build time, any errors encountered and how you resolved them.</p>
+<hr>
+<h2>Problem 2 — Hello World [hands-on, 10 min]</h2>
+<p>Navigate to <code>practice/scratch/</code>. A starter <code>hello.c</code> is already there. Compile it two ways:</p>
+<pre><code># With TCC
+../tcc/tcc hello.c -o hello-tcc
+./hello-tcc
+
+# With the system GCC
+gcc hello.c -o hello-gcc
+./hello-gcc</code></pre>
+<p>Both should print the same thing. Now compare:</p>
+<pre><code>ls -lh hello-tcc hello-gcc</code></pre>
+<p><strong>Write down:</strong> the binary sizes. What do you notice? What might explain the difference?</p>
+<hr>
+<h2>Problem 3 — Script mode [hands-on, 5 min]</h2>
+<p>TCC can compile in memory and execute immediately:</p>
+<pre><code>../tcc/tcc -run hello.c</code></pre>
+<p>Modify <code>hello.c</code> to print your name and the current date. Run it again. Notice the turnaround time between editing and running.</p>
+<p><strong>Write down:</strong> how does this compare to the gcc → binary → run cycle? When would this matter?</p>
+<hr>
+<h2>Problem 4 — Read the README [reading, 10 min]</h2>
+<p>Open <code>02/tcc/README</code> (the original, not the practice copy). Read it end to end.</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>What platforms does TCC claim to support?</li>
+  <li>What does TCC claim as its primary advantage over GCC?</li>
+  <li>What is the one-sentence description of TCC that Bellard offers?</li>
+</ul>
+<hr>
+<h2>Problem 5 — File survey [reading, 20 min]</h2>
+<p>List all <code>.c</code> files in <code>practice/tcc/</code> with <code>ls *.c</code>. For each file in the list below, write a one-sentence guess of its purpose based only on the filename. Do not open the files yet.</p>
+<pre><code>tcc.c          tccpp.c        tccgen.c       libtcc.c
+tccelf.c       tccrun.c       tcctools.c     tccdbg.c
+x86_64-gen.c   i386-gen.c     arm-gen.c      tccasm.c</code></pre>
+<p>Now open each file for exactly 30 seconds. Read only enough to revise your guess. Revise.</p>
+<p><strong>Write down:</strong> your before and after guesses for each file. Which surprises you most?</p>
+<p>Note: <code>tcc.c</code> is only 432 lines. Does its size match what you expected from the name? Look at lines 22–29 to understand why.</p>
+<hr>
+<h2>Problem 6 — Primary source [research, 30 min]</h2>
+<p>Find "The Development of the C Language" by Dennis M. Ritchie (1993). It is freely available online — search the exact title. Read sections 1 through 3.</p>
+<p><strong>Write down:</strong></p>
+<ol>
+  <li>What language came before C? What machine did it run on?</li>
+  <li>What was the key limitation of that language that motivated C's design?</li>
+  <li>What does Ritchie say about the relationship between C and Unix?</li>
+</ol>
+<p>Write one paragraph per question, in your own words. Cite the section you're drawing from.</p>
+<hr>
+<h2>Problem 7 — Bibliography check [research, 15 min]</h2>
+<p>The intro document lists freely available and standard references. For each item below, verify you can actually find and access it:</p>
+<ul>
+  <li>Ritchie's development paper (from Problem 6)</li>
+  <li>Thompson's "Reflections on Trusting Trust" — <em>CACM</em> 27.8 (1984)</li>
+  <li>Unix Heritage Society at tuhs.org — can you find the V6 C compiler source?</li>
+  <li>Computer History Museum oral histories — find a video interview with Brian Kernighan</li>
+</ul>
+<p><strong>Write down:</strong> direct links or locations for each. Note anything you couldn't find.</p>
+<hr>
+<h2>Problem 8 — Reflection [writing, 15 min]</h2>
+<p>In your own words: TCC and GCC are both C compilers. What is the fundamental difference in their philosophy? Give one concrete example from the code or documentation of each that illustrates this difference.</p>
+<p>One paragraph. No more than 200 words.</p>
+<hr>
+<p><em>Next: Problem Set 02 — the compiler lineage. Open <code>ps-02-ontogeny.pdf</code> and <code>practice/tcc/tccgen.c</code>.</em></p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

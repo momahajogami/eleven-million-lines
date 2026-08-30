@@ -36,6 +36,12 @@
     .repos a { color: #555; }
     .read-link { font-size: 0.8rem; color: #999; margin-left: 0.75rem; text-decoration: none; font-style: italic; }
     .read-link:hover { color: #333; }
+    .documents { border-top: 2px solid #e0d8cc; padding-top: 1.5rem; margin-bottom: 3rem; }
+    .documents ul { list-style: none; }
+    .documents li { padding: 0.4rem 0; border-bottom: 1px solid #f0e8dc; font-size: 0.9rem; }
+    .documents a { color: #444; text-decoration: none; font-weight: bold; }
+    .documents a:hover { text-decoration: underline; }
+    .doc-path { color: #aaa; font-size: 0.8rem; margin-left: 0.5rem; font-family: monospace; }
   </style>
 </head>
 <body>
@@ -72,6 +78,17 @@
   </div>
 
 
+
+  <div class="documents">
+    <h2>Documents</h2>
+    <ul>
+      <li><a href="stallman.html">Unit 03: Richard Stallman</a> <span class="doc-path">STALLMAN.md</span></li>
+      <li><a href="commentary-vision.html">Vision — Unit 03: The Prophet</a> <span class="doc-path">commentary/vision.md</span></li>
+      <li><a href="build-emacs.html">Building Emacs from Source</a> <span class="doc-path">scratch/BUILD-emacs.md</span></li>
+      <li><a href="scratch-doctor-annotation.html">doctor.el — The Surprise</a> <span class="doc-path">scratch/doctor-annotation.md</span></li>
+      <li><a href="lisp-exercise.html">The Lisp Exercise: Changing Emacs While It Runs</a> <span class="doc-path">scratch/lisp-exercise.md</span></li>
+    </ul>
+  </div>
   <div class="repos">
     <h2>Repositories</h2>
     <p class="coming-soon">Coming soon.</p>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vision — Unit 03: The Prophet — Unit 03 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 03: Richard Stallman</a>
+  </div>
+
+  <div class="essay">
+    <h1>Vision — Unit 03: The Prophet</h1>
+<p><em>This unit is about the relationship between ideas and tools. Specifically: what happens when someone decides that an idea is important enough to spend a life on it, and the idea is this — that software should be free.</em></p>
+<hr>
+<h2>The arc of the course so far</h2>
+<p>Unit 01 gave you the ground. Unix: the operating system that became the common world of computing. Small, austere, built by people who cared about elegance. Thompson and Ritchie in adjacent offices at Bell Labs, building something they were not sure anyone else would use.</p>
+<p>Unit 02 gave you the tools. The C compilers: how software is made from source. DMR's original four thousand lines. Johnson's portable architecture. Stallman's political answer. Bellard's minimalist rejoinder. You modified a living compiler. Your name is in a version string.</p>
+<p>Unit 03 gives you the argument.</p>
+<p>The argument is: all of that — Unix, C, the compilers, the operating system — was at risk. AT&T locked it. Corporations were discovering that source code was leverage. The AI Lab culture that produced Stallman was already ending when he worked there. And he saw it ending and decided to build a replacement from scratch, free from the beginning, legally protected by an instrument designed to keep it free.</p>
+<p>That is the GNU project. That is this unit.</p>
+<hr>
+<h2>What makes Stallman different</h2>
+<p>There have been many important programmers. There have been many important open source advocates. Stallman is different in a specific way: he is the one who understood that <em>law</em> was the terrain.</p>
+<p>Thompson and Ritchie built beautiful tools. They did not build legal protection for those tools. Torvalds built a kernel; he chose Stallman's license for it. Bellard built TCC; he chose Stallman's license for it. Roosendaal freed Blender; he used Stallman's license to make the freedom credible.</p>
+<p>The GPL is the thing that makes all of this possible — not as a set of restrictions but as a guarantee. A guarantee that what is free will remain free. That the work of the community cannot be extracted and enclosed. That the commons is self-defending.</p>
+<p>Stallman understood this when almost nobody else did. He understood it in 1983, when the idea was radical. He built the instrument. He defended it in court. He evangelized it for decades, at personal cost, with an intensity that many people found difficult.</p>
+<p>The result: the legal and institutional infrastructure of free software exists. Without it, the landscape of computing in 2026 would look very different. The projects in Units 04 and 05 would not exist in their current form. Linux would not exist in its current form. The course itself — which depends on freely available source for all eleven codebases — would not exist.</p>
+<p>This is what it means to spend a life on an idea. The idea doesn't just persist. It propagates. It becomes the ground.</p>
+<hr>
+<h2>The three artifacts</h2>
+<p><strong>The GNU Manifesto</strong> is the statement of the idea. Read it as you would read a founding document. It was written for programmers, by a programmer, in 1985, when the alternative was not yet clear. It argued for something that did not yet exist and explained why it should. Most of what it predicted has come true.</p>
+<p><strong>The GPL</strong> is the operationalization of the idea. The Manifesto says what freedom means. The GPL makes freedom enforceable. It is a legal document, and it repays close reading — not just as legal text but as argument. The GPL v2's "liberty or death" clause, the GPL v3's anti-tivoization provisions: these are responses to specific threats, and understanding the threats illuminates the responses.</p>
+<p><strong>Emacs</strong> is the embodiment of the idea. A tool that is also a world. An editor that is also a Lisp machine. A program that models Freedom 1 in its own architecture: you can study how it works, and change it, while it is running. The source and the tool are not separate.</p>
+<hr>
+<h2>The political reading</h2>
+<p>This unit asks you to read code politically. Not in the sense of partisan politics, but in the original sense: <em>polis</em>, the city, the commons, the question of what we share and how.</p>
+<p>The question underneath all of this is: who owns the tools?</p>
+<p>When AT&T locked Unix, they answered: we do. When Stallman built GNU, he answered: nobody, everybody, you. When Xerox refused to share the printer driver, they answered: we decide what you can fix. When Bellard released TCC under the LGPL, he answered: anyone who wants to can use this.</p>
+<p>These are political answers to a political question. The code is the evidence. The licenses are the argument. The history is the context.</p>
+<hr>
+<h2>The texture of this unit</h2>
+<p>More than any other unit, this one is about <em>reading documents</em>. The GNU Manifesto. The GPL. The LGPL. Stallman's philosophical essays. The <em>Free as in Freedom</em> biography. These are texts that reward slow reading, annotation, and return.</p>
+<p>The code — Emacs Lisp, GCC, GDB — is illustration. You will read some of it. You will use GDB in <code>scratch/</code>. You will return to GCC with new eyes. But the primary act here is reading prose and understanding an argument.</p>
+<p>That is appropriate. This is the unit about the <em>idea of free software</em>. Ideas live in language before they live in code.</p>
+<hr>
+<h2>One moment to hold</h2>
+<p>On October 13, 2002 — the day Blender was released as free software under the GPL — a license Stallman had written thirteen years earlier did exactly what it was designed to do. It provided the legal guarantee that made a community willing to pay €100,000 to free a piece of software they cared about.</p>
+<p>Stallman was not there. He had no direct involvement. He didn't know Ton Roosendaal. But his work was there, doing exactly what he designed it to do, for exactly the kind of user he had always said it was for.</p>
+<p>That is what it looks like when an idea succeeds.</p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

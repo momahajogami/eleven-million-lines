@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage — Unit 08: The Builders of Holes — Unit 08 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 08: Simplicial Homology by Hand</a>
+  </div>
+
+  <div class="essay">
+    <h1>Heritage — Unit 08: The Builders of Holes</h1>
+<p><em>Topology is the study of what survives transformation. The people who built it were themselves transformed by what they studied.</em></p>
+<hr>
+<h2>Henri Poincaré (1854–1912)</h2>
+<p>He appears again here because the field begins with him. (His full portrait is in <code>07/HERITAGE.md</code>.)</p>
+<p>In 1895, Poincaré published <em>Analysis Situs</em> — the founding document of algebraic topology. He was trying to understand the qualitative, global properties of geometric spaces: not distances and angles, but <em>connectivity</em>. Can you get from here to there? Is this space the same as that one, in some fundamental sense, if you stretch and bend but do not tear?</p>
+<p>He introduced the Betti numbers — numerical invariants that count, roughly, the number of "independent holes" of each dimension in a space. A circle has one one-dimensional hole (the loop). A torus has two. A sphere has none in dimension one but one in dimension two. These numbers are preserved under continuous deformation: you can stretch and compress a torus as much as you like, but its Betti numbers remain the same.</p>
+<p>The simplicial homology we build in this unit is the machinery that makes Betti numbers precise and computable. You break the space into simple pieces — simplices — build a chain complex from them, and extract the homology groups. The Betti numbers are the ranks of those groups.</p>
+<p>Poincaré was working by intuition, by hand, in prose. He was computing things that would not have formal definitions for another thirty years.</p>
+<hr>
+<h2>Emmy Noether (1882–1935)</h2>
+<p>Noether's contribution to topology is less famous than her contributions to algebra and physics, but it is the contribution that made this unit possible.</p>
+<p>In the early 1920s, mathematicians were computing Betti numbers the way Poincaré had described — as numbers, invariants, counts of holes. The computation worked, but the framework was rigid. You could count holes; you could not talk about what holes <em>were</em>, how they related to each other, what happened when you combined two spaces.</p>
+<p>Noether observed, in a seminar around 1925, that what Poincaré's construction was actually computing was not numbers but <em>groups</em> — abelian groups, one for each dimension, whose rank happened to equal the Betti number. By replacing the number with the group, you got a richer invariant. Two spaces could have the same Betti numbers but different homology groups — the group structure captured something the number missed.</p>
+<p>This shift — from Betti numbers to homology groups — is the move that makes modern algebraic topology possible. It is a small observation, almost obvious in retrospect, and it restructured the entire field.</p>
+<p>Her students, who were in the seminar, spread it through the literature. The credit accreted to her slowly. She was not the kind of mathematician who fought for attribution.</p>
+<hr>
+<h2>L.E.J. Brouwer (1881–1966)</h2>
+<p>Luitzen Egbertus Jan Brouwer was Dutch, combative, philosophically uncompromising, and one of the best topologists of the twentieth century. He is the reason we know what "dimension" means.</p>
+<p>His topological results are major. The Brouwer fixed-point theorem: any continuous map from a disk to itself has at least one fixed point — a point the map sends to itself. This is one of the most-applied theorems in mathematics, with consequences in economics (Nash equilibrium proofs), differential equations, and game theory. The proof is a topological argument: it follows from the fact that the disk cannot be continuously retracted onto its boundary.</p>
+<p>He proved the invariance of domain theorem: a continuous injective map from R^n to R^n is necessarily an open map. This implies that R^m and R^n are not homeomorphic for m ≠ n — which sounds obvious but is surprisingly hard to prove without the right tools.</p>
+<p>He also invented intuitionism — the philosophical position that mathematical objects exist only as mental constructions, that a proof must construct the thing it proves exists, and that the law of excluded middle (either P or not-P) is not automatically valid for infinite domains. This put him in a decades-long argument with Hilbert, who believed mathematics was a formal game with freely invented axioms. The argument was fierce, personal, and eventually caused Brouwer to be removed from the editorial board of the leading mathematics journal of the era.</p>
+<p>In later life, Brouwer became increasingly reclusive and convinced that his colleagues were working against him. The combination of brilliance, philosophical rigidity, and interpersonal difficulty made him difficult to be around. He outlived most of his enemies, dying at eighty-five after being hit by a car while crossing the street in front of his house.</p>
+<hr>
+<h2>Solomon Lefschetz (1884–1972)</h2>
+<p>He was born in Moscow, raised in Paris, trained as an engineer.</p>
+<p>In 1907, working at a Westinghouse transformer plant in Pittsburgh, he was involved in an industrial accident. Both of his hands were destroyed. He was twenty-three.</p>
+<p>He spent years recovering, in pain, rebuilding his life. He decided to become a mathematician. He enrolled at Clark University in Massachusetts, studied under W.D.A. Donaldson, received his PhD, and began producing results in algebraic topology that would reshape the field.</p>
+<p>The Lefschetz fixed-point theorem generalizes Brouwer's: given a continuous map from a compact triangulable space to itself, the theorem provides an algebraic criterion — the Lefschetz number, computed from the map's action on homology — for whether the map has a fixed point. If the Lefschetz number is nonzero, there must be a fixed point.</p>
+<p>The Lefschetz hyperplane theorem describes how the topology of an algebraic variety relates to the topology of its hyperplane sections. It was one of the key tools in the proof of the Weil conjectures that Grothendieck's program aimed at.</p>
+<p>He moved to Princeton, became department chair, and ran one of the most powerful mathematics departments in America for decades. He was famously difficult: abrasive, opinionated, sometimes wrong and sometimes unaware of it, occasionally unjust. He also built Princeton into a world center of mathematics and mentored generations of topologists who could not have developed elsewhere.</p>
+<p>He worked with hooks strapped to the stumps of his wrists, writing on blackboards. He learned to do everything he needed to do. He published his last paper at seventy-nine.</p>
+<hr>
+<h2>What this unit is about</h2>
+<p>Homology is the systematic study of holes. A hole in dimension zero is a disconnection — the space falls into separate pieces. A hole in dimension one is a loop that cannot be filled — a circle inside a space with no disk bounded by it. A hole in dimension two is a cavity, a void inside a solid.</p>
+<p>The simplicial homology we build in this unit is a computational machine for finding and counting these holes. It works by:</p>
+<ol>
+  <li>Breaking the space into simplices — points, edges, triangles, tetrahedra — the simplest possible pieces</li>
+  <li>Building a sequence of groups (the chain groups) from these pieces</li>
+  <li>Building maps between the groups (the boundary operators) that encode how each piece is bounded by pieces of one dimension lower</li>
+  <li>Computing the homology groups as the kernel of each boundary map modulo the image of the next</li>
+</ol>
+<p>The computation is mechanical. Given a simplicial complex, the homology groups can be computed by linear algebra — row-reducing matrices over integers.</p>
+<p>But the ideas behind the computation are due to these four people. Poincaré invented the question. Noether gave it the right algebraic framework. Brouwer and Lefschetz proved theorems that showed what the machinery was capable of — what kinds of problems it could solve, what kinds of geometric facts it could detect.</p>
+<p>You will build this machinery from scratch in multiple languages. When you are done, you will have an executable version of something that took the mathematical community about fifty years to develop.</p>
+<p>The people who built it, during those fifty years, were frequently working without institutional support, without adequate recognition, in the aftermath of two world wars, in bodies that did not always cooperate. Lefschetz used hooks. Noether worked unpaid for years. Grothendieck did not have a country.</p>
+<p>The mathematics survived. It is ours now.</p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

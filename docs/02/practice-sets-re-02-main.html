@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Exercise 02 — Finding main() — Unit 02 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 02: Classical Coding</a>
+  </div>
+
+  <div class="essay">
+    <h1>Reading Exercise 02 — Finding main()</h1>
+<p><em>Every program has a beginning. This exercise finds it, follows it two steps, and stops.</em></p>
+<hr>
+<h2>What this exercise trains</h2>
+<p>The ability to find a program's entry point and follow its first few calls is a fundamental navigation skill. It does not require understanding the program. It requires only knowing where to look.</p>
+<p>In most programs, <code>main()</code> is not where the interesting work happens. It is the airport: transit, not destination. But understanding the airport tells you what is adjacent to it and how to get anywhere else.</p>
+<hr>
+<h2>Step 1 — Find main() [5 minutes]</h2>
+<p>Locate <code>main()</code> in <code>practice/tcc/tcc.c</code>:</p>
+<pre><code>grep -n "^int main" practice/tcc/tcc.c</code></pre>
+<p>Open the file at that line. Read <code>main()</code> end to end. It is short.</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>The line number where <code>main()</code> begins</li>
+  <li>How many lines long is it?</li>
+  <li>How many function calls does it make?</li>
+  <li>What is the first function call, and what do you guess it does from the name alone?</li>
+</ul>
+<hr>
+<h2>Step 2 — One level down [10 minutes]</h2>
+<p>Take the first function call that <code>main()</code> makes (not a standard library call — the first TCC-specific call). Find its definition.</p>
+<pre><code>grep -n "^tcc_\|^static.*tcc_\|^int tcc_\|^void tcc_" practice/tcc/libtcc.c | head -20</code></pre>
+<p>Or use:</p>
+<pre><code>grep -rn "^LIBTCCAPI\|^ST_FUNC\|^PUB_FUNC" practice/tcc/*.c | grep "function_name"</code></pre>
+<p>Read that function for 5 minutes. You will not understand all of it. Read for shape, not content.</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>The function name and file it lives in</li>
+  <li>Approximately how many lines long is it?</li>
+  <li>What is the first thing it does?</li>
+  <li>What is the last thing it does?</li>
+</ul>
+<hr>
+<h2>Step 3 — One level further [10 minutes]</h2>
+<p>Take the first TCC-specific function call <em>inside the function from Step 2</em>. Find it. Read it for 5 minutes.</p>
+<p>Stop after 5 minutes, whether or not you feel done.</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>The function name and file</li>
+  <li>One thing you understood about what it does</li>
+  <li>One thing you did not understand</li>
+</ul>
+<hr>
+<h2>Step 4 — The call tree [5 minutes]</h2>
+<p>Draw (on paper or in your notes) a simple call tree:</p>
+<pre><code>main()
+  └── [Step 2 function]
+        └── [Step 3 function]</code></pre>
+<p>You have traced three levels of a program that has many, many more. That is enough.</p>
+<p><strong>Write down:</strong> at Step 3, do you feel closer to understanding TCC or further? Why?</p>
+<hr>
+<h2>Step 5 — The surprise [3 minutes]</h2>
+<p>Return to <code>tcc.c</code> and read lines 22–29 again. Find the <code>#include "libtcc.c"</code> line.</p>
+<p>TCC includes its own source files — not headers, the <code>.c</code> files themselves. This is unusual. Most programs compile each <code>.c</code> file separately and link the objects. TCC compiles everything as one translation unit.</p>
+<p><strong>Write down:</strong> what do you think the advantage of this approach is? What might be a disadvantage? (There is no trick — think it through.)</p>
+<hr>
+<h2>Debrief</h2>
+<p>You have now walked the call tree three levels deep. You started from a 432-line wrapper file and ended up somewhere in the middle of a function you don't yet understand.</p>
+<p>That is normal. That is what reading code feels like at the start.</p>
+<p>The next time you read TCC code, you will recognize some of the function names you saw today. Recognition accumulates. Comprehension follows recognition, not the other way around.</p>
+<hr>
+<p><em>Next: RE-03 — Following a Token — tracking one C keyword through the entire compilation pipeline.</em></p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blender's Node Systems — Unit 04 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 04: Blender</a>
+  </div>
+
+  <div class="essay">
+    <h1>Blender's Node Systems</h1>
+<p>Blender has three major node systems: the Shader Editor (material nodes), the Compositor, and Geometry Nodes. They share an architecture. Learning one is learning all three.</p>
+<p>The shared architecture is not accidental. It is Blender's answer to a design problem: how do you give users a visual programming environment that is both expressive and consistent? The answer was to define a general node-graph system and implement each domain — shading, compositing, geometry — as a specialization of that system rather than a separate tool.</p>
+<hr>
+<h2>Where the code lives</h2>
+<ul>
+  <li><code>source/blender/nodes/</code> — the node type definitions for all three systems</li>
+  <li><code>source/blender/blenkernel/BKE_node.hh</code> — the shared node graph API</li>
+  <li><code>source/blender/makesdna/DNA_node_types.h</code> — the data structures (stored in <code>.blend</code>)</li>
+  <li><code>source/blender/editors/space_node/</code> — the node editor UI</li>
+</ul>
+<p>Start with <code>DNA_node_types.h</code>. The key structs are <code>bNodeTree</code>, <code>bNode</code>, and <code>bNodeSocket</code>. A <code>bNodeTree</code> is a graph. <code>bNode</code> is a node in that graph. <code>bNodeSocket</code> is an input or output on a node. The connections between nodes are <code>bNodeLink</code> structs stored in the tree.</p>
+<hr>
+<h2>The abstraction</h2>
+<p>Every node, in every domain, is registered as a <code>bNodeType</code>. The registration supplies callbacks: <code>execute</code> (what the node computes), <code>draw_buttons</code> (how it appears in the UI), <code>update</code> (called when connections change). The node graph system calls these callbacks; the specific shading or geometry logic lives in the callbacks, not in the graph engine.</p>
+<p>Look in <code>source/blender/nodes/shader/nodes/</code> — each file is one shader node. <code>node_shader_mix.cc</code> is the Mix node you have probably used. It is short. The geometry equivalent is in <code>source/blender/nodes/geometry/nodes/</code>.</p>
+<p>The brevity of individual node implementations is the design working: the graph machinery handles connectivity, dependency, and execution order. Each node only has to say what it computes.</p>
+<hr>
+<h2>Geometry Nodes</h2>
+<p>Geometry Nodes (introduced in 2.92, 2021; substantially redesigned in 3.0 and 3.3) is the newest and most ambitious of the three systems. It gives the user access to Blender's geometry kernel — the same code that runs modifiers and simulations — through a visual programming interface.</p>
+<p>A Geometry Nodes graph takes geometry as input and produces geometry as output. The nodes between can sample attributes, instantiate objects, run physics-style simulations, generate procedural patterns, and combine meshes in arbitrary ways. The result is a parametric modeling system: the graph describes how the geometry is constructed, not just what it looks like. Change an input parameter and the geometry regenerates.</p>
+<p>The source for Geometry Nodes is in <code>source/blender/nodes/geometry/</code>. The geometry operations themselves — the actual algorithms — are in <code>source/blender/geometry/</code> (a separate library). The node implementations in the former call the algorithms in the latter. This is a clean separation: the node graph knows about data flow; the geometry library knows about mesh operations.</p>
+<hr>
+<h2>Why this matters</h2>
+<p>Most creative software has scripting as an afterthought: a macro language bolted on after the tool was built, with limited access to the application's internals. Blender's node systems are the opposite — they are the primary interface for a significant portion of the tool's functionality, and they expose the underlying algorithms directly.</p>
+<p>A Geometry Nodes graph is a program. It has inputs and outputs, data flow, conditionals (through switch nodes), and iteration (through simulation zones). A user building a procedural city generator in Geometry Nodes is writing a program that generates 3D geometry. The fact that it looks like a node graph rather than Python code does not change what it is.</p>
+<p>This is consistent with Blender's general philosophy: the tool should be understandable from the inside. The shader graph, the compositor graph, and the geometry graph are all inspectable, modifiable, and sharable in the same way as any other data in a <code>.blend</code> file. They are not black boxes. They are documents.</p>
+<hr>
+<h2>What to do</h2>
+<ol>
+  <li>Open <code>DNA_node_types.h</code>. Read the definitions of <code>bNodeTree</code>, <code>bNode</code>, <code>bNodeSocket</code>, <code>bNodeLink</code>. Sketch the data structure on paper before reading further.</li>
+</ol>
+<ol>
+  <li>Open <code>source/blender/nodes/shader/nodes/node_shader_mix.cc</code>. This is the Mix shader node. Find where the mixing logic actually runs. Notice how little code there is.</li>
+</ol>
+<ol>
+  <li>Open <code>source/blender/nodes/geometry/nodes/node_geo_mesh_primitive_cube.cc</code>. This is the Cube node in Geometry Nodes — it generates a cube mesh. Find where the vertices are created. Compare the geometry generation code to <code>DNA_mesh_types.h</code> — you should see the same structs being populated.</li>
+</ol>
+<ol>
+  <li>In Blender, build a small Geometry Nodes graph: take a mesh input, scale it, output it. Then open the <code>.blend</code> file in a hex editor and find the <code>DNA1</code> block. The node graph you built is stored as <code>bNodeTree</code> / <code>bNode</code> / <code>bNodeSocket</code> / <code>bNodeLink</code> structs. The data you read in the code is the data in the file.</li>
+</ol>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

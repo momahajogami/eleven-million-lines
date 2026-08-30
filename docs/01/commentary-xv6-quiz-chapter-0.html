@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz — xv6 Book Chapter 0: Operating System Interfaces — Unit 01 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 01: Early Unix</a>
+  </div>
+
+  <div class="essay">
+    <h1>Quiz — xv6 Book Chapter 0: Operating System Interfaces</h1>
+<hr>
+<h2>Processes and memory</h2>
+<ol>
+  <li><code>fork()</code> returns twice. What value does it return in the parent? What value in the child?</li>
+</ol>
+<ol>
+  <li>After <code>fork()</code>, if you change a variable in the child, does it change in the parent? Why or why not?</li>
+</ol>
+<ol>
+  <li>What does <code>exec()</code> do to the calling process's memory? Does it return?</li>
+</ol>
+<ol>
+  <li>What system call would you use to grow a process's memory at runtime?</li>
+</ol>
+<hr>
+<h2>File descriptors</h2>
+<ol>
+  <li>By convention, what are file descriptors 0, 1, and 2?</li>
+</ol>
+<ol>
+  <li><code>read()</code> returns 0. What does that mean?</li>
+</ol>
+<ol>
+  <li>Why is a newly allocated file descriptor always the lowest-numbered unused one? Why does that matter for I/O redirection?</li>
+</ol>
+<ol>
+  <li><code>fork()</code> copies the file descriptor table. What does <code>exec()</code> do to it?</li>
+</ol>
+<hr>
+<h2>Pipes</h2>
+<ol>
+  <li>A pipe gives you two file descriptors. What is each one for?</li>
+</ol>
+<ol>
+  <li>Why must the child close the write end of a pipe before calling <code>exec()</code> on a program that reads from it?</li>
+</ol>
+<ol>
+  <li>Name two advantages pipes have over temporary files.</li>
+</ol>
+<hr>
+<h2>File system</h2>
+<ol>
+  <li>What is an inode? How is it different from a filename?</li>
+</ol>
+<ol>
+  <li>What does <code>unlink()</code> actually do — when is the file's data freed?</li>
+</ol>
+<ol>
+  <li>Why is <code>cd</code> built into the shell itself rather than being an external program?</li>
+</ol>
+<hr>
+<h2>Design</h2>
+<ol>
+  <li>Why are <code>fork()</code> and <code>exec()</code> separate system calls rather than combined into one? What would be harder if they were combined?</li>
+</ol>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

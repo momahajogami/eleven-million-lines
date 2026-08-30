@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xv6 — Entry — Unit 01 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 01: Early Unix</a>
+  </div>
+
+  <div class="essay">
+    <h1>xv6 — Entry</h1>
+<p><em>The first walk through. Where to stand, what to look at, what to feel.</em></p>
+<hr>
+<h2>The numbers</h2>
+<p>9,400 lines of C and assembly. That is an operating system. Process management, virtual memory, a filesystem, a shell, a handful of user programs. Everything required for Unix to exist, in a space smaller than most single files in a modern codebase.</p>
+<p>Hold that number. It will keep mattering.</p>
+<hr>
+<h2>The door: <code>main.c</code></h2>
+<p>Open <code>main.c</code>. It is 38 lines of actual code.</p>
+<pre><code>int
+main(void)
+{
+  kinit1(end, P2V(4*1024*1024)); // phys page allocator
+  kvmalloc();      // kernel page table
+  mpinit();        // detect other processors
+  lapicinit();     // interrupt controller
+  seginit();       // segment descriptors
+  picinit();       // disable pic
+  ioapicinit();    // another interrupt controller
+  consoleinit();   // console hardware
+  uartinit();      // serial port
+  pinit();         // process table
+  tvinit();        // trap vectors
+  binit();         // buffer cache
+  fileinit();      // file table
+  ideinit();       // disk
+  startothers();   // start other processors
+  kinit2(P2V(4*1024*1024), P2V(PHYSTOP)); // must come after startothers()
+  userinit();      // first user process
+  mpmain();        // finish this processor's setup
+}</code></pre>
+<p>You have just read the boot sequence of an operating system. Each line wakes something up — hardware, memory, interrupt handling — in the exact order required. The comments are not documentation appended afterward. They are the code. Each one is a complete sentence describing a complete act.</p>
+<p>Notice <code>userinit()</code>. That is the moment Unix begins. Everything before it is the kernel making itself ready. Everything after it is the kernel waiting to be interrupted by a user process wanting something. The whole model is there in the call order.</p>
+<p><code>mpmain()</code> at the end hands off to the scheduler and never returns. The kernel becomes reactive. That is what an operating system is: a very careful initialization followed by infinite patience.</p>
+<hr>
+<h2>Five files worth reading in order</h2>
+<p>These are not the only important files. They are the path in.</p>
+<h3>1. <code>main.c</code> — the boot sequence</h3>
+<p>Already read. 38 lines. Do not skip it.</p>
+<h3>2. <code>proc.c</code> — the process model</h3>
+<p>534 lines. <code>fork()</code>, <code>exit()</code>, <code>wait()</code>, <code>sleep()</code>, <code>wakeup()</code>, the scheduler. This is the heart of Unix. Every time you run a command in a shell, <code>fork()</code> happens. Every time a program finishes, <code>exit()</code> and <code>wait()</code> happen. Read <code>fork()</code> first — it is about 40 lines and it is one of the most important functions ever written.</p>
+<h3>3. <code>vm.c</code> — virtual memory</h3>
+<p>394 lines. How the kernel gives each process the illusion that it owns all of memory. Dense but not long. The key function is <code>copyuvm()</code> — it shows what <code>fork()</code> actually does to memory when it duplicates a process.</p>
+<h3>4. <code>fs.c</code> — the filesystem</h3>
+<p>670 lines, the longest kernel file. Inodes, directories, path traversal. The filesystem is where Unix becomes a place — where programs and data have names and addresses that persist. Read <code>namei()</code> to see how a path like <code>/usr/bin/grep</code> becomes an inode.</p>
+<h3>5. <code>sh.c</code> — the shell</h3>
+<p>493 lines. A complete Unix program, not a kernel file. The shell is the user's interface to everything above. It forks processes, sets up pipes, redirects I/O. Reading it after <code>proc.c</code> is the payoff: you see <code>fork()</code> being used in the wild, doing exactly what it was designed to do.</p>
+<hr>
+<h2>What the README says</h2>
+<p>xv6's own README acknowledges Lions' Commentary directly:</p>
+<blockquote>
+  <p><em>xv6 is inspired by John Lions's Commentary on UNIX 6th Edition.</em></p>
+</blockquote>
+<p>That sentence is not an accident. xv6 was written to be read alongside a commentary. The authors knew they were making a text, not just a program. That is rare. Treat it accordingly.</p>
+<hr>
+<h2>The moment</h2>
+<p>You are standing inside a working operating system. It boots. It runs processes. It has a filesystem and a shell. It does everything Unix does. And you can read the whole thing in an afternoon.</p>
+<p>That is not a simplification. That is what it actually was — what Thompson and Ritchie actually built, before decades of accumulation. The smallness is not a teaching conceit. The smallness is the original fact.</p>
+<hr>
+<p><em>Next: <code>proc.c</code> — read <code>fork()</code> and feel the process model click into place.</em></p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

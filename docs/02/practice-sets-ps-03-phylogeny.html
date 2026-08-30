@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problem Set 03 — The Long Line — Unit 02 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 02: Classical Coding</a>
+  </div>
+
+  <div class="essay">
+    <h1>Problem Set 03 — The Long Line</h1>
+<p><em>Corresponds to: 03-phylogeny — Geographies, characters, and the history of the compiler idea.</em></p>
+<p>This problem set asks you to go outside the code and into history. Most of the materials you need are freely available. Some require library access. All are worth finding.</p>
+<p>Allow yourself four to five hours, spread across a week.</p>
+<hr>
+<h2>Problem 1 — Thompson's question [reading + writing, 45 min]</h2>
+<p>Find "Reflections on Trusting Trust" by Ken Thompson (1984). It is eight pages, published in <em>Communications of the ACM</em> vol. 27, no. 8. It is widely available online — search the exact title.</p>
+<p>Read the whole thing. Then answer:</p>
+<p><strong>Part A:</strong> What is the "trusting trust" attack? Explain it step by step, in your own words, as if explaining to someone who hasn't read the paper. The explanation should cover: (1) the Trojan horse in the compiler, (2) why fixing the source code doesn't fix the binary, (3) what it would take to actually fix it.</p>
+<p><strong>Part B:</strong> You have TCC's source in <code>practice/tcc/</code>. You can read every line. Can you verify that TCC does not contain a trusting trust attack? Explain your reasoning carefully. This is not a trick question with a clean answer.</p>
+<p>Write at least 400 words total across both parts.</p>
+<hr>
+<h2>Problem 2 — Before C [research, 25 min]</h2>
+<p>Ritchie's 1993 paper describes B, the language that preceded C. Find it (from Problem 6 of PS-01) and read the section on B. Then find the "Users' Reference to B" by Ken Thompson (1972), available through the Bell Labs archives or tuhs.org.</p>
+<p><strong>Write down:</strong></p>
+<ol>
+  <li>What were the three most significant things C added that B lacked?</li>
+  <li>For each, explain why the feature matters specifically for writing an operating system kernel. (Think: what does a kernel do that needs this?)</li>
+  <li>Ritchie says C's type system was partly motivated by PDP-11 hardware. What does he mean?</li>
+</ol>
+<hr>
+<h2>Problem 3 — Hopper's claim [research, 30 min]</h2>
+<p>Grace Hopper said: <em>"Nobody believed that I had a running compiler and nobody would touch it. They told me computers could only do arithmetic."</em></p>
+<p>Find a primary source — a paper, oral history, or interview by or about Hopper. The Computer History Museum (computerhistory.org) has oral history interviews. The ACM Digital Library has her 1952 paper "The Education of a Computer."</p>
+<p><strong>Write down:</strong></p>
+<ol>
+  <li>What was the specific technical or conceptual objection to her claim? Why did her colleagues believe compilers were impossible?</li>
+  <li>Why were they wrong? What assumption did they make that turned out not to hold?</li>
+  <li>Why was it hard to see they were wrong at the time?</li>
+</ol>
+<p>This is a question about how new ideas fail to be believed. Think carefully.</p>
+<hr>
+<h2>Problem 4 — Geography exercise [analysis, 25 min]</h2>
+<p>For each of the five geographies in the phylogeny document, trace a specific connection to something in <code>practice/tcc/</code> or <code>02/gcc/</code>.</p>
+<ul>
+  <li><strong>Bletchley Park / Alan Turing:</strong> The concept that makes any of this possible. What specific property of C programs or TCC's compilation process depends on Turing's 1936 result?</li>
+  <li><strong>Bell Labs:</strong> The most direct connection. Where in tcc.c or tccgen.c does Ritchie's original design still show up?</li>
+  <li><strong>Berkeley / BSD:</strong> Find a BSD-licensed file or a file with a BSD-style copyright notice in <code>02/tcc/</code> or <code>02/gcc/</code>. What is it?</li>
+  <li><strong>MIT / Stallman:</strong> Read the license header at the top of <code>practice/tcc/tcc.c</code>. What license is it? What does that license require of you if you modify and distribute TCC?</li>
+  <li><strong>Helsinki / Torvalds:</strong> TCC is commonly used on Linux. What assumption does TCC make in its Linux-specific code about the host operating system? (Search for <code>__linux__</code> or <code>linux</code> in tcc.h or libtcc.c.)</li>
+</ul>
+<p><strong>Write down:</strong> your answer for each geography. Some answers will be concrete; some will require a sentence of reasoning.</p>
+<hr>
+<h2>Problem 5 — Modification: leave a mark [hands-on, 20 min]</h2>
+<p>This is a small exercise, not a large one.</p>
+<p>Open <code>practice/tcc/tcc.c</code>. Add a comment — just a comment, not code — somewhere in the file that includes your name, the date, and one sentence about what you learned from reading this code.</p>
+<p>The comment should be honest. If you're confused, say so. If something surprised you, say that. If you found something beautiful, say that too.</p>
+<p>Rebuild to make sure you didn't accidentally break the syntax.</p>
+<p><strong>Write down:</strong> the comment, verbatim.</p>
+<hr>
+<h2>Problem 6 — Zuse and implementation [research, 20 min]</h2>
+<p>Konrad Zuse designed Plankalkül between 1942 and 1945. It was a genuine high-level language — with loops, conditionals, arrays, and subroutines — but it was never implemented during his lifetime.</p>
+<p>Find out: when was Plankalkül first implemented? By whom? What did the implementation look like?</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>The year and the implementers</li>
+  <li>The gap between design and implementation (in years)</li>
+  <li>What does this case tell you about the relationship between designing a programming language and actually building a compiler for it?</li>
+</ul>
+<hr>
+<h2>Problem 7 — Choose your character [extended research, 45 min]</h2>
+<p>Choose one person from the phylogeny document. Find one primary source:</p>
+<ul>
+  <li>A paper they wrote</li>
+  <li>An oral history interview (Computer History Museum, Lex Fridman, YouTube)</li>
+  <li>A talk they gave</li>
+  <li>A contemporary account by someone who worked with them</li>
+</ul>
+<p><strong>Write down:</strong></p>
+<ol>
+  <li>Who you chose and why</li>
+  <li>The source: what it is, where you found it, how long it is</li>
+  <li>The most surprising thing you learned — something not in the phylogeny document</li>
+  <li>How it changes or deepens the document's account of that person</li>
+</ol>
+<p>Minimum 300 words.</p>
+<hr>
+<h2>Problem 8 — The full circle [synthesis, 20 min]</h2>
+<p>The phylogeny document ends with this sentence:</p>
+<p><em>"You are at the end of that line. You are not behind. You are not catching up. You are arriving."</em></p>
+<p>You have now read two compilers, traced one function through code generation, modified a living compiler, and followed the history back to 1936. Write a short response — one to three paragraphs — to that sentence.</p>
+<p>What does it mean to be at the end of that line? What is different about the way you read code now compared to before this unit?</p>
+<hr>
+<p><em>The problem sets are complete. The reading exercises are a different kind of practice — shorter, more focused, designed to build the specific skill of navigating unfamiliar code. Open <code>re-01-first-walk.pdf</code> to begin.</em></p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

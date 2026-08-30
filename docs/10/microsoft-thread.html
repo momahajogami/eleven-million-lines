@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Microsoft Thread — Unit 10 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 10: Browsers and Social Media</a>
+  </div>
+
+  <div class="essay">
+    <h1>The Microsoft Thread</h1>
+<h2>Where to Weave It In Earlier Units</h2>
+<p><em>A structural note — not a standalone essay, but instructions for repetition</em></p>
+<p>The argument in ONTOLOGY.md depends on the reader having encountered Bill Gates and the Open Letter three times before arriving at Unit 10. Each appearance should be brief — one or two paragraphs — and should name the letter without dwelling on it. The weight accumulates across units. By Unit 10 the reader recognizes it without being told.</p>
+<hr>
+<h2>Unit 02 — First Appearance</h2>
+<p><strong>Where:</strong> In the unit document for Unit 02 (C compilers, vi/vim, git), alongside the story of the Homebrew Computer Club and the culture of early computing.</p>
+<p><strong>What to say:</strong></p>
+<p>In January 1976, the Homebrew Computer Club newsletter published a short letter from Bill Gates. He was twenty years old. He had written Altair BASIC with Paul Allen and sold it to MITS for a royalty. He had heard that club members were copying the software and passing tapes around.</p>
+<p>The letter was called "An Open Letter to Hobbyists." It was brief and direct: you are stealing our software. We spent months writing it. You are using it without paying. If this continues, there will be no incentive to write good software, and good software will not be written.</p>
+<p>The hobbyists were not impressed. Most of them felt that software was something you shared — that this was what the club was for. The letter was pinned to a bulletin board somewhere and mostly ignored.</p>
+<p>But the argument in it — software as property, copying as theft, payment as the precondition of creation — did not go away. It became the legal and commercial architecture of the personal computer industry for the next fifty years.</p>
+<p>The hobbyists kept writing anyway.</p>
+<hr>
+<h2>Unit 03 — Second Appearance</h2>
+<p><strong>Where:</strong> In the Stallman/GNU unit document, when explaining why Stallman felt urgency.</p>
+<p><strong>What to say:</strong></p>
+<p>The letter Gates had written to the Homebrew Club in 1976 had found its audience. Not in the clubs — the clubs remained indifferent — but in the boardrooms of the companies now building the PC industry.</p>
+<p>IBM chose Microsoft's operating system for the IBM PC in 1981. Microsoft did not write it; they bought it from a small Seattle company called Seattle Computer Products and licensed it to IBM while retaining the rights to license it to others. Every PC manufacturer who wanted to be IBM-compatible paid Microsoft for DOS. Every upgrade paid Microsoft again. The pattern Gates had described — software as a revenue-generating asset, owned by the writer, licensed to the user — was now the industry's operating system, in both the technical and commercial sense.</p>
+<p>Stallman had watched colleagues sign non-disclosure agreements. He had been refused the source code of a printer's firmware. He had seen the lab culture that had produced extraordinary software — free, open, shared — close around him. In 1983 he announced the GNU Project. In 1985 he published the GNU Manifesto.</p>
+<p>The manifesto is a direct response to Gates's letter, though it never mentions Gates. Where Gates said: if you do not pay, good software will not be written. Stallman said: the software you are being asked to pay for is worse than the software people wrote for free, and the paywall is not making it better. It is just making it closed.</p>
+<hr>
+<h2>Unit 05 — Third Appearance</h2>
+<p><strong>Where:</strong> In the Culture and Spectacle unit, during the browser wars section or the SourceForge/open source rise section.</p>
+<p><strong>What to say:</strong></p>
+<p>By the mid-1990s, the commercial software model had been running for twenty years and a strange pattern had emerged.</p>
+<p>The software you paid for — Windows, Office, the applications on the shelf at CompUSA — was professionally made, heavily marketed, and frequently mediocre. The software you did not pay for — Linux, GCC, Apache, Perl, the networking stack that ran the internet — was written by volunteers, academics, and professionals who contributed in their spare time, and it was extraordinary. Not good-for-free. Good. Production-grade, reliable, often technically superior.</p>
+<p>Gates had said: if you do not pay, good software will not be written. The evidence was in. Good software had been written. The people who wrote it had not been paid for it, or had been paid by organizations that valued the software as infrastructure rather than product. The commercial model had not produced the flood of great software Gates had promised. It had produced Windows ME and Internet Explorer 6.</p>
+<p>The commercial software model did not respond to this evidence. It did not need to. It was profitable. Microsoft's market capitalization in 1999 was $620 billion. Profitability is a kind of argument that does not require being right.</p>
+<p>The word "software" began its quiet disappearance from the commercial vocabulary around this time, as the industry shifted from selling things you owned to selling subscriptions to things you never owned. The argument had not changed. The packaging had.</p>
+<hr>
+<h2>How It Lands in Unit 10</h2>
+<p>By the time the reader reaches ONTOLOGY.md, they have seen this three times: in the garage in 1976, in the manifesto of 1985, in the browser wars of the 1990s. They know the argument. They know it was wrong about incentives. They know it survived anyway because it was profitable.</p>
+<p>ONTOLOGY.md does not need to explain it again. It can name it once — <em>Gates said in 1976</em> — and the weight of the three previous appearances does the rest. That is what repetition is for.</p>
+<hr>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

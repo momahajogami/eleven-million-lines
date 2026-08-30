@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Exercise 05 — GCC from a Distance — Unit 02 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 02: Classical Coding</a>
+  </div>
+
+  <div class="essay">
+    <h1>Reading Exercise 05 — GCC from a Distance</h1>
+<p><em>You will not read GCC. Nobody reads GCC. This exercise teaches you what to do instead.</em></p>
+<hr>
+<h2>What this exercise trains</h2>
+<p>GCC has millions of lines of code. It has been developed continuously since 1987. It supports dozens of source languages and target architectures. Reading it sequentially would take years.</p>
+<p>This is not a failure of GCC or of the reader. Large codebases require a different reading strategy: not sequential comprehension, but spatial orientation. You learn where things are before you learn what they do. You navigate before you read.</p>
+<p>This exercise is about navigation in the absence of comprehension.</p>
+<hr>
+<h2>The rule for this exercise</h2>
+<p>You may not spend more than 5 minutes in any single file. Set a timer.</p>
+<hr>
+<h2>Step 1 — The top-level map [5 minutes]</h2>
+<pre><code>ls 02/gcc/gcc/</code></pre>
+<p>There are many subdirectories. Skim the list.</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>How many immediate subdirectories are there in <code>02/gcc/gcc/</code>?</li>
+  <li>Name five that you can guess the purpose of from their names alone</li>
+  <li>Name one that surprises you</li>
+</ul>
+<hr>
+<h2>Step 2 — Count the source [3 minutes]</h2>
+<pre><code>find 02/gcc/gcc -name "*.c" | wc -l
+find 02/gcc/gcc -name "*.c" | xargs wc -l 2&gt;/dev/null | tail -1</code></pre>
+<p><strong>Write down:</strong> the total number of <code>.c</code> files and the total line count. Compare this to TCC (which you now know intimately). What is the ratio?</p>
+<hr>
+<h2>Step 3 — Find the C parser [5 minutes]</h2>
+<p>GCC's C front end is in a specific file. Find it:</p>
+<pre><code>find 02/gcc/gcc -name "c-parser*"
+wc -l 02/gcc/gcc/c-parser.c</code></pre>
+<p>Open <code>c-parser.c</code> for exactly 5 minutes. Look at the overall structure — the function names, the patterns, the scale.</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>How many lines is it?</li>
+  <li>Find the function that parses an <code>if</code> statement. What is it called? (Search for "if" in the function names: <code>cp_parser_if</code> or <code>c_parser_if</code>.)</li>
+  <li>Compare: TCC handles <code>if</code> in roughly 20 lines inside <code>block()</code>. How many lines does GCC use?</li>
+</ul>
+<hr>
+<h2>Step 4 — Find the optimizer [5 minutes]</h2>
+<p>GCC has an optimizer. TCC does not. The optimizer is one of GCC's defining architectural features. Find where it lives:</p>
+<pre><code>ls 02/gcc/gcc/ | grep -i "optim\|pass\|fold"
+find 02/gcc/gcc -name "passes.c" -o -name "tree-pass.h" | head -5</code></pre>
+<p>Open <code>passes.c</code> for 5 minutes.</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>What is a "pass" in GCC's architecture?</li>
+  <li>Approximately how many optimization passes does GCC define or invoke? (Search for <code>pass_</code> in passes.c.)</li>
+  <li>How does this compare to TCC, which has zero optimization passes?</li>
+</ul>
+<hr>
+<h2>Step 5 — Find a comment you couldn't find in TCC [10 minutes]</h2>
+<p>GCC is old. It has accumulated comments that only appear in codebases with decades of history — comments about bugs fixed long ago, design decisions made before most of the current contributors were born, compatibility constraints from hardware that no longer exists.</p>
+<p>Spend 10 minutes searching for such a comment. Try:</p>
+<pre><code>grep -rn "originally\|historical\|compat\|quirk\|workaround\|regression" \
+  02/gcc/gcc/c-parser.c 02/gcc/gcc/passes.c 02/gcc/gcc/fold-const.c | head -30</code></pre>
+<p><strong>Write down:</strong> the best comment you found — one that could not exist in a codebase as young as TCC. Copy it verbatim, with the file and line number.</p>
+<hr>
+<h2>Step 6 — Navigation summary [5 minutes]</h2>
+<p>You have spent roughly 40 minutes in a codebase with millions of lines. You have not read it. You have oriented yourself.</p>
+<p><strong>Write down:</strong></p>
+<ul>
+  <li>Where is the C parser? (file name)</li>
+  <li>Where is the optimizer? (file name or directory)</li>
+  <li>Where is the compiler driver — the entry point? (file name)</li>
+  <li>One thing you know about GCC's architecture that you didn't know before</li>
+</ul>
+<p>You now know where things are. That is enough for today.</p>
+<hr>
+<h2>Step 7 — The contrast [5 minutes]</h2>
+<p>You have now read TCC in some depth and navigated GCC from a distance.</p>
+<p><strong>Write down, in one paragraph:</strong> what is the most significant architectural difference between TCC and GCC as you understand them now? Not from the commentary documents — from what you have seen in the code itself.</p>
+<hr>
+<h2>Debrief</h2>
+<p>You cannot read GCC. Nobody can. But you can know where the C parser is, where the optimizer lives, where the entry point is. You can find a specific function when you need it. You can follow a specific thread when you have a specific question.</p>
+<p>That is what navigating a large codebase looks like. Not comprehension. Orientation. The ability to find your way.</p>
+<p>You have it now. TCC is a territory you know. GCC is a territory you have visited briefly. Both are legible to you in a way they were not before this unit.</p>
+<p>That is the goal of the whole unit: not to master the code, but to be able to read it — to stand inside it, find your bearings, and follow your curiosity wherever it leads.</p>
+<hr>
+<p><em>The reading exercises are complete. Return to the problem sets for deeper work, or open the Unit 02 commentary documents to read alongside what you have found.</em></p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>
