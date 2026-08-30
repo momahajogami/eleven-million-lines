@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit 07 — The Spiritual — Eleven Million Lines You Should Know</title>
+  <title>Unit 07 — Logically Speaking — Eleven Million Lines You Should Know</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 18px; }
@@ -49,7 +49,7 @@
   <div class="back"><a href="../">← Back to syllabus</a></div>
 
   <div class="unit-label">Unit 07</div>
-  <h1>The Spiritual</h1>
+  <h1>Logically Speaking</h1>
   <p class="tagline">Alexander Grothendieck. William Lawvere. The mathematics that underlies the mathematics.</p>
 
   <div class="description">
@@ -80,7 +80,7 @@
   <div class="documents">
     <h2>Documents</h2>
     <ul>
-      <li><a href="grothendieck.html">Unit 07: The Spiritual</a> <span class="doc-path">GROTHENDIECK.md</span></li>
+      <li><a href="grothendieck.html">Unit 07: Logically Speaking</a> <span class="doc-path">GROTHENDIECK.md</span></li>
       <li><a href="heritage.html">Heritage — Unit 07: The Mathematics Beneath</a> <span class="doc-path">HERITAGE.md</span></li>
       <li><a href="quake.html">Quake and the Shape of Space</a> <span class="doc-path">quake.md</span></li>
       <li><a href="scratch-mathematical-practice.html">On Becoming a Mathematician</a> <span class="doc-path">scratch/mathematical-practice.md</span></li>
@@ -105,7 +105,17 @@
       return'hsl('+hc+','+sat+'%,'+lc+'%)';}
     function colorizeEl(el,fam,mode){var phase=Math.random()*Math.PI*2,counter={i:0},walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),nodes=[],n;while((n=walker.nextNode()))nodes.push(n);nodes.forEach(function(node){var text=node.nodeValue,frag=document.createDocumentFragment();for(var ci=0;ci<text.length;ci++){var ch=text[ci];if(/ |\t|\n|\r/.test(ch)){frag.appendChild(document.createTextNode(ch));}else{var sp=document.createElement('span');sp.style.color=letterColor(counter.i++,fam,mode,phase);sp.textContent=ch;frag.appendChild(sp);}}node.parentNode.replaceChild(frag,node);});}
     var FAMILY_CYCLE=['teal','slate','forest','amber','violet','magenta'];
-    document.addEventListener('DOMContentLoaded',function(){var unit=(window.location.pathname.match(/\/([0-9]{2})\//)||[])[1]||null,famName=UNIT_FAMILIES[unit]||'teal',fam=FAMILIES[famName];document.querySelectorAll('h1').forEach(function(el){colorizeEl(el,fam,'fourth-power-interval');});document.querySelectorAll('h2,h3').forEach(function(el){colorizeEl(el,fam,'orbit');});document.querySelectorAll('.unit-title').forEach(function(el,idx){colorizeEl(el,FAMILIES[FAMILY_CYCLE[idx%6]],'orbit');});});
+    document.addEventListener('DOMContentLoaded',function(){
+      var unit=(window.location.pathname.match(/\/([0-9]{2})\//)||[])[1]||null,famName=UNIT_FAMILIES[unit]||'teal',fam=FAMILIES[famName];
+      // h1 only — section headers (h2) stay plain
+      document.querySelectorAll('h1').forEach(function(el){colorizeEl(el,fam,'fourth-power-interval');});
+      // syllabus: unit titles cycle through all families
+      document.querySelectorAll('.unit-title').forEach(function(el,idx){colorizeEl(el,FAMILIES[FAMILY_CYCLE[idx%6]],'orbit');});
+      // unit pages: bold item names in materials, links in repos and documents
+      document.querySelectorAll('.materials li strong').forEach(function(el){colorizeEl(el,fam,'orbit');});
+      document.querySelectorAll('.repos li a').forEach(function(el){colorizeEl(el,fam,'orbit');});
+      document.querySelectorAll('.documents li a:first-child').forEach(function(el){colorizeEl(el,fam,'orbit');});
+    });
   })();
   </script>
 </body>
