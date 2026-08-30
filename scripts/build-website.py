@@ -540,7 +540,7 @@ def discover_md_files(unit: str) -> list:
 def _apply_chipsquirt(html: str, unit: str) -> str:
     """Apply the unit's color family in orbit mode to h2 and h3 headers."""
     family = UNIT_FAMILIES.get(unit, chipsquirt.teal)
-    html = chipsquirt.apply_to_headers(html, family, levels=['h2', 'h3'], mode='orbit')
+    html = chipsquirt.apply_to_headers(html, family, levels=['h1', 'h2', 'h3'], mode='orbit')
     return html
 
 
