@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zettelkasten and Unix — Unit 02 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 02: Classical Coding</a>
+  </div>
+
+  <div class="essay">
+    <h1>Zettelkasten and Unix</h1>
+<p><em>A featured essay. Recommended, not required. Take it as an invitation.</em></p>
+<hr>
+<p>Niklas Luhmann was a German sociologist who published more than seventy books and nearly four hundred scholarly articles before he died in 1998. When people asked how he did it, he said he didn't do it alone. He had a collaborator: a wooden cabinet containing approximately ninety thousand index cards.</p>
+<p>He called it his Zettelkasten — German for "slip box." Each card held one idea. Each card had a unique address. Cards could reference other cards by address, so a thought about legal theory could point to a thought about systems biology, which could point to a thought about communication, which could point back to the legal theory note from a different angle. Over decades, the box became something Luhmann described as a genuine thinking partner. Not a filing system. Not an archive. A mind he could have a conversation with.</p>
+<p>This sounds like mysticism until you sit down with a Unix terminal.</p>
+<hr>
+<h2>The Same Machine Twice</h2>
+<p>Unix is a Zettelkasten made of electricity. Zettelkasten is a Unix made of paper. The structure is identical.</p>
+<p>In a Zettelkasten, you have:</p>
+<ol>
+  <li><strong>Individual frames of text</strong> — the notecard. One idea, one address, findable and retrievable.</li>
+  <li><strong>The ability to edit them</strong> — pen on paper. The card is a living document, not a monument.</li>
+  <li><strong>The ability to execute them</strong> — follow a reference. Pull card 47/3b, read it, let it change your next thought, file a new card.</li>
+</ol>
+<p>In Unix, you have:</p>
+<ol>
+  <li><strong>Individual frames of text</strong> — the file. One thing, one path, findable and retrievable.</li>
+  <li><strong>The ability to edit them</strong> — vim, nano, ed. The file is a living document.</li>
+  <li><strong>The ability to execute them</strong> — run the program. The text becomes action.</li>
+</ol>
+<p>The execution step is where the analogy strains slightly, and where it becomes most interesting. A Zettelkasten card cannot run itself. But it can run <em>you</em> — pull you somewhere unexpected, force a connection you hadn't made, produce output in the form of a new thought filed in a new card. Luhmann's box had something like a REPL. You put something in; something came back.</p>
+<p>Unix made this literal. The file is the unit of thought and the unit of action simultaneously. There is no separate "document layer" and "computation layer." It is one thing. Text files all the way down, and some of them, when you point the shell at them, do something in the world.</p>
+<hr>
+<h2>What the Comparison Illuminates</h2>
+<p>Calling Unix an <em>electronic Zettelkasten</em> is not just a pretty analogy. It changes what you notice when you sit down at a terminal.</p>
+<p>When you create a file, you are making a card. When you name it well, you are giving it an address. When you write a shell script that calls other scripts, you are building a reference network. When you pipe one program into another, you are following a link.</p>
+<p>This is not a metaphor layered on top of something technical. It is the thing itself, seen clearly.</p>
+<p>The Unix file system was designed by people who thought carefully about how humans organize thought and work. The decisions they made — everything is a file, files have names, names live in a hierarchy you can navigate — were not arbitrary engineering choices. They were a theory of knowledge, implemented in C.</p>
+<hr>
+<h2>Where the Web Went Wrong</h2>
+<p>HyperCard, Apple's 1987 linking system, understood this. A HyperCard stack had cards. Cards had scripts. Links between cards had defined meanings because the tool defined them. Rod Nave used HyperCard's successor technologies to build HyperPhysics — a physics reference site that has served millions of students for decades, built and maintained essentially alone, because the system encoded the structure so he didn't have to hold it all in his head.</p>
+<p>The World Wide Web inherited the link but not the system. A hyperlink has no fixed meaning. It can mean <em>this is a source</em>, or <em>this is related</em>, or <em>this is a sponsor</em>, or <em>this is my friend's site</em>, and there is no way to tell which. Worse, once Google's PageRank algorithm made links into votes, the entire web began optimizing for links rather than thought. The annotation layer — the thing that was supposed to encode knowledge — got colonized by people trying to move up in search results. The search became less useful as the optimization intensified.</p>
+<p>Zettelkasten and HyperCard avoided this because the system of interpretation was fixed at the start. You knew what a reference meant because the tool had a contract. The web had no contract.</p>
+<p>You will see this story again in Unit 10.</p>
+<hr>
+<h2>The Freedom at the Bottom</h2>
+<p>The best thing you might take from this course — from the vim tutorial, from reading C, from navigating a Unix directory by hand — is something harder to name than a skill.</p>
+<p>It is the freedom to use a machine as a place to file and edit text, without anything interrupting the basic connection between you and the letters and numbers on the screen.</p>
+<p>No algorithm deciding what you should see next. No engagement metric. No feed. Just a file, a cursor, and whatever you are trying to think.</p>
+<p>Luhmann had that with his wooden box. Nave had it with HyperCard. You can have it with a terminal.</p>
+<p>That is what classical coding is.</p>
+<hr>
+<p><em>Further reading: <code>meta/writing-technology/</code> for the longer story of writing as technology. Unit 10 for HyperCard, cybernetics, and what happened to the web.</em></p>
+  </div>
+
+  <div class="essay-nav">
+    <a href="linus.html">← Linus Torvalds</a>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

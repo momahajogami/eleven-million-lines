@@ -11,3 +11,4 @@ The unit closes with Linus Torvalds: the author of Linux and of git, which is ex
 - **vim** (`vim/`) — Bill Joy's editor, maintained by Bram Moolenaar for thirty years. Read `src/normal.c` for the command parser.
 - **git** (`git/`) — Linus Torvalds, 2005. Written in ten days after BitKeeper revoked its license. Sparse checkout of the core.
 - **LINUS.md** — character study: Linux and git, one person, two founding contributions, one uncompromising voice
+- **ZETTELKASTEN.md** — Zettelkasten and Unix as parallel systems: the acoustic and electronic versions of the same idea

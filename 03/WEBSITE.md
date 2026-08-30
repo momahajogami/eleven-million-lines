@@ -6,6 +6,7 @@ The GNU Project produced Emacs, GCC, GDB, Bison, and the GPL. These tools are th
 
 ## Materials
 
+- **STALLMAN.md** — the character study: the printer, the four freedoms, the life
 - **Emacs** (`emacs/`) — the editor as operating system. Sparse checkout of `src/` and core Lisp files.
 - **GDB** (`gdb/`) — the GNU Debugger. Read a running program's memory, set breakpoints, trace execution.
 - **Bison** (`bison/`) — the parser generator. The tool that builds the tools.
