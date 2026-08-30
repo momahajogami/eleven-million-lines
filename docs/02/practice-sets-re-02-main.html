@@ -84,11 +84,11 @@
     <h1>Reading Exercise 02 — Finding main()</h1>
 <p><em>Every program has a beginning. This exercise finds it, follows it two steps, and stops.</em></p>
 <hr>
-<h2>What this exercise trains</h2>
+<h2><span style="color:rgb(63,74,84)">W</span><span style="color:rgb(79,102,121)">h</span><span style="color:rgb(53,80,102)">a</span><span style="color:rgb(22,37,51)">t</span> <span style="color:rgb(13,21,31)">t</span><span style="color:rgb(33,47,66)">h</span><span style="color:rgb(72,86,114)">i</span><span style="color:rgb(85,94,115)">s</span> <span style="color:rgb(53,57,68)">e</span><span style="color:rgb(22,25,31)">x</span><span style="color:rgb(30,36,50)">e</span><span style="color:rgb(48,68,101)">r</span><span style="color:rgb(51,81,121)">c</span><span style="color:rgb(38,62,86)">i</span><span style="color:rgb(21,30,38)">s</span><span style="color:rgb(25,32,37)">e</span> <span style="color:rgb(64,75,84)">t</span><span style="color:rgb(93,107,121)">r</span><span style="color:rgb(70,85,102)">a</span><span style="color:rgb(28,37,51)">i</span><span style="color:rgb(14,20,31)">n</span><span style="color:rgb(28,39,66)">s</span></h2>
 <p>The ability to find a program's entry point and follow its first few calls is a fundamental navigation skill. It does not require understanding the program. It requires only knowing where to look.</p>
 <p>In most programs, <code>main()</code> is not where the interesting work happens. It is the airport: transit, not destination. But understanding the airport tells you what is adjacent to it and how to get anywhere else.</p>
 <hr>
-<h2>Step 1 — Find main() [5 minutes]</h2>
+<h2><span style="color:rgb(63,92,122)">S</span><span style="color:rgb(38,60,89)">t</span><span style="color:rgb(17,26,40)">e</span><span style="color:rgb(18,24,36)">p</span> <span style="color:rgb(52,61,81)">1</span> <span style="color:rgb(90,98,120)">—</span> <span style="color:rgb(81,88,105)">F</span><span style="color:rgb(38,44,54)">i</span><span style="color:rgb(18,23,30)">n</span><span style="color:rgb(30,45,63)">d</span> <span style="color:rgb(47,80,112)">m</span><span style="color:rgb(53,87,116)">a</span><span style="color:rgb(40,57,71)">i</span><span style="color:rgb(22,27,32)">n</span><span style="color:rgb(36,42,47)">(</span><span style="color:rgb(75,85,98)">)</span> <span style="color:rgb(82,97,122)">[</span><span style="color:rgb(48,62,89)">5</span> <span style="color:rgb(18,24,40)">m</span><span style="color:rgb(15,21,36)">i</span><span style="color:rgb(39,52,81)">n</span><span style="color:rgb(73,89,120)">u</span><span style="color:rgb(76,87,105)">t</span><span style="color:rgb(42,47,54)">e</span><span style="color:rgb(22,26,30)">s</span><span style="color:rgb(40,52,63)">]</span></h2>
 <p>Locate <code>main()</code> in <code>practice/tcc/tcc.c</code>:</p>
 <pre><code>grep -n "^int main" practice/tcc/tcc.c</code></pre>
 <p>Open the file at that line. Read <code>main()</code> end to end. It is short.</p>
@@ -100,7 +100,7 @@
   <li>What is the first function call, and what do you guess it does from the name alone?</li>
 </ul>
 <hr>
-<h2>Step 2 — One level down [10 minutes]</h2>
+<h2><span style="color:rgb(73,93,109)">S</span><span style="color:rgb(63,92,118)">t</span><span style="color:rgb(33,53,75)">e</span><span style="color:rgb(14,22,33)">p</span> <span style="color:rgb(22,30,45)">2</span> <span style="color:rgb(59,70,95)">—</span> <span style="color:rgb(89,99,122)">O</span><span style="color:rgb(72,78,92)">n</span><span style="color:rgb(31,35,43)">e</span> <span style="color:rgb(21,26,34)">l</span><span style="color:rgb(38,54,77)">e</span><span style="color:rgb(50,82,119)">v</span><span style="color:rgb(47,78,107)">e</span><span style="color:rgb(31,45,57)">l</span> <span style="color:rgb(20,26,30)">d</span><span style="color:rgb(45,53,60)">o</span><span style="color:rgb(85,97,109)">w</span><span style="color:rgb(82,97,118)">n</span> <span style="color:rgb(42,54,75)">[</span><span style="color:rgb(15,21,33)">1</span><span style="color:rgb(18,26,45)">0</span> <span style="color:rgb(44,59,95)">m</span><span style="color:rgb(71,87,122)">i</span><span style="color:rgb(65,75,92)">n</span><span style="color:rgb(33,37,43)">u</span><span style="color:rgb(26,30,34)">t</span><span style="color:rgb(50,64,77)">e</span><span style="color:rgb(62,93,119)">s</span><span style="color:rgb(46,80,107)">]</span></h2>
 <p>Take the first function call that <code>main()</code> makes (not a standard library call — the first TCC-specific call). Find its definition.</p>
 <pre><code>grep -n "^tcc_\|^static.*tcc_\|^int tcc_\|^void tcc_" practice/tcc/libtcc.c | head -20</code></pre>
 <p>Or use:</p>
@@ -114,7 +114,7 @@
   <li>What is the last thing it does?</li>
 </ul>
 <hr>
-<h2>Step 3 — One level further [10 minutes]</h2>
+<h2><span style="color:rgb(54,82,116)">S</span><span style="color:rgb(30,46,71)">t</span><span style="color:rgb(15,21,32)">e</span><span style="color:rgb(27,33,47)">p</span> <span style="color:rgb(69,77,98)">3</span> <span style="color:rgb(94,102,122)">—</span> <span style="color:rgb(67,75,89)">O</span><span style="color:rgb(26,32,40)">n</span><span style="color:rgb(19,26,36)">e</span> <span style="color:rgb(35,58,81)">l</span><span style="color:rgb(51,88,120)">e</span><span style="color:rgb(53,82,105)">v</span><span style="color:rgb(34,45,54)">e</span><span style="color:rgb(22,26,30)">l</span> <span style="color:rgb(49,55,63)">f</span><span style="color:rgb(81,93,112)">u</span><span style="color:rgb(71,86,116)">r</span><span style="color:rgb(35,46,71)">t</span><span style="color:rgb(13,19,32)">h</span><span style="color:rgb(21,29,47)">e</span><span style="color:rgb(53,68,98)">r</span> <span style="color:rgb(82,98,122)">[</span><span style="color:rgb(68,78,89)">1</span><span style="color:rgb(31,36,40)">0</span> <span style="color:rgb(24,30,36)">m</span><span style="color:rgb(45,65,81)">i</span><span style="color:rgb(54,89,120)">n</span><span style="color:rgb(44,74,105)">u</span><span style="color:rgb(26,38,54)">t</span><span style="color:rgb(18,23,30)">e</span><span style="color:rgb(45,51,63)">s</span><span style="color:rgb(87,94,112)">]</span></h2>
 <p>Take the first TCC-specific function call <em>inside the function from Step 2</em>. Find it. Read it for 5 minutes.</p>
 <p>Stop after 5 minutes, whether or not you feel done.</p>
 <p><strong>Write down:</strong></p>
@@ -124,7 +124,7 @@
   <li>One thing you did not understand</li>
 </ul>
 <hr>
-<h2>Step 4 — The call tree [5 minutes]</h2>
+<h2><span style="color:rgb(21,26,38)">S</span><span style="color:rgb(26,29,38)">t</span><span style="color:rgb(65,72,84)">e</span><span style="color:rgb(93,104,121)">p</span> <span style="color:rgb(69,85,102)">4</span> <span style="color:rgb(28,40,51)">—</span> <span style="color:rgb(14,23,31)">T</span><span style="color:rgb(28,49,66)">h</span><span style="color:rgb(55,86,114)">e</span> <span style="color:rgb(69,91,114)">c</span><span style="color:rgb(49,57,68)">a</span><span style="color:rgb(24,27,31)">l</span><span style="color:rgb(37,41,50)">l</span> <span style="color:rgb(64,74,101)">t</span><span style="color:rgb(61,78,121)">r</span><span style="color:rgb(36,52,85)">e</span><span style="color:rgb(16,24,38)">e</span> <span style="color:rgb(20,27,38)">[</span><span style="color:rgb(55,69,84)">5</span> <span style="color:rgb(91,107,121)">m</span><span style="color:rgb(79,92,102)">i</span><span style="color:rgb(36,44,51)">n</span><span style="color:rgb(18,25,31)">u</span><span style="color:rgb(31,48,67)">t</span><span style="color:rgb(48,75,114)">e</span><span style="color:rgb(53,74,114)">s</span><span style="color:rgb(39,47,68)">]</span></h2>
 <p>Draw (on paper or in your notes) a simple call tree:</p>
 <pre><code>main()
   └── [Step 2 function]
@@ -132,12 +132,12 @@
 <p>You have traced three levels of a program that has many, many more. That is enough.</p>
 <p><strong>Write down:</strong> at Step 3, do you feel closer to understanding TCC or further? Why?</p>
 <hr>
-<h2>Step 5 — The surprise [3 minutes]</h2>
+<h2><span style="color:rgb(42,63,99)">S</span><span style="color:rgb(21,30,48)">t</span><span style="color:rgb(17,21,32)">e</span><span style="color:rgb(47,53,70)">p</span> <span style="color:rgb(88,97,116)">5</span> <span style="color:rgb(87,96,113)">—</span> <span style="color:rgb(44,52,65)">T</span><span style="color:rgb(17,23,31)">h</span><span style="color:rgb(24,38,53)">e</span> <span style="color:rgb(43,76,104)">s</span><span style="color:rgb(57,92,120)">u</span><span style="color:rgb(49,67,82)">r</span><span style="color:rgb(26,31,36)">p</span><span style="color:rgb(31,34,39)">r</span><span style="color:rgb(65,74,88)">i</span><span style="color:rgb(78,92,121)">s</span><span style="color:rgb(51,65,99)">e</span> <span style="color:rgb(21,28,48)">[</span><span style="color:rgb(13,19,32)">3</span> <span style="color:rgb(36,48,70)">m</span><span style="color:rgb(75,91,116)">i</span><span style="color:rgb(84,97,113)">n</span><span style="color:rgb(50,57,64)">u</span><span style="color:rgb(22,26,31)">t</span><span style="color:rgb(31,43,53)">e</span><span style="color:rgb(49,78,104)">s</span><span style="color:rgb(50,84,120)">]</span></h2>
 <p>Return to <code>tcc.c</code> and read lines 22–29 again. Find the <code>#include "libtcc.c"</code> line.</p>
 <p>TCC includes its own source files — not headers, the <code>.c</code> files themselves. This is unusual. Most programs compile each <code>.c</code> file separately and link the objects. TCC compiles everything as one translation unit.</p>
 <p><strong>Write down:</strong> what do you think the advantage of this approach is? What might be a disadvantage? (There is no trick — think it through.)</p>
 <hr>
-<h2>Debrief</h2>
+<h2><span style="color:rgb(21,26,37)">D</span><span style="color:rgb(26,30,39)">e</span><span style="color:rgb(66,74,86)">b</span><span style="color:rgb(93,105,121)">r</span><span style="color:rgb(68,83,101)">i</span><span style="color:rgb(27,39,50)">e</span><span style="color:rgb(14,23,31)">f</span></h2>
 <p>You have now walked the call tree three levels deep. You started from a 432-line wrapper file and ended up somewhere in the middle of a function you don't yet understand.</p>
 <p>That is normal. That is what reading code feels like at the start.</p>
 <p>The next time you read TCC code, you will recognize some of the function names you saw today. Recognition accumulates. Comprehension follows recognition, not the other way around.</p>

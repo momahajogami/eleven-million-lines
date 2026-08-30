@@ -85,7 +85,7 @@
 <p>This is Freedom 1 in ten minutes. No C compilation required.</p>
 <p>The central architectural fact of Emacs: the C core is a Lisp interpreter. The editing experience — every command, every mode, every behavior — is implemented in Emacs Lisp and loaded at startup. When Emacs is running, you can load new Lisp, replacing functions in the running image. The editor changes. Nothing restarts.</p>
 <hr>
-<h2>Setup</h2>
+<h2><span style="color:rgb(14,43,28)">S</span><span style="color:rgb(15,34,24)">e</span><span style="color:rgb(43,77,58)">t</span><span style="color:rgb(68,119,86)">u</span><span style="color:rgb(54,107,69)">p</span></h2>
 <p>You need a running Emacs. Either:</p>
 <ul>
   <li>The system Emacs: <code>emacs -nw</code></li>
@@ -93,13 +93,13 @@
 </ul>
 <p>It does not matter which. The Lisp layer is the same.</p>
 <hr>
-<h2>Exercise 1: Read a real function</h2>
+<h2><span style="color:rgb(34,119,57)">E</span><span style="color:rgb(17,79,38)">x</span><span style="color:rgb(8,35,19)">e</span><span style="color:rgb(14,42,27)">r</span><span style="color:rgb(43,91,67)">c</span><span style="color:rgb(69,122,95)">i</span><span style="color:rgb(55,96,74)">s</span><span style="color:rgb(22,46,31)">e</span> <span style="color:rgb(11,33,18)">1</span><span style="color:rgb(18,73,32)">:</span> <span style="color:rgb(26,117,44)">R</span><span style="color:rgb(31,110,44)">e</span><span style="color:rgb(24,61,31)">a</span><span style="color:rgb(16,30,19)">d</span> <span style="color:rgb(32,56,39)">a</span> <span style="color:rgb(58,106,75)">r</span><span style="color:rgb(52,119,80)">e</span><span style="color:rgb(24,79,50)">a</span><span style="color:rgb(8,35,21)">l</span> <span style="color:rgb(9,42,25)">f</span><span style="color:rgb(29,91,57)">u</span><span style="color:rgb(55,122,81)">n</span><span style="color:rgb(53,96,67)">c</span><span style="color:rgb(26,46,31)">t</span><span style="color:rgb(16,33,20)">i</span><span style="color:rgb(28,73,36)">o</span><span style="color:rgb(32,117,47)">n</span></h2>
 <p>In Emacs, type:</p>
 <pre><code>M-x find-function RET count-words RET</code></pre>
 <p>Emacs opens <code>simple.el</code> and jumps to the definition of <code>count-words</code>. Read it. It counts words in a region by moving point forward word by word. The entire implementation is in front of you. This is what Freedom 1 looks like in practice: the tool shows you how it works.</p>
 <p>Now look at the function just above it: <code>count-words--buffer-size</code>. Notice the naming convention — double dash means "private, not for external use." Emacs Lisp has no enforcement mechanism for this; it is a social convention, documented in the GNU Coding Standards.</p>
 <hr>
-<h2>Exercise 2: Add something</h2>
+<h2><span style="color:rgb(28,49,34)">E</span><span style="color:rgb(56,99,66)">x</span><span style="color:rgb(56,121,68)">e</span><span style="color:rgb(29,87,39)">r</span><span style="color:rgb(9,39,15)">c</span><span style="color:rgb(8,37,14)">i</span><span style="color:rgb(24,83,41)">s</span><span style="color:rgb(50,120,76)">e</span> <span style="color:rgb(55,103,76)">2</span><span style="color:rgb(30,52,41)">:</span> <span style="color:rgb(16,31,23)">A</span><span style="color:rgb(27,65,45)">d</span><span style="color:rgb(33,113,68)">d</span> <span style="color:rgb(26,115,59)">s</span><span style="color:rgb(16,69,32)">o</span><span style="color:rgb(10,32,15)">m</span><span style="color:rgb(22,49,27)">e</span><span style="color:rgb(56,100,63)">t</span><span style="color:rgb(69,121,79)">h</span><span style="color:rgb(43,87,53)">i</span><span style="color:rgb(14,39,22)">n</span><span style="color:rgb(9,37,19)">g</span></h2>
 <p>Copy <code>simple.el</code> to this scratch directory:</p>
 <pre><code>cp ~/Documents/university-coding/03/emacs/lisp/simple.el \
    ~/Documents/university-coding/03/scratch/simple-modified.el</code></pre>
@@ -107,22 +107,22 @@
 <pre><code>(message "count-words called at %s" (current-time-string))</code></pre>
 <p>Save the file.</p>
 <hr>
-<h2>Exercise 3: Load it into the running Emacs</h2>
+<h2><span style="color:rgb(22,99,51)">E</span><span style="color:rgb(12,48,28)">x</span><span style="color:rgb(11,32,21)">e</span><span style="color:rgb(33,70,51)">r</span><span style="color:rgb(65,116,89)">c</span><span style="color:rgb(64,113,85)">i</span><span style="color:rgb(31,64,43)">s</span><span style="color:rgb(11,31,16)">e</span> <span style="color:rgb(13,53,22)">3</span><span style="color:rgb(23,104,37)">:</span> <span style="color:rgb(33,120,48)">L</span><span style="color:rgb(33,82,42)">o</span><span style="color:rgb(19,36,23)">a</span><span style="color:rgb(23,39,28)">d</span> <span style="color:rgb(48,88,63)">i</span><span style="color:rgb(53,121,84)">t</span> <span style="color:rgb(31,99,64)">i</span><span style="color:rgb(11,48,30)">n</span><span style="color:rgb(7,32,19)">t</span><span style="color:rgb(22,70,42)">o</span> <span style="color:rgb(51,116,74)">t</span><span style="color:rgb(62,113,76)">h</span><span style="color:rgb(37,64,43)">e</span> <span style="color:rgb(15,31,18)">r</span><span style="color:rgb(20,53,26)">u</span><span style="color:rgb(28,104,43)">n</span><span style="color:rgb(26,120,49)">n</span><span style="color:rgb(21,82,40)">i</span><span style="color:rgb(13,36,22)">n</span><span style="color:rgb(19,39,28)">g</span> <span style="color:rgb(50,88,68)">E</span><span style="color:rgb(68,121,95)">m</span><span style="color:rgb(47,99,72)">a</span><span style="color:rgb(16,48,30)">c</span><span style="color:rgb(7,32,16)">s</span></h2>
 <p>In your running Emacs:</p>
 <pre><code>M-x load-file RET</code></pre>
 <p>Navigate to <code>03/scratch/simple-modified.el</code> and press Enter.</p>
 <p>Now run <code>M-x count-words</code> on any buffer. Look at the minibuffer. Your message is there. You replaced a function in the running editor with your version.</p>
 <p>No recompile. No restart. The editor changed.</p>
 <hr>
-<h2>Exercise 4: Go further</h2>
+<h2><span style="color:rgb(13,30,21)">E</span><span style="color:rgb(29,53,39)">x</span><span style="color:rgb(60,104,74)">e</span><span style="color:rgb(62,120,77)">r</span><span style="color:rgb(32,82,42)">c</span><span style="color:rgb(10,36,14)">i</span><span style="color:rgb(8,40,14)">s</span><span style="color:rgb(22,88,36)">e</span> <span style="color:rgb(44,122,65)">4</span><span style="color:rgb(48,99,65)">:</span> <span style="color:rgb(27,48,36)">G</span><span style="color:rgb(18,32,24)">o</span> <span style="color:rgb(33,70,52)">f</span><span style="color:rgb(40,116,78)">u</span><span style="color:rgb(27,112,66)">r</span><span style="color:rgb(14,64,34)">t</span><span style="color:rgb(8,30,16)">h</span><span style="color:rgb(22,53,30)">e</span><span style="color:rgb(55,104,64)">r</span></h2>
 <p>The <code>lisp/play/</code> directory contains <code>doctor.el</code>, <code>hanoi.el</code>, <code>tetris.el</code>, <code>bubbles.el</code>, and others. Pick one. Read it. Find something small to change — a response string in <code>doctor.el</code>, the speed of a Hanoi move in <code>hanoi.el</code>. Load your modified version. See the change.</p>
 <hr>
-<h2>What you just did</h2>
+<h2><span style="color:rgb(18,79,45)">W</span><span style="color:rgb(10,35,22)">h</span><span style="color:rgb(18,41,29)">a</span><span style="color:rgb(49,91,69)">t</span> <span style="color:rgb(70,122,92)">y</span><span style="color:rgb(50,96,67)">o</span><span style="color:rgb(18,46,26)">u</span> <span style="color:rgb(9,32,14)">j</span><span style="color:rgb(16,73,26)">u</span><span style="color:rgb(29,117,44)">s</span><span style="color:rgb(39,111,52)">t</span> <span style="color:rgb(29,61,37)">d</span><span style="color:rgb(17,30,21)">i</span><span style="color:rgb(31,56,41)">d</span></h2>
 <p>The standard tool-use relationship: the tool is a fixed artifact. You operate it. You do not change it.</p>
 <p>The Emacs relationship: the tool is an environment. You enter it. You change it. The change persists for the life of the session — and if you add your modification to your <code>~/.emacs.d/init.el</code>, it persists forever. The tool becomes yours.</p>
 <p>This is the architecture Stallman designed. It is not an accident that Emacs works this way. It is a direct expression of the philosophy in the GNU Manifesto: that software should be something users can understand, modify, and share — not a fixed artifact handed down from a vendor.</p>
 <hr>
-<h2>Reading</h2>
+<h2><span style="color:rgb(51,106,60)">R</span><span style="color:rgb(43,120,57)">e</span><span style="color:rgb(20,80,33)">a</span><span style="color:rgb(7,35,16)">d</span><span style="color:rgb(11,41,22)">i</span><span style="color:rgb(36,90,59)">n</span><span style="color:rgb(63,122,91)">g</span></h2>
 <ul>
   <li><code>03/emacs/lisp/simple.el</code> — foundational Emacs Lisp; 8,000+ lines</li>
   <li><code>03/scratch/doctor.el</code> + <code>03/scratch/doctor-annotation.md</code> — the surprise</li>

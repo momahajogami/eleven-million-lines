@@ -39,10 +39,29 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+import chipsquirt
+
 ROOT = Path(__file__).parent.parent
 INDEX_HTML = ROOT / "docs" / "index.html"
 CONTENT_DIR = ROOT / "docs"
 UNITS = [f"{n:02d}" for n in range(1, 12)]
+
+# One color family per unit, cycling through the palette.
+# orbit mode is the course signature — applied to h2 and h3 headers.
+UNIT_FAMILIES = {
+    "01": chipsquirt.teal,
+    "02": chipsquirt.slate,
+    "03": chipsquirt.forest,
+    "04": chipsquirt.amber,
+    "05": chipsquirt.violet,
+    "06": chipsquirt.magenta,
+    "07": chipsquirt.teal,
+    "08": chipsquirt.slate,
+    "09": chipsquirt.amber,
+    "10": chipsquirt.forest,
+    "11": chipsquirt.violet,
+}
 
 
 # ---------------------------------------------------------------------------
@@ -518,6 +537,13 @@ def discover_md_files(unit: str) -> list:
     return found
 
 
+def _apply_chipsquirt(html: str, unit: str) -> str:
+    """Apply the unit's color family in orbit mode to h2 and h3 headers."""
+    family = UNIT_FAMILIES.get(unit, chipsquirt.teal)
+    html = chipsquirt.apply_to_headers(html, family, levels=['h2', 'h3'], mode='orbit')
+    return html
+
+
 def build_unit_page(unit: str) -> bool:
     website_md = ROOT / unit / "WEBSITE.md"
     unit_html = ROOT / "docs" / unit / "index.html"
@@ -578,6 +604,7 @@ def build_unit_page(unit: str) -> bool:
             next_item = dict(next_item); next_item["title"] = next_item["md"]
 
         page_html = render_essay_page(unit, unit_title, title, body_html, prev_item, next_item)
+        page_html = _apply_chipsquirt(page_html, unit)
         out_path = ROOT / "docs" / unit / essay["html"]
         existing = out_path.read_text() if out_path.exists() else ""
         if page_html != existing:
@@ -601,6 +628,7 @@ def build_unit_page(unit: str) -> bool:
         title = extract_title(md_text) or doc["label"]
         body_html = essay_md_to_html(md_text)
         page_html = render_essay_page(unit, unit_title, title, body_html, None, None)
+        page_html = _apply_chipsquirt(page_html, unit)
         existing = out_path.read_text() if out_path.exists() else ""
         if page_html != existing:
             out_path.write_text(page_html)

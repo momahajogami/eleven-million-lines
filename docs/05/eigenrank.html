@@ -84,7 +84,7 @@
     <h1>Eigenrank</h1>
 <p><em>How the internet learned to point.</em></p>
 <hr>
-<h2>Before the search</h2>
+<h2><span style="color:rgb(41,32,55)">B</span><span style="color:rgb(72,57,106)">e</span><span style="color:rgb(69,52,120)">f</span><span style="color:rgb(38,25,80)">o</span><span style="color:rgb(15,8,35)">r</span><span style="color:rgb(20,9,41)">e</span> <span style="color:rgb(56,29,90)">t</span><span style="color:rgb(92,55,122)">h</span><span style="color:rgb(81,53,97)">e</span> <span style="color:rgb(40,27,46)">s</span><span style="color:rgb(27,16,32)">e</span><span style="color:rgb(57,28,72)">a</span><span style="color:rgb(81,32,117)">r</span><span style="color:rgb(66,24,111)">c</span><span style="color:rgb(33,16,62)">h</span></h2>
 <p>There was a time — not long ago, geologically speaking, not long ago even in a human lifetime — when finding something on the internet required a guide.</p>
 <p>The guide was Yahoo.</p>
 <p>Yahoo's first form, in 1994, was a list maintained by two graduate students at Stanford — Jerry Yang and David Filo — who called it "Jerry and David's Guide to the World Wide Web." They curated it by hand. A website worth visiting, they would add it to the list. The list had categories: Arts, Business, Computers, Education, Entertainment. You clicked a category, then a subcategory, then a subcategory of that, until you arrived at the thing — if the thing existed, and if they had found it.</p>
@@ -93,7 +93,7 @@
 <p>There were other approaches. AltaVista indexed pages by crawling them and searching the text. Excite did the same. Type a word, get a list of pages containing that word. The problem: any page could contain any word, and the web was full of pages that crammed popular words into invisible text — white text on a white background — to appear in searches where they had no business appearing. Search was becoming noise.</p>
 <p>And before AltaVista — before the indexed search engines — there were the routes. You followed links. Someone's home page linked to something they found interesting; that page linked to something else. The web was a set of paths, and you walked them, and occasionally you found something worth finding.</p>
 <hr>
-<h2>The rooms everyone kept</h2>
+<h2><span style="color:rgb(66,40,122)">T</span><span style="color:rgb(51,22,93)">h</span><span style="color:rgb(27,9,43)">e</span> <span style="color:rgb(24,10,34)">r</span><span style="color:rgb(62,32,77)">o</span><span style="color:rgb(102,64,119)">o</span><span style="color:rgb(94,62,108)">m</span><span style="color:rgb(47,30,58)">s</span> <span style="color:rgb(22,12,30)">e</span><span style="color:rgb(35,17,59)">v</span><span style="color:rgb(52,24,109)">e</span><span style="color:rgb(52,29,118)">r</span><span style="color:rgb(37,26,75)">y</span><span style="color:rgb(20,16,33)">o</span><span style="color:rgb(31,25,44)">n</span><span style="color:rgb(70,54,94)">e</span> <span style="color:rgb(92,60,122)">k</span><span style="color:rgb(70,34,93)">e</span><span style="color:rgb(33,11,43)">p</span><span style="color:rgb(26,7,34)">t</span></h2>
 <p>In the middle of this, people were building rooms.</p>
 <p>Geocities launched in 1995 and organized personal home pages by neighborhood: SiliconValley for tech, Hollywood for entertainment, Athens for education. By 1999 it was the third most visited site on the web. Not for any central content — for the rooms.</p>
 <p>Millions of rooms. Every person with a computer that was always on — and there were more of them every month, university students, programmers, journalists, teenagers, retirees — could host whatever they imagined the internet should be. The rooms had MIDI music that started playing when you arrived. They had animated GIFs of spinning globes. They had hit counters: a number displayed at the bottom of the page, with pixelated dignity, showing how many times someone had been here.</p>
@@ -103,14 +103,14 @@
 <p>The problem was that it was becoming not-small, very fast, and the search engines couldn't keep up, and the guide had two people, and the routes were becoming impossible to navigate because no one had a map.</p>
 <p>In 1996, at Stanford, two graduate students — Larry Page and Sergey Brin — began thinking about this problem. Not as a search problem. As a <em>graph problem</em>.</p>
 <hr>
-<h2>The insight</h2>
+<h2><span style="color:rgb(65,24,105)">T</span><span style="color:rgb(38,12,54)">h</span><span style="color:rgb(23,10,30)">e</span> <span style="color:rgb(52,28,63)">i</span><span style="color:rgb(96,62,112)">n</span><span style="color:rgb(98,67,116)">s</span><span style="color:rgb(55,36,71)">i</span><span style="color:rgb(21,12,32)">g</span><span style="color:rgb(24,12,47)">h</span><span style="color:rgb(41,21,98)">t</span></h2>
 <p>A link is a vote.</p>
 <p>Not all votes are equal.</p>
 <p>If a page that many people have linked to — a page that the network trusts — links to you, that endorsement is worth more than a link from a page that no one has linked to. Trust propagates through the network. A trusted page's trust flows to the pages it links to.</p>
 <p>This is circular. The trust of a page depends on the trust of the pages that link to it, which depends on the trust of the pages that link to <em>them</em>, which depends on the trust of the pages that link to <em>those</em>. You cannot compute it in a single pass.</p>
 <p>You need to solve it as a system.</p>
 <hr>
-<h2>The mathematics</h2>
+<h2><span style="color:rgb(66,35,120)">T</span><span style="color:rgb(48,18,82)">h</span><span style="color:rgb(24,8,36)">e</span> <span style="color:rgb(30,13,40)">m</span><span style="color:rgb(74,41,88)">a</span><span style="color:rgb(105,68,122)">t</span><span style="color:rgb(84,56,99)">h</span><span style="color:rgb(37,23,48)">e</span><span style="color:rgb(21,11,32)">m</span><span style="color:rgb(37,18,70)">a</span><span style="color:rgb(51,25,116)">t</span><span style="color:rgb(50,30,112)">i</span><span style="color:rgb(34,25,64)">c</span><span style="color:rgb(20,15,30)">s</span></h2>
 <p>Model the web as a directed graph: each page is a node, each link is an edge pointing from the linking page to the linked page. Build a matrix <strong>A</strong> where <strong>A[i,j]</strong> is 1/(number of links from page j) if page j links to page i, and 0 otherwise. Each column sums to 1: the column is a probability distribution over the pages that j points to.</p>
 <p>Now ask: if a person were randomly clicking links — starting anywhere, following links, occasionally jumping to a random page — what fraction of their time would they spend on each page? This is the <em>random surfer</em> model. The steady-state distribution of the random surfer is the ranking vector.</p>
 <p>Mathematically, we want the vector <strong>r</strong> such that:</p>
@@ -127,7 +127,7 @@
 <p>Page and Brin called it PageRank — after Larry Page's name, after the concept of ranking pages. We call it <strong>Eigenrank</strong> because that is what it is: a ranking derived from an eigenvector of the network's link structure.</p>
 <p>The name also avoids a false implication. Google's current search has layered machine learning over the original algorithm until the eigenvector is one signal among hundreds. Typing a query into a search box today does not perform a straightforward eigenvector computation on the shape of the web. Calling it Eigenrank names the thing that was discovered, not the company that is now doing something much more complicated.</p>
 <hr>
-<h2>Solving it</h2>
+<h2><span style="color:rgb(58,48,88)">S</span><span style="color:rgb(69,53,122)">o</span><span style="color:rgb(48,30,99)">l</span><span style="color:rgb(23,11,48)">v</span><span style="color:rgb(17,7,32)">i</span><span style="color:rgb(47,22,70)">n</span><span style="color:rgb(91,52,116)">g</span> <span style="color:rgb(96,62,112)">i</span><span style="color:rgb(56,37,64)">t</span></h2>
 <p>Power iteration works like this:</p>
 <ol>
   <li>Start with every page assigned equal rank: <strong>r</strong> = <strong>1</strong>/n</li>
@@ -137,7 +137,7 @@
 <p>The number of iterations required depends on the spectral gap — the ratio between the dominant eigenvalue and the next-largest. For real web graphs, convergence happens in 50–100 iterations. For a web with billions of pages, this is a serious engineering problem: the matrix is enormous, but sparse, since most pages link to a tiny fraction of the web. The computation requires clever distributed engineering.</p>
 <p>Brin and Page built the first Eigenrank computation on commodity hardware in Stanford's computer science building, connected with ethernet cables, assembled from parts. The computation that indexed the web and changed how information flows ran, at its beginning, on the same kind of machines that university students had. Like BitTorrent, like Linux, it began on someone's floor.</p>
 <hr>
-<h2>What it changed</h2>
+<h2><span style="color:rgb(25,13,32)">W</span><span style="color:rgb(39,25,48)">h</span><span style="color:rgb(77,57,99)">a</span><span style="color:rgb(87,65,122)">t</span> <span style="color:rgb(52,37,88)">i</span><span style="color:rgb(18,11,40)">t</span> <span style="color:rgb(14,8,36)">c</span><span style="color:rgb(36,19,82)">h</span><span style="color:rgb(68,40,120)">a</span><span style="color:rgb(73,48,104)">n</span><span style="color:rgb(43,30,53)">g</span><span style="color:rgb(26,17,30)">e</span><span style="color:rgb(54,32,64)">d</span></h2>
 <p>AltaVista's keyword search returned results gamed by whoever made pages. Eigenrank returned results that reflected the collective judgment of the web itself — the accumulated linking decisions of millions of people who had each, by linking to something, said: <em>this is worth pointing to.</em></p>
 <p>It was not perfect. The web's linking structure reflected its existing biases. English-language pages linked to other English-language pages. Popular pages accumulated links faster than obscure pages regardless of quality. The rich got richer.</p>
 <p>But compared to what existed before — the hand-curated directory, the keyword-gamed index, the random walk through someone's Cool Sites — it was extraordinary. For a decade, you could type something into a search box and get something useful.</p>
@@ -145,7 +145,7 @@
 <p>The map changed the garden. When you know what is findable, you build differently. Pages were made to be found by Eigenrank, not by humans following routes. The link became a signal to be optimized. The algorithm shaped the network it was measuring.</p>
 <p>This is the lesson that runs through all of Unit 05: the tool is not separate from the culture. The tool is made by the culture; the culture is then made by the tool. Writing invented by humans; humans reshaped by writing. Code augmented by electricity; electricity reshaping the code.</p>
 <hr>
-<h2>What to read</h2>
+<h2><span style="color:rgb(25,13,31)">W</span><span style="color:rgb(41,28,51)">h</span><span style="color:rgb(79,59,102)">a</span><span style="color:rgb(84,63,121)">t</span> <span style="color:rgb(48,34,84)">t</span><span style="color:rgb(17,10,37)">o</span> <span style="color:rgb(15,8,38)">r</span><span style="color:rgb(39,21,86)">e</span><span style="color:rgb(71,42,121)">a</span><span style="color:rgb(73,48,101)">d</span></h2>
 <ul>
   <li>Page, L., Brin, S., Motwani, R., Winograd, T. (1998). <em>The PageRank Citation Ranking: Bringing Order to the Web.</em> Stanford Technical Report. Search for it by title — it is publicly available.</li>
   <li>Any introduction to eigenvalues and eigenvectors will give you the linear algebra. The Perron-Frobenius theorem appears in most linear algebra texts under that name.</li>

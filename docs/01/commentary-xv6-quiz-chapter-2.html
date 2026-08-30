@@ -83,7 +83,7 @@
   <div class="essay">
     <h1>Quiz — xv6 Book Chapter 2: Page Tables</h1>
 <hr>
-<h2>Paging hardware</h2>
+<h2><span style="color:rgb(10,90,87)">P</span><span style="color:rgb(7,40,41)">a</span><span style="color:rgb(10,34,35)">g</span><span style="color:rgb(33,78,80)">i</span><span style="color:rgb(57,119,120)">n</span><span style="color:rgb(47,105,102)">g</span> <span style="color:rgb(19,55,49)">h</span><span style="color:rgb(6,30,25)">a</span><span style="color:rgb(8,62,46)">r</span><span style="color:rgb(14,111,79)">d</span><span style="color:rgb(24,117,87)">w</span><span style="color:rgb(24,72,59)">a</span><span style="color:rgb(14,32,29)">r</span><span style="color:rgb(22,47,44)">e</span></h2>
 <ol>
   <li>What is a page table entry (PTE)? What two things does it contain?</li>
 </ol>
@@ -97,7 +97,7 @@
   <li>What do the flags <code>PTE_P</code>, <code>PTE_W</code>, and <code>PTE_U</code> mean?</li>
 </ol>
 <hr>
-<h2>Process address space</h2>
+<h2><span style="color:rgb(39,111,87)">P</span><span style="color:rgb(26,117,90)">r</span><span style="color:rgb(9,72,57)">o</span><span style="color:rgb(4,32,28)">c</span><span style="color:rgb(9,46,44)">e</span><span style="color:rgb(32,96,97)">s</span><span style="color:rgb(53,118,122)">s</span> <span style="color:rgb(43,87,90)">a</span><span style="color:rgb(17,40,41)">d</span><span style="color:rgb(11,35,34)">d</span><span style="color:rgb(15,80,72)">r</span><span style="color:rgb(14,120,98)">e</span><span style="color:rgb(15,106,80)">s</span><span style="color:rgb(13,55,41)">s</span> <span style="color:rgb(11,30,24)">s</span><span style="color:rgb(29,62,52)">p</span><span style="color:rgb(52,111,97)">a</span><span style="color:rgb(45,117,106)">c</span><span style="color:rgb(19,72,69)">e</span></h2>
 <ol>
   <li>Where does a process's user memory start in virtual address space? What is the upper limit, and what constant defines it?</li>
 </ol>
@@ -108,7 +108,7 @@
   <li>xv6 cannot use more than 2 gigabytes of physical memory. Why?</li>
 </ol>
 <hr>
-<h2>Physical memory allocation</h2>
+<h2><span style="color:rgb(15,35,33)">P</span><span style="color:rgb(37,78,71)">h</span><span style="color:rgb(52,119,103)">y</span><span style="color:rgb(34,107,85)">s</span><span style="color:rgb(11,56,41)">i</span><span style="color:rgb(3,30,22)">c</span><span style="color:rgb(8,61,47)">a</span><span style="color:rgb(25,110,94)">l</span> <span style="color:rgb(42,117,110)">m</span><span style="color:rgb(34,74,73)">e</span><span style="color:rgb(15,32,33)">m</span><span style="color:rgb(18,43,45)">o</span><span style="color:rgb(26,92,96)">r</span><span style="color:rgb(20,122,122)">y</span> <span style="color:rgb(11,91,85)">a</span><span style="color:rgb(7,42,36)">l</span><span style="color:rgb(9,35,28)">l</span><span style="color:rgb(31,78,64)">o</span><span style="color:rgb(56,119,98)">c</span><span style="color:rgb(49,107,88)">a</span><span style="color:rgb(20,56,47)">t</span><span style="color:rgb(7,30,26)">i</span><span style="color:rgb(8,61,56)">o</span><span style="color:rgb(14,110,109)">n</span></h2>
 <ol>
   <li>How does xv6 track which physical pages are free? Describe the data structure.</li>
 </ol>
@@ -119,7 +119,7 @@
   <li>What does <code>kfree</code> write into every byte of a freed page, and why?</li>
 </ol>
 <hr>
-<h2>Code: exec</h2>
+<h2><span style="color:rgb(10,89,87)">C</span><span style="color:rgb(7,39,40)">o</span><span style="color:rgb(10,34,36)">d</span><span style="color:rgb(33,78,81)">e</span><span style="color:rgb(57,119,120)">:</span> <span style="color:rgb(47,105,101)">e</span><span style="color:rgb(19,54,49)">x</span><span style="color:rgb(6,30,25)">e</span><span style="color:rgb(8,63,46)">c</span></h2>
 <ol>
   <li>What file format do xv6 executables use? What "magic number" does <code>exec</code> check for?</li>
 </ol>
@@ -133,7 +133,7 @@
   <li>Why is argument validation in <code>exec</code> security-critical? What could a malicious ELF binary do if <code>exec</code> skipped the check <code>ph.vaddr + ph.memsz >= ph.vaddr</code>?</li>
 </ol>
 <hr>
-<h2>The TLB</h2>
+<h2><span style="color:rgb(24,121,98)">T</span><span style="color:rgb(10,85,74)">h</span><span style="color:rgb(5,38,36)">e</span> <span style="color:rgb(8,37,38)">T</span><span style="color:rgb(30,81,84)">L</span><span style="color:rgb(55,117,121)">B</span></h2>
 <ol>
   <li>What is the Translation Lookaside Buffer (TLB)? What problem does it solve?</li>
 </ol>
@@ -141,7 +141,7 @@
   <li>When xv6 changes a page table, what must it do to avoid stale TLB entries, and how does it do it?</li>
 </ol>
 <hr>
-<h2>Design</h2>
+<h2><span style="color:rgb(24,50,45)">D</span><span style="color:rgb(46,101,87)">e</span><span style="color:rgb(43,121,97)">s</span><span style="color:rgb(19,85,63)">i</span><span style="color:rgb(5,38,28)">g</span><span style="color:rgb(4,38,29)">n</span></h2>
 <ol>
   <li>A process's physical memory can be non-contiguous, but its virtual addresses appear contiguous starting at zero. What mechanism makes this possible?</li>
 </ol>

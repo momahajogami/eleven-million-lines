@@ -84,7 +84,7 @@
     <h1>Exercises — Simplicial Homology</h1>
 <p><em>Three levels. Do what you can. Come back to the rest.</em></p>
 <hr>
-<h2>Level 1 — By Hand</h2>
+<h2><span style="color:rgb(23,29,44)">L</span><span style="color:rgb(22,25,33)">e</span><span style="color:rgb(57,63,76)">v</span><span style="color:rgb(92,102,118)">e</span><span style="color:rgb(77,91,109)">l</span> <span style="color:rgb(34,47,59)">1</span> <span style="color:rgb(14,23,30)">—</span> <span style="color:rgb(24,43,58)">B</span><span style="color:rgb(50,81,108)">y</span> <span style="color:rgb(68,93,119)">H</span><span style="color:rgb(53,63,76)">a</span><span style="color:rgb(26,29,34)">n</span><span style="color:rgb(33,36,43)">d</span></h2>
 <p>These can all be done with pencil and paper. The goal is to feel the machinery before you run the code.</p>
 <p><strong>1.1</strong> Draw the simplicial complex K with:</p>
 <ul>
@@ -98,7 +98,7 @@
 <p><strong>1.4</strong> The wedge sum S¹ ∨ S¹ is two circles sharing a single point. Build this as a simplicial complex and compute its homology. Expected: H₀ = ℤ, H₁ = ℤ², H₂ = 0.</p>
 <p><strong>1.5</strong> Compute the Euler characteristic of each space in the table in MATHEMATICS.md using the formula χ = V − E + F (vertices minus edges plus triangles). Check that it agrees with χ = β₀ − β₁ + β₂.</p>
 <hr>
-<h2>Level 2 — Understanding</h2>
+<h2><span style="color:rgb(23,29,44)">L</span><span style="color:rgb(21,25,33)">e</span><span style="color:rgb(56,62,75)">v</span><span style="color:rgb(92,102,118)">e</span><span style="color:rgb(78,92,109)">l</span> <span style="color:rgb(35,47,60)">2</span> <span style="color:rgb(14,23,30)">—</span> <span style="color:rgb(24,42,57)">U</span><span style="color:rgb(49,80,108)">n</span><span style="color:rgb(67,93,119)">d</span><span style="color:rgb(54,64,77)">e</span><span style="color:rgb(26,29,34)">r</span><span style="color:rgb(32,36,43)">s</span><span style="color:rgb(62,71,92)">t</span><span style="color:rgb(66,82,122)">a</span><span style="color:rgb(42,58,95)">n</span><span style="color:rgb(19,27,44)">d</span><span style="color:rgb(16,23,33)">i</span><span style="color:rgb(46,59,75)">n</span><span style="color:rgb(86,102,118)">g</span></h2>
 <p>These require you to think, not just compute.</p>
 <p><strong>2.1</strong> Prove that ∂₁ ∘ ∂₂ = 0 for any simplicial complex. That is: show that for any triangle (a,b,c), ∂₁(∂₂((a,b,c))) = 0. The calculation is in MATHEMATICS.md. Now generalize: prove that ∂_{n-1} ∘ ∂_n = 0 for any n and any n-simplex.</p>
 <p><em>(Hint: a telescope. Most terms cancel. Figure out which ones pair up and why.)</em></p>
@@ -109,7 +109,7 @@
 <p><em>(This gives a practical way to kill all homology.)</em></p>
 <p><strong>2.5</strong> The ℤ/2ℤ in H₁(RP²) corresponds to what geometric fact? Describe the generator of H₁(RP²) as a specific cycle. Why is twice this cycle a boundary? What boundary is it?</p>
 <hr>
-<h2>Level 3 — Programming</h2>
+<h2><span style="color:rgb(20,25,36)">L</span><span style="color:rgb(28,32,40)">e</span><span style="color:rgb(69,77,89)">v</span><span style="color:rgb(92,105,122)">e</span><span style="color:rgb(65,81,98)">l</span> <span style="color:rgb(25,37,47)">3</span> <span style="color:rgb(14,24,32)">—</span> <span style="color:rgb(30,52,71)">P</span><span style="color:rgb(58,88,116)">r</span><span style="color:rgb(70,89,112)">o</span><span style="color:rgb(46,53,63)">g</span><span style="color:rgb(24,26,30)">r</span><span style="color:rgb(39,44,54)">a</span><span style="color:rgb(64,76,105)">m</span><span style="color:rgb(59,77,120)">m</span><span style="color:rgb(34,49,81)">i</span><span style="color:rgb(16,23,36)">n</span><span style="color:rgb(22,30,40)">g</span></h2>
 <p>These extend the code.</p>
 <p><strong>3.1</strong> Add a method <code>SimplicialComplex.is_manifold(n)</code> that checks whether K is a topological n-manifold: every (n-1)-simplex must be the face of exactly 1 or 2 n-simplices (1 on the boundary, 2 in the interior).</p>
 <p>Test it on the sphere (manifold), the torus (manifold), and a figure-8 (not a manifold at the pinch point).</p>
@@ -131,7 +131,7 @@
 <pre><code>... → H_n(C) → H_n(A) ⊕ H_n(B) → H_n(K) → H_{n-1}(C) → ...</code></pre>
 <p>Use it to compute H_*(S²) by writing S² = upper hemisphere ∪ lower hemisphere, where the intersection is the equatorial circle.</p>
 <hr>
-<h2>A note on difficulty</h2>
+<h2><span style="color:rgb(72,96,116)">A</span> <span style="color:rgb(56,85,112)">n</span><span style="color:rgb(27,44,64)">o</span><span style="color:rgb(13,20,30)">t</span><span style="color:rgb(28,37,53)">e</span> <span style="color:rgb(69,80,104)">o</span><span style="color:rgb(91,99,120)">n</span> <span style="color:rgb(63,69,82)">d</span><span style="color:rgb(25,29,36)">i</span><span style="color:rgb(23,29,40)">f</span><span style="color:rgb(41,61,88)">f</span><span style="color:rgb(51,85,122)">i</span><span style="color:rgb(46,74,99)">c</span><span style="color:rgb(28,39,48)">u</span><span style="color:rgb(22,27,32)">l</span><span style="color:rgb(54,63,70)">t</span><span style="color:rgb(88,101,116)">y</span></h2>
 <p>Exercise 2.2 (Euler-Poincaré) looks like algebra but is actually counting. If you get stuck, write out the long exact sequence for a small complex.</p>
 <p>Exercise 3.5 (Mayer-Vietoris) is a real theorem. Implementing it means computing the connecting homomorphism, which requires tracking the Smith form transformation matrices (U and V, not just D). That is the next step in the implementation beyond what this unit provides.</p>
 <p>The gap between "I can compute homology" and "I understand homology" is closed by exercises like these, not by reading more theory. The reading tells you what to look for. The computing is the looking.</p>

@@ -84,22 +84,22 @@
     <h1>Building Emacs from Source</h1>
 <p>This is the Track A exercise: compile GNU Emacs yourself, from the source in <code>03/emacs/</code>. It takes 10–20 minutes. At the end you will have an Emacs binary you built, which you can run alongside (or instead of) any system Emacs.</p>
 <hr>
-<h2>Why bother</h2>
+<h2><span style="color:rgb(19,89,48)">W</span><span style="color:rgb(11,40,25)">h</span><span style="color:rgb(14,36,25)">y</span> <span style="color:rgb(42,81,61)">b</span><span style="color:rgb(69,120,92)">o</span><span style="color:rgb(57,105,76)">t</span><span style="color:rgb(24,54,33)">h</span><span style="color:rgb(9,30,14)">e</span><span style="color:rgb(14,63,24)">r</span></h2>
 <p>You could install Emacs with a package manager in 30 seconds. That is not the point. Building it yourself means you have read the <code>configure</code> options, made decisions about what to include, and watched the compiler work through 280 C files. After this, <code>src/emacs</code> is yours in a way that <code>apt install emacs</code> is not.</p>
 <p>This is Freedom 1 at the C level. The Lisp exercise in <code>lisp-exercise.md</code> is Freedom 1 at the Lisp level. They are different experiences of the same idea.</p>
 <hr>
-<h2>Prerequisites (Arch Linux)</h2>
+<h2><span style="color:rgb(13,31,22)">P</span><span style="color:rgb(26,49,35)">r</span><span style="color:rgb(58,100,72)">e</span><span style="color:rgb(64,121,80)">r</span><span style="color:rgb(36,87,47)">e</span><span style="color:rgb(11,39,16)">q</span><span style="color:rgb(8,37,13)">u</span><span style="color:rgb(20,83,32)">i</span><span style="color:rgb(41,121,61)">s</span><span style="color:rgb(48,103,66)">i</span><span style="color:rgb(29,52,38)">t</span><span style="color:rgb(17,31,23)">e</span><span style="color:rgb(32,65,48)">s</span> <span style="color:rgb(41,113,77)">(</span><span style="color:rgb(30,115,70)">A</span><span style="color:rgb(15,69,37)">r</span><span style="color:rgb(8,31,16)">c</span><span style="color:rgb(19,49,27)">h</span> <span style="color:rgb(51,100,61)">L</span><span style="color:rgb(70,121,79)">i</span><span style="color:rgb(48,87,55)">n</span><span style="color:rgb(17,39,22)">u</span><span style="color:rgb(12,37,18)">x</span><span style="color:rgb(19,83,40)">)</span></h2>
 <pre><code>sudo pacman -S base-devel ncurses gnutls libgif libjpeg libpng libtiff libxml2 texinfo</code></pre>
 <p>For a genuinely minimal build (no graphics, no TLS, terminal only):</p>
 <pre><code>sudo pacman -S base-devel ncurses</code></pre>
 <hr>
-<h2>Step 1: Generate the build system</h2>
+<h2><span style="color:rgb(21,39,28)">S</span><span style="color:rgb(50,87,60)">t</span><span style="color:rgb(62,121,75)">e</span><span style="color:rgb(39,100,49)">p</span> <span style="color:rgb(13,49,19)">1</span><span style="color:rgb(7,31,11)">:</span> <span style="color:rgb(17,69,30)">G</span><span style="color:rgb(42,115,65)">e</span><span style="color:rgb(56,113,78)">n</span><span style="color:rgb(37,65,50)">e</span><span style="color:rgb(17,31,24)">r</span><span style="color:rgb(24,52,38)">a</span><span style="color:rgb(35,103,67)">t</span><span style="color:rgb(29,121,67)">e</span> <span style="color:rgb(18,83,41)">t</span><span style="color:rgb(10,37,18)">h</span><span style="color:rgb(16,39,21)">e</span> <span style="color:rgb(46,87,53)">b</span><span style="color:rgb(70,121,79)">u</span><span style="color:rgb(53,100,62)">i</span><span style="color:rgb(20,49,28)">l</span><span style="color:rgb(9,31,16)">d</span> <span style="color:rgb(15,69,37)">s</span><span style="color:rgb(27,115,67)">y</span><span style="color:rgb(38,113,75)">s</span><span style="color:rgb(30,65,47)">t</span><span style="color:rgb(17,31,23)">e</span><span style="color:rgb(30,52,39)">m</span></h2>
 <p>The Emacs repo does not ship a <code>configure</code> script — it ships the files to generate one. From <code>03/emacs/</code>:</p>
 <pre><code>cd ~/Documents/university-coding/03/emacs
 ./autogen.sh</code></pre>
 <p>This runs autoconf and produces <code>configure</code>. Takes about 30 seconds.</p>
 <hr>
-<h2>Step 2: Configure</h2>
+<h2><span style="color:rgb(17,33,23)">S</span><span style="color:rgb(42,73,52)">t</span><span style="color:rgb(64,117,78)">e</span><span style="color:rgb(49,110,61)">p</span> <span style="color:rgb(19,61,26)">2</span><span style="color:rgb(7,30,11)">:</span> <span style="color:rgb(13,56,22)">C</span><span style="color:rgb(33,106,53)">o</span><span style="color:rgb(53,119,76)">n</span><span style="color:rgb(43,79,58)">f</span><span style="color:rgb(20,35,27)">i</span><span style="color:rgb(21,42,31)">g</span><span style="color:rgb(36,91,63)">u</span><span style="color:rgb(34,122,74)">r</span><span style="color:rgb(21,96,51)">e</span></h2>
 <p>Minimal terminal-only build (fastest; good for this exercise):</p>
 <pre><code>./configure \
   --without-x \
@@ -112,18 +112,18 @@
 <p>To see every available option: <code>./configure --help | less</code></p>
 <p>The flags we're suppressing are X11 windowing, audio, and desktop integration — none of which you need to read code and run the Lisp exercise. They add build time and dependencies.</p>
 <hr>
-<h2>Step 3: Compile</h2>
+<h2><span style="color:rgb(13,30,21)">S</span><span style="color:rgb(30,55,40)">t</span><span style="color:rgb(61,105,75)">e</span><span style="color:rgb(61,120,76)">p</span> <span style="color:rgb(31,80,41)">3</span><span style="color:rgb(9,35,14)">:</span> <span style="color:rgb(9,41,14)">C</span><span style="color:rgb(23,90,37)">o</span><span style="color:rgb(44,122,66)">m</span><span style="color:rgb(48,97,65)">p</span><span style="color:rgb(26,47,35)">i</span><span style="color:rgb(18,32,25)">l</span><span style="color:rgb(34,72,53)">e</span></h2>
 <pre><code>make -j$(nproc)</code></pre>
 <p><code>$(nproc)</code> uses all your CPU cores. Watch the output: you will see GCC processing each <code>.c</code> file in <code>src/</code>, then the Lisp files in <code>lisp/</code> being byte-compiled. The two phases are visible and distinct.</p>
 <hr>
-<h2>Step 4: Run</h2>
+<h2><span style="color:rgb(37,65,44)">S</span><span style="color:rgb(58,113,69)">t</span><span style="color:rgb(46,115,57)">e</span><span style="color:rgb(19,69,28)">p</span> <span style="color:rgb(7,31,12)">4</span><span style="color:rgb(12,49,22)">:</span> <span style="color:rgb(36,100,59)">R</span><span style="color:rgb(59,121,86)">u</span><span style="color:rgb(49,87,68)">n</span></h2>
 <pre><code>src/emacs -nw</code></pre>
 <p><code>-nw</code> means "no window" — forces terminal mode even if X is available. You are now running an Emacs you compiled.</p>
 <p>To confirm it is your build and not a system Emacs:</p>
 <pre><code>M-x emacs-version</code></pre>
 <p>The path in the output will point to your build directory.</p>
 <hr>
-<h2>Step 5: Make a change and rebuild</h2>
+<h2><span style="color:rgb(17,33,23)">S</span><span style="color:rgb(43,75,53)">t</span><span style="color:rgb(64,118,78)">e</span><span style="color:rgb(48,109,60)">p</span> <span style="color:rgb(18,59,25)">5</span><span style="color:rgb(7,30,11)">:</span> <span style="color:rgb(13,57,23)">M</span><span style="color:rgb(34,108,55)">a</span><span style="color:rgb(53,119,76)">k</span><span style="color:rgb(42,77,57)">e</span> <span style="color:rgb(19,34,26)">a</span> <span style="color:rgb(22,43,32)">c</span><span style="color:rgb(36,93,64)">h</span><span style="color:rgb(33,122,73)">a</span><span style="color:rgb(20,95,49)">n</span><span style="color:rgb(11,44,22)">g</span><span style="color:rgb(12,33,17)">e</span> <span style="color:rgb(37,75,44)">a</span><span style="color:rgb(67,118,76)">n</span><span style="color:rgb(61,109,70)">d</span> <span style="color:rgb(28,59,35)">r</span><span style="color:rgb(10,30,16)">e</span><span style="color:rgb(14,57,29)">b</span><span style="color:rgb(24,108,59)">u</span><span style="color:rgb(34,119,75)">i</span><span style="color:rgb(32,77,54)">l</span><span style="color:rgb(18,34,26)">d</span></h2>
 <p>Find a string you can change without breaking anything. A good candidate:</p>
 <pre><code>grep -n "For information about GNU Emacs" lisp/startup.el | head -5</code></pre>
 <p>Edit that string. Then:</p>
@@ -131,7 +131,7 @@
 src/emacs -nw</code></pre>
 <p>The change will be there. You changed the program. You compiled it. You ran it. This is the complete cycle.</p>
 <hr>
-<h2>What the C core does, briefly</h2>
+<h2><span style="color:rgb(17,72,43)">W</span><span style="color:rgb(10,32,21)">h</span><span style="color:rgb(21,46,33)">a</span><span style="color:rgb(54,97,74)">t</span> <span style="color:rgb(70,122,91)">t</span><span style="color:rgb(45,90,60)">h</span><span style="color:rgb(15,41,22)">e</span> <span style="color:rgb(9,35,14)">C</span> <span style="color:rgb(17,80,28)">c</span><span style="color:rgb(31,120,47)">o</span><span style="color:rgb(40,106,53)">r</span><span style="color:rgb(27,55,35)">e</span> <span style="color:rgb(17,30,22)">d</span><span style="color:rgb(34,62,46)">o</span><span style="color:rgb(51,111,79)">e</span><span style="color:rgb(39,117,78)">s</span><span style="color:rgb(17,72,44)">,</span> <span style="color:rgb(7,32,19)">b</span><span style="color:rgb(14,46,27)">r</span><span style="color:rgb(41,97,59)">i</span><span style="color:rgb(65,122,80)">e</span><span style="color:rgb(52,90,60)">f</span><span style="color:rgb(22,41,25)">l</span><span style="color:rgb(14,35,18)">y</span></h2>
 <p><code>src/</code> contains ~280 files. The most important:</p>
 <ul>
   <li><code>alloc.c</code> — Emacs' garbage collector and memory allocator</li>
@@ -143,7 +143,7 @@ src/emacs -nw</code></pre>
 </ul>
 <p>The C core is a Lisp interpreter. Everything above it — every command, every mode, every behavior — is Lisp. When you understand that, the architecture makes sense.</p>
 <hr>
-<h2>Troubleshooting</h2>
+<h2><span style="color:rgb(13,38,26)">T</span><span style="color:rgb(18,37,27)">r</span><span style="color:rgb(48,84,62)">o</span><span style="color:rgb(68,121,86)">u</span><span style="color:rgb(49,102,63)">b</span><span style="color:rgb(18,51,25)">l</span><span style="color:rgb(7,31,11)">e</span><span style="color:rgb(14,66,23)">s</span><span style="color:rgb(32,114,49)">h</span><span style="color:rgb(46,115,64)">o</span><span style="color:rgb(35,68,46)">o</span><span style="color:rgb(18,31,23)">t</span><span style="color:rgb(27,50,37)">i</span><span style="color:rgb(44,101,72)">n</span><span style="color:rgb(37,121,79)">g</span></h2>
 <p><strong><code>./autogen.sh: command not found</code></strong> — install <code>autoconf</code>: <code>sudo pacman -S autoconf automake</code></p>
 <p><strong><code>configure: error: The required function 'tputs' was not found</code></strong> — install ncurses: <code>sudo pacman -S ncurses</code></p>
 <p><strong>Build fails partway through</strong> — run <code>make clean</code> and try again; partial builds sometimes leave inconsistent state</p>
