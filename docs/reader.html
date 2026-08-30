@@ -80,6 +80,124 @@
   <div class="footer">Eleven Million Lines You Should Know</div>
 
   <script>
+    // ── Chipsquirt (JS port) ────────────────────────────────────────────────
+    // h1  → fourth-power-interval (rare chromatic flashes, mostly near-black)
+    // h2/h3 → orbit (3D Lissajous through HSV, golden ratio frequencies)
+
+    const FAMILIES = {
+      teal:    { hc: 172, hd: 12, sat: 70,  lc: 28, lr: 8 },
+      slate:   { hc: 215, hd: 8,  sat: 40,  lc: 28, lr: 8 },
+      forest:  { hc: 140, hd: 10, sat: 60,  lc: 25, lr: 8 },
+      amber:   { hc: 36,  hd: 8,  sat: 75,  lc: 28, lr: 8 },
+      violet:  { hc: 268, hd: 14, sat: 60,  lc: 26, lr: 8 },
+      magenta: { hc: 312, hd: 10, sat: 65,  lc: 26, lr: 8 },
+    };
+
+    const UNIT_FAMILIES = {
+      '01': 'teal',   '02': 'slate',  '03': 'forest', '04': 'amber',
+      '05': 'violet', '06': 'magenta','07': 'teal',   '08': 'slate',
+      '09': 'amber',  '10': 'forest', '11': 'violet',
+    };
+
+    function hsvToRgb(h, s, v) {
+      h = ((h % 360) + 360) % 360;
+      const c = v * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = v - c;
+      let r, g, b;
+      if      (h < 60)  { r=c; g=x; b=0; }
+      else if (h < 120) { r=x; g=c; b=0; }
+      else if (h < 180) { r=0; g=c; b=x; }
+      else if (h < 240) { r=0; g=x; b=c; }
+      else if (h < 300) { r=x; g=0; b=c; }
+      else              { r=c; g=0; b=x; }
+      return [Math.round((r+m)*255), Math.round((g+m)*255), Math.round((b+m)*255)];
+    }
+
+    function hslToRgb01(h, s, l) {
+      // h degrees, s/l percent → [r,g,b] as 0–1 floats
+      s /= 100; l /= 100;
+      h = ((h % 360) + 360) % 360;
+      const c = (1 - Math.abs(2*l - 1)) * s;
+      const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+      const m = l - c / 2;
+      let r, g, b;
+      if      (h < 60)  { r=c; g=x; b=0; }
+      else if (h < 120) { r=x; g=c; b=0; }
+      else if (h < 180) { r=0; g=c; b=x; }
+      else if (h < 240) { r=0; g=x; b=c; }
+      else if (h < 300) { r=x; g=0; b=c; }
+      else              { r=c; g=0; b=x; }
+      return [r+m, g+m, b+m];
+    }
+
+    function letterColor(i, fam, mode, phase) {
+      const { hc, hd, sat, lc, lr } = fam;
+      const freq = 0.45;
+      const PHI = 1.6180339887, PHI2 = 2.6180339887;
+
+      if (mode === 'orbit') {
+        const h_hsv = ((hc + hd * Math.sin(i * freq + phase)) % 360 + 360) % 360;
+        let s_hsv = sat / 100 + 0.18 * Math.sin(i * freq * PHI  + phase + 1.1);
+        let v_hsv = 0.30       + 0.18 * Math.sin(i * freq * PHI2 + phase + 2.3);
+        s_hsv = Math.max(0, Math.min(1, s_hsv));
+        v_hsv = Math.max(0.08, Math.min(0.60, v_hsv));
+        const [r, g, b] = hsvToRgb(h_hsv, s_hsv, v_hsv);
+        return `rgb(${r},${g},${b})`;
+      }
+
+      if (mode === 'fourth-power-interval') {
+        const [ar, ag, ab] = hslToRgb01(hc, sat, Math.max(lc - lr, 6));
+        const bh = hc + (Math.random() * 2 - 1) * hd;
+        const bs = Math.min(sat + Math.random() * 15, 100);
+        const bl = Math.min(lc + Math.random() * (lr * 3 + 8) + 8, 60);
+        const [br, bg, bb] = hslToRgb01(bh, bs, bl);
+        const t = Math.random(), t4 = t * t * t * t;
+        const r = ar + t4 * (br - ar);
+        const g = ag + t4 * (bg - ag);
+        const b = ab + t4 * (bb - ab);
+        return `rgb(${Math.round(r*255)},${Math.round(g*255)},${Math.round(b*255)})`;
+      }
+
+      return `hsl(${hc},${sat}%,${lc}%)`;
+    }
+
+    function colorizeTextNode(textNode, fam, mode, counter, phase) {
+      const text = textNode.nodeValue;
+      const frag = document.createDocumentFragment();
+      for (const ch of text) {
+        if (/\s/.test(ch)) {
+          frag.appendChild(document.createTextNode(ch));
+        } else {
+          const span = document.createElement('span');
+          span.style.color = letterColor(counter.i++, fam, mode, phase);
+          span.textContent = ch;
+          frag.appendChild(span);
+        }
+      }
+      textNode.parentNode.replaceChild(frag, textNode);
+    }
+
+    function colorizeElement(el, fam, mode) {
+      const phase = Math.random() * Math.PI * 2;
+      const counter = { i: 0 };
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      let n;
+      while ((n = walker.nextNode())) nodes.push(n);
+      for (const node of nodes) colorizeTextNode(node, fam, mode, counter, phase);
+    }
+
+    function applyChipsquirt(unit) {
+      const famName = UNIT_FAMILIES[unit] || 'teal';
+      const fam = FAMILIES[famName];
+      const content = document.getElementById('content');
+      content.querySelectorAll('h1').forEach(el =>
+        colorizeElement(el, fam, 'fourth-power-interval'));
+      content.querySelectorAll('h2, h3').forEach(el =>
+        colorizeElement(el, fam, 'orbit'));
+    }
+
+    // ── Page logic ──────────────────────────────────────────────────────────
+
     const REPO = "momahajogami/eleven-million-lines";
     const BRANCH = "main";
     const RAW_BASE = `https://raw.githubusercontent.com/${REPO}/${BRANCH}`;
@@ -92,7 +210,6 @@
       document.getElementById("content").innerHTML =
         '<p class="error">No file specified. Add <code>?file=02/ZETTELKASTEN.md</code> to the URL.</p>';
     } else {
-      // populate nav links
       const unit = file.match(/^(\d{2})\//)?.[1];
       if (unit) {
         document.getElementById("unit-link").innerHTML =
@@ -110,6 +227,7 @@
         })
         .then(md => {
           document.getElementById("content").innerHTML = marked.parse(md);
+          if (unit) applyChipsquirt(unit);
         })
         .catch(err => {
           document.getElementById("content").innerHTML =

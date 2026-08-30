@@ -52,11 +52,12 @@ def colorize_letters(text, hue_center=170, hue_drift=10, sat=58,
     sat         : saturation % — keep moderate so dark colors read as hued, not grey
     light_center: center lightness % — keep low (6–12) for near-black effect
     light_range : how much lightness oscillates around center
-    mode        : 'sine'        — smooth wave, meditative and rhythmic
-                  'random'     — independent per-letter noise, speckled
-                  'walk'       — random walk, wanders and drifts
-                  'unit-squared' — parabolic: most letters near-black, rare bright flashes
-                  'orbit'      — 3D Lissajous path through HSV space
+    mode        : 'sine'                  — smooth wave, meditative and rhythmic
+                  'random'               — independent per-letter noise, speckled
+                  'walk'                 — random walk, wanders and drifts
+                  'unit-squared'         — parabolic: most letters near-black, rare bright flashes
+                  'fourth-power-interval'— like unit-squared but t⁴; flashes even rarer
+                  'orbit'                — 3D Lissajous path through HSV space
     freq        : oscillation frequency for sine mode
     seed        : fix the random seed for reproducible output
     """
@@ -113,6 +114,24 @@ def colorize_letters(text, hue_center=170, hue_drift=10, sat=58,
             r = anchor_r + t_sq * (bright_r - anchor_r)
             g = anchor_g + t_sq * (bright_g - anchor_g)
             b = anchor_b + t_sq * (bright_b - anchor_b)
+            color = f"rgb({int(r*255)},{int(g*255)},{int(b*255)})"
+
+        elif mode == 'fourth-power-interval':
+            # Like unit-squared but t⁴ instead of t² — probability density is even
+            # more sharply concentrated near the dark anchor. Chromatic flashes are
+            # rarer and more startling: perhaps one letter in twenty escapes the dark.
+            anchor_r, anchor_g, anchor_b = _hsl_to_rgb01(
+                hue_center, sat, max(light_center - light_range, 6.0)
+            )
+            bright_h = hue_center + random.uniform(-hue_drift, hue_drift)
+            bright_s = min(sat + random.uniform(0, 15), 100.0)
+            bright_l = min(light_center + random.uniform(8, light_range * 3 + 8), 60.0)
+            bright_r, bright_g, bright_b = _hsl_to_rgb01(bright_h, bright_s, bright_l)
+            t      = random.random()
+            t_4    = t * t * t * t
+            r = anchor_r + t_4 * (bright_r - anchor_r)
+            g = anchor_g + t_4 * (bright_g - anchor_g)
+            b = anchor_b + t_4 * (bright_b - anchor_b)
             color = f"rgb({int(r*255)},{int(g*255)},{int(b*255)})"
 
         elif mode == 'orbit':
@@ -290,7 +309,7 @@ if __name__ == '__main__':
     sentences = DEMO_SENTENCES.copy()
     for name, fn in FAMILIES.items():
         print(f'<div class="family">')
-        for mode in ('sine', 'walk', 'random', 'unit-squared', 'orbit'):
+        for mode in ('sine', 'walk', 'random', 'unit-squared', 'fourth-power-interval', 'orbit'):
             text = sentences[0]
             sentences = sentences[1:] + [sentences[0]]
             colored = fn(text, mode=mode)
