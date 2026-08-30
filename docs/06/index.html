@@ -38,24 +38,28 @@
 
   <div class="unit-label">Unit 06</div>
   <h1>Languages and Theory</h1>
-  <p class="tagline">Before C there was assembly. Before assembly, punch cards. Before punch cards, a loom.</p>
+  <p class="tagline">Before C, there was assembly. Before assembly, there were punch cards. Before punch cards, there was a loom.</p>
 
   <div class="description">
-    BASIC (access and democracy), Assembly with punch cards and the Jacquard loom, LISP (Church's lambda calculus made executable), ML/Haskell (type theory), Prolog (logic as computation). Primary sources: Lovelace 1843 (Note G), Church 1936, Turing 1936 and 1950, McCarthy 1960.
+    <p>
+      Unit 06 traces the history of programming languages as a history of notation — of finding better ways to write instructions for machines. The unit begins with Ada Lovelace's Note G (1843, the first program) and ends with Haskell's type system. The line from the Jacquard loom to lambda calculus is real and unbroken.
+    </p>
+    <p>
+      The primary texts are the papers: Church (1936), Turing (1936, 1950), McCarthy (1960), Lovelace (1843). These are the founding documents of computation. The code — assembly, BASIC, Haskell — implements what the papers describe.
+    </p>
   </div>
 
   <div class="materials">
     <h2>Materials</h2>
     <ul>
-      <li><strong>LANGUAGES.md</strong></li>
-      <li><strong>HERITAGE.md</strong></li>
-      <li><strong>ghc/</strong> — Glasgow Haskell Compiler</li>
-      <li><strong>nasm/</strong> — assembler</li>
-      <li><strong>hello-world.asm</strong></li>
-      <li><strong>hello-basic.bas</strong></li>
-      <li><strong>Lovelace notes</strong></li>
-      <li><strong>Turing PDFs</strong></li>
-      <li><strong>commentary/</strong></li>
+      <li><strong>LANGUAGES.md</strong> — survey of programming language families with opinionated commentary</li>
+      <li><strong>GHC</strong> (<code>ghc/</code>) — the Glasgow Haskell Compiler. Sparse checkout of the type checker and core. The most sophisticated type system in wide use.</li>
+      <li><strong>NASM</strong> (<code>nasm/</code>) — the Netwide Assembler. Where the machine becomes readable.</li>
+      <li><strong>hello-world.asm</strong> (<code>scratch/</code>) — assembly for x86: the smallest possible program</li>
+      <li><strong>hello-basic.bas</strong> (<code>scratch/</code>) — BASIC: the language that put programming in front of a generation</li>
+      <li><strong>Turing 1936</strong> (<code>scratch/turing-1936.pdf</code>) — "On Computable Numbers." The paper that invented computation.</li>
+      <li><strong>Turing 1950</strong> (<code>scratch/turing-1950.pdf</code>) — "Computing Machinery and Intelligence." Can machines think?</li>
+      <li><strong>Lovelace 1843</strong> (<code>scratch/lovelace-notes.txt</code>) — Note G from the Analytical Engine translation. The first program.</li>
     </ul>
   </div>
 

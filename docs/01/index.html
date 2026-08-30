@@ -41,17 +41,22 @@
   <p class="tagline">The place where most of what you use was invented.</p>
 
   <div class="description">
-    Three repositories — xv6, Unix v6, and Plan 9 — read alongside Lions' Commentary on UNIX with Source Code. This is the ground floor. Everything else in the course is downstream of what happened here.
+    <p>
+      Three repositories read alongside a single book: Lions' Commentary on UNIX with Source Code. This is the ground floor. Everything in the course is downstream of what happened here between 1969 and 1975 in a room at Bell Labs.
+    </p>
+    <p>
+      The unit teaches orientation, not mastery. How do you stand inside a large, old codebase and find your bearings? How do you read an operating system? What does it mean that the same ideas — the file, the process, the pipe — are still the ideas your computer runs on?
+    </p>
   </div>
 
   <div class="materials">
     <h2>Materials</h2>
     <ul>
-      <li><strong>xv6</strong> — MIT's teaching OS based on Unix v6</li>
-      <li><strong>unix-v6</strong> — the original</li>
-      <li><strong>Plan 9</strong> — Bell Labs, 1992</li>
-      <li><strong>Lions' Commentary</strong> — paired text</li>
-      <li><strong>commentary/</strong> — course notes on entry points, proc.c, fork</li>
+      <li><strong>xv6</strong> (<code>xv6/</code>) — MIT's teaching OS, a clean reimplementation of Unix v6 in modern C. The primary reading text.</li>
+      <li><strong>Unix v6</strong> (<code>unix-v6/</code>) — the original, 1975. About 9,000 lines of C and assembly.</li>
+      <li><strong>Plan 9</strong> (<code>plan9/</code>) — Bell Labs, 1992. Unix taken further: everything is a file, including the network.</li>
+      <li><strong>Lions' Commentary</strong> — paired text. John Lions' line-by-line commentary on Unix v6, written for students in 1977, suppressed for twenty years, now free.</li>
+      <li><strong>commentary/xv6/</strong> — course notes on entry points: <code>main.c</code>, <code>initcode.S</code>, <code>fork()</code>, the scheduler</li>
     </ul>
   </div>
 

@@ -38,24 +38,29 @@
 
   <div class="unit-label">Unit 03</div>
   <h1>Richard Stallman</h1>
-  <p class="tagline">The prophet. The printer. The four freedoms.</p>
+  <p class="tagline">The prophet. The printer. The four freedoms. The legal and moral infrastructure of free software.</p>
 
   <div class="description">
-    The GNU Manifesto, the GPL, Emacs, GDB, Bison. Stallman decided that the answer to "who owns the tools?" was: nobody. Everybody. You. The legal and moral infrastructure of free software runs through everything that follows.
+    <p>
+      Richard Stallman's story begins with a printer he couldn't fix because the manufacturer wouldn't release the source code. He decided the correct response was to spend the rest of his life building an alternative — a complete free operating system, a legal instrument to protect it, and a philosophical argument for why software freedom is a moral necessity.
+    </p>
+    <p>
+      The GNU Project produced Emacs, GCC, GDB, Bison, and the GPL. These tools are the foundation that Linux runs on. Without Stallman's work, the open source ecosystem that built the web would not exist.
+    </p>
   </div>
 
   <div class="materials">
     <h2>Materials</h2>
     <ul>
-      <li><strong>emacs</strong> — GNU Emacs source</li>
-      <li><strong>gdb</strong> — GNU Debugger</li>
-      <li><strong>bison</strong> — parser generator</li>
-      <li><strong>GNU Manifesto</strong></li>
-      <li><strong>GPL v1/v2/v3</strong></li>
-      <li><strong>doctor.el</strong></li>
-      <li><strong>10 FSF texts</strong></li>
-      <li><strong>lisp-exercise.md</strong></li>
-      <li><strong>gdb-exercise.c</strong></li>
+      <li><strong>Emacs</strong> (<code>emacs/</code>) — the editor as operating system. Sparse checkout of <code>src/</code> and core Lisp files.</li>
+      <li><strong>GDB</strong> (<code>gdb/</code>) — the GNU Debugger. Read a running program's memory, set breakpoints, trace execution.</li>
+      <li><strong>Bison</strong> (<code>bison/</code>) — the parser generator. The tool that builds the tools.</li>
+      <li><strong>GNU Manifesto</strong> (<code>scratch/gnu-manifesto.txt</code>) — 1985. The founding document of the free software movement.</li>
+      <li><strong>GPL v1, v2, v3</strong> (<code>scratch/</code>) — the legal instrument that makes copyleft work. Read all three and watch the argument evolve.</li>
+      <li><strong>doctor.el</strong> (<code>scratch/doctor.el</code>) — Emacs's ELIZA implementation. A psychotherapist in 300 lines of Lisp.</li>
+      <li><strong>BUILD-emacs.md</strong> (<code>scratch/</code>) — how to build Emacs from source</li>
+      <li><strong>lisp-exercise.md</strong> — introduction to Emacs Lisp through the codebase</li>
+      <li><strong>gdb-exercise.c</strong> (<code>scratch/</code>) — a program to debug, step by step</li>
     </ul>
   </div>
 
