@@ -20,6 +20,7 @@ The codebases here are a mix of what you can read and what you cannot. The brows
 - **RFC 1866** (`mosaic/rfc1866-html2.txt`) — HTML 2.0 specification. The `<IMG>` tag with Berners-Lee's objection still in the NOTE.
 - **Lynx** (`lynx/src/`) — text browser, version 2.9.3. ~109,000 lines. The road not taken, in running code.
 - **Mastodon** (`mastodon/src/`) — open source social network. The feed algorithm is 182 lines. Read it against Twitter's closed stack.
+- **HyperPhysics** (`hyperphysics/`) — Rod Nave's concept-map physics reference, built with HyperCard's successors. 114 MB, full offline mirror. Open `hframe.html` in a browser. The question it asks: what would the web look like if links had meaning?
 
 ## Repos
 
