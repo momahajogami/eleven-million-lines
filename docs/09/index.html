@@ -30,6 +30,12 @@
     .materials li strong { color: #1a1a1a; }
     .coming-soon { color: #aaa; font-style: italic; font-size: 0.95rem; padding-top: 1rem; }
     .footer { margin-top: 5rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+    .repos { border-top: 2px solid #e0d8cc; padding-top: 1.5rem; margin-bottom: 3rem; }
+    .repos ul { list-style: none; }
+    .repos li { padding: 0.5rem 0; border-bottom: 1px solid #e0d8cc; font-size: 0.95rem; color: #444; }
+    .repos a { color: #555; }
+    .read-link { font-size: 0.8rem; color: #999; margin-left: 0.75rem; text-decoration: none; font-style: italic; }
+    .read-link:hover { color: #333; }
   </style>
 </head>
 <body>
@@ -55,16 +61,25 @@
   <div class="materials">
     <h2>Materials</h2>
     <ul>
-      <li><strong>UNIT-09.md</strong> — the central argument: Wolf3D → Doom → Quake as algorithm arc</li>
+      <li><strong>UNIT-09.md</strong> — the central argument: Wolf3D → Doom → Quake as algorithm arc <a href="../../reader.html?file=09/UNIT-09.md" class="read-link">read →</a></li>
       <li><strong>Wolf3D</strong> (<code>wolf3d/</code>) — raycasting: the simplest possible 3D renderer</li>
       <li><strong>Doom</strong> (<code>doom/</code>) — BSP trees and the Doom engine's spatial reasoning</li>
       <li><strong>Quake</strong> (<code>quake/</code>) — the full id Software Quake source, GPLv2</li>
       <li><strong>Tetris</strong> (<code>other-games/tetris/tetris.py</code>) — the irreducible game in 200 lines of Python</li>
-      <li><strong>GAMES.md</strong> (<code>other-games/</code>) — other games in the tradition</li>
-      <li><strong>GRASSMANNIAN.md</strong> (<code>grassmannian/</code>) — the space of all camera orientations: pure mathematics underneath the renderer</li>
+      <li><strong>GAMES.md</strong> (<code>other-games/</code>) — other games in the tradition <a href="../../reader.html?file=09/GAMES.md" class="read-link">read →</a></li>
+      <li><strong>GRASSMANNIAN.md</strong> (<code>grassmannian/</code>) — the space of all camera orientations: pure mathematics underneath the renderer <a href="../../reader.html?file=09/GRASSMANNIAN.md" class="read-link">read →</a></li>
     </ul>
   </div>
 
+
+  <div class="repos">
+    <h2>Repositories</h2>
+    <ul>
+      <li><a href="https://github.com/id-Software/Quake">Quake</a> — the full id Software Quake source, GPLv2</li>
+      <li><a href="https://github.com/id-Software/DOOM">DOOM</a> — Doom source release, 1997</li>
+      <li><a href="https://github.com/id-Software/wolf3d">wolf3d</a> — Wolfenstein 3D source, 1995</li>
+    </ul>
+  </div>
   <div class="footer">Eleven Million Lines You Should Know</div>
 
 </body>

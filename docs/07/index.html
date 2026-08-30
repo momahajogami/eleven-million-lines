@@ -30,6 +30,12 @@
     .materials li strong { color: #1a1a1a; }
     .coming-soon { color: #aaa; font-style: italic; font-size: 0.95rem; padding-top: 1rem; }
     .footer { margin-top: 5rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+    .repos { border-top: 2px solid #e0d8cc; padding-top: 1.5rem; margin-bottom: 3rem; }
+    .repos ul { list-style: none; }
+    .repos li { padding: 0.5rem 0; border-bottom: 1px solid #e0d8cc; font-size: 0.95rem; color: #444; }
+    .repos a { color: #555; }
+    .read-link { font-size: 0.8rem; color: #999; margin-left: 0.75rem; text-decoration: none; font-style: italic; }
+    .read-link:hover { color: #333; }
   </style>
 </head>
 <body>
@@ -52,8 +58,8 @@
   <div class="materials">
     <h2>Materials</h2>
     <ul>
-      <li><strong>GROTHENDIECK.md</strong> — the character study and the mathematical argument</li>
-      <li><strong>quake.md</strong> — bridge document: BSP trees as applied topology, Unit 07 to Unit 09</li>
+      <li><strong>GROTHENDIECK.md</strong> — the character study and the mathematical argument <a href="../../reader.html?file=07/GROTHENDIECK.md" class="read-link">read →</a></li>
+      <li><strong>quake.md</strong> — bridge document: BSP trees as applied topology, Unit 07 to Unit 09 <a href="../../reader.html?file=07/quake.md" class="read-link">read →</a></li>
       <li><strong>Lean/Mathlib</strong> (<code>lean-mathlib/</code>) — the Lean proof assistant's mathematics library. Category theory, algebra, topology — all machine-verified.</li>
       <li><strong>Agda</strong> (<code>agda/</code>) — a dependently-typed proof assistant. The type is the theorem; the program is the proof.</li>
       <li><strong>NumPy</strong> (<code>numpy/</code>) — linear algebra at scale. The applied counterpart to the pure theory.</li>
@@ -63,6 +69,11 @@
     </ul>
   </div>
 
+
+  <div class="repos">
+    <h2>Repositories</h2>
+    <p class="coming-soon">Coming soon.</p>
+  </div>
   <div class="footer">Eleven Million Lines You Should Know</div>
 
 </body>

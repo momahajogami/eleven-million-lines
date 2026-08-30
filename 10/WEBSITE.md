@@ -20,3 +20,9 @@ The codebases here are a mix of what you can read and what you cannot. The brows
 - **RFC 1866** (`mosaic/rfc1866-html2.txt`) — HTML 2.0 specification. The `<IMG>` tag with Berners-Lee's objection still in the NOTE.
 - **Lynx** (`lynx/src/`) — text browser, version 2.9.3. ~109,000 lines. The road not taken, in running code.
 - **Mastodon** (`mastodon/src/`) — open source social network. The feed algorithm is 182 lines. Read it against Twitter's closed stack.
+
+## Repos
+
+- [NCSA Mosaic](https://github.com/alandipert/ncsa-mosaic) — the browser that put images on the web, 1993
+- [Lynx](https://lynx.invisible-island.net/) — text browser, still maintained; the road not taken
+- [Mastodon](https://github.com/mastodon/mastodon) — open-source federated social network; the feed algorithm is readable

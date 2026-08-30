@@ -20,8 +20,12 @@ Format:
 
   ## Materials
 
-  - **Name** — description
+  - **Name** — description          (auto-adds "read →" link if name ends in .md)
   - **Name** (`path/`) — description
+
+  ## Repos
+
+  - [Name](https://github.com/...) — description
 
 The script updates docs/NN/index.html from this file.
 Unit pages that have no WEBSITE.md are left unchanged.
@@ -35,6 +39,8 @@ ROOT = Path(__file__).parent.parent
 INDEX_HTML = ROOT / "docs" / "index.html"
 CONTENT_DIR = ROOT / "docs"
 UNITS = [f"{n:02d}" for n in range(1, 12)]
+
+GITHUB_RAW = "https://raw.githubusercontent.com/momahajogami/eleven-million-lines/main"
 
 
 # ---------------------------------------------------------------------------
@@ -77,6 +83,60 @@ def md_to_html(text: str) -> str:
             i += 1
         html_parts.append("    <p>\n      " + inline(" ".join(para_lines)) + "\n    </p>")
     return "\n".join(html_parts)
+
+
+def materials_to_html(text: str, unit: str) -> str:
+    """Like md_to_html but adds 'read →' links for .md material names."""
+    lines = text.strip().splitlines()
+    html_parts = []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        if not line.strip():
+            i += 1
+            continue
+        if line.startswith("- "):
+            items = []
+            while i < len(lines) and lines[i].startswith("- "):
+                raw = lines[i][2:].strip()
+                item_html = inline(raw)
+                # auto-add read link if bold name ends in .md
+                md_name_match = re.match(r'\*\*([^*]+\.md)\*\*', raw)
+                if md_name_match:
+                    md_name = md_name_match.group(1)
+                    file_path = f"{unit}/{md_name}"
+                    read_url = f"../../reader.html?file={file_path}"
+                    item_html += f' <a href="{read_url}" class="read-link">read →</a>'
+                items.append(item_html)
+                i += 1
+            html_parts.append(
+                "    <ul>\n"
+                + "".join(f"      <li>{item}</li>\n" for item in items)
+                + "    </ul>"
+            )
+            continue
+        para_lines = []
+        while i < len(lines) and lines[i].strip():
+            para_lines.append(lines[i].strip())
+            i += 1
+        html_parts.append("    <p>\n      " + inline(" ".join(para_lines)) + "\n    </p>")
+    return "\n".join(html_parts)
+
+
+def repos_to_html(text: str) -> str:
+    """Render the ## Repos section as a linked list."""
+    lines = text.strip().splitlines()
+    items = []
+    for line in lines:
+        if line.startswith("- "):
+            items.append(inline(line[2:].strip()))
+    if not items:
+        return '    <p class="coming-soon">Coming soon.</p>'
+    return (
+        "    <ul>\n"
+        + "".join(f"      <li>{item}</li>\n" for item in items)
+        + "    </ul>"
+    )
 
 
 def inject(html: str, begin_marker: str, end_marker: str, new_content: str) -> str:
@@ -122,19 +182,13 @@ def build_index():
 # Unit pages
 # ---------------------------------------------------------------------------
 
-def parse_website_md(path: Path) -> dict:
+def parse_website_md(path: Path, unit: str) -> dict:
     """
-    Parse a WEBSITE.md file into tagline, description HTML, and materials HTML.
-
-    Format:
-        First non-blank line → tagline
-        Paragraphs until ## Materials → description
-        List items after ## Materials → materials
+    Parse a WEBSITE.md file into tagline, description, materials, and repos HTML.
     """
     text = path.read_text()
     lines = text.splitlines()
 
-    # strip leading blanks
     while lines and not lines[0].strip():
         lines.pop(0)
 
@@ -144,27 +198,36 @@ def parse_website_md(path: Path) -> dict:
     tagline = inline(lines[0].strip())
     rest = lines[1:]
 
-    # split on ## Materials
     materials_lines = []
+    repos_lines = []
     desc_lines = []
-    in_materials = False
+    mode = "desc"
+
     for line in rest:
         if re.match(r'^##\s+Materials', line):
-            in_materials = True
+            mode = "materials"
             continue
-        if in_materials:
+        if re.match(r'^##\s+Repos', line):
+            mode = "repos"
+            continue
+        if mode == "materials":
             materials_lines.append(line)
+        elif mode == "repos":
+            repos_lines.append(line)
         else:
             desc_lines.append(line)
 
     description_html = md_to_html("\n".join(desc_lines)) if desc_lines else ""
-    materials_html = md_to_html("\n".join(materials_lines)) if materials_lines else \
+    materials_html = materials_to_html("\n".join(materials_lines), unit) if materials_lines else \
+        '    <p class="coming-soon">Coming soon.</p>'
+    repos_html = repos_to_html("\n".join(repos_lines)) if repos_lines else \
         '    <p class="coming-soon">Coming soon.</p>'
 
     return {
         "tagline": tagline,
         "description": description_html,
         "materials": materials_html,
+        "repos": repos_html,
     }
 
 
@@ -178,14 +241,13 @@ def build_unit_page(unit: str) -> bool:
         print(f"  unit {unit}: WARNING no HTML page at {unit_html}", file=sys.stderr)
         return False
 
-    parsed = parse_website_md(website_md)
+    parsed = parse_website_md(website_md, unit)
     if not parsed:
         return False
 
     html = unit_html.read_text()
     original = html
 
-    # tagline
     html = re.sub(
         r'(<p class="tagline">).*?(</p>)',
         rf'\g<1>{parsed["tagline"]}\g<2>',
@@ -193,7 +255,6 @@ def build_unit_page(unit: str) -> bool:
         flags=re.DOTALL,
     )
 
-    # description div — replace everything inside
     html = re.sub(
         r'(<div class="description">)\s*.*?\s*(</div>)',
         rf'\g<1>\n{parsed["description"]}\n  \g<2>',
@@ -201,10 +262,16 @@ def build_unit_page(unit: str) -> bool:
         flags=re.DOTALL,
     )
 
-    # materials div — replace content after <h2>Materials</h2>
     html = re.sub(
         r'(<div class="materials">\s*<h2>Materials</h2>)\s*.*?\s*(</div>)',
         rf'\g<1>\n{parsed["materials"]}\n  \g<2>',
+        html,
+        flags=re.DOTALL,
+    )
+
+    html = re.sub(
+        r'(<div class="repos">\s*<h2>Repositories</h2>)\s*.*?\s*(</div>)',
+        rf'\g<1>\n{parsed["repos"]}\n  \g<2>',
         html,
         flags=re.DOTALL,
     )

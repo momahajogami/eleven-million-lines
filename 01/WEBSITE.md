@@ -11,3 +11,9 @@ The unit teaches orientation, not mastery. How do you stand inside a large, old 
 - **Plan 9** (`plan9/`) — Bell Labs, 1992. Unix taken further: everything is a file, including the network.
 - **Lions' Commentary** — paired text. John Lions' line-by-line commentary on Unix v6, written for students in 1977, suppressed for twenty years, now free.
 - **commentary/xv6/** — course notes on entry points: `main.c`, `initcode.S`, `fork()`, the scheduler
+
+## Repos
+
+- [xv6-riscv](https://github.com/mit-pdos/xv6-riscv) — MIT's teaching Unix, the primary reading text
+- [unix-v6](https://github.com/robpike/unix-history-repo) — the original Unix source
+- [plan9](https://github.com/plan9foundation/plan9) — Bell Labs Plan 9
