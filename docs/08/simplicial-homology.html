@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 08 — Simplicial Homology by Hand — Unit 08 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 08: Simplicial Homology by Hand</a>
+  </div>
+
+  <div class="essay">
+    <h1>Unit 08 — Simplicial Homology by Hand</h1>
+<p>Build the machinery of simplicial homology from scratch, in multiple languages, with markdown as the persistent thinking layer.</p>
+<hr>
+<h2>The Central Idea</h2>
+<p>The mathematics lives in <code>.md</code> files. The code is its expression.</p>
+<p>You write down what a simplicial complex is — vertices, edges, faces, the boundary maps — in plain markdown. That file persists. Tomorrow you open it in a different language and implement the same mathematics again. The markdown is what crosses languages the way <code>CLAUDE.md</code> crosses sessions.</p>
+<p>Students see that the topology is not in Python or Haskell. It was there before either existed. The code is just a way of asking the mathematics to run.</p>
+<hr>
+<h2>What We Build</h2>
+<p>A simplicial complex Δ, defined by its faces:</p>
+<ul>
+  <li>0-simplices (vertices): [0], [1], [2], [3]</li>
+  <li>1-simplices (edges): [0,1], [1,2], [0,2], [2,3]</li>
+  <li>2-simplices (triangles): [0,1,2]</li>
+</ul>
+<p>The boundary maps:</p>
+<ul>
+  <li>∂₂: C₂ → C₁  (boundary of a triangle is its three edges, with signs)</li>
+  <li>∂₁: C₁ → C₀  (boundary of an edge is its two endpoints, with signs)</li>
+</ul>
+<p>The chain complex:</p>
+<pre><code>0 → C₂ → C₁ → C₀ → 0</code></pre>
+<p>Homology groups:</p>
+<ul>
+  <li>H₀ = ker ∂₀ / im ∂₁   (connected components)</li>
+  <li>H₁ = ker ∂₁ / im ∂₂   (independent loops)</li>
+  <li>H₂ = ker ∂₂ / im ∂₃   (enclosed voids)</li>
+</ul>
+<p>For the example above: H₀ = ℤ, H₁ = ℤ, H₂ = 0. One component, one loop (the edge [2,3] dangles without closing).</p>
+<hr>
+<h2>The Language Sequence</h2>
+<h3>Day 1 — Python</h3>
+<p>Dictionaries and lists. Boundary maps as matrices. Gaussian elimination over ℤ by hand (or numpy for the arithmetic, not the concept). Readable, fast to write, easy to inspect.</p>
+<h3>Day 2 — Haskell</h3>
+<p>Types as contracts. <code>data Simplex</code>, <code>newtype ChainGroup</code>, <code>boundaryMap :: Simplex -> [(Int, Simplex)]</code>. The type system makes the mathematical structure explicit in a way Python's duck typing cannot. The same math, wearing different clothes — and the clothes are informative.</p>
+<h3>Day 3 (optional) — C</h3>
+<p>No abstractions provided. Build everything from scratch. Feel what the Python and Haskell hid.</p>
+<h3>Day 4 (optional) — Lean / Agda</h3>
+<p>The proof <em>is</em> the program. Homology as a verified computation. Connects to Unit 07.</p>
+<hr>
+<h2>The Markdown Thinking Layer</h2>
+<p>Each implementation session starts with the same <code>.md</code> file — this one, or a version of it — and ends with the student having read the math, written the code, and seen the math survive the translation.</p>
+<p>The <code>.md</code> file does not change. The language does. That is the lesson.</p>
+<p>This mirrors how a working mathematician operates: the ideas are in the notebook, the implementations are in the tools. The notebook is primary.</p>
+<hr>
+<h2>Paired Texts and Context</h2>
+<ul>
+  <li><strong>Hatcher, <em>Algebraic Topology</em>, Chapter 2</strong> — standard reference; free PDF from Hatcher's website</li>
+  <li><strong>Euler's 1758 paper</strong> — the Euler characteristic discovered while counting vertices, edges, and faces of polyhedra. The first step toward homology, written before the word existed.</li>
+  <li><strong>Emmy Noether</strong> — who first saw that the boundary operation should be thought of algebraically, not geometrically. The chain complex is her idea. She did not publish it; her students did. Worth knowing.</li>
+</ul>
+<hr>
+<h2>Connection to Unit 07</h2>
+<p>Unit 07 ends with <code>simplicial_homology.py</code> — a library doing the computation. Unit 08 asks: what if we wrote that ourselves? And then: what if we wrote it in Haskell? And then: what changes?</p>
+<p>The answer is: nothing mathematical changes. Everything about how we <em>think</em> about it changes. That gap is the unit.</p>
+<hr>
+<h2>Consideration: Quake (alternative or future slot)</h2>
+<p>Carmack's Quake engine — BSP trees, fast inverse square root, real-time 3D under constraint — is the natural counterweight to this unit. Abstract mathematics versus visceral engineering. Both are in the repo tradition; both reward close reading. Quake may belong in 09 for exactly that reason: the contrast across adjacent units would be striking.</p>
+<p>See <code>BRAINSTORM.md</code> for fuller Quake notes.</p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <a href="mathematics.html">MATHEMATICS.md →</a>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

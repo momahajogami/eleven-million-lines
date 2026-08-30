@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Emacs from Source — Unit 03 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 03: Richard Stallman</a>
+  </div>
+
+  <div class="essay">
+    <h1>Building Emacs from Source</h1>
+<p>This is the Track A exercise: compile GNU Emacs yourself, from the source in <code>03/emacs/</code>. It takes 10–20 minutes. At the end you will have an Emacs binary you built, which you can run alongside (or instead of) any system Emacs.</p>
+<hr>
+<h2>Why bother</h2>
+<p>You could install Emacs with a package manager in 30 seconds. That is not the point. Building it yourself means you have read the <code>configure</code> options, made decisions about what to include, and watched the compiler work through 280 C files. After this, <code>src/emacs</code> is yours in a way that <code>apt install emacs</code> is not.</p>
+<p>This is Freedom 1 at the C level. The Lisp exercise in <code>lisp-exercise.md</code> is Freedom 1 at the Lisp level. They are different experiences of the same idea.</p>
+<hr>
+<h2>Prerequisites (Arch Linux)</h2>
+<pre><code>sudo pacman -S base-devel ncurses gnutls libgif libjpeg libpng libtiff libxml2 texinfo</code></pre>
+<p>For a genuinely minimal build (no graphics, no TLS, terminal only):</p>
+<pre><code>sudo pacman -S base-devel ncurses</code></pre>
+<hr>
+<h2>Step 1: Generate the build system</h2>
+<p>The Emacs repo does not ship a <code>configure</code> script — it ships the files to generate one. From <code>03/emacs/</code>:</p>
+<pre><code>cd ~/Documents/university-coding/03/emacs
+./autogen.sh</code></pre>
+<p>This runs autoconf and produces <code>configure</code>. Takes about 30 seconds.</p>
+<hr>
+<h2>Step 2: Configure</h2>
+<p>Minimal terminal-only build (fastest; good for this exercise):</p>
+<pre><code>./configure \
+  --without-x \
+  --without-sound \
+  --without-dbus \
+  --without-gsettings \
+  --without-gconf \
+  --without-toolkit-scroll-bars \
+  --with-x-toolkit=no</code></pre>
+<p>To see every available option: <code>./configure --help | less</code></p>
+<p>The flags we're suppressing are X11 windowing, audio, and desktop integration — none of which you need to read code and run the Lisp exercise. They add build time and dependencies.</p>
+<hr>
+<h2>Step 3: Compile</h2>
+<pre><code>make -j$(nproc)</code></pre>
+<p><code>$(nproc)</code> uses all your CPU cores. Watch the output: you will see GCC processing each <code>.c</code> file in <code>src/</code>, then the Lisp files in <code>lisp/</code> being byte-compiled. The two phases are visible and distinct.</p>
+<hr>
+<h2>Step 4: Run</h2>
+<pre><code>src/emacs -nw</code></pre>
+<p><code>-nw</code> means "no window" — forces terminal mode even if X is available. You are now running an Emacs you compiled.</p>
+<p>To confirm it is your build and not a system Emacs:</p>
+<pre><code>M-x emacs-version</code></pre>
+<p>The path in the output will point to your build directory.</p>
+<hr>
+<h2>Step 5: Make a change and rebuild</h2>
+<p>Find a string you can change without breaking anything. A good candidate:</p>
+<pre><code>grep -n "For information about GNU Emacs" lisp/startup.el | head -5</code></pre>
+<p>Edit that string. Then:</p>
+<pre><code>make -j$(nproc)
+src/emacs -nw</code></pre>
+<p>The change will be there. You changed the program. You compiled it. You ran it. This is the complete cycle.</p>
+<hr>
+<h2>What the C core does, briefly</h2>
+<p><code>src/</code> contains ~280 files. The most important:</p>
+<ul>
+  <li><code>alloc.c</code> — Emacs' garbage collector and memory allocator</li>
+  <li><code>eval.c</code> — the Lisp evaluator</li>
+  <li><code>buffer.c</code> — the buffer data structure (everything you edit lives in a buffer)</li>
+  <li><code>process.c</code> — subprocess management (how Emacs runs shells, compilers, etc.)</li>
+  <li><code>keyboard.c</code> — input handling</li>
+  <li><code>dispnew.c</code>, <code>xdisp.c</code> — display engine</li>
+</ul>
+<p>The C core is a Lisp interpreter. Everything above it — every command, every mode, every behavior — is Lisp. When you understand that, the architecture makes sense.</p>
+<hr>
+<h2>Troubleshooting</h2>
+<p><strong><code>./autogen.sh: command not found</code></strong> — install <code>autoconf</code>: <code>sudo pacman -S autoconf automake</code></p>
+<p><strong><code>configure: error: The required function 'tputs' was not found</code></strong> — install ncurses: <code>sudo pacman -S ncurses</code></p>
+<p><strong>Build fails partway through</strong> — run <code>make clean</code> and try again; partial builds sometimes leave inconsistent state</p>
+<p><strong><code>src/emacs</code> segfaults immediately</strong> — rare; usually a missing library at runtime. Run <code>ldd src/emacs</code> to check for missing shared libraries.</p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <a href="lisp-exercise.html">lisp-exercise.md →</a>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

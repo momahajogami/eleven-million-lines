@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 10 — Browsers and Social Media — Unit 10 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 10: Browsers and Social Media</a>
+  </div>
+
+  <div class="essay">
+    <h1>Unit 10 — Browsers and Social Media</h1>
+<p><em>The browser is the printing press. The social graph is the audience.</em></p>
+<hr>
+<h2>The Central Argument</h2>
+<p>When Gutenberg's press made text cheap to copy, it did not immediately make writing democratic. The machine arrived before the permission. Two centuries passed before literacy spread widely enough to change the social order.</p>
+<p>The web made publishing cheap. The browser made it visible. The social network made it personal. And somewhere in that sequence — not at a single moment, not by any single decision — writing became a medium that nearly everyone could practice, and nearly everyone did, and nearly nobody controlled.</p>
+<p>This unit is about the engineering decisions behind that sequence: what the browser is, how it works, who built it, and what it cost to build the social layer on top. The code is here. The consequences are still arriving.</p>
+<hr>
+<h2>The Browser as Operating System</h2>
+<p>A browser is a document renderer that learned to run programs. That is not the original intention. The original intention is in the name: you browse. You follow links. You read.</p>
+<p><strong>Mosaic (1993)</strong> — Marc Andreessen and Eric Bina at NCSA. The first browser that rendered images inline. Before Mosaic, browsers were text-only; images opened in separate windows. One design decision — <code><img></code> displayed in the document — changed the visual grammar of the web permanently. Tim Berners-Lee objected. He was overruled by adoption.</p>
+<p><strong>Netscape Navigator (1994)</strong> — Andreessen leaves NCSA, founds Mosaic Communications (later Netscape). The browser becomes a product. JavaScript arrives in 1995: Brendan Eich, ten days, LiveScript renamed at the last moment for marketing reasons. The browser can now execute code. The document is now an application container.</p>
+<p><strong>Internet Explorer and the Browser Wars</strong> — Microsoft bundles IE with Windows. Netscape cannot compete with free and loses the market. The casualty is standards: each browser implements its own version of everything. Web developers spend the 1990s writing code for two incompatible worlds.</p>
+<p><strong>Mozilla and Firefox (2002–2004)</strong> — Netscape open-sources the codebase before dying. The Mozilla Foundation emerges from the ruins. Firefox 1.0 ships in November 2004: standards-compliant, fast, extensible. The browser wars resume on different terms: quality instead of market power.</p>
+<p><strong>WebKit and Blink</strong> — Apple forks KHTML (from the KDE project) to build Safari. Google forks WebKit to build Blink. Chrome ships in 2008. By 2012, Chrome is the dominant browser. The rendering engine lineage: KHTML → WebKit → Blink. The engine that runs in your browser today is, in some sense, still KDE's work.</p>
+<p><strong>Reading the source:</strong></p>
+<ul>
+  <li><code>mozilla-central</code> — Firefox, one of the largest open source repositories in existence. The JavaScript engine (SpiderMonkey), the layout engine (Gecko), the networking stack — all here.</li>
+  <li><code>WebKit</code> — the shared ancestor of Safari and Chrome's rendering engine. Cleaner and smaller than Gecko.</li>
+  <li>Mosaic source — the original. Simpler than anything that came after. Read it first.</li>
+</ul>
+<hr>
+<h2>The Social Graph as Data Structure</h2>
+<p>The browser delivers documents. The social network delivers people.</p>
+<p>A social graph is a mathematical object: vertices are users, edges are relationships (friendship, follow, like). The question of what to do with that graph — how to traverse it, how to rank it, how to monetize it — is the engineering question of the 2000s.</p>
+<p><strong>Friendster (2002)</strong> — the first major social network. Viral growth, catastrophic scaling failure. The database could not handle the queries. Friendster's engineers understood the social graph; the infrastructure could not keep up. The lesson: a social network is a distributed systems problem wearing a sociology costume.</p>
+<p><strong>MySpace (2003)</strong> — grew where Friendster failed. User customization (HTML and CSS in profiles) created a baroque, chaotic aesthetic that was also deeply personal. MySpace succeeded because it let users make things — badly, enthusiastically, visibly. It was acquired by News Corp in 2005 for $580 million. By 2008 it was losing to Facebook.</p>
+<p><strong>Facebook (2004)</strong> — Mark Zuckerberg at Harvard. Originally The Facebook, restricted to .edu email addresses. The constraint was the feature: exclusivity created trust. The News Feed (2006) was controversial — users felt surveilled. The Like button (2009) reduced a complex social gesture to a single bit. Each of these decisions is an engineering choice with a social consequence.</p>
+<p>The Facebook stack, early: PHP (famously fast to iterate with), MySQL, Memcached, Thrift (their own RPC framework, later open-sourced). Haystack (2010) — a custom object store for photos, described in a public paper. The papers are worth reading: Facebook's infrastructure problems were real research problems, and they published.</p>
+<p><strong>Twitter (2006)</strong> — Jack Dorsey, Noah Glass, Biz Stone, Ev Williams. The constraint is the point: 140 characters, a number derived from SMS limitations. The asymmetric follow model (unlike Facebook's mutual friendship) creates a broadcast network rather than a personal one. Twitter's early stack: Ruby on Rails, then a painful migration away from it as scale demanded more. The "fail whale" is a cultural artifact of that period.</p>
+<p><strong>The attention economy</strong> — the social network as advertising platform. Every design decision — the infinite scroll, the notification badge, the algorithmic feed — is an engineering choice with a measurable effect on time-on-site. This is not incidental. The business model requires attention. The engineering serves the business model. Understanding this is part of reading the code.</p>
+<hr>
+<h2>Characters</h2>
+<p><strong>Marc Andreessen</strong> — Mosaic, Netscape, Andreessen Horowitz. The person who made the web visual and commercial. Later, the venture capitalist who funded much of what the web became.</p>
+<p><strong>Jamie Zawinski (jwz)</strong> — Netscape engineer, wrote the original <code>about:</code> page, helped found Mozilla after Netscape's collapse. His blog (still active) is a running commentary on what the web promised and what it became. His nightclub (DNA Lounge, San Francisco) runs on open source software and he writes about it. A character worth knowing.</p>
+<p><strong>Brendan Eich</strong> — invented JavaScript in ten days. Later CEO of Mozilla, then founder of Brave. The creator of the language that runs more code than any other. The ten-day story is legend; the real story is that the language survived its own origins.</p>
+<p><strong>Tim Berners-Lee</strong> — invented the web (HTTP, HTML, URLs) at CERN in 1989-1991. Did not invent the browser as we know it. Spent the subsequent decades trying to keep the web open, decentralized, and in the public interest. The contrast between his vision and the web that exists is the tension at the center of this unit.</p>
+<p><strong>Mark Zuckerberg</strong> — founded Facebook. The trajectory from dorm room to congressional testimony is the central biography of the social web era.</p>
+<p><strong>Ev Williams</strong> — Blogger (acquired by Google), Twitter, Medium. Three successive attempts to build a public writing platform. Each one simpler and more constrained than the last. The pattern is interesting: each reduction is also a clarification of what public writing is for.</p>
+<hr>
+<h2>The Arc: Publishing → Social → Platform</h2>
+<p>The web begins as a document network. You read; you link. The browser makes it visual. JavaScript makes it interactive. The social network makes it personal. The platform makes it commercial.</p>
+<p>At each step, something is gained and something is lost.</p>
+<p><strong>What is gained:</strong> reach, speed, access, connection. Writing reaches more people more quickly than it ever has. A teenager in rural Ohio can publish to the same network as the New York Times.</p>
+<p><strong>What is lost:</strong> structure, permanence, editorial judgment, context. The link that organized the web gives way to the algorithmic feed. You no longer navigate — you scroll. The document that had a URL and could be linked to and quoted gives way to a post that disappears into a timeline.</p>
+<p>The loss is architectural, not cultural. It is built into the data structures: a timeline is a stream, not a library. A stream has no index. You cannot cite a position in a stream the way you can cite a page in a book.</p>
+<p>This is an engineering problem with a philosophical consequence. Read the code and you see the choice being made.</p>
+<hr>
+<h2>Codebases</h2>
+<pre><code>10/
+├── UNIT-10.md          ← this file
+├── mosaic/             ← NCSA Mosaic source (or pointer to it)
+├── firefox/            ← Mozilla/Firefox orientation
+├── webkit/             ← WebKit orientation
+└── social/             ← Reading notes on Facebook/Twitter infrastructure papers</code></pre>
+<p><strong>Primary sources:</strong></p>
+<ul>
+  <li>NCSA Mosaic source — publicly available, historically important, short enough to read</li>
+  <li>Mozilla/Firefox source (<code>mozilla-central</code>) — too large to clone locally; read online via Searchfox</li>
+  <li>WebKit source — clonable, architecturally instructive</li>
+  <li>Facebook infrastructure papers: Haystack (2010), TAO (2013), Unicorn (2013)</li>
+  <li>Twitter engineering blog posts from 2007-2012 (the scaling era)</li>
+</ul>
+<p><strong>Paired texts:</strong></p>
+<ul>
+  <li>Tim Berners-Lee, <em>Weaving the Web</em> (1999) — the original vision, before the social layer</li>
+  <li>jwz's blog — the view from inside Netscape and after</li>
+  <li>Ev Williams' notes on Medium — a builder reflecting on what he built</li>
+  <li><em>The Facebook Effect</em> (Kirkpatrick, 2010) — reported narrative of the early years</li>
+  <li>Zeynep Tufekci, <em>Twitter and Tear Gas</em> (2017) — the social network as political infrastructure</li>
+</ul>
+<hr>
+<h2>The Thread Back to Unit 05</h2>
+<p>Unit 05 (Culture, Spectacle and Eigenrank) ends with PageRank: Brin and Page organize the web as a graph and rank it by eigenvector. The browser delivers that graph to users. The social network replaces the link graph with the social graph. The recommendation algorithm replaces the eigenvector with something murkier and more powerful.</p>
+<p>Unit 10 is what happens after Unit 05's map was drawn and the territory changed.</p>
+<p>Stack Overflow (noted briefly in Unit 05 alongside SourceForge) belongs in this arc too: the knowledge commons that the social web built, and that LLMs are now displacing. Unit 11 picks that thread up.</p>
+<hr>
+<h2>For Preschoolers and Families</h2>
+<p>The browser is a window. Before the window, you had to know where to go. The window let you look through the wall.</p>
+<p>The social network is a room. Before the room, you had to find people one at a time. The room put everyone together.</p>
+<p>Windows and rooms are good things. But a room where someone decides who gets to speak, and when, and how loudly — that room has a landlord. Knowing who built the room, and why, and what the rules are: that is what this unit is for.</p>
+<hr>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <a href="browsers.html">BROWSERS.md →</a>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

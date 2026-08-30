@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercises — Simplicial Homology — Unit 08 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 08: Simplicial Homology by Hand</a>
+  </div>
+
+  <div class="essay">
+    <h1>Exercises — Simplicial Homology</h1>
+<p><em>Three levels. Do what you can. Come back to the rest.</em></p>
+<hr>
+<h2>Level 1 — By Hand</h2>
+<p>These can all be done with pencil and paper. The goal is to feel the machinery before you run the code.</p>
+<p><strong>1.1</strong> Draw the simplicial complex K with:</p>
+<ul>
+  <li>Vertices: 0, 1, 2, 3</li>
+  <li>Edges: (0,1), (1,2), (2,3), (0,3)</li>
+  <li>No triangles</li>
+</ul>
+<p>What space is this? (Hint: it's a familiar one-dimensional shape.) Compute H₀ and H₁ by reasoning geometrically, then verify with the code.</p>
+<p><strong>1.2</strong> Write out ∂₁ for the circle (the 3×3 matrix from MATHEMATICS.md). Use row and column operations over ℤ to reduce it to diagonal form by hand. What are the invariant factors?</p>
+<p><strong>1.3</strong> Consider a single filled triangle K = {(0,1,2)}. This is a disk — topologically contractible. Compute H₀, H₁, H₂ by: (a) reasoning geometrically (what spaces are contractible to?) (b) running <code>homology(SimplicialComplex([(0,1,2)]), n)</code> for n = 0, 1, 2</p>
+<p><strong>1.4</strong> The wedge sum S¹ ∨ S¹ is two circles sharing a single point. Build this as a simplicial complex and compute its homology. Expected: H₀ = ℤ, H₁ = ℤ², H₂ = 0.</p>
+<p><strong>1.5</strong> Compute the Euler characteristic of each space in the table in MATHEMATICS.md using the formula χ = V − E + F (vertices minus edges plus triangles). Check that it agrees with χ = β₀ − β₁ + β₂.</p>
+<hr>
+<h2>Level 2 — Understanding</h2>
+<p>These require you to think, not just compute.</p>
+<p><strong>2.1</strong> Prove that ∂₁ ∘ ∂₂ = 0 for any simplicial complex. That is: show that for any triangle (a,b,c), ∂₁(∂₂((a,b,c))) = 0. The calculation is in MATHEMATICS.md. Now generalize: prove that ∂_{n-1} ∘ ∂_n = 0 for any n and any n-simplex.</p>
+<p><em>(Hint: a telescope. Most terms cancel. Figure out which ones pair up and why.)</em></p>
+<p><strong>2.2</strong> The Euler-Poincaré formula says χ = Σ(−1)^n β_n. Prove this starting from the definition β_n = dim ker ∂_n − dim im ∂_{n+1} and the rank-nullity theorem (dim ker + dim im = dim domain).</p>
+<p><em>(This proof is the same over ℤ as over ℚ, if you're careful.)</em></p>
+<p><strong>2.3</strong> H₀ = ℤ^c where c is the number of connected components. Prove this from the definition. (What is ker ∂₀? What is im ∂₁?)</p>
+<p><strong>2.4</strong> A simplicial complex K is <strong>acyclic</strong> if H_n(K) = 0 for all n > 0. The cone over K (add a new vertex v connected to everything in K) is always acyclic. Prove this.</p>
+<p><em>(This gives a practical way to kill all homology.)</em></p>
+<p><strong>2.5</strong> The ℤ/2ℤ in H₁(RP²) corresponds to what geometric fact? Describe the generator of H₁(RP²) as a specific cycle. Why is twice this cycle a boundary? What boundary is it?</p>
+<hr>
+<h2>Level 3 — Programming</h2>
+<p>These extend the code.</p>
+<p><strong>3.1</strong> Add a method <code>SimplicialComplex.is_manifold(n)</code> that checks whether K is a topological n-manifold: every (n-1)-simplex must be the face of exactly 1 or 2 n-simplices (1 on the boundary, 2 in the interior).</p>
+<p>Test it on the sphere (manifold), the torus (manifold), and a figure-8 (not a manifold at the pinch point).</p>
+<p><strong>3.2</strong> Implement homology with coefficients in ℤ/2ℤ. Over ℤ/2ℤ:</p>
+<ul>
+  <li>There is no sign (−1 = 1)</li>
+  <li>Smith normal form becomes Gaussian elimination mod 2</li>
+  <li>No torsion is possible (ℤ/2ℤ is a field)</li>
+</ul>
+<p>Compare RP² over ℤ (H₁ = ℤ/2ℤ) with RP² over ℤ/2ℤ (H₁ = ℤ/2ℤ, but also H₂ = ℤ/2ℤ — the top class appears because we can no longer detect non-orientability by sign).</p>
+<p><strong>3.3</strong> Implement the <strong>suspension</strong> operation: given a simplicial complex K, the suspension SK is formed by adding two new vertices v₊ and v₋, and for each simplex σ in K, adding cones (σ ∪ {v₊}) and (σ ∪ {v₋}).</p>
+<p>Verify: if H_n(K) = G, then H_{n+1}(SK) = G. (Suspension shifts homology up by one.)</p>
+<p>Test: SK¹ = S², SK² = S³ (well, a triangulated version).</p>
+<p><strong>3.4</strong> Implement <strong>simplicial maps</strong> and their induced maps on homology.</p>
+<p>A simplicial map f: K → L sends each simplex of K to a simplex of L (possibly of lower dimension) and extends linearly to chain groups. The induced map f_* : H_n(K) → H_n(L) sends cycles to cycles and boundaries to boundaries.</p>
+<p>Test: the constant map K → {point} induces the zero map on H_n for n > 0.</p>
+<p><strong>3.5</strong> (Hard) Implement the <strong>Mayer-Vietoris sequence</strong>.</p>
+<p>If K = A ∪ B where A, B are subcomplexes with A ∩ B = C, there is a long exact sequence:</p>
+<pre><code>... → H_n(C) → H_n(A) ⊕ H_n(B) → H_n(K) → H_{n-1}(C) → ...</code></pre>
+<p>Use it to compute H_*(S²) by writing S² = upper hemisphere ∪ lower hemisphere, where the intersection is the equatorial circle.</p>
+<hr>
+<h2>A note on difficulty</h2>
+<p>Exercise 2.2 (Euler-Poincaré) looks like algebra but is actually counting. If you get stuck, write out the long exact sequence for a small complex.</p>
+<p>Exercise 3.5 (Mayer-Vietoris) is a real theorem. Implementing it means computing the connecting homomorphism, which requires tracking the Smith form transformation matrices (U and V, not just D). That is the next step in the implementation beyond what this unit provides.</p>
+<p>The gap between "I can compute homology" and "I understand homology" is closed by exercises like these, not by reading more theory. The reading tells you what to look for. The computing is the looking.</p>
+  </div>
+
+  <div class="essay-nav">
+    <a href="mathematics.html">← The Mathematics of Simplicial Homology</a>
+    <a href="languages.html">languages.md →</a>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

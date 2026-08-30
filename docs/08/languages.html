@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Garden of Languages — Unit 08 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 08: Simplicial Homology by Hand</a>
+  </div>
+
+  <div class="essay">
+    <h1>A Garden of Languages</h1>
+<p><em>In time, we expect to build simplices in most of these.</em></p>
+<hr>
+<p>Languages are not neutral. Each one is an argument about what programming is — what thinking is. The same simplicial complex, expressed in twenty languages, is not the same twenty times. It is twenty different answers to the question: what is a boundary?</p>
+<p>Read these not as a taxonomy but as a cast of characters. Some are old and strange and difficult. Some are young and eager. Some are famous for the wrong reasons. A few are almost forgotten. They are all alive.</p>
+<hr>
+<h2>The Imperative Family</h2>
+<p><em>From the void, through the machine, through BASIC and C</em></p>
+<p><strong>Assembly</strong> — The bottom. No abstractions. Registers, addresses, jumps. Building simplices here is like carving stone — slow, exact, and you feel every edge. The machine is not hiding anything from you.</p>
+<p><strong>FORTRAN</strong> (1957) — The first. Formula Translation. Built for scientists who needed to talk to the machine without becoming machine operators. Still alive in numerical computing. Your boundary matrix will run faster than you deserve.</p>
+<p><strong>BASIC</strong> (1964) — Democracy. Kemeny and Kurtz wanted everyone to have it. For a decade it was the first language of millions of children — including people who went on to build the world. Numbered lines, GOTO, and the radical idea that the computer was for you.</p>
+<p><strong>C</strong> (1972) — The foundation. Ritchie built it to write Unix. Forty years later it still runs the world's infrastructure. Implementing simplices in C means you are responsible for your own memory. The boundary map will not clean up after itself. Neither will anything else.</p>
+<p><strong>Pascal</strong> — Wirth's discipline. Clean, structured, pedagogically honest. Where many people first learned that programs could be reasoned about, not just executed.</p>
+<p><strong>C++</strong> (1985) — C with ambitions. Stroustrup added objects, then templates, then more templates. The language that power plants and games and browsers are written in. A city that grew without a plan. Simplices here are possible, elaborate, and slightly too large.</p>
+<p><strong>Java</strong> (1995) — The enterprise. Gosling's write-once-run-anywhere. Verbose by design. The language of institutions. Somewhere in the world a bank is running boundary map calculations on a Java server that has not been restarted since 2011.</p>
+<p><strong>Go</strong> (2009) — Google's answer to C++. Simple, fast, concurrent. Opinionated about what it will not do. Goroutines and channels. Simplices in Go are clean and a little boring, which is a compliment.</p>
+<p><strong>Rust</strong> (2015) — Safety without garbage collection. The borrow checker as a theorem prover built into the compiler. Implementing homology in Rust means the compiler has opinions about your boundary maps. It is usually right.</p>
+<hr>
+<h2>The Lisp Family</h2>
+<p><em>From Church's lambda calculus, through McCarthy, through the parenthesis</em></p>
+<p><strong>Lisp</strong> (1960) — McCarthy's five pages. Code is data. The interpreter bootstraps itself. One of the great moments in the history of thought — a complete programming language derived from a mathematical logic paper. The original simplices were lists of lists.</p>
+<p><strong>Scheme</strong> (1975) — Lisp with a conscience. Steele and Sussman stripped it down and made it beautiful. <em>The Structure and Interpretation of Computer Programs</em> is written in Scheme. Tail recursion guaranteed. A small and perfect language.</p>
+<p><strong>Racket</strong> — Scheme with batteries and a pedagogical mission. The language of <em>How to Design Programs</em>. Has a full macro system, a teaching IDE, and more dialects than any language has a right to. The boundary operator in Racket is a function that returns a list of cons cells, and this is fine.</p>
+<p><strong>Common Lisp</strong> — The big one. An attempt to unify the Lisp dialects of the 1980s. Has everything, which means it has too much of everything. Used by people who know exactly why they are using it.</p>
+<p><strong>Clojure</strong> (2007) — Lisp on the JVM. Hickey's gift: immutability by default, persistent data structures, running inside Java's ecosystem. Simplices as vectors. Boundary maps as pure functions. Very satisfying.</p>
+<p><strong>Emacs Lisp</strong> — The language Stallman wrote to make Emacs programmable. Not a beautiful Lisp. Powers one of the most powerful text editors ever made. Your simplicial complex can live inside your editor.</p>
+<hr>
+<h2>The ML Family</h2>
+<p><em>Type theory made executable</em></p>
+<p><strong>ML</strong> (1973) — Milner's language for theorem proving. Gave us type inference: the compiler figures out the types, you write the program. The simplest boundary map has a type, and the compiler knows it before you do.</p>
+<p><strong>OCaml</strong> — ML with objects added (mostly ignored) and a fast native compiler. The language of Jane Street's trading systems and many theorem provers. Algebraic data types that make a Simplex feel natural.</p>
+<p><strong>Haskell</strong> (1990) — Pure functional. Lazy evaluation. Monads. The language that takes type theory seriously. Your boundary map is a function from Chain to Chain and the types will stop you from making errors that Python would let through silently. Learning Haskell changes how you think about every other language.</p>
+<p><strong>Elm</strong> — Haskell's cheerful younger cousin, living in the browser. No runtime exceptions. A narrow language that does its one job with unusual care.</p>
+<p><strong>F#</strong> — ML on the .NET runtime. Microsoft's functional language. Takes the ML tradition and runs it inside the enterprise. A reasonable place to implement simplices if you live in that world.</p>
+<hr>
+<h2>The Proof Languages</h2>
+<p><em>Programs as proofs. The code is the argument.</em></p>
+<p><strong>Coq</strong> — A proof assistant written in OCaml. The Curry-Howard correspondence made executable: types are propositions, programs are proofs. You can prove that your boundary map satisfies ∂∂ = 0 and the computer will check the proof.</p>
+<p><strong>Agda</strong> — Dependent types. The code and the proof are the same text. A simplicial complex in Agda is a mathematical object that has been verified to exist. Reading Agda is reading mathematics being made rigorous in real time.</p>
+<p><strong>Lean</strong> (Lean 4) — The modern proof assistant. Mathlib runs on it. The community is building all of mathematics inside it. Simplicial homology exists in Mathlib already — reading the Lean source is a different kind of understanding than implementing it yourself.</p>
+<p><strong>Idris</strong> — Dependent types with a focus on programming, not just proving. Quantities track how many times a variable is used. The boundary operator has a type that enforces its own properties.</p>
+<hr>
+<h2>The Scripting Family</h2>
+<p><em>Fast, expressive, built to get things done</em></p>
+<p><strong>Perl</strong> (1987) — Larry Wall's three virtues: laziness, impatience, hubris. Perl mirrors natural language — gnarly, flexible, expressive in the way that natural language is expressive. The boundary operator in Perl can be written many ways and all of them work.</p>
+<p><strong>Python</strong> (1991) — Readability as a value. Guido's great argument: code is read more than it is written. Our starting language for simplices. The chain complex is a dictionary. The boundary map is a function. NumPy handles the linear algebra.</p>
+<p><strong>Ruby</strong> (1995) — Matz designed it for programmer happiness. Said so explicitly. A transmission of Japanese craft ethics into a programming language. Blocks, everything is an object, the principle of least surprise. Elegant simplices.</p>
+<p><strong>Lua</strong> (1993) — Small, embeddable, readable. Built to be extended and to extend. Tables are the only data structure, and tables are enough. Used in games, in embedded systems, in everything that needs a scriptable core. Blender has a Lua-adjacent soul.</p>
+<p><strong>JavaScript</strong> (1995) — Ten days to write, thirty years to live with. Brendan Eich's fast sketch became the language of the web. Async, event-driven, prototype-based. Simplices in the browser, rendered with WebGL, connected to the DOM. Inclusive by accident.</p>
+<p><strong>PHP</strong> — The web's most used and least loved language. Powers more of the internet than anyone admits. Implementable simplices, real history, no apologies.</p>
+<p><strong>Tcl</strong> — Tool Command Language. Everything is a string. Small, strange, older than it looks. John Ousterhout built it to glue other programs together. A curiosity that earned its place.</p>
+<hr>
+<h2>The Array Languages</h2>
+<p><em>APL lineage: notation as thought</em></p>
+<p><strong>APL</strong> (1962) — Iverson's mathematical notation made executable. Operators that work on whole arrays. A complete program in three symbols. Reading APL requires a font with characters that do not appear in ordinary text. The boundary matrix is a one-liner.</p>
+<p><strong>J</strong> — APL with ASCII characters. Iverson's second attempt, with Roger Hui. The same power, different symbols. The simplicial complex collapses to an expression.</p>
+<p><strong>K / Q</strong> — The financial derivatives. Used in high-frequency trading. Array processing at extreme speed. The boundary map runs before you have time to worry about it.</p>
+<p><strong>Julia</strong> (2012) — Modern scientific computing. Fast like C, expressive like Python, with multiple dispatch that makes mathematical structures natural. The language that numerical mathematicians actually want. Simplices in Julia feel like mathematics.</p>
+<hr>
+<h2>The Logic Family</h2>
+<p><em>Computation as deduction</em></p>
+<p><strong>Prolog</strong> (1972) — Logic programming. You state what is true; the machine figures out what follows. The simplicial complex is a set of facts. The boundary map is a rule. Backtracking handles the search. A completely different relationship between programmer and machine.</p>
+<p><strong>Mercury</strong> — Prolog with types and determinism. The logic programming language that takes correctness seriously.</p>
+<p><strong>Datalog</strong> — Prolog stripped to its relational core. Used in program analysis and databases. Simplices as relations, boundary maps as recursive rules.</p>
+<hr>
+<h2>The Concurrent Family</h2>
+<p><em>Multiple things at once</em></p>
+<p><strong>Erlang</strong> (1986) — Built at Ericsson for telephone switches that cannot go down. Lightweight processes, message passing, let-it-crash philosophy. A simplicial complex distributed across a hundred nodes.</p>
+<p><strong>Elixir</strong> — Erlang's modern descendant. The same beam virtual machine, a cleaner surface. Phoenix framework. Warm community. The boundary map as a GenServer.</p>
+<hr>
+<h2>The Stack Languages</h2>
+<p><em>Forth and its descendants: radical minimalism</em></p>
+<p><strong>Forth</strong> (1970) — Charles Moore's single-person language. A stack, a dictionary of words, nothing else. Implementable on any hardware by one person in a weekend. Walden written in concatenative code. The boundary map is a word that consumes a simplex and leaves its faces on the stack.</p>
+<p><strong>PostScript</strong> — The language inside your printer. Stack-based, Turing-complete, used to draw every page of text that came out of a laser printer for thirty years. A simplicial complex can be drawn directly, without going through an application.</p>
+<p><strong>Factor</strong> — A modern concatenative language with an image-based development environment. Forth's ideas, brought forward.</p>
+<hr>
+<h2>The Statistical Family</h2>
+<p><em>Where mathematics meets data</em></p>
+<p><strong>R</strong> (1993) — Statisticians talking to each other in code. A strange language with a devoted community. Linear algebra built in. The boundary matrix is a matrix already.</p>
+<p><strong>MATLAB / Octave</strong> — The engineer's scratchpad. MATLAB is commercial; Octave is the free alternative. Matrices are the native type. Simplices as sparse matrices, boundary maps as linear transformations. What engineers reach for.</p>
+<p><strong>S</strong> — The ancestor of R. Bell Labs again. John Chambers. The source of the tradition.</p>
+<hr>
+<h2>The Domain-Specific and Visual</h2>
+<p><em>Languages with a world inside them</em></p>
+<p><strong>Blender Python</strong> — Our visual witness. The simplicial complex rendered in 3D space. Walk around it. See the hole that H₁ is counting. Python scripts that drive a 3D engine, producing geometry from abstract algebra. This is the language that makes the mathematics visible.</p>
+<p><strong>Processing</strong> — Casey Reas and Ben Fry's visual language for artists and designers. Java underneath, but you do not need to know that. Drawing simplices on a canvas, animating the boundary map.</p>
+<p><strong>GLSL / HLSL</strong> — Shader languages. Run on the GPU, in parallel, for every pixel on screen. The geometry passes through these on its way to your eye. The topological structure of what Quake renders lives partly here.</p>
+<p><strong>SQL</strong> — Structured Query Language. Not usually called a programming language, but it is one. Relational. Declarative. The simplicial complex as a database. The boundary map as a join. Strange and powerful and everywhere.</p>
+<hr>
+<h2>The Esoteric and the Minimal</h2>
+<p><em>Languages that ask: what is the minimum?</em></p>
+<p><strong>Brainfuck</strong> (1993) — Eight characters. Turing-complete. The simplest possible language that can compute anything. Implementing simplices here is an act of endurance and philosophy. It has been done.</p>
+<p><strong>Befunge</strong> — A two-dimensional language. The program counter moves in four directions. The code is a grid. Topology in the structure of the program itself.</p>
+<p><strong>Piet</strong> — Programs written as bitmap images. The color and the shape of the image are the code. A boundary map as a painting.</p>
+<hr>
+<h2>A Note on This List</h2>
+<p>This is not complete. No such list could be. There are languages for music (SuperCollider, ChucK), languages for hardware (VHDL, Verilog), languages for the web (TypeScript, Elm, ClojureScript), languages invented by one person for private use and never named. The garden keeps growing.</p>
+<p>What they share: someone thought carefully about what computation should feel like, made a decision, and built a world around it. Reading simplices across languages is reading those decisions — what each language considers natural, what it makes hard, what it reveals that the others hide.</p>
+<p>The mathematics does not change. The light changes.</p>
+  </div>
+
+  <div class="essay-nav">
+    <a href="exercises.html">← Exercises — Simplicial Homology</a>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

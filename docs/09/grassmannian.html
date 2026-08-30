@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grassmannians — Special Topic — Unit 09 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 09: Quake and the Grammar of Games</a>
+  </div>
+
+  <div class="essay">
+    <h1>Grassmannians — Special Topic</h1>
+<p><em>Why the geometry of 3D rendering has a name, and what that name reveals.</em></p>
+<hr>
+<h2>The question behind the question</h2>
+<p>When Carmack writes a BSP tree, he is repeatedly choosing a hyperplane to split space. When the renderer normalizes a vector, it is projecting onto a sphere. When the camera defines a view frustum, it is selecting a projective frame.</p>
+<p>These are not ad hoc operations. They are instances of a single mathematical structure: the <strong>Grassmannian</strong>.</p>
+<p>The Grassmannian is the space of all linear subspaces of a fixed dimension inside a vector space. It is where the geometry of Quake actually lives, one level of abstraction above the code.</p>
+<hr>
+<h2>Definition</h2>
+<p>The <strong>Grassmannian G(k, n)</strong> is the set of all k-dimensional subspaces of ℝⁿ.</p>
+<p>Special cases, all of them familiar:</p>
+<table><thead><tr><th>G(k, n)</th><th>What it is</th><th>Dimension</th></tr></thead><tbody><tr><td>G(1, 2)</td><td>Lines through the origin in ℝ² = RP¹ ≅ S¹</td><td>1</td></tr><tr><td>G(1, 3)</td><td>Lines through the origin in ℝ³ = RP²</td><td>2</td></tr><tr><td>G(2, 3)</td><td>Planes through the origin in ℝ³ ≅ RP² (by duality)</td><td>2</td></tr><tr><td>G(1, 4)</td><td>Lines through the origin in ℝ⁴ = RP³</td><td>3</td></tr><tr><td>G(2, 4)</td><td>Planes through the origin in ℝ⁴</td><td>4</td></tr><tr><td>G(n−1,n)</td><td>Hyperplanes through the origin in ℝⁿ ≅ RP^{n−1}</td><td>n−1</td></tr></tbody></table>
+<p>The dimension of G(k, n) is k(n − k).</p>
+<p>Note: RP¹ ≅ S¹, RP³ ≅ SO(3)/Z₂ (the rotation group, almost). These are not curiosities. They are load-bearing mathematical facts about 3D space.</p>
+<hr>
+<h2>The connection to Quake</h2>
+<p><strong>BSP trees.</strong> Each internal node of a BSP tree is a hyperplane that splits space. A hyperplane through the origin in ℝ³ is an element of G(2, 3) ≅ RP². An affine hyperplane (not necessarily through the origin) is a translate of one — a point in the affine Grassmannian. Carmack's BSP builder is walking through this space, choosing splits greedily.</p>
+<p><strong>Normalized vectors.</strong> The fast inverse square root computes 1/√‖v‖ so that v can be normalized to a unit vector. Unit vectors in ℝ³ live on S², the 2-sphere. S² double-covers RP² — every line through the origin meets the sphere in two antipodal points. When you normalize a direction vector, you are projecting from ℝ³\{0} onto S².</p>
+<p><strong>Quaternions and rotation.</strong> Quake's physics engine represents orientations using quaternion arithmetic. The unit quaternions form S³. The rotation group SO(3) = S³/Z₂ ≅ RP³. The fact that RP³ = G(1, 4) means rotations in 3D space are points in a Grassmannian.</p>
+<p><strong>View frustum.</strong> A camera in 3D defines a projective frame. The space of all possible camera positions and orientations is a fiber bundle over ℝ³ with fiber SO(3) ≅ RP³. This is not abstract. It is the data structure the renderer uses to transform world coordinates into screen coordinates.</p>
+<hr>
+<h2>The Plücker embedding</h2>
+<p>Grassmannians live inside projective space via the <strong>Plücker embedding</strong>.</p>
+<p>Given a k-dimensional subspace V ⊂ ℝⁿ with basis {v₁, ..., vₖ}, define:</p>
+<p>p(V) = v₁ ∧ v₂ ∧ ... ∧ vₖ  ∈  Λᵏ(ℝⁿ)</p>
+<p>The result is a nonzero element of the exterior algebra, determined up to scalar — hence a point in projective space P(Λᵏ(ℝⁿ)) ≅ RP^{C(n,k)−1}.</p>
+<p>This is the Plücker embedding: G(k, n) ↪ RP^{C(n,k)−1}.</p>
+<p>For G(2, 4) (planes in ℝ⁴), this is G(2, 4) ↪ RP⁵. The image is defined by a single quadratic equation (the Plücker relation).</p>
+<p>The Plücker embedding makes G(k, n) into an algebraic variety — a geometric object defined by polynomial equations. This is how computer graphics encodes subspaces: as coordinate vectors satisfying constraints.</p>
+<hr>
+<h2>Homology of Grassmannians — Schubert calculus</h2>
+<p>This is where Unit 08 and Unit 09 meet.</p>
+<p>Grassmannians have a beautiful cellular decomposition into <strong>Schubert cells</strong>, indexed by integer partitions (equivalently, Young diagrams).</p>
+<p>For G(k, n), the cells are indexed by partitions λ = (λ₁ ≥ λ₂ ≥ ... ≥ λₖ ≥ 0) with λ₁ ≤ n − k. The dimension of the cell corresponding to λ is |λ| = Σ λᵢ.</p>
+<p><strong>Example: G(2, 4)</strong> (dim 4, cells in dimensions 0, 1, 2, 2, 3, 4):</p>
+<table><thead><tr><th>Partition λ</th><th>Cell dim</th><th>Schubert class</th></tr></thead><tbody><tr><td>∅</td><td>0</td><td>[pt] = 1</td></tr><tr><td>(1)</td><td>1</td><td>σ₁</td></tr><tr><td>(2)</td><td>2</td><td>σ₂</td></tr><tr><td>(1,1)</td><td>2</td><td>σ₁₁</td></tr><tr><td>(2,1)</td><td>3</td><td>σ₂₁</td></tr><tr><td>(2,2)</td><td>4</td><td>σ₂₂</td></tr></tbody></table>
+<p>The homology of G(2,4) over ℤ is free abelian: H₀ = ℤ, H₁ = ℤ, H₂ = ℤ², H₃ = ℤ, H₄ = ℤ.</p>
+<p>No torsion. This is a general fact: real Grassmannians have 2-torsion, complex Grassmannians are torsion-free.</p>
+<p><strong>Schubert calculus</strong> is the intersection theory on these classes. The product σ₁ · σ₁ = σ₂ + σ₁₁ in H*(G(2,4)) says: two general lines in ℝ⁴ span a plane that intersects a given plane in a point — and this is counted by the formula above.</p>
+<p>This connects back to Unit 07 (Grothendieck, who reformulated Schubert calculus in K-theory) and Unit 08 (where we computed homology by hand).</p>
+<hr>
+<h2>Grassmannians in the wild</h2>
+<p>Grassmannians are not an abstraction invented for mathematicians. They appear wherever subspaces matter:</p>
+<p><strong>Computer vision.</strong> The space of possible camera orientations is a Grassmannian. Structure-from-motion algorithms navigate it to recover 3D geometry from 2D images.</p>
+<p><strong>Machine learning.</strong> Principal Component Analysis finds the k-dimensional subspace that best approximates a dataset — a point in G(k, n). Dimensionality reduction is optimization on a Grassmannian.</p>
+<p><strong>Signal processing.</strong> Subspace methods (MUSIC algorithm for direction-of-arrival) compute in Grassmannians. Your phone's GPS and radio use them.</p>
+<p><strong>Physics.</strong> The moduli space of instantons (solutions to the Yang-Mills equations) is an ADHM construction over a Grassmannian. Witten's topological quantum field theory produces Donaldson invariants from intersection theory on moduli spaces — generalizations of Schubert calculus.</p>
+<p><strong>Robotics.</strong> The configuration space of a robot arm with joints has a natural Grassmannian component for each joint's rotation group.</p>
+<hr>
+<h2>The thread from Quake to here</h2>
+<p>Wolf3D (1992): cast rays through a flat grid. No subspaces, just rays.</p>
+<p>Doom (1993): split space with hyperplanes (BSP nodes ∈ G(2,3)). Traverse front-to-back.</p>
+<p>Quake (1996): true 3D BSP + PVS + quaternion physics + normalized vectors. The Grassmannian structure is everywhere, unnamed.</p>
+<p>Carmack did not need to know what a Grassmannian was to write Quake. But Quake is computing in Grassmannians the way Jourdain spoke prose — doing it all along without knowing the name.</p>
+<p>Knowing the name changes what you can see next.</p>
+<hr>
+<h2>Going further</h2>
+<ul>
+  <li><strong>Hatcher</strong>, §4.D: Grassmannians and characteristic classes (advanced, but Hatcher is clear)</li>
+  <li><strong>Milnor and Stasheff</strong>, <em>Characteristic Classes</em> — the standard reference</li>
+  <li><strong>3Blue1Brown</strong> on the Grassmannian: search "exterior algebra" and "linear subspaces"</li>
+  <li><strong>Griffiths and Harris</strong>, <em>Principles of Algebraic Geometry</em>, Chapter 1 — Schubert calculus</li>
+</ul>
+<p>in full generality, including intersection numbers</p>
+<p>The Plücker embedding and Schubert calculus are computable. <code>08/python/</code> has everything needed to compute the homology of G(k,n) if you give it the right simplicial triangulation. That is a non-trivial exercise — and a real research direction.</p>
+  </div>
+
+  <div class="essay-nav">
+    <a href="games.html">← A Garden of Games</a>
+    <span></span>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

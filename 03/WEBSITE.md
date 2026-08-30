@@ -13,5 +13,5 @@ The GNU Project produced Emacs, GCC, GDB, Bison, and the GPL. These tools are th
 - **GPL v1, v2, v3** (`scratch/`) — the legal instrument that makes copyleft work. Read all three and watch the argument evolve.
 - **doctor.el** (`scratch/doctor.el`) — Emacs's ELIZA implementation. A psychotherapist in 300 lines of Lisp.
 - **BUILD-emacs.md** (`scratch/`) — how to build Emacs from source
-- **lisp-exercise.md** — introduction to Emacs Lisp through the codebase
+- **lisp-exercise.md** (`scratch/`) — introduction to Emacs Lisp through the codebase
 - **gdb-exercise.c** (`scratch/`) — a program to debug, step by step

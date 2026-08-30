@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 07: The Spiritual — Unit 07 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 07: The Spiritual</a>
+  </div>
+
+  <div class="essay">
+    <h1>Unit 07: The Spiritual</h1>
+<p><em>Alexander Grothendieck. William Lawvere. The mathematics that underlies the mathematics.</em></p>
+<hr>
+<h2>A different kind of unit</h2>
+<p>Every previous unit has had a codebase at its center — something you can clone and compile and run. This unit has that too (Lean, Agda, Coq, simplicial sets as code), but the center is different. The center is mathematics of a kind that most mathematicians find difficult and most programmers have never encountered, written by two people who thought about structure with an intensity that is almost impossible to describe without sounding like you are exaggerating.</p>
+<p>You are not required to master this. No one masters Grothendieck's algebraic geometry in a course, or a semester, or a decade. What this unit offers is something different: a serious amateur's approach. Sustained attention. Willingness to sit with difficulty. The goal is not to understand everything but to understand something — and to feel, at least once, the texture of mathematics at this level.</p>
+<p>The word "spiritual" is not casual. Grothendieck himself used it. He described mathematics as a kind of meditation, a contemplation of things that exist before the mathematician arrives and will exist after they leave. He described understanding as something that happens to you when you stop forcing it. He was, by the end of his life, a mystic as much as a mathematician. This unit does not ignore that. It is part of the picture.</p>
+<hr>
+<h2>Grothendieck</h2>
+<p>Alexander Grothendieck (1928–2014) was the child of anarchist parents — his father, Alexander "Sascha" Schapiro, participated in the Russian Revolution and the Spanish Civil War; his mother, Johanna "Hanka" Grothendieck, was a writer. He spent part of his childhood in a French internment camp. He studied mathematics under Jean Dieudonné and Henri Cartan. He spent fifteen years at the Institut des Hautes Études Scientifiques (IHÉS) near Paris, where, between approximately 1958 and 1970, he produced a body of work that transformed mathematics.</p>
+<p>The transformation was methodological as much as substantive. Grothendieck's approach was to find the most general setting in which a concept made sense, prove the result there, and then derive the specific cases as corollaries. This sounds like a technique. It was a philosophy. He believed that mathematics resisted you when you pushed it in the wrong direction, and yielded naturally when you found the right level of generality. His word for this was <em>topos</em> — a word he invented to describe a kind of mathematical object general enough to encompass sets, spaces, logical structures, and more exotic things simultaneously.</p>
+<p>The key concepts:</p>
+<ul>
+  <li><strong>Schemes</strong> — a generalization of algebraic varieties that made algebraic geometry vastly more powerful and precise</li>
+  <li><strong>Toposes</strong> — categories that behave like categories of sets but are not; the framework for categorical logic</li>
+  <li><strong>Motives</strong> — a still-conjectural framework for understanding cohomology theories across different mathematical settings; Grothendieck sketched the idea and died before it was complete</li>
+  <li><strong>Descent theory</strong> — how to assemble global objects from local data; how you know that something glued together correctly is actually the thing you wanted</li>
+  <li><strong>The yoga of six operations</strong> — a framework for understanding cohomological operations that unifies many constructions across algebraic geometry</li>
+</ul>
+<p>He withdrew from professional mathematics in 1970, after learning that IHÉS accepted military funding. He spent subsequent decades on ecology, pacifism, and eventually a profound isolation in the Pyrenees, where he died in 2014.</p>
+<p>His later mathematical writing — <em>Récoltes et Semailles</em> (Harvests and Sowings, a 1000-page reflection on his life and mathematics), <em>La Longue Marche à Travers la Théorie de Galois</em> (The Long March Through Galois Theory), <em>Pursuing Stacks</em> (a letter to Daniel Quillen about homotopy theory that grew into a 600-page vision), and <em>Esquisse d'un Programme</em> (Sketch of a Programme) — is unlike anything else in mathematics. It is personal, visionary, and occasionally angry. <em>Pursuing Stacks</em> is addressed to a colleague and reads like a very long, very mathematical letter. Read it as a document, not as a textbook.</p>
+<hr>
+<h2>Lawvere</h2>
+<p>F. William Lawvere (1937–2023) studied under Sammy Eilenberg — one of the inventors of category theory — and spent his career at SUNY Buffalo. His contributions are less famous than Grothendieck's but equally foundational to the uses of category theory that matter for this course.</p>
+<p>His 1963 PhD thesis, "Functorial Semantics of Algebraic Theories," established the categorical foundations of algebra. His 1969 paper "Adjointness in Foundations" argued that adjoint functors — a central concept in category theory — are the fundamental conceptual tool of mathematics, appearing everywhere from logic to physics to computation.</p>
+<p>His work with Myles Tierney in the late 1960s and early 1970s established elementary topos theory — a version of Grothendieck's toposes formulated without set theory as a foundation, using only categorical axioms. This is the result Lawvere most wanted: that mathematics could be founded on category theory directly, without needing to go through set theory first.</p>
+<p>His connection to computation is direct and important:</p>
+<p><strong>The Curry-Howard-Lambek correspondence</strong> is a three-way equivalence between:</p>
+<ul>
+  <li>Intuitionistic logic (a logic without the law of excluded middle)</li>
+  <li>The simply-typed lambda calculus (the basis of functional programming type systems)</li>
+  <li>Cartesian closed categories (the categorical structure Lawvere and Eilenberg studied)</li>
+</ul>
+<p>What this says: a type system and a logic are the same object, described in different language. A proof is a program. A program is a proof. The type checker is a proof verifier. This is the correspondence that underlies Coq, Agda, Lean, and every other proof assistant — and it is Lawvere's categorical framework that makes it precise.</p>
+<hr>
+<h2>The tools</h2>
+<p>The tools in this unit are proof assistants — programs in which mathematics is written in a formal language, and the program verifies that the mathematics is correct. They are both programming languages and mathematical notation systems.</p>
+<h3>Lean 4 and Mathlib</h3>
+<p>Lean is a proof assistant developed at Microsoft Research by Leonardo de Moura. Lean 4 (2021) is a complete redesign that is simultaneously a dependently-typed programming language and a proof assistant. <strong>Mathlib</strong> is the community library of formalized mathematics for Lean — currently the largest single repository of formalized mathematics in existence.</p>
+<p>The scope of Mathlib is remarkable: it includes real analysis, complex analysis, algebraic geometry (parts of it), number theory, topology, category theory, and much more. When a new theorem is formalized in Lean and added to Mathlib, it has been verified by a computer from first principles. The proofs do not just seem correct; they are machine-verified.</p>
+<p>Grothendieck's influence is present in Mathlib's category theory library. Lawvere's adjoint functors are there. Schemes are being formalized. The road from the Jacquard loom to the machine-verified Grothendieck-Riemann-Roch theorem is long, but it is one road.</p>
+<p><code>07/lean-mathlib/</code> — the Mathlib repository (large; blobless clone).</p>
+<h3>Agda</h3>
+<p>Agda is a dependently-typed programming language and proof assistant developed by Ulf Norell. Its type theory is a direct implementation of Martin-Löf type theory — the constructive type theory that formalizes the Curry-Howard correspondence.</p>
+<p>Agda has been used to formalize homotopy type theory (HoTT) — a connection between type theory and homotopy theory (a branch of algebraic topology that Grothendieck influenced deeply through his concept of higher stacks). The HoTT book (2013) was written collaboratively using Agda, among other tools, and is freely available.</p>
+<p><code>07/agda/</code> — the Agda compiler source.</p>
+<h3>Simplicial sets</h3>
+<p>Simplicial sets are combinatorial structures used to study topological spaces in algebraic topology. They are also a foundation for ∞-categories (infinity-categories), which are Grothendieck's homotopy hypothesis made precise: the claim that homotopy types and ∞-groupoids are the same thing.</p>
+<p>This is abstract enough that it requires its own introduction. See <code>07/scratch/simplicial-sets-intro.md</code>.</p>
+<hr>
+<h2>How to approach this unit</h2>
+<p><strong>Start with Lawvere.</strong> His "Taking Categories Seriously" (1986, TAC reprint) is the best entry point — a short paper arguing that category theory is not a language for describing mathematics but the foundation of mathematics. It is readable, even if the details are difficult.</p>
+<p><strong>Then read Grothendieck's <em>Esquisse d'un Programme</em>.</strong> It is a 1984 proposal he submitted for a position (which he did not get). It is a short document — 50 pages — that outlines a vision for mathematics that mathematicians are still trying to understand forty years later. Read it as literature. You will understand parts of it. The parts you do not understand, let rest.</p>
+<p><strong>Then open Lean.</strong> Install it. Open a Mathlib file. Look at a formalized proof of something you know — perhaps the intermediate value theorem, or the fundamental theorem of algebra. You will not understand all of it. Read the parts you can. Notice that each step of the proof is explicit, checkable, machine-verified. This is what Lovelace's algorithm running on the Analytical Engine would have looked like if the Engine had been built.</p>
+<p><strong>Then read <em>Pursuing Stacks</em>, the opening.</strong> The first twenty pages are a letter. They are accessible. They are Grothendieck in 1983, telling a colleague what he is thinking about and why. Read it as a letter.</p>
+<p>The goal is not understanding in the usual sense. The goal is contact — with a way of thinking about mathematics that is genuinely different from what you have encountered before, and that is connected, through category theory and type theory and proof assistants, to the code you have been reading in every other unit of this course.</p>
+<hr>
+<h2>What is in 07/</h2>
+<ul>
+  <li><code>lean-mathlib/</code> — Mathlib, the Lean 4 mathematics library</li>
+  <li><code>agda/</code> — the Agda proof assistant source</li>
+  <li><code>scratch/</code> — foundational papers and reading guides:</li>
+</ul>
+<p>- <code>lawvere-taking-categories-seriously.pdf</code> - <code>lawvere-adjointness-in-foundations.pdf</code> - <code>grothendieck-esquisse.pdf</code> - <code>pursuing-stacks-excerpt.pdf</code> - <code>simplicial-sets-intro.md</code> - <code>hott-chapter1.pdf</code> (first chapter of the HoTT book, freely available)</p>
+<hr>
+<h2>The connection to the rest of the course</h2>
+<p>Every unit in this course has been about reading — about standing inside large, old, important code and finding your bearings. This unit asks you to do the same with mathematics.</p>
+<p>The languages in Unit 06 (Haskell, Agda, Lean) are the executable form of the mathematics in this unit. The Curry-Howard-Lambek correspondence means that a type system and a proof system are the same thing described differently. When you write a Haskell function, you are writing a proof. When you read a Lean proof, you are reading a program. The boundary is not where most people think it is.</p>
+<p>Grothendieck's topos theory is, among other things, a foundation for the semantics of programming languages — a mathematical setting in which the meaning of a program can be defined precisely. Lawvere's categorical logic is the framework within which the type theory of Agda and Lean is formulated. The mathematics and the code are not two subjects. They are one subject described at different levels of abstraction.</p>
+<p>The Jacquard loom encoded patterns as holes in cards. Babbage designed a machine to execute mathematical notation. Lovelace wrote the first program. Church and Turing formalized computation. McCarthy made lambda calculus runnable. Milner added types. Lawvere showed that types and proofs are the same. Voevodsky (building on Grothendieck's homotopy hypothesis) showed that proofs and homotopies are the same. Lean verifies all of this, mechanically, from axioms.</p>
+<p>The thread from the loom runs here.</p>
+<hr>
+<p><em>Start with Lawvere. Then Grothendieck. Then open Lean and find something you know and look at how it was proved. The rest will follow, slowly.</em></p>
+  </div>
+
+  <div class="essay-nav">
+    <span></span>
+    <a href="quake.html">quake.md →</a>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>

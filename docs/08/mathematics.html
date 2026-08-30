@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Mathematics of Simplicial Homology — Unit 08 — Eleven Million Lines</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 18px; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fdfaf5;
+      color: #1a1a1a;
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
+    .nav .sep { color: #ccc; }
+    h1 { font-size: 1.9rem; font-weight: normal; line-height: 1.2; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; font-weight: bold; margin: 2.5rem 0 0.75rem; }
+    h3 { font-size: 1rem; font-weight: bold; font-style: italic; margin: 2rem 0 0.5rem; color: #444; }
+    p { margin-bottom: 1.25rem; color: #333; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: #333; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      background: #f0ece4;
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+    }
+    pre {
+      background: #f0ece4;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border-left: 3px solid #c8bfb0;
+    }
+    pre code { background: none; padding: 0; font-size: 0.82em; }
+    blockquote {
+      border-left: 3px solid #c8bfb0;
+      padding-left: 1.25rem;
+      color: #666;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    hr { border: none; border-top: 1px solid #e0d8cc; margin: 2.5rem 0; }
+    strong { color: #1a1a1a; }
+    a { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    th, td { border: 1px solid #e0d8cc; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f0ece4; font-weight: bold; }
+    .essay-nav {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e0d8cc;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .essay-nav a { color: #555; text-decoration: none; }
+    .essay-nav a:hover { text-decoration: underline; }
+    .footer { margin-top: 3rem; font-size: 0.8rem; color: #aaa; border-top: 1px solid #e0d8cc; padding-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Unit 08: Simplicial Homology by Hand</a>
+  </div>
+
+  <div class="essay">
+    <h1>The Mathematics of Simplicial Homology</h1>
+<p><em>Written for someone who can read code but may not have seen algebraic topology.</em> <em>The goal is not to make you an expert. The goal is to make the code make sense.</em></p>
+<hr>
+<h2>What is a hole?</h2>
+<p>This is not a trivial question.</p>
+<p>A circle has a hole. A disk does not. A torus has two kinds of holes — the one you go through and the one the tube goes around. A sphere has a hole of a higher kind: the void it encloses.</p>
+<p>But "hole" is not a mathematical definition. It is an intuition. Homology is the machinery that makes the intuition precise.</p>
+<p>The key insight, due to Henri Poincaré (1895) and formalized by Emmy Noether in the 1920s: a hole is a <em>cycle that is not a boundary</em>.</p>
+<hr>
+<h2>Simplices: the building blocks</h2>
+<p>A <strong>0-simplex</strong> is a point.</p>
+<pre><code> •
+ 0</code></pre>
+<p>A <strong>1-simplex</strong> is an edge (a line segment between two points).</p>
+<pre><code> 0 ──── 1</code></pre>
+<p>A <strong>2-simplex</strong> is a filled triangle.</p>
+<pre><code>      2
+     / \
+    /   \
+   0 ─── 1</code></pre>
+<p>A <strong>3-simplex</strong> is a solid tetrahedron.</p>
+<p>In general, an <strong>n-simplex</strong> is the convex hull of n+1 points in general position. For our purposes, a simplex is just a sorted tuple of integer vertex labels.</p>
+<p>A <strong>face</strong> of a simplex is any simplex you get by dropping one or more vertices. The faces of (0,1,2) are (0,1), (0,2), (1,2), (0,), (1,), (2,).</p>
+<hr>
+<h2>Simplicial complexes</h2>
+<p>A <strong>simplicial complex</strong> K is a collection of simplices such that:</p>
+<ul>
+  <li>Every face of a simplex in K is also in K.</li>
+  <li>The intersection of two simplices in K is a face of both.</li>
+</ul>
+<p>In practice: you give us the maximal simplices, and we include everything smaller.</p>
+<pre><code>K = SimplicialComplex([(0,1,2), (1,2,3)])
+# Automatically includes:
+#   (0,1), (0,2), (1,2), (1,3), (2,3)
+#   (0,), (1,), (2,), (3,)</code></pre>
+<p>Example complexes:</p>
+<ul>
+  <li>A triangle (boundary only): (0,1), (1,2), (0,2)</li>
+  <li>A filled triangle: (0,1,2)</li>
+  <li>A tetrahedron (hollow): (0,1,2), (0,1,3), (0,2,3), (1,2,3)</li>
+  <li>A tetrahedron (solid): (0,1,2,3)</li>
+</ul>
+<hr>
+<h2>Orientation</h2>
+<p>To compute homology, we need to orient our simplices.</p>
+<p>An oriented n-simplex is a tuple of vertices with an ordering. Two orderings that differ by an even permutation are the same orientation; odd permutations flip the sign.</p>
+<p>For edges: [0,1] = −[1,0]. The edge from 0 to 1 is the negative of the edge from 1 to 0. This makes sense geometrically: they point in opposite directions.</p>
+<p>For our purposes: simplices are represented as sorted tuples, and the sign of a face is determined by which vertex was omitted.</p>
+<hr>
+<h2>The boundary map</h2>
+<p>The boundary of a simplex is the alternating sum of its faces.</p>
+<p><strong>∂₁ (boundary of an edge):</strong></p>
+<pre><code>∂[0,1] = [1] − [0]
+
+    −        +
+    0 ──────▶ 1</code></pre>
+<p>The head gets +1, the tail gets −1. The boundary of an arrow is its tip minus its tail.</p>
+<p><strong>∂₂ (boundary of a triangle):</strong></p>
+<pre><code>∂[0,1,2] = [1,2] − [0,2] + [0,1]</code></pre>
+<p>That is: the boundary of a triangle is the sum of its three edges, with signs chosen so that the boundary goes around the triangle consistently.</p>
+<p>The general formula:</p>
+<p>∂[v₀, v₁, ..., vₙ] = Σ_{l=0}^{n} (−1)^l [v₀, ..., v̂_l, ..., vₙ]</p>
+<p>where v̂_l means the l-th vertex is omitted.</p>
+<hr>
+<h2>The key fact: ∂∂ = 0</h2>
+<p>The boundary of a boundary is always zero.</p>
+<pre><code>∂₁(∂₂([0,1,2])) = ∂₁([1,2] − [0,2] + [0,1])
+                 = ([2]−[1]) − ([2]−[0]) + ([1]−[0])
+                 = [2]−[1]−[2]+[0]+[1]−[0]
+                 = 0</code></pre>
+<p>The boundary of a triangle is a closed loop. And the boundary of a closed loop is empty (no endpoint).</p>
+<p>This is not a miracle. It is a calculation. But it is the calculation that makes homology possible.</p>
+<hr>
+<h2>Chain groups and chain complexes</h2>
+<p>The <strong>n-th chain group</strong> C_n is the free abelian group generated by the oriented n-simplices. A <em>chain</em> is a formal integer linear combination of simplices.</p>
+<p>For the circle (three edges and three vertices):</p>
+<pre><code>C_1 = ℤ{(0,1)} ⊕ ℤ{(0,2)} ⊕ ℤ{(1,2)}   ← three edges
+C_0 = ℤ{(0,)} ⊕ ℤ{(1,)} ⊕ ℤ{(2,)}       ← three vertices</code></pre>
+<p>The boundary maps arrange these into a <strong>chain complex</strong>:</p>
+<pre><code>0 → C_n → C_{n-1} → ... → C_1 → C_0 → 0
+         ∂_n              ∂_1</code></pre>
+<p>with the property ∂_{n-1} ∘ ∂_n = 0.</p>
+<hr>
+<h2>Homology groups</h2>
+<p>Given the chain complex, define:</p>
+<ul>
+  <li><strong>Z_n = ker(∂_n)</strong>: the n-cycles (chains whose boundary is zero)</li>
+  <li><strong>B_n = im(∂_{n+1})</strong>: the n-boundaries (chains that are boundaries of something)</li>
+</ul>
+<p>Since ∂∂ = 0, every boundary is a cycle: B_n ⊆ Z_n.</p>
+<p>The <strong>n-th homology group</strong> is:</p>
+<p>H_n = Z_n / B_n = ker(∂_n) / im(∂_{n+1})</p>
+<p>This measures how many cycles fail to be boundaries — how many "holes" exist that are not "filled in."</p>
+<p><strong>H_0</strong> counts connected components. <strong>H_1</strong> counts independent loops (one-dimensional holes). <strong>H_2</strong> counts enclosed voids (two-dimensional holes).</p>
+<hr>
+<h2>The computation: boundary matrices and Smith normal form</h2>
+<p>Each boundary map ∂_n is a linear map between free abelian groups — a matrix of integers.</p>
+<p>For the circle (vertices 0,1,2; edges (0,1), (0,2), (1,2)):</p>
+<pre><code>∂₁ =        (0,1)  (0,2)  (1,2)
+       (0,)  [ -1    -1     0  ]
+       (1,)  [  1     0    -1  ]
+       (2,)  [  0     1     1  ]</code></pre>
+<p>To compute H_n from this matrix, we use <strong>Smith normal form</strong>.</p>
+<p>Any integer matrix M can be written as M = UDV where U, V are invertible integer matrices and D is diagonal with d₁ | d₂ | ... | d_r.</p>
+<p>The diagonal entries d_i are the <strong>invariant factors</strong>.</p>
+<p>From the invariant factors:</p>
+<ul>
+  <li>rank(∂_n) = r_n (number of nonzero invariant factors)</li>
+  <li>Betti number: β_n = k_n − r_n − r_{n+1}</li>
+</ul>
+<p>where k_n = number of n-simplices</p>
+<ul>
+  <li>Torsion: Z/d_iZ for each invariant factor d_i > 1 of ∂_{n+1}</li>
+</ul>
+<hr>
+<h2>Working out the circle by hand</h2>
+<p>Circle K: vertices (0,), (1,), (2,). Edges (0,1), (0,2), (1,2). No triangles.</p>
+<p><strong>Step 1</strong>: Write ∂₁ (3×3 matrix, rows=vertices, cols=edges).</p>
+<pre><code>        (0,1)  (0,2)  (1,2)
+(0,) [  -1     -1      0  ]
+(1,) [   1      0     -1  ]
+(2,) [   0      1      1  ]</code></pre>
+<p><strong>Step 2</strong>: Compute Smith normal form of ∂₁.</p>
+<p>Via row/column operations over ℤ (like Gaussian elimination, but using the Euclidean algorithm instead of division):</p>
+<p>After reduction: diagonal [1, 1, 0]. Invariant factors: [1, 1]. Rank = 2.</p>
+<p><strong>Step 3</strong>: ∂₂ = 0 (no triangles). Rank = 0.</p>
+<p><strong>Step 4</strong>: k₁ = 3 (three edges).</p>
+<p>β₁ = k₁ − rank(∂₁) − rank(∂₂) = 3 − 2 − 0 = <strong>1</strong>.</p>
+<p><strong>Step 5</strong>: k₀ = 3 (three vertices).</p>
+<p>β₀ = k₀ − rank(∂₀) − rank(∂₁) = 3 − 0 − 2 = <strong>1</strong>.</p>
+<p>(∂₀ = 0 since there are no (−1)-simplices.)</p>
+<p><strong>Result</strong>: H₀ = ℤ, H₁ = ℤ. One component, one loop. ✓</p>
+<hr>
+<h2>The standard spaces and their homology</h2>
+<table><thead><tr><th>Space</th><th>H₀</th><th>H₁</th><th>H₂</th><th>χ</th></tr></thead><tbody><tr><td>Point</td><td>ℤ</td><td>0</td><td>0</td><td>1</td></tr><tr><td>Interval</td><td>ℤ</td><td>0</td><td>0</td><td>1</td></tr><tr><td>Circle S¹</td><td>ℤ</td><td>ℤ</td><td>0</td><td>0</td></tr><tr><td>Sphere S²</td><td>ℤ</td><td>0</td><td>ℤ</td><td>2</td></tr><tr><td>Torus T²</td><td>ℤ</td><td>ℤ²</td><td>ℤ</td><td>0</td></tr><tr><td>Klein bottle</td><td>ℤ</td><td>ℤ ⊕ ℤ/2ℤ</td><td>0</td><td>0</td></tr><tr><td>RP²</td><td>ℤ</td><td>ℤ/2ℤ</td><td>0</td><td>1</td></tr><tr><td>Möbius band</td><td>ℤ</td><td>ℤ</td><td>0</td><td>0</td></tr></tbody></table>
+<p>The torsion in H₁(RP²) = ℤ/2ℤ says: there is a loop that is not a boundary, but going around it <em>twice</em> gives a boundary. This corresponds to the fact that RP² is non-orientable: you can return to your starting point having flipped your orientation.</p>
+<hr>
+<h2>The Euler characteristic</h2>
+<p>The <strong>Euler characteristic</strong> χ(K) can be computed two ways:</p>
+<p><strong>Combinatorially:</strong> χ = Σ (−1)^n · (number of n-simplices)</p>
+<p><strong>Topologically:</strong> χ = Σ (−1)^n · β_n</p>
+<p>These always agree. This is the <strong>Euler-Poincaré formula</strong>.</p>
+<p>For Euler's original observation (1758): for any convex polyhedron, V − E + F = 2. This is χ(S²) = 2.</p>
+<p>Euler noticed the pattern. Poincaré understood what it counted. Noether gave it the algebraic machinery that made computation possible.</p>
+<hr>
+<h2>Where to go next</h2>
+<p>The computation in <code>08/python/</code> and <code>08/haskell/</code> computes homology with coefficients in ℤ. There are many directions to extend:</p>
+<ul>
+  <li><strong>Coefficients in ℤ/2ℤ</strong> — simpler arithmetic, useful for non-orientable spaces</li>
+  <li><strong>Cohomology</strong> — the dual theory; the cup product gives ring structure</li>
+  <li><strong>Persistent homology</strong> — vary a parameter, track how holes appear and disappear</li>
+  <li><strong>Simplicial sets</strong> — a more general categorical framework</li>
+  <li><strong>Singular homology</strong> — extends homology to arbitrary topological spaces, not just simplicial complexes</li>
+</ul>
+<p><strong>Hatcher's <em>Algebraic Topology</strong></em> (free PDF from his website) covers all of this. Chapter 2 is where we are. Chapter 1 is the easier prerequisites. Chapter 0 is the part that looks hard but repays rereading.</p>
+<hr>
+<p><em>The boundary of a boundary is zero.</em> <em>That sentence is the whole field, compressed.</em> <em>Everything else is unpacking it.</em></p>
+  </div>
+
+  <div class="essay-nav">
+    <a href="simplicial-homology.html">← Unit 08 — Simplicial Homology by Hand</a>
+    <a href="exercises.html">EXERCISES.md →</a>
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>
