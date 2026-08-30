@@ -1,0 +1,146 @@
+# Package Managers
+## The Infrastructure of the Commons
+
+*A narrative for Unit 10*
+
+---
+
+## The Problem
+
+Software depends on other software. Always has.
+
+Write a program that needs to display an image and you need an image library. Write a program that needs to parse JSON and you need a JSON library. Write a program that needs to talk to a database and you need a database driver. The library was written by someone else, at some other time, for some possibly different purpose — and your program needs it to exist, in the right version, in the right place on the filesystem, before it can run.
+
+In the early days of Unix, this was your problem. You found the library. You downloaded the source. You read the README, which told you that before you could build this library you needed three other libraries, each of which had their own READMEs with their own prerequisites. You built them in the right order. You hoped the versions were compatible. You installed everything to the right directories. Sometimes it worked. Often it didn't, and the error message told you almost nothing useful.
+
+This process had a name: **dependency hell**. It was the tax on using other people's code. And because using other people's code is the entire basis of how software gets built — no one writes an image parser from scratch when libjpeg exists — the tax was paid constantly, by everyone, at enormous cost in time and frustration.
+
+The package manager is the solution to dependency hell. It is, in one sentence: *a program that knows about other programs and installs them in the right order*.
+
+That sentence does not convey how much this matters. The package manager is what made the open source ecosystem real. Stallman wrote the GPL. Linux was written. GCC, Emacs, Apache, Python: all written, all free, all available. But available how? As source tarballs on FTP servers, with hand-maintained READMEs explaining how to compile them in what order, with what flags, on what operating systems. The software existed. Getting it installed was another matter.
+
+The package manager changed this. `apt-get install python3` — and Python is there, along with every library it needs, compiled for your architecture, placed in the right directories, registered with the system. The dependency graph, which could involve dozens of libraries and sub-libraries, is solved automatically and invisibly. You asked for one thing and got everything it needed.
+
+This is not a small convenience. It is the difference between a commons that is theoretically accessible and a commons that is actually usable.
+
+---
+
+## The History
+
+**dpkg** arrived with Debian Linux in 1994. It was the first major binary package manager: software distributed not as source to compile but as precompiled binaries in a standard format — `.deb` files. You could install a package without a compiler. This mattered for people who were not developers, or who were developers but didn't want to spend an afternoon compiling a text editor.
+
+dpkg knew about packages. It did not know about dependencies. If a package required three other packages, dpkg would install the one you asked for and then tell you, after the fact, that it needed three things that weren't there. You figured it out yourself.
+
+**APT** — the Advanced Package Tool — arrived in 1998 and changed this. APT is built on top of dpkg. The key addition: a database of every package in the Debian repositories, including what each package depends on. When you ask APT for a package, it reads the dependency chain — this package needs these three, which need these five, which need these two — builds the full list, checks what you already have, and installs only what's missing, in the right order.
+
+This is a graph problem. The dependency relationship between packages forms a directed acyclic graph (DAG). APT does a topological sort and installs in order. The algorithm is not exotic. What was exotic was building the infrastructure to make it work at scale: the repository format, the package metadata, the signature verification, the mirrors, the update mechanism. APT is the graph algorithm plus everything needed to run it on a real system.
+
+The experience of using APT in 1998 — after years of compiling from source — felt like magic. Not because the algorithm was magic. Because the infrastructure had been built to the point where the algorithm could run cleanly, and the result was that getting software worked.
+
+Red Hat had RPM (1997), which solved the packaging problem, and YUM (2003), which solved the dependency resolution problem. Same structure, different ecosystem. The two traditions — Debian/APT and Red Hat/RPM — have coexisted ever since. Most Linux distributions are one or the other.
+
+---
+
+## CPAN and the First Commons
+
+**CPAN** — the Comprehensive Perl Archive Network — launched in 1995, before APT, before YUM. It is the first large-scale software commons organized around a package manager.
+
+Perl was the scripting language of the early web. CGI scripts — the programs that ran on web servers and generated dynamic pages before PHP existed — were almost universally written in Perl. And Perl had a culture: "there's a module for that." Need to parse HTML? There's a module. Need to send email? There's a module. Need to handle dates, or regular expressions, or database connections, or any of a thousand other things? There is a module. Someone has already solved this problem and uploaded the solution to CPAN.
+
+CPAN was a searchable archive of Perl modules — code written by the community, for the community, free to use and modify and build on. The modules were uploaded by individuals, maintained by individuals, and used by millions of programs worldwide. The package manager (`cpan`, later `cpanm`) installed them along with their dependencies.
+
+This was the open source ecosystem as a living thing, not just a legal category. The GPL said you could share the code. CPAN built the infrastructure to actually share it, find it, use it, and build on it. The community that formed around CPAN — writing modules, documenting them, maintaining them, answering questions — was the model for every language ecosystem that followed.
+
+---
+
+## npm and the Explosion
+
+**npm** — the Node Package Manager — launched in 2010 alongside Node.js, Ryan Dahl's JavaScript runtime. It was installed with Node by default, which meant every JavaScript developer had it immediately. This distribution advantage was decisive.
+
+npm grew faster than any previous package registry. By 2014 it was the largest software registry in the world by number of packages, surpassing CPAN, PyPI, and RubyGems. By 2019 it had over a million packages. The number is somewhat misleading — many packages are trivial, poorly maintained, or abandoned — but the scale was real. JavaScript had become the language of the web, the language of the server (via Node), and increasingly the language of desktop applications (via Electron). npm was the connective tissue.
+
+The culture npm enabled was distinctive: many small packages, each doing one thing. Where a Python developer might reach for the standard library, a JavaScript developer reached for npm. The Unix philosophy — small tools, composed — was applied to packages rather than programs.
+
+This produced fragility.
+
+In 2016, a developer named Azer Koçulu published packages on npm under his account, including one called `left-pad`. The package was eleven lines of code. It padded a string on the left with spaces or zeros. Trivial. But thousands of projects depended on it — because it was easier to install a package than to write eleven lines.
+
+Koçulu got into a dispute with npm over a package name. In protest, he unpublished all 250-plus packages he had uploaded to npm, including `left-pad`. Within minutes, build systems around the world started failing. Babel broke. React broke. Thousands of projects that had never heard of Azer Koçulu couldn't deploy because a string-padding function was no longer available.
+
+npm restored the package from a backup within a few hours. They also changed their policies: packages that other packages depended on could no longer be unpublished unilaterally. But the incident had revealed the structure: the entire JavaScript ecosystem was a dependency graph, and the nodes near the bottom — the small, widely-used utility packages — were single points of failure.
+
+Eleven lines of code. The entire web development ecosystem. This is what "dependency" means at scale.
+
+---
+
+## The Lock File
+
+A **lock file** is a document that records the exact version of every dependency — and every dependency's dependency, recursively — that a project uses at a particular moment.
+
+Without a lock file, `npm install` (or `pip install`, or `bundle install`) gives you the *latest compatible version* of each dependency. Run it today, you get today's versions. Run it next month, you might get different versions. The versions are compatible with your constraints, but they are not identical. A bug introduced in a dependency last week will appear in your project when you next install.
+
+With a lock file — `package-lock.json`, `Gemfile.lock`, `Cargo.lock` — every version is pinned. Run install today or next year, you get exactly the same software. The build is reproducible. The behavior is predictable.
+
+The lock file is a philosophical object as much as a technical one. It says: at this moment, the dependency graph had this exact shape. I am recording the shape so it can be reconstructed. The record is public, readable, committed to version control. It is an artifact of knowledge about what the software is made of.
+
+**Cargo** — Rust's package manager, released 2014 — is widely considered the best-designed package manager in the ecosystem. Lock files from day one. Reproducible builds by default. The registry (crates.io) is a public commons. The package format is standardized. Building a Rust project for the first time and watching `cargo build` download and compile exactly the right dependencies, in exactly the right order, without any configuration, is the experience APT provided for system packages in 1998 — extended to the language level, refined by twenty years of learning what goes wrong.
+
+Cargo is worth reading. It is elegant code solving a hard problem. The dependency resolution algorithm at its core — the SAT solver that figures out which versions of which packages satisfy all constraints simultaneously — is a piece of computer science that most developers use daily without knowing it's there.
+
+---
+
+## The Trust Problem
+
+When you run `npm install some-package` you are doing several things:
+
+You are downloading code from the internet. You are executing that code on your machine, possibly as part of an install script that runs automatically. You are trusting the package author, who you have probably never met, to have written the code honestly. You are trusting the registry (npm, PyPI, RubyGems) not to have been compromised. You are trusting every maintainer of every transitive dependency — the packages your package depends on, and the packages those depend on, recursively. A medium-sized JavaScript project might have a thousand packages in its `node_modules` directory. You have not read any of them.
+
+This is the attack surface. And it has been exploited.
+
+**The xz-utils incident** (2024) is the clearest illustration. xz is a compression library used by most Linux distributions. A contributor calling themselves Jia Tan spent two years building trust in the xz project — submitting legitimate patches, becoming a maintainer, gradually taking on more responsibility. Then, in a release that was already propagating through Linux distribution repositories, they inserted a carefully obfuscated backdoor in the build system that would have allowed remote code execution on any system running the compromised version of xz.
+
+It was caught by accident. A Microsoft engineer noticed his SSH login was taking a fraction of a second longer than usual and investigated. The backdoor had been days away from being in the stable releases of Debian and Fedora, which would have pushed it to millions of servers.
+
+Two years. One contributor. A compression library. The package manager as the vector.
+
+This is the same structure as every other layer in this unit: the infrastructure that makes the thing useful is also the infrastructure that makes the thing vulnerable. The browser that renders images can render malicious images. The social network that connects people can connect them to abuse. The package manager that delivers software can deliver compromised software. The power and the risk are the same feature.
+
+---
+
+## Homebrew and the Mac
+
+**Homebrew** launched in 2009, written by Max Howell. It was the missing package manager for macOS — a system that had Unix underneath but no standard way to install Unix software.
+
+`brew install git`. `brew install vim`. `brew install python`. Homebrew filled the gap between macOS's GUI App Store — which had no developer tools — and compiling everything from source. It was written in Ruby, readable, open source, community-maintained. It became the standard way developers set up a Mac.
+
+Howell later applied for a job at Google. He was asked, in the interview, to invert a binary tree on a whiteboard. He was unable to do it in the way the interviewer expected. He was rejected. He tweeted about it. The tweet went viral.
+
+The person who wrote the package manager that millions of developers used every day could not pass Google's standard software engineering interview. The gap between what software engineering culture measures — algorithmic puzzles, whiteboard performance — and what software engineering actually requires — building useful things that people depend on — is visible in this story. Homebrew is more useful than most binary tree inversions.
+
+---
+
+## Microsoft Owns npm
+
+In 2020, Microsoft acquired npm, Inc. — the company that ran the npm registry.
+
+The company that in 1976 told hobbyists they were stealing software now owns the largest software registry in the world, which distributes free and open source software, for free, to anyone who asks. The registry hosts over two million packages. Most of them are MIT or BSD licensed — permissive licenses that allow commercial use, private modification, and redistribution without restriction. Some are GPL licensed. All of them are available without payment.
+
+This is not nothing. Microsoft made a significant commitment when it acquired npm. The registry has continued to operate as a free public service. But the structural fact is what it is: the commons runs on infrastructure owned by a corporation, which acquired it for strategic reasons, and which could change the terms of access.
+
+This is the package manager inside the broader story of who owns the infrastructure that open source runs on. GitHub (also Microsoft) hosts most open source repositories. npm (Microsoft) distributes most JavaScript packages. Azure (Microsoft) runs a large portion of the servers that serve them. The code is free. The infrastructure is not.
+
+---
+
+## What Package Managers Are
+
+A package manager is a solution to a graph problem, wrapped in a trust model, running on top of a commons that took decades to build.
+
+The graph is the dependency relationship between pieces of software. The trust model is what allows you to install code you haven't read from people you haven't met. The commons is the accumulated work of millions of developers who wrote software and made it available to everyone.
+
+The package manager is the reading infrastructure of the open source world. When you `apt-get install gcc`, you are accessing thirty years of accumulated compiler development, made available to you at the cost of a network request. The code is readable — all of it. The GCC source is there, fetchable, compilable. The package manager is what makes this accessibility practical rather than theoretical.
+
+This is the positive version of the story in THE-RIGHT-TO-READ.md. The right to read is meaningful only if reading is possible. Package managers made it possible. They are not glamorous. They are not what anyone means when they talk about innovation or disruption or the next big thing. They are plumbing.
+
+The best plumbing is invisible. You notice it only when it breaks.
+
+---
