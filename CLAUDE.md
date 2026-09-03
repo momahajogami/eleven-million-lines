@@ -165,7 +165,7 @@ Course framing corrected: **preschool-first** — designed for young children an
 - 09: UNIT-09.md (algorithm arc: Wolf3D→Doom→Quake); wolf3d/, doom/, quake/ (placeholder READMEs); other-games/ (GAMES.md + tetris/tetris.py); grassmannian/GRASSMANNIAN.md
 - 10: Browsers and Social Media — substantially built out. UNIT-10.md, BROWSERS.md, SOCIAL-MEDIA-1/2/3.md, ONTOLOGY.md, THE-RIGHT-TO-READ.md, PACKAGE-MANAGERS.md, VERSION-CONTROL-ECOSYSTEM.md, MICROSOFT-THREAD.md. Codebases: Mosaic (full clone + RFC 2616 + RFC 1866), Lynx (2.9.3 tarball), Mastodon (sparse checkout: models, services, workers). Firefox and WebKit oriented via README only (too large). PageRank implementation and toy social graph still to write.
 - 11: LLMs confirmed — Attention Is All You Need + nanoGPT + Stack Overflow displacement arc
-- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, ACADEMIC-YEAR-2026-27.md, sessions/ (2026-08-18 through 2026-08-29)
+- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, ACADEMIC-YEAR-2026-27.md, sessions/ (2026-08-18 through 2026-09-02)
 - docs/: index.html (syllabus, 11 units); 01/–11/index.html all now driven by WEBSITE.md pipeline; .nojekyll; .github/workflows/pages.yml
 - scripts/build-website.py: WEBSITE.md → HTML pipeline for all unit pages. Run `python3 scripts/build-website.py` after editing any NN/WEBSITE.md. All 11 units now have WEBSITE.md source files.
 - scripts/chipsquirt.py: per-letter color tinting. Modes: sine, walk, random, unit-squared, fourth-power-interval, orbit. Orbit = course signature. Fourth-power = h1 mode (near-black, rare flash). Used server-side on essay pages; ported to JS for index pages and reader.html.
@@ -173,12 +173,17 @@ Course framing corrected: **preschool-first** — designed for young children an
 
 ## DO THESE FIRST NEXT SESSION
 
-**Step 1 — Full preschool reframe of CLAUDE.md** — Goals, Two Tracks, and Visualizations still say "university." Rewrite them to lead with preschool/families. University stays as a real secondary context.
+**Step 1 — System housekeeping** — mount `/dev/sda1` at `/mnt/sda` (`sudo mount /dev/sda1 /mnt/sda`), then add fstab entry so it survives reboots. Disable KDE sleep (System Settings → Power Management → Energy Saving → Never). Consider whether to reset the sudo password via GRUB if it's still lost.
 
-**Step 2 — Recap** on where things stand. Read this section and `meta/sessions/2026-08-30.md`.
+**Step 2 — Full preschool reframe of CLAUDE.md** — Goals, Two Tracks, and Visualizations still say "university." Rewrite them to lead with preschool/families. University stays as a real secondary context.
+
+**Step 3 — Recap** on where things stand. Read this section and `meta/sessions/2026-09-02.md`.
 
 ## Intentions for Next Session
 
+- Mount `/dev/sda1` at `/mnt/sda`; add fstab entry (UUID=9712b64f-2294-480c-97aa-e21c10944e03)
+- Disable KDE sleep/suspend
+- Resolve sudo password (reset via GRUB if needed)
 - Full preschool reframe of CLAUDE.md (Goals, Two Tracks, Visualizations)
 - Write `meta/ANNOUNCE.md` — core announcement text
 - Unit 10: write PageRank implementation (~20 lines Python) → `10/exercises/pagerank.py`
