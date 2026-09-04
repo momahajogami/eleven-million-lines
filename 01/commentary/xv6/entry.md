@@ -1,20 +1,24 @@
 # xv6 — Entry
 
-*The first walk through. Where to stand, what to look at, what to feel.*
+*Where to stand. What to look at. What to feel.*
 
 ---
 
 ## The numbers
 
-9,400 lines of C and assembly. That is an operating system. Process management, virtual memory, a filesystem, a shell, a handful of user programs. Everything required for Unix to exist, in a space smaller than most single files in a modern codebase.
+9,400 lines of C and assembly. That is an operating system. Process management, virtual memory, a filesystem, a shell, a handful of user programs — everything required for Unix to exist, in a space smaller than most single files in a modern codebase.
 
 Hold that number. It will keep mattering.
 
 ---
 
-## The door: `main.c`
+## Five files, in order
 
-Open `main.c`. It is 38 lines of actual code.
+These are not the only important files. They are the path in.
+
+### 1. `main.c` — the boot sequence
+
+38 lines of actual code.
 
 ```c
 int
@@ -45,17 +49,7 @@ You have just read the boot sequence of an operating system. Each line wakes som
 
 Notice `userinit()`. That is the moment Unix begins. Everything before it is the kernel making itself ready. Everything after it is the kernel waiting to be interrupted by a user process wanting something. The whole model is there in the call order.
 
-`mpmain()` at the end hands off to the scheduler and never returns. The kernel becomes reactive. That is what an operating system is: a very careful initialization followed by infinite patience.
-
----
-
-## Five files worth reading in order
-
-These are not the only important files. They are the path in.
-
-### 1. `main.c` — the boot sequence
-
-Already read. 38 lines. Do not skip it.
+`mpmain()` hands off to the scheduler and never returns. The kernel becomes reactive. That is what an operating system is: a very careful initialization followed by infinite patience.
 
 ### 2. `proc.c` — the process model
 
@@ -63,7 +57,7 @@ Already read. 38 lines. Do not skip it.
 
 ### 3. `vm.c` — virtual memory
 
-394 lines. How the kernel gives each process the illusion that it owns all of memory. Dense but not long. The key function is `copyuvm()` — it shows what `fork()` actually does to memory when it duplicates a process.
+394 lines. How the kernel gives each process the illusion that it owns all of memory. The key function is `copyuvm()` — it shows what `fork()` actually does to memory when it duplicates a process.
 
 ### 4. `fs.c` — the filesystem
 
@@ -71,11 +65,11 @@ Already read. 38 lines. Do not skip it.
 
 ### 5. `sh.c` — the shell
 
-493 lines. A complete Unix program, not a kernel file. The shell is the user's interface to everything above. It forks processes, sets up pipes, redirects I/O. Reading it after `proc.c` is the payoff: you see `fork()` being used in the wild, doing exactly what it was designed to do.
+493 lines. A complete Unix program, not a kernel file. The shell forks processes, sets up pipes, redirects I/O. Reading it after `proc.c` is the payoff: you see `fork()` being used in the wild, doing exactly what it was designed to do.
 
 ---
 
-## What the README says
+## The lineage
 
 xv6's own README acknowledges Lions' Commentary directly:
 

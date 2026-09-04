@@ -146,7 +146,7 @@ If it still fails, the blocking packages haven't been rebuilt yet. Wait another 
 
 ---
 
-## Current State (2026-08-30)
+## Current State (2026-09-03)
 
 Units 01–09 are seeded. Unit 10 = Browsers and Social Media. Unit 11 = LLMs (confirmed). **Website is live at `https://momahajogami.github.io/eleven-million-lines/`.**
 
@@ -165,7 +165,7 @@ Course framing corrected: **preschool-first** — designed for young children an
 - 09: UNIT-09.md (algorithm arc: Wolf3D→Doom→Quake); wolf3d/, doom/, quake/ (placeholder READMEs); other-games/ (GAMES.md + tetris/tetris.py); grassmannian/GRASSMANNIAN.md
 - 10: Browsers and Social Media — substantially built out. UNIT-10.md, BROWSERS.md, SOCIAL-MEDIA-1/2/3.md, ONTOLOGY.md, THE-RIGHT-TO-READ.md, PACKAGE-MANAGERS.md, VERSION-CONTROL-ECOSYSTEM.md, MICROSOFT-THREAD.md. Codebases: Mosaic (full clone + RFC 2616 + RFC 1866), Lynx (2.9.3 tarball), Mastodon (sparse checkout: models, services, workers). Firefox and WebKit oriented via README only (too large). PageRank implementation and toy social graph still to write.
 - 11: LLMs confirmed — Attention Is All You Need + nanoGPT + Stack Overflow displacement arc
-- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, ACADEMIC-YEAR-2026-27.md, sessions/ (2026-08-18 through 2026-09-02)
+- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, ACADEMIC-YEAR-2026-27.md, sessions/ (2026-08-18 through 2026-09-03); scratch/ contains two 10-page LaTeX reference documents: `yang-baxter.tex` and `algebraic-k-theory.tex` (written 2026-09-03; not yet assigned to a unit)
 - docs/: index.html (syllabus, 11 units); 01/–11/index.html all now driven by WEBSITE.md pipeline; .nojekyll; .github/workflows/pages.yml
 - scripts/build-website.py: WEBSITE.md → HTML pipeline for all unit pages. Run `python3 scripts/build-website.py` after editing any NN/WEBSITE.md. All 11 units now have WEBSITE.md source files.
 - scripts/chipsquirt.py: per-letter color tinting. Modes: sine, walk, random, unit-squared, fourth-power-interval, orbit. Orbit = course signature. Fourth-power = h1 mode (near-black, rare flash). Used server-side on essay pages; ported to JS for index pages and reader.html.
@@ -199,3 +199,4 @@ Course framing corrected: **preschool-first** — designed for young children an
 - Read `fork()` in `proc.c` (~line 156) — lesson from 2026-08-27 session is in `meta/sessions/2026-08-27.md`
 - Decide: does Descent belong in `09/` alongside the id Software arc?
 - Markdown syntax tinting (six core categories documented in BRAND.md, ready to implement)
+- Decide where `meta/scratch/yang-baxter.tex` and `algebraic-k-theory.tex` belong — candidates: Unit 07 (Grothendieck/topology) or Unit 08 (homology)
