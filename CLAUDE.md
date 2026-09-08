@@ -165,9 +165,9 @@ Course framing corrected: **preschool-first** — designed for young children an
 - 09: UNIT-09.md (algorithm arc: Wolf3D→Doom→Quake); wolf3d/, doom/, quake/ (placeholder READMEs); other-games/ (GAMES.md + tetris/tetris.py); grassmannian/GRASSMANNIAN.md
 - 10: Browsers and Social Media — substantially built out. UNIT-10.md, BROWSERS.md, SOCIAL-MEDIA-1/2/3.md, ONTOLOGY.md, THE-RIGHT-TO-READ.md, PACKAGE-MANAGERS.md, VERSION-CONTROL-ECOSYSTEM.md, MICROSOFT-THREAD.md. Codebases: Mosaic (full clone + RFC 2616 + RFC 1866), Lynx (2.9.3 tarball), Mastodon (sparse checkout: models, services, workers). Firefox and WebKit oriented via README only (too large). PageRank implementation and toy social graph still to write.
 - 11: LLMs confirmed — Attention Is All You Need + nanoGPT + Stack Overflow displacement arc
-- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, ACADEMIC-YEAR-2026-27.md, sessions/ (2026-08-18 through 2026-09-03); scratch/ contains two 10-page LaTeX reference documents: `yang-baxter.tex` and `algebraic-k-theory.tex` (written 2026-09-03; not yet assigned to a unit)
-- docs/: index.html (syllabus, 11 units); 01/–11/index.html all now driven by WEBSITE.md pipeline; .nojekyll; .github/workflows/pages.yml
-- scripts/build-website.py: WEBSITE.md → HTML pipeline for all unit pages. Run `python3 scripts/build-website.py` after editing any NN/WEBSITE.md. All 11 units now have WEBSITE.md source files.
+- meta/: SIZES.md, CYCLE-DOWN.md, PUBLISH.md, ACADEMIC-YEAR-2026-27.md, sessions/ (2026-08-18 through 2026-09-08); scratch/ contains two 10-page LaTeX reference documents: `yang-baxter.tex` and `algebraic-k-theory.tex` (written 2026-09-03; not yet assigned to a unit). Note: `meta/` is gitignored — nothing here is tracked.
+- docs/: index.html (now clean: intro + "Who is this for?" + one "Code Base" link); codebases.html (full 11-unit list, moved here 2026-09-08); 01/–11/index.html all driven by WEBSITE.md pipeline; four welcome essays (im-in-preschool, i-am-a-parent, i-am-a-teacher, i-want-to-go-deep) as both .md source and .html; scanning-sophocles.md (Greek meter reference for readers of Homer/Horace); .nojekyll; .github/workflows/pages.yml
+- scripts/build-website.py: WEBSITE.md → HTML pipeline for all unit pages + welcome essays. Run `python3 scripts/build-website.py` after editing any NN/WEBSITE.md or docs/*.md welcome file. All 11 units have WEBSITE.md source files.
 - scripts/chipsquirt.py: per-letter color tinting. Modes: sine, walk, random, unit-squared, fourth-power-interval, orbit. Orbit = course signature. Fourth-power = h1 mode (near-black, rare flash). Used server-side on essay pages; ported to JS for index pages and reader.html.
 - meta/BRAND.md: visual identity, all color families, oscillation modes, unit assignments, markdown syntax token categories (future work).
 
@@ -177,7 +177,7 @@ Course framing corrected: **preschool-first** — designed for young children an
 
 **Step 2 — Full preschool reframe of CLAUDE.md** — Goals, Two Tracks, and Visualizations still say "university." Rewrite them to lead with preschool/families. University stays as a real secondary context.
 
-**Step 3 — Recap** on where things stand. Read this section and `meta/sessions/2026-09-02.md`.
+**Step 3 — Recap** on where things stand. Read this section and `meta/sessions/2026-09-08.md`.
 
 ## Intentions for Next Session
 
@@ -200,3 +200,4 @@ Course framing corrected: **preschool-first** — designed for young children an
 - Decide: does Descent belong in `09/` alongside the id Software arc?
 - Markdown syntax tinting (six core categories documented in BRAND.md, ready to implement)
 - Decide where `meta/scratch/yang-baxter.tex` and `algebraic-k-theory.tex` belong — candidates: Unit 07 (Grothendieck/topology) or Unit 08 (homology)
+- Hook `docs/scanning-sophocles.md` into the site — not yet linked anywhere; candidate: Unit 06 or a standalone reading guides page
