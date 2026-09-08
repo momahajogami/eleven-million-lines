@@ -327,6 +327,33 @@ ESSAY_CSS = """
 """
 
 
+def render_welcome_page(title: str, body_html: str) -> str:
+    page_title = f"{title} — Eleven Million Lines"
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{page_title}</title>
+  <style>{ESSAY_CSS}  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">← Eleven Million Lines You Should Know</a>
+  </div>
+
+  <div class="essay">
+    {body_html}
+  </div>
+
+  <div class="footer">Eleven Million Lines You Should Know</div>
+
+</body>
+</html>
+"""
+
+
 def render_essay_page(unit: str, unit_title: str, title: str, body_html: str,
                        prev_item: dict | None, next_item: dict | None) -> str:
     page_title = f"{title} — Unit {unit} — Eleven Million Lines" if title else \
@@ -716,6 +743,35 @@ def build_unit_page(unit: str) -> bool:
     return unit_changed or essay_count > 0
 
 
+WELCOME_ESSAYS = [
+    ("im-in-preschool.md",   "im-in-preschool.html"),
+    ("i-am-a-parent.md",     "i-am-a-parent.html"),
+    ("i-am-a-teacher.md",    "i-am-a-teacher.html"),
+    ("i-want-to-go-deep.md", "i-want-to-go-deep.html"),
+]
+
+
+def build_welcome_essays():
+    for md_name, html_name in WELCOME_ESSAYS:
+        md_path = CONTENT_DIR / md_name
+        if not md_path.exists():
+            print(f"  welcome: SKIP {md_name} (not found)", file=sys.stderr)
+            continue
+        md_text = md_path.read_text()
+        title = extract_title(md_text)
+        body_html = essay_md_to_html(md_text)
+        page_html = render_welcome_page(title, body_html)
+        page_html = chipsquirt.apply_to_headers(page_html, chipsquirt.teal, levels=['h1'], mode='fourth-power-interval')
+        page_html = chipsquirt.apply_to_headers(page_html, chipsquirt.teal, levels=['h2', 'h3'], mode='orbit')
+        out_path = CONTENT_DIR / html_name
+        existing = out_path.read_text() if out_path.exists() else ""
+        if page_html != existing:
+            out_path.write_text(page_html)
+            print(f"  welcome: wrote {html_name}")
+        else:
+            print(f"  welcome: unchanged {html_name}")
+
+
 def build_units():
     for unit in UNITS:
         build_unit_page(unit)
@@ -728,6 +784,8 @@ def build_units():
 def main():
     print("=== index page ===")
     build_index()
+    print("\n=== welcome essays ===")
+    build_welcome_essays()
     print("\n=== unit pages ===")
     build_units()
     print("\nDone.")

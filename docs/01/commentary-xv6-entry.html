@@ -81,15 +81,17 @@
   </div>
 
   <div class="essay">
-    <h1><span style="color:rgb(15,86,77)">x</span><span style="color:rgb(16,98,87)">v</span><span style="color:rgb(19,147,147)">6</span> <span style="color:rgb(15,86,77)">—</span> <span style="color:rgb(23,113,100)">E</span><span style="color:rgb(15,86,77)">n</span><span style="color:rgb(15,91,80)">t</span><span style="color:rgb(28,141,132)">r</span><span style="color:rgb(15,146,147)">y</span></h1>
-<p><em>The first walk through. Where to stand, what to look at, what to feel.</em></p>
+    <h1><span style="color:rgb(15,86,77)">x</span><span style="color:rgb(15,90,79)">v</span><span style="color:rgb(18,102,89)">6</span> <span style="color:rgb(15,88,78)">—</span> <span style="color:rgb(15,87,77)">E</span><span style="color:rgb(18,171,138)">n</span><span style="color:rgb(16,110,100)">t</span><span style="color:rgb(15,86,77)">r</span><span style="color:rgb(18,125,112)">y</span></h1>
+<p><em>Where to stand. What to look at. What to feel.</em></p>
 <hr>
-<h2><span style="color:rgb(34,120,94)">T</span><span style="color:rgb(17,105,84)">h</span><span style="color:rgb(6,54,47)">e</span> <span style="color:rgb(4,30,29)">n</span><span style="color:rgb(17,63,63)">u</span><span style="color:rgb(44,108,112)">m</span><span style="color:rgb(55,112,116)">b</span><span style="color:rgb(33,70,71)">e</span><span style="color:rgb(11,32,31)">r</span><span style="color:rgb(11,47,43)">s</span></h2>
-<p>9,400 lines of C and assembly. That is an operating system. Process management, virtual memory, a filesystem, a shell, a handful of user programs. Everything required for Unix to exist, in a space smaller than most single files in a modern codebase.</p>
+<h2><span style="color:rgb(10,85,84)">T</span><span style="color:rgb(7,36,38)">h</span><span style="color:rgb(11,36,38)">e</span> <span style="color:rgb(36,83,85)">n</span><span style="color:rgb(58,121,121)">u</span><span style="color:rgb(44,101,96)">m</span><span style="color:rgb(16,50,44)">b</span><span style="color:rgb(6,31,25)">e</span><span style="color:rgb(8,67,49)">r</span><span style="color:rgb(15,114,81)">s</span></h2>
+<p>9,400 lines of C and assembly. That is an operating system. Process management, virtual memory, a filesystem, a shell, a handful of user programs — everything required for Unix to exist, in a space smaller than most single files in a modern codebase.</p>
 <p>Hold that number. It will keep mattering.</p>
 <hr>
-<h2>The door: <code>main.c</code></h2>
-<p>Open <code>main.c</code>. It is 38 lines of actual code.</p>
+<h2><span style="color:rgb(40,96,78)">F</span><span style="color:rgb(37,122,94)">i</span><span style="color:rgb(16,92,69)">v</span><span style="color:rgb(5,42,33)">e</span> <span style="color:rgb(5,34,30)">f</span><span style="color:rgb(19,78,75)">i</span><span style="color:rgb(45,118,119)">l</span><span style="color:rgb(50,104,107)">e</span><span style="color:rgb(26,55,56)">s</span><span style="color:rgb(11,30,30)">,</span> <span style="color:rgb(15,60,59)">i</span><span style="color:rgb(16,110,98)">n</span> <span style="color:rgb(14,118,96)">o</span><span style="color:rgb(13,74,57)">r</span><span style="color:rgb(10,33,25)">d</span><span style="color:rgb(19,45,36)">e</span><span style="color:rgb(46,96,81)">r</span></h2>
+<p>These are not the only important files. They are the path in.</p>
+<h3>1. <code>main.c</code> — the boot sequence</h3>
+<p>38 lines of actual code.</p>
 <pre><code>int
 main(void)
 {
@@ -114,29 +116,24 @@ main(void)
 }</code></pre>
 <p>You have just read the boot sequence of an operating system. Each line wakes something up — hardware, memory, interrupt handling — in the exact order required. The comments are not documentation appended afterward. They are the code. Each one is a complete sentence describing a complete act.</p>
 <p>Notice <code>userinit()</code>. That is the moment Unix begins. Everything before it is the kernel making itself ready. Everything after it is the kernel waiting to be interrupted by a user process wanting something. The whole model is there in the call order.</p>
-<p><code>mpmain()</code> at the end hands off to the scheduler and never returns. The kernel becomes reactive. That is what an operating system is: a very careful initialization followed by infinite patience.</p>
-<hr>
-<h2><span style="color:rgb(10,81,81)">F</span><span style="color:rgb(7,34,36)">i</span><span style="color:rgb(13,38,40)">v</span><span style="color:rgb(38,86,88)">e</span> <span style="color:rgb(58,122,120)">f</span><span style="color:rgb(42,98,93)">i</span><span style="color:rgb(15,48,41)">l</span><span style="color:rgb(6,32,25)">e</span><span style="color:rgb(8,71,51)">s</span> <span style="color:rgb(16,116,83)">w</span><span style="color:rgb(27,112,86)">o</span><span style="color:rgb(23,64,54)">r</span><span style="color:rgb(14,30,28)">t</span><span style="color:rgb(25,54,51)">h</span> <span style="color:rgb(41,104,104)">r</span><span style="color:rgb(32,116,120)">e</span><span style="color:rgb(12,77,81)">a</span><span style="color:rgb(4,35,36)">d</span><span style="color:rgb(7,40,39)">i</span><span style="color:rgb(25,88,82)">n</span><span style="color:rgb(50,122,108)">g</span> <span style="color:rgb(47,98,84)">i</span><span style="color:rgb(21,48,39)">n</span> <span style="color:rgb(11,32,25)">o</span><span style="color:rgb(15,71,54)">r</span><span style="color:rgb(15,116,91)">d</span><span style="color:rgb(14,112,96)">e</span><span style="color:rgb(13,64,60)">r</span></h2>
-<p>These are not the only important files. They are the path in.</p>
-<h3>1. <code>main.c</code> — the boot sequence</h3>
-<p>Already read. 38 lines. Do not skip it.</p>
+<p><code>mpmain()</code> hands off to the scheduler and never returns. The kernel becomes reactive. That is what an operating system is: a very careful initialization followed by infinite patience.</p>
 <h3>2. <code>proc.c</code> — the process model</h3>
 <p>534 lines. <code>fork()</code>, <code>exit()</code>, <code>wait()</code>, <code>sleep()</code>, <code>wakeup()</code>, the scheduler. This is the heart of Unix. Every time you run a command in a shell, <code>fork()</code> happens. Every time a program finishes, <code>exit()</code> and <code>wait()</code> happen. Read <code>fork()</code> first — it is about 40 lines and it is one of the most important functions ever written.</p>
 <h3>3. <code>vm.c</code> — virtual memory</h3>
-<p>394 lines. How the kernel gives each process the illusion that it owns all of memory. Dense but not long. The key function is <code>copyuvm()</code> — it shows what <code>fork()</code> actually does to memory when it duplicates a process.</p>
+<p>394 lines. How the kernel gives each process the illusion that it owns all of memory. The key function is <code>copyuvm()</code> — it shows what <code>fork()</code> actually does to memory when it duplicates a process.</p>
 <h3>4. <code>fs.c</code> — the filesystem</h3>
 <p>670 lines, the longest kernel file. Inodes, directories, path traversal. The filesystem is where Unix becomes a place — where programs and data have names and addresses that persist. Read <code>namei()</code> to see how a path like <code>/usr/bin/grep</code> becomes an inode.</p>
 <h3>5. <code>sh.c</code> — the shell</h3>
-<p>493 lines. A complete Unix program, not a kernel file. The shell is the user's interface to everything above. It forks processes, sets up pipes, redirects I/O. Reading it after <code>proc.c</code> is the payoff: you see <code>fork()</code> being used in the wild, doing exactly what it was designed to do.</p>
+<p>493 lines. A complete Unix program, not a kernel file. The shell forks processes, sets up pipes, redirects I/O. Reading it after <code>proc.c</code> is the payoff: you see <code>fork()</code> being used in the wild, doing exactly what it was designed to do.</p>
 <hr>
-<h2><span style="color:rgb(39,113,89)">W</span><span style="color:rgb(24,115,89)">h</span><span style="color:rgb(9,68,55)">a</span><span style="color:rgb(4,31,28)">t</span> <span style="color:rgb(10,49,48)">t</span><span style="color:rgb(34,99,100)">h</span><span style="color:rgb(54,117,121)">e</span> <span style="color:rgb(41,83,86)">R</span><span style="color:rgb(16,38,39)">E</span><span style="color:rgb(11,37,36)">A</span><span style="color:rgb(14,84,74)">D</span><span style="color:rgb(14,121,97)">M</span><span style="color:rgb(16,103,77)">E</span> <span style="color:rgb(13,52,39)">s</span><span style="color:rgb(12,31,25)">a</span><span style="color:rgb(31,66,56)">y</span><span style="color:rgb(53,113,100)">s</span></h2>
+<h2><span style="color:rgb(10,81,81)">T</span><span style="color:rgb(7,34,36)">h</span><span style="color:rgb(13,38,40)">e</span> <span style="color:rgb(38,86,88)">l</span><span style="color:rgb(58,122,120)">i</span><span style="color:rgb(42,98,93)">n</span><span style="color:rgb(15,48,41)">e</span><span style="color:rgb(6,32,25)">a</span><span style="color:rgb(8,71,51)">g</span><span style="color:rgb(16,116,83)">e</span></h2>
 <p>xv6's own README acknowledges Lions' Commentary directly:</p>
 <blockquote>
   <p><em>xv6 is inspired by John Lions's Commentary on UNIX 6th Edition.</em></p>
 </blockquote>
 <p>That sentence is not an accident. xv6 was written to be read alongside a commentary. The authors knew they were making a text, not just a program. That is rare. Treat it accordingly.</p>
 <hr>
-<h2><span style="color:rgb(25,52,47)">T</span><span style="color:rgb(46,103,88)">h</span><span style="color:rgb(42,121,95)">e</span> <span style="color:rgb(18,83,61)">m</span><span style="color:rgb(4,37,27)">o</span><span style="color:rgb(5,39,31)">m</span><span style="color:rgb(18,87,76)">e</span><span style="color:rgb(41,121,116)">n</span><span style="color:rgb(44,99,100)">t</span></h2>
+<h2><span style="color:rgb(17,39,36)">T</span><span style="color:rgb(41,87,78)">h</span><span style="color:rgb(50,121,102)">e</span> <span style="color:rgb(29,100,77)">m</span><span style="color:rgb(8,49,35)">o</span><span style="color:rgb(3,31,23)">m</span><span style="color:rgb(10,69,55)">e</span><span style="color:rgb(30,115,102)">n</span><span style="color:rgb(44,113,109)">t</span></h2>
 <p>You are standing inside a working operating system. It boots. It runs processes. It has a filesystem and a shell. It does everything Unix does. And you can read the whole thing in an afternoon.</p>
 <p>That is not a simplification. That is what it actually was — what Thompson and Ritchie actually built, before decades of accumulation. The smallness is not a teaching conceit. The smallness is the original fact.</p>
 <hr>
