@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eleven Million Lines You Should Know</title>
+  <title>Code Base — Eleven Million Lines You Should Know</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 18px; }
@@ -16,24 +16,19 @@
       margin: 0 auto;
       padding: 4rem 2rem 6rem;
     }
+    .nav {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 3rem;
+    }
+    .nav a { color: #555; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
     h1 {
       font-size: 2.4rem;
       font-weight: normal;
       line-height: 1.2;
-      margin-bottom: 0.5rem;
+      margin-bottom: 2rem;
       letter-spacing: -0.01em;
-    }
-    .subtitle {
-      font-size: 1rem;
-      color: #666;
-      margin-bottom: 3rem;
-      font-style: italic;
-    }
-    .intro {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      margin-bottom: 3rem;
-      color: #333;
     }
     h2 {
       font-size: 0.85rem;
@@ -97,59 +92,107 @@
 </head>
 <body>
 
-  <h1>Eleven Million Lines<br>You Should Know</h1>
-  <p class="subtitle">A course in reading landmark codebases</p>
+  <div class="nav"><a href="index.html">← Eleven Million Lines You Should Know</a></div>
 
-  <p class="intro">
-    Code is writing. People wrote it. You can read it too.<br>
-    Eleven codebases. Eleven units. One tradition.
-  </p>
-
-  <h2>Who is this for?</h2>
+  <h1>Code Base</h1>
 
   <ul class="unit-list">
     <li>
-      <a href="im-in-preschool.html">
+      <a href="01/">
+        <span class="unit-num">01</span>
         <span class="unit-body">
-          <span class="unit-title">I'm in preschool.</span>
-          <span class="unit-desc">For young children — and curious visitors of any age</span>
+          <span class="unit-title">Early Unix</span>
+          <span class="unit-desc">xv6, Unix v6, Plan 9 — the place where most of what you use was invented</span>
         </span>
       </a>
     </li>
     <li>
-      <a href="i-am-a-parent.html">
+      <a href="02/">
+        <span class="unit-num">02</span>
         <span class="unit-body">
-          <span class="unit-title">I am a parent. I am a helper.</span>
-          <span class="unit-desc">For the grown-ups sitting alongside</span>
+          <span class="unit-title">Classical Coding</span>
+          <span class="unit-desc">C compilers, vi/vim, git — and the character of Linus Torvalds</span>
         </span>
       </a>
     </li>
     <li>
-      <a href="i-am-a-teacher.html">
+      <a href="03/">
+        <span class="unit-num">03</span>
         <span class="unit-body">
-          <span class="unit-title">I am a teacher.</span>
-          <span class="unit-desc">For educators bringing this course to students</span>
+          <span class="unit-title">Richard Stallman</span>
+          <span class="unit-desc">GNU, the GPL, Emacs, GDB — the prophet and the four freedoms</span>
         </span>
       </a>
     </li>
     <li>
-      <a href="i-want-to-go-deep.html">
+      <a href="04/">
+        <span class="unit-num">04</span>
         <span class="unit-body">
-          <span class="unit-title">I want to master computer programming at the deepest level.</span>
-          <span class="unit-desc">For anyone serious about going all the way</span>
+          <span class="unit-title">Blender</span>
+          <span class="unit-desc">The heroic story — art, architecture, and the community buyout</span>
         </span>
       </a>
     </li>
-  </ul>
-
-  <h2>Course</h2>
-
-  <ul class="unit-list">
     <li>
-      <a href="codebases.html">
+      <a href="05/">
+        <span class="unit-num">05</span>
         <span class="unit-body">
-          <span class="unit-title">Code Base</span>
-          <span class="unit-desc">Eleven codebases — Unix to LLMs</span>
+          <span class="unit-title">Culture, Spectacle and Eigenrank</span>
+          <span class="unit-desc">TeX, BitTorrent, SageMath, PageRank — coding as writing augmented with electricity</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="06/">
+        <span class="unit-num">06</span>
+        <span class="unit-body">
+          <span class="unit-title">Languages and Theory</span>
+          <span class="unit-desc">BASIC, Assembly, LISP, Haskell — from Lovelace's 1843 notes to Church and Turing</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="07/">
+        <span class="unit-num">07</span>
+        <span class="unit-body">
+          <span class="unit-title">Logically Speaking</span>
+          <span class="unit-desc">Grothendieck, Lawvere — the mathematics that underlies the mathematics</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="08/">
+        <span class="unit-num">08</span>
+        <span class="unit-body">
+          <span class="unit-title">Simplicial Homology by Hand</span>
+          <span class="unit-desc">Build the chain complex from scratch — Python, Haskell, markdown as thinking layer</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="09/">
+        <span class="unit-num">09</span>
+        <span class="unit-body">
+          <span class="unit-title">Quake and the Grammar of Games</span>
+          <span class="unit-desc">Wolfenstein, Doom, Quake — BSP trees, fast inverse square root, Carmack's .plan files</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="10/">
+        <span class="unit-num">10</span>
+        <span class="unit-body">
+          <span class="unit-title">Browsers and Social Media</span>
+          <span class="unit-desc">Mosaic, Firefox, WebKit — the social graph as data structure</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="11/">
+        <span class="unit-num">11</span>
+        <span class="unit-body">
+          <span class="unit-title">Large Language Models</span>
+          <span class="unit-desc">Attention Is All You Need, nanoGPT — what does it mean to read code that produces language?</span>
         </span>
       </a>
     </li>
@@ -173,15 +216,9 @@
     function colorizeEl(el,fam,mode){var phase=Math.random()*Math.PI*2,counter={i:0},walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),nodes=[],n;while((n=walker.nextNode()))nodes.push(n);nodes.forEach(function(node){var text=node.nodeValue,frag=document.createDocumentFragment();for(var ci=0;ci<text.length;ci++){var ch=text[ci];if(/ |\t|\n|\r/.test(ch)){frag.appendChild(document.createTextNode(ch));}else{var sp=document.createElement('span');sp.style.color=letterColor(counter.i++,fam,mode,phase);sp.textContent=ch;frag.appendChild(sp);}}node.parentNode.replaceChild(frag,node);});}
     var FAMILY_CYCLE=['teal','slate','forest','amber','violet','magenta'];
     document.addEventListener('DOMContentLoaded',function(){
-      var unit=(window.location.pathname.match(/\/([0-9]{2})\//)||[])[1]||null,famName=UNIT_FAMILIES[unit]||'teal',fam=FAMILIES[famName];
-      // h1 only — section headers (h2) stay plain
+      var fam=FAMILIES['teal'];
       document.querySelectorAll('h1').forEach(function(el){colorizeEl(el,fam,'fourth-power-interval');});
-      // syllabus: unit titles cycle through all families
       document.querySelectorAll('.unit-title').forEach(function(el,idx){colorizeEl(el,FAMILIES[FAMILY_CYCLE[idx%6]],'orbit');});
-      // unit pages: bold item names in materials, links in repos and documents
-      document.querySelectorAll('.materials li strong').forEach(function(el){colorizeEl(el,fam,'orbit');});
-      document.querySelectorAll('.repos li a').forEach(function(el){colorizeEl(el,fam,'orbit');});
-      document.querySelectorAll('.documents li a:first-child').forEach(function(el){colorizeEl(el,fam,'orbit');});
     });
   })();
   </script>
