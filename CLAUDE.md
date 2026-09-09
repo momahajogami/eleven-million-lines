@@ -181,6 +181,7 @@ Course framing corrected: **preschool-first** — designed for young children an
 
 ## Intentions for Next Session
 
+- **START HERE: vim and epubs** — explore reading epubs in vim (or vim-adjacent tools); figure out the best workflow
 - Mount `/dev/sda1` at `/mnt/sda`; add fstab entry (UUID=9712b64f-2294-480c-97aa-e21c10944e03)
 - Disable KDE sleep/suspend
 - Resolve sudo password (reset via GRUB if needed)
