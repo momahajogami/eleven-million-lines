@@ -2,7 +2,7 @@
 
 You are in the right place.
 
-This is a library. It is a very big library. The books go from floor to ceiling and there are eleven of them — eleven big book cases, each one full of something different. Some book cases have music on them. Some have pictures. Some have numbers and shapes. And some of the shelves have code.
+This is a library. It is a very big library. The book cases go from floor to ceiling and there are eleven of them — eleven big book cases, each one full of something different. Some book cases have music on them. Some have pictures. Some have numbers and shapes. And some of the shelves have code.
 
 Code is a kind of writing. People wrote it, just like people write books and songs. You can read it too — not all of it, not yet, but some of it. And even the parts you can't read yet, you can look at. You can hold the book. You can know it's there.
 
